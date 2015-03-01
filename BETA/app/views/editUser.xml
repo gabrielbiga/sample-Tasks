@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Page loaded="pageLoaded">
-    <StackPanel>
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+    <StackLayout>
         <Label text="Your name"/>
         <TextField id="name" text="{{DisplayName}}"/>
 
@@ -20,5 +19,5 @@
         <Button text="Cancel" click="onCancelButtonClick"/>
         
         <ActivityIndicator id="activityIndicator"/>
-        </StackPanel>
+        </StackLayout>
 </Page>

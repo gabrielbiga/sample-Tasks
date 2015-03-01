@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Page loaded="pageLoaded" >
-    <StackPanel>
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" >
+    <StackLayout>
         <Label text="{{task.Name}}" />
         <Label text="{{ProjectName}}" />
         <Button text="Delete" click="onDeleteButtonClick"/>
         <Button text="Edit" click="onEditButtonClick"/>
         <ActivityIndicator id="activityIndicator"/>
-    </StackPanel>
+    </StackLayout>
 </Page>

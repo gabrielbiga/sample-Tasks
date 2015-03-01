@@ -1,36 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<Page loaded="pageLoaded">
-    <GridPanel>
-        <GridPanel.rowDefinitions>
-          <RowDefinition height="auto" />
-          <RowDefinition height="auto" />
-          <RowDefinition height="*" />
-          <RowDefinition height="auto" />
-        </GridPanel.rowDefinitions>
-        <StackPanel row="0">
-        <Label text="Name"/>
-        <TextField id="name" text="{{Name}}"/>
-            </StackPanel>
-<StackPanel row="1">
-        <Label text="Due"/>
-        <TextField id="dueDate" />
-    
+<Page xmlns="http://www.nativescript.org/tns.xsd"  loaded="pageLoaded">
+    <GridLayout rows="auto, auto,*, auto">
+        <StackLayout row="0">
+            <Label text="Name"/>
+            <TextField id="name" text="{{Name}}"/>
+         </StackLayout>
+        <StackLayout row="1">
+            <Label text="Due"/>
+            <TextField id="dueDate" />
             <Label text="Project"/>
-        <Button click="viewProject" text="{{ ProjectName }}" />
-        </StackPanel>
-        
+            <Button click="viewProject" text="{{ ProjectName }}" />
+        </StackLayout>        
         <ListView id="projectList" row="2" itemTap="onProjectSelected">
             <ListView.itemTemplate>
-              <StackPanel>
-                    <Label text="{{ Name }}" />
-                    <!--<Switch checked="{{ selected }}"/>-->
-              </StackPanel>
+              <StackLayout>
+                 <Label text="{{ Name }}" />
+                 <!--<Switch checked="{{ selected }}"/>-->
+              </StackLayout>
             </ListView.itemTemplate>
         </ListView>
-       <StackPanel row="3">
-        <Button text="Save" click="saveTask"/>        
-        <Button text="Cancel" click="cancel"/>
-           </StackPanel>
-        <ActivityIndicator id="activityIndicator"/>
-        </GridPanel>
+       <StackLayout row="3">
+           <Button text="Save" click="saveTask"/>        
+           <Button text="Cancel" click="cancel"/>
+       </StackLayout>
+       <ActivityIndicator id="activityIndicator"/>
+    </GridPanel>
 </Page>

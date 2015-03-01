@@ -17,7 +17,7 @@ function pageLoaded(args) {
     var authToken = localSettings.getString(TOKEN_DATA_KEY);
     if (authToken)
     {
-        frameModule.topmost().navigate("app/main-page");
+        frameModule.topmost().navigate("app/views/main");
     }    
 }
 

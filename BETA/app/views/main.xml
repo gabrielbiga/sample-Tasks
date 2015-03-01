@@ -2,9 +2,9 @@
      <GridLayout rows="*, auto" >
         <ListView items="{{ tasks }}" itemTap="listViewItemTap">
             <ListView.itemTemplate>
-              <StackPanel>
+              <StackLayout>
                 <Label text="{{ Name }}" />
-              </StackPanel>
+              </StackLayout>
             </ListView.itemTemplate>
         </ListView>
         <StackLayout row="1">
