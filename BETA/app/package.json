@@ -1,0 +1,6 @@
+{
+    "name": "tns-samples-template-master-detail",
+    "main": "app.js",
+    "version": "0.9.0",
+    "description": "NativeScript template-master-detail sample application"
+}

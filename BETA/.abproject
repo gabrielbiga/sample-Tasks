@@ -1,0 +1,26 @@
+{
+  "ProjectName": "BETA",
+  "ProjectGuid": "5f746bff-3506-4712-80d0-5e53149ff92b",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.BETA",
+  "DisplayName": "BETA",
+  "Author": "",
+  "Description": "",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
+  "AndroidPermissions": [],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "FrameworkVersion": "0.9.0",
+  "Framework": "NativeScript"
+}
