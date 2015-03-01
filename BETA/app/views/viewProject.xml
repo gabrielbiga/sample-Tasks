@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Page loaded="pageLoaded" >
+    <GridPanel>
+         <GridPanel.rowDefinitions>
+          <RowDefinition height="auto" />
+          <RowDefinition height="*" />
+        </GridPanel.rowDefinitions>
+        <Label text="{{Name}}" />
+                <ListView id="taskList" itemTap="listViewItemTap" row="1">
+            <ListView.itemTemplate>
+              <StackPanel>
+                <Label text="{{ Name }}" />
+              </StackPanel>
+            </ListView.itemTemplate>
+        </ListView>
+    </GridPanel>    
+</Page>

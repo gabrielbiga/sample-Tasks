@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Page loaded="pageLoaded" >
+    <StackPanel>
+        <Label text="{{task.Name}}" />
+        <Label text="{{ProjectName}}" />
+        <Button text="Delete" click="onDeleteButtonClick"/>
+        <Button text="Edit" click="onEditButtonClick"/>
+        <ActivityIndicator id="activityIndicator"/>
+    </StackPanel>
+</Page>

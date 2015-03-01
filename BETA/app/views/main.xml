@@ -1,0 +1,17 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+     <GridLayout rows="*, auto" >
+        <ListView items="{{ tasks }}" itemTap="listViewItemTap">
+            <ListView.itemTemplate>
+              <StackPanel>
+                <Label text="{{ Name }}" />
+              </StackPanel>
+            </ListView.itemTemplate>
+        </ListView>
+        <StackLayout row="1">
+            <Button text="+ Task" click="addTask" />
+            <Button text="+ Project" click="addProject"/>
+            <Button text="- Logout" click="logout"/>
+            <Button text="+ Userinfo" click="editUser"/>
+        </StackLayout>
+    </GridLayout>    
+</Page>

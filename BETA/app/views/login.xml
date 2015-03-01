@@ -1,0 +1,16 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+    <StackLayout>
+        <Label text="Username"/>
+        <TextField id="username"/>
+        
+        <Label text="Password"/>
+        <TextField id="password" secure="true"/>
+        
+        <StackLayout orientation="horizontal">
+            <Button text="Login" tap="loginTap"/>
+            <Button text="Register" tap="registerTap"/>
+        </StackLayout>
+
+        <ActivityIndicator id="activityIndicator"/>
+        </StackLayout>
+</Page>

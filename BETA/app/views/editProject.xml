@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Page loaded="pageLoaded">
+    <StackPanel>
+        <Label text="Name"/>
+        <TextField id="name" text="{{Name}}"/>
+
+        <Label text="Due"/>
+        <TextField id="dueDate" />
+
+        <Label text="Project"/>
+        <TextField id="project"/>
+       
+        <Button text="Save" click="saveProject"/>        
+        <Button text="Cancel" click="cancel"/>
+        <ActivityIndicator id="activityIndicator"/>
+        </StackPanel>
+</Page>

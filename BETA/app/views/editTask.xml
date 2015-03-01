@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Page loaded="pageLoaded">
+    <GridPanel>
+        <GridPanel.rowDefinitions>
+          <RowDefinition height="auto" />
+          <RowDefinition height="auto" />
+          <RowDefinition height="*" />
+          <RowDefinition height="auto" />
+        </GridPanel.rowDefinitions>
+        <StackPanel row="0">
+        <Label text="Name"/>
+        <TextField id="name" text="{{Name}}"/>
+            </StackPanel>
+<StackPanel row="1">
+        <Label text="Due"/>
+        <TextField id="dueDate" />
+    
+            <Label text="Project"/>
+        <Button click="viewProject" text="{{ ProjectName }}" />
+        </StackPanel>
+        
+        <ListView id="projectList" row="2" itemTap="onProjectSelected">
+            <ListView.itemTemplate>
+              <StackPanel>
+                    <Label text="{{ Name }}" />
+                    <!--<Switch checked="{{ selected }}"/>-->
+              </StackPanel>
+            </ListView.itemTemplate>
+        </ListView>
+       <StackPanel row="3">
+        <Button text="Save" click="saveTask"/>        
+        <Button text="Cancel" click="cancel"/>
+           </StackPanel>
+        <ActivityIndicator id="activityIndicator"/>
+        </GridPanel>
+</Page>
