@@ -1,8 +1,8 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" >
     <StackLayout>
         <Label text="{{Name}}" />
-        <Button text="Delete" click="onDeleteButtonClick"/>
-        <Button text="Edit" click="onEditButtonClick"/>
+        <Button text="Delete" tap="onDeleteButtonClick"/>
+        <Button text="Edit" tap="onEditButtonClick"/>
         <ActivityIndicator id="activityIndicator"/>
     </StackLayout>
 </Page>

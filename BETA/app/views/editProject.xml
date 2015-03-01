@@ -9,8 +9,8 @@
         <Label text="Project"/>
         <TextField id="project"/>
        
-        <Button text="Save" click="saveProject"/>        
-        <Button text="Cancel" click="cancel"/>
+        <Button text="Save" tap="saveProject"/>        
+        <Button text="Cancel" tap="cancel"/>
         <ActivityIndicator id="activityIndicator"/>
      </StackLayout>
 </Page>

@@ -2,10 +2,10 @@
   "ProjectName": "BETA",
   "ProjectGuid": "5f746bff-3506-4712-80d0-5e53149ff92b",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.BETA",
-  "DisplayName": "BETA",
-  "Author": "",
-  "Description": "BETA",
+  "AppIdentifier": "com.telerik.Tasks",
+  "DisplayName": "Tasks",
+  "Author": "Valio stoychev",
+  "Description": "Mobilize your tasks!",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
@@ -16,8 +16,7 @@
   "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
   "AndroidPermissions": [],
   "DeviceOrientations": [
-    "Portrait",
-    "Landscape"
+    "Portrait"
   ],
   "AndroidHardwareAcceleration": "false",
   "iOSStatusBarStyle": "Default",

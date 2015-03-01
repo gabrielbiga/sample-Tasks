@@ -8,7 +8,7 @@
             <Label text="Due"/>
             <TextField id="dueDate" />
             <Label text="Project"/>
-            <Button click="viewProject" text="{{ ProjectName }}" />
+            <Button tap="viewProject" text="{{ ProjectName }}" />
         </StackLayout>        
         <ListView id="projectList" row="2" itemTap="onProjectSelected">
             <ListView.itemTemplate>
@@ -19,9 +19,9 @@
             </ListView.itemTemplate>
         </ListView>
        <StackLayout row="3">
-           <Button text="Save" click="saveTask"/>        
-           <Button text="Cancel" click="cancel"/>
+           <Button text="Save" tap="saveTask"/>        
+           <Button text="Cancel" tap="cancel"/>
        </StackLayout>
        <ActivityIndicator id="activityIndicator"/>
-    </GridPanel>
+    </GridLayout>
 </Page>

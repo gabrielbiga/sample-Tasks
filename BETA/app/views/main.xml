@@ -8,10 +8,10 @@
             </ListView.itemTemplate>
         </ListView>
         <StackLayout row="1">
-            <Button text="+ Task" click="addTask" />
-            <Button text="+ Project" click="addProject"/>
-            <Button text="- Logout" click="logout"/>
-            <Button text="+ Userinfo" click="editUser"/>
+            <Button text="+ Task" tap="addTask" />
+            <Button text="+ Project" tap="addProject"/>
+            <Button text="- Logout" tap="logout"/>
+            <Button text="+ Userinfo" tap="editUser"/>
         </StackLayout>
     </GridLayout>    
 </Page>

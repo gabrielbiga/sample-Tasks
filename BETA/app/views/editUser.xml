@@ -15,8 +15,8 @@
         <Label text="Repeat Password"/>
         <TextField id="passwordRepeat" secure="true" text="{{Password}}"/>
         
-        <Button text="Save" click="onSaveButtonClick"/>        
-        <Button text="Cancel" click="onCancelButtonClick"/>
+        <Button text="Save" tap="onSaveButtonClick"/>        
+        <Button text="Cancel" tap="onCancelButtonClick"/>
         
         <ActivityIndicator id="activityIndicator"/>
         </StackLayout>

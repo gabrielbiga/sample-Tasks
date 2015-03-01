@@ -1,7 +1,7 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" >
     <GridLayout rows="auto, *">
         <Label text="{{Name}}" />
-                <ListView id="taskList" itemTap="listViewItemTap" row="1">
+        <ListView id="taskList" itemTap="listViewItemTap" row="1">
             <ListView.itemTemplate>
               <StackLayout>
                 <Label text="{{ Name }}" />
