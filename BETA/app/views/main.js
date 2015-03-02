@@ -14,6 +14,12 @@ function pageLoaded(args) {
 }
 exports.pageLoaded = pageLoaded;
 
+onNavigatedTo = function (args)
+{
+    frameModule.topmost().android.actionBar.show();
+}
+exports.onNavigatedTo = onNavigatedTo;
+
 function listViewItemTap(args) {
    vm.viewTask(args.view.bindingContext); 
 }

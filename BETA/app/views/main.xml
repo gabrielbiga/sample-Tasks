@@ -1,14 +1,13 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-    <AbsoluteLayout>
-        <Image url="~/app/res/FAB_add.png" left="100" top="400" stretch="none"/>
-         <GridLayout rows="auto, *, auto" >
-             <SegmentedBar selectedIndex="{{ selectedIndex }}" >
-              <SegmentedBar.items>
-                <SegmentedBarEntry title="TODAY" />
-                <SegmentedBarEntry title="TOMORROW" />
-                <SegmentedBarEntry title="NEXT" />
-              </SegmentedBar.items>
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="onNavigatedTo">
+        <GridLayout rows="auto, *, auto">
+            <SegmentedBar selectedIndex="{{ selectedIndex }}">
+                <SegmentedBar.items>
+                    <SegmentedBarEntry title="TODAY" />
+                    <SegmentedBarEntry title="TOMORROW" />
+                    <SegmentedBarEntry title="NEXT" />
+                </SegmentedBar.items>
             </SegmentedBar>
+
             <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
                 <ListView.itemTemplate>
                   <StackLayout>
@@ -17,13 +16,17 @@
                   </StackLayout>
                 </ListView.itemTemplate>
             </ListView>
+
             <StackLayout row="2">
                 <Button text="+ Task" tap="addTask" />
                 <Button text="+ Project" tap="addProject"/>
                 <Button text="- Logout" tap="logout"/>
                 <Button text="+ Userinfo" tap="editUser"/>
             </StackLayout>
-        </GridLayout>   
-        
-    </AbsoluteLayout>
+            
+            <AbsoluteLayout row="1">
+                <Image id="FAB" url="~/app/res/FAB_add.png" left="100" top="400" stretch="none"/>
+            </AbsoluteLayout>
+
+        </GridLayout>
 </Page>

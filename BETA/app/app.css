@@ -6,10 +6,16 @@ Label
 {
     color: #55443B; 
 }
+
 TextField
 {
     margin:8;
     color:#95938F;
+}
+
+SegmentedBar
+{
+    background-color:#CDDC39;
 }
 
 .logoImage
