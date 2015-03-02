@@ -12,11 +12,11 @@ var vm;
 function pageLoaded(args) {
     page = args.object;  
     var vm = new viewTaskVM.viewTaskViewModel();
-    vm.addEventListener(observable.knownEvents.propertyChange, 
+  /*  vm.addEventListener(observable.knownEvents.propertyChange, 
         function (pcd) {
             alert(pcd.eventName.toString() + " " + pcd.propertyName.toString() + " " + pcd.value.toString());
         }
-    );
+    );*/
 
     page.bindingContext = vm;
 }

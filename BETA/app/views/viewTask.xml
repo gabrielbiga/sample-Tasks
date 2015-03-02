@@ -1,9 +1,23 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" >
-    <StackLayout>
-        <Label text="{{task.Name}}" />
-        <Label text="{{ProjectName}}" />
-        <Button text="Delete" tap="onDeleteButtonClick"/>
-        <Button text="Edit" tap="onEditButtonClick"/>
+    <GridLayout>
+        <StackLayout>
+            <Image />
+            <Label text="{{ProjectName}}" cssClass="projectName"/>
+            <Label text="{{task.Name}}" cssClass="taskName"/>        
+            <Button text="Delete" tap="onDeleteButtonClick"/>
+            <Button text="Edit" tap="onEditButtonClick"/>
+            <GridLayout rows="auto, auto, auto" cols="*,*">
+                <Label text="{{DueDateText}}"/>             
+                <Label text="{{ReminderDateText}}" col="1"/>
+
+                <Label text="{{Email}}" row="1"/>
+
+                <Label text="{{Url}}" row="2"/>
+            </GridLayout>
+
+            <Label text="{{Description}}" cssClass="description"/>
+
+        </StackLayout>
         <ActivityIndicator id="activityIndicator"/>
-    </StackLayout>
+     </GridLayout>
 </Page>
