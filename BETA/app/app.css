@@ -1,27 +1,60 @@
 Page {
-    background-color: white;
+    background-color:#F7F4ED;
 }
 
-ListView {
-    margin: 0 10 0 10;
+Label
+{
+    color: #55443B; 
+}
+TextField
+{
+    margin:8;
+    color:#95938F;
 }
 
-.title{
-    margin: 10;
-    font-size: 32;
-    color: #3c3c3c;
-    horizontal-align: center;
+.logoImage
+{
+    margin-top:50;
+    margin-bottom:20;
+    horizontal-align:center;
 }
 
-.listItem {
-    margin: 10;
-    horizontal-align: center;
-    color: #808080;
+.header 
+{
     font-size: 24;
+    margin:10;
 }
 
-.info{
-    margin: 10;
-    font-size:24;
-    color: #808080;
+.primaryActionButton
+{
+    background-color:#259B24;
+    color:#FFFFFF;
+    margin:10;
 }
+
+.secondaryActionButton
+{
+    color:#259B24;   
+    background-color:#00FFFFFF;
+    margin:10;
+}
+
+.speakerPicture { 
+    width: 100; 
+    height: 100; 
+} 
+
+.speakerTitle, .speakerCompany { 
+    font-size: 18; 
+    color: #07ab9e; 
+} 
+
+.speakerName { 
+    font-size: 22; 
+    color: black; 
+} 
+
+.title { 
+    font-size: 22; 
+    color: black; 
+} 

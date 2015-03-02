@@ -1,15 +1,16 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="onNavigatedTo">
     <StackLayout>
-        <Label text="Username"/>
-        <TextField id="username"/>
         
-        <Label text="Password"/>
-        <TextField id="password" secure="true"/>
+        <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="none"/>
         
-        <StackLayout orientation="horizontal">
-            <Button text="Login" tap="loginTap"/>
-            <Button text="Register" tap="registerTap"/>
-        </StackLayout>
+        <Label text="Login with Tasks account" cssClass="header"/>
+        
+        <TextField id="username" hint="username" />
+
+        <TextField id="password" secure="true" hint="password"/>
+        
+        <Button text="LOGIN" tap="loginTap" cssClass="primaryActionButton"/>
+        <Button text="SIGN UP" tap="registerTap" cssClass="secondaryActionButton"/>
 
         <ActivityIndicator id="activityIndicator"/>
         </StackLayout>

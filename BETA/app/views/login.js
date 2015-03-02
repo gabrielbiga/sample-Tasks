@@ -7,8 +7,14 @@ var app = require("application");
 var localSettings = require("local-settings");
 
 app.onUncaughtError = function (error) {
-    dialogs.alert("Uncaught error[" + error +"]")
+    dialogs.alert("Uncaught error[" + JSON.stringify(error) +"]")
 }
+
+onNavigatedTo = function (args)
+{
+    frameModule.topmost().android.actionBar.hide();
+}
+exports.onNavigatedTo = onNavigatedTo;
 
 var page;
 function pageLoaded(args) {

@@ -1,10 +1,3 @@
-/*
- - list of tasks with some calculated props like
-      - project name
-      - isOverdue
-      
- - user info - name
-*/
 var observable = require("data/observable");
 var observableArray = require("data/observable-array");
 
@@ -15,8 +8,7 @@ var everlive = require("../lib/everlive");
 //var taskModel = require("../models/Task");
 var frameModule = require("ui/frame");
 
-var mainViewModel = 
-    function mainViewModel(source) {
+var mainViewModel = function (source) {
         this._tasks = new observableArray.ObservableArray();        
         this._tasksRequested = false;
     }

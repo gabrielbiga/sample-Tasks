@@ -1,11 +1,27 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-  <GridLayout rows="auto, *">
-    <Label text="Items Page" cssClass="title" />
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+      loaded="pageLoaded" 
+      xmlns:tsb="app/TelerikUI/side-bar"> 
+ 
+<!-- this is a 3rd party native library for the side-bar -->
+<tsb:SideBar title="TelerikNEXT"> 
 
-    <ListView items="{{ items }}" itemTap="listViewItemTap" row="1">
-      <ListView.itemTemplate>
-        <Label text="{{ title }}" cssClass="listItem" />
-      </ListView.itemTemplate>
-    </ListView>
-  </GridLayout>
+    <!-- set the content in the "slide-out" part -->
+    <tsb:SideBar.slideContent> 
+        <StackLayout style="background-color: white"> 
+            <Label text="A Text"/>
+            <Button text="A button" /> 
+        </StackLayout> 
+    </tsb:SideBar.slideContent> 
+
+    <!-- set the content in the main part -->
+    <tsb:SideBar.mainContent> 
+       <GridLayout rows="auto, auto, *"> 
+          <SegmentedBar selectedIndex="{{ selectedIndex }}" 
+                        items="{{ segBarItems }}" /> 
+          <StackLayout cssClass="mainContainer" row="1"> 
+             <SearchBar text="{{ search }}" /> 
+          </StackLayout> 
+        </GridLayout>
+     </tsb:SideBar.mainContent>
+</tsb:SideBar>
 </Page>
