@@ -23,7 +23,7 @@ function pageLoaded(args) {
 }
 exports.pageLoaded = pageLoaded;
 
-function onSaveButtonClick(args) {
+function onSaveButtonTap(args) {
     
     var nameField = view.getViewById(page, "name");
     var name = nameField.text;
@@ -82,7 +82,7 @@ function onSaveButtonClick(args) {
     }
     
 }
-exports.onSaveButtonClick = onSaveButtonClick;
+exports.onSaveButtonTap = onSaveButtonTap;
 
 function saveUserInfo(name, email, username, password) {
     var el = new everlive({ apiKey: TELERIK_BAAS_KEY, token : localSettings.getString(TOKEN_DATA_KEY)});
@@ -93,9 +93,8 @@ function saveUserInfo(name, email, username, password) {
         Email: email,
         DisplayName: name
     };
-    alert(originalUserInfo);
+
     if (!originalUserInfo) {
-        alert("NEW")
         el.Users.register(username,
             password,
             attrs,
@@ -107,7 +106,8 @@ function saveUserInfo(name, email, username, password) {
                 activityIndicator.busy = false;
                 dialogs.alert(JSON.stringify(error));
             });    
-    } else 
+    } 
+    else 
     {
         attrs.Id = originalUserInfo.Id;
         el.Users.updateSingle(attrs,
@@ -127,7 +127,7 @@ function onUserUpdated()
     frameModule.topmost().goBack();
 }
 
-function onCancelButtonClick(args) {
+function onCancelButtonTap(args) {
     frameModule.topmost().goBack();
 }
-exports.onCancelButtonClick = onCancelButtonClick;
+exports.onCancelButtonTap = onCancelButtonTap;

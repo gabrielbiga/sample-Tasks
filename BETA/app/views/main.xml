@@ -1,17 +1,29 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-     <GridLayout rows="*, auto" >
-        <ListView items="{{ tasks }}" itemTap="listViewItemTap">
-            <ListView.itemTemplate>
-              <StackLayout>
-                <Label text="{{ Name }}" />
-              </StackLayout>
-            </ListView.itemTemplate>
-        </ListView>
-        <StackLayout row="1">
-            <Button text="+ Task" tap="addTask" />
-            <Button text="+ Project" tap="addProject"/>
-            <Button text="- Logout" tap="logout"/>
-            <Button text="+ Userinfo" tap="editUser"/>
-        </StackLayout>
-    </GridLayout>    
+    <AbsoluteLayout>
+        <Image url="~/app/res/FAB_add.png" left="100" top="400" stretch="none"/>
+         <GridLayout rows="auto, *, auto" >
+             <SegmentedBar selectedIndex="{{ selectedIndex }}" >
+              <SegmentedBar.items>
+                <SegmentedBarEntry title="TODAY" />
+                <SegmentedBarEntry title="TOMORROW" />
+                <SegmentedBarEntry title="NEXT" />
+              </SegmentedBar.items>
+            </SegmentedBar>
+            <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
+                <ListView.itemTemplate>
+                  <StackLayout>
+                      <Label text="{{ ProjectName}}"/>
+                      <Label text="{{ Name }}" />
+                  </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+            <StackLayout row="2">
+                <Button text="+ Task" tap="addTask" />
+                <Button text="+ Project" tap="addProject"/>
+                <Button text="- Logout" tap="logout"/>
+                <Button text="+ Userinfo" tap="editUser"/>
+            </StackLayout>
+        </GridLayout>   
+        
+    </AbsoluteLayout>
 </Page>

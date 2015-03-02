@@ -1,23 +1,20 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
-    <StackLayout>
-        <Label text="Your name"/>
-        <TextField id="name" text="{{DisplayName}}"/>
+    <ScrollView>
+        <GridLayout>
+            <ActivityIndicator id="activityIndicator"/>
+            <StackLayout>
+                <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="none"/>        
+                <Label text="Enter your info" cssClass="header"/> 
 
-        <Label text="Your Email"/>
-        <TextField id="email" text="{{Email}}" editable="false" />
+                <TextField id="name" hint="name" text="{{DisplayName}}"/>
+                <TextField id="email" keyboardType="email" hint="e-mail" text="{{Email}}"/><!--  editable="false"  -->
+                <TextField id="username" hint="username" text="{{Username}}"/>
+                <TextField id="password" hint="password" secure="true" text="{{Password}}"/>
+                <TextField id="passwordRepeat" hint="repeat password" secure="true" text="{{Password}}"/>
 
-        <Label text="Username"/>
-        <TextField id="username"  text="{{Username}}"/>
-        
-        <Label text="Password"/>
-        <TextField id="password" secure="true" text="{{Password}}"/>
-        
-        <Label text="Repeat Password"/>
-        <TextField id="passwordRepeat" secure="true" text="{{Password}}"/>
-        
-        <Button text="Save" tap="onSaveButtonClick"/>        
-        <Button text="Cancel" tap="onCancelButtonClick"/>
-        
-        <ActivityIndicator id="activityIndicator"/>
-        </StackLayout>
+                <Button text="Save" cssClass="primaryActionButton" tap="onSaveButtonTap"/>        
+                <Button text="Cancel" cssClass="secondaryActionButton" tap="onCancelButtonTap"/>
+            </StackLayout>
+        </GridLayout>
+    </ScrollView>
 </Page>
