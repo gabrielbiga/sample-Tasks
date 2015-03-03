@@ -1,46 +1,45 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" >
     <GridLayout>
-        
         <StackLayout>
-            <Label>
+            <Label cssClass="projectName">
                 <Label.formattedText>
-                    <FormattedString fontSize="18" foregroundColor="#a17201">
+                    <FormattedString>
                       <FormattedString.spans>
                         <Span text="{{ProjectName}}" fontAttributes="Bold, Italic" />
                       </FormattedString.spans>
                     </FormattedString>
                   </Label.formattedText>
             </Label>
-            <Label text="{{task.Name}}" cssClass="taskName"/>
-            <GridLayout rows="auto, auto, auto" cols="*,*">
+            <Label text="{{task.Name}}" cssClass="taskName" textWrap="true"/>
+            <GridLayout rows="auto, auto, auto" columns="*,*">
                 
-                <StackLayout orientation="horizontal" style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}">
+                <StackLayout cssClass="iconContainer" orientation="horizontal" style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_duedate.png" cssClass="smallIcon" stretch="none"/>
                     <Label text="{{DueDateText}}"/>
                 </StackLayout>
                 
-                <StackLayout col="1" orientation="horizontal" style.visibility="{{ ReminderDateText ? 'visible' : 'collapsed' }}">
+                <StackLayout cssClass="iconContainer" col="1" orientation="horizontal" style.visibility="{{ ReminderText ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_reminder.png" cssClass="smallIcon" stretch="none"/>
-                    <Label text="{{ReminderDateText}}"/>
+                    <Label text="{{ReminderText}}"/>
                 </StackLayout>
                 
-                <StackLayout row="1" orientation="horizontal" style.visibility="{{ task.Email ? 'visible' : 'collapsed' }}">
+                <StackLayout cssClass="iconContainer" row="1" orientation="horizontal" style.visibility="{{ task.Email ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="none"/>
                     <Label text="{{task.Email}}"/>
                 </StackLayout>
                 
-                <StackLayout row="2" orientation="horizontal" style.visibility="{{ task.Url ? 'visible' : 'collapsed' }}">
+                <StackLayout cssClass="iconContainer" row="2" orientation="horizontal" style.visibility="{{ task.Url ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
                     <Label text="{{task.Url}}" />
                 </StackLayout>
                 
             </GridLayout>
 
-            <Label text="{{task.Notes}}" cssClass="notes"/>
+            <Label text="{{task.Notes}}" cssClass="notesContainer" textWrap="true"/>
             
-            <Button text="Delete" tap="onDeleteButtonTap"/>
-            <Button text="Edit" tap="onEditButtonTap"/>
-            <Button text="Complete" tap="onCompleteButtonTap"/>
+            <!--<Button text="Delete" tap="onDeleteButtonTap"/>-->
+            <Button text="Complete" tap="onCompleteButtonTap" cssClass="primaryActionButton"/>
+            <Button text="Edit" tap="onEditButtonTap" cssClass="secondaryActionButton"/>
         </StackLayout>
         
         <ActivityIndicator id="activityIndicator"/>

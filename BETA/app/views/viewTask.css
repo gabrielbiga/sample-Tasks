@@ -1,0 +1,35 @@
+
+Label
+{
+    color: #554E4A; 
+}
+
+.taskName
+{
+    font-size: 24;
+    margin-bottom: 20;
+    margin-left: 16;
+}
+
+.smallIcon
+{
+    margin-right: 4;   
+}
+
+.projectName
+{
+    font-size: 18;
+    margin-left: 16;
+}
+
+.iconContainer
+{
+    margin-left: 16;
+    margin-bottom: 14;
+    margin-top: 14;    
+}
+
+.notesContainer
+{
+     margin-left: 16;
+}
