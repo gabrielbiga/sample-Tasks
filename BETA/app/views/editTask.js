@@ -6,58 +6,18 @@ var frameModule = require("ui/frame");
 var view = require("ui/core/view");
 var localSettings = require("local-settings");
 
+var isNewTask = true;
+var task;
 var page;
-var taskId;
-function pageLoaded(args) {
-    page = args.object;
-    
-    taskId = localSettings.getString(TASK_ID_DATA_KEY);
-    if (taskId)
-    {
-        showTask();
-    }
-    localSettings.remove(TASK_ID_DATA_KEY);
-}
-exports.pageLoaded = pageLoaded;
-
-var selectedProjectId;
-function onProjectSelected (args) {
-    var selectedProject = args.view.bindingContext;
-    selectedProjectId = selectedProject.Id;
-    alert("Project Id [" + selectedProjectId + "]")
-    
-}
-exports.onProjectSelected = onProjectSelected;
-
-function viewProject (args) {
-    localSettings.setString(PROJECT_ID_DATA_KEY, selectedProjectId);
-        frameModule.topmost().navigate("app/views/viewProject");
-}
-exports.viewProject = viewProject;
-
-function showTask()
+onNavigatedTo = function (args)
 {
-     var el = new everlive({
-                            apiKey : global.TELERIK_BAAS_KEY,
-                            token : localSettings.getString(TOKEN_DATA_KEY)
-    });
-    
-    el.data('Task').getById(localSettings.getString(TASK_ID_DATA_KEY))
-    .then(function(data){
-        var task = page.bindingContext = data.result;
-        selectedProjectId = task.ProjectId;
-    },
-    function(error){
-        alert("Error ->" + JSON.stringify(error));
-    });
-    
-    var projectListView = view.getViewById(page, "projectList");
-    el.data('Project').get().then(function(data) {
-        projectListView.items = data.result;        
-    }, function(err) {
-        dialogs.alert('Error = ' + JSON.stringify(err)); // this will be fired, if you don’t have Wi-Fi enabled on the Phone
-    });
+    page = args.object;
+    task = page.navigationContext;            
+    if (task.Id) isNewTask = false;
+    task.ProjectName = PROJECT_NAME;
+    page.bindingContext = task;
 }
+exports.onNavigatedTo = onNavigatedTo;
 
 function saveTask(args) {
     
@@ -79,18 +39,19 @@ function saveTask(args) {
     var activityIndicator = view.getViewById(page, "activityIndicator");
     activityIndicator.busy = true;
 //    alert("TaskId is [" + taskId + "]");
-  if (!taskId)
+  if (isNewTask)
     {
-        el.data('Task').create({ Name : nameField.text, ProjectId : selectedProjectId, Email:emailField.text, Url:urlField.text, Notes:notesField.text },
+        el.data('Task').create({ Name : nameField.text, Email:emailField.text, Url:urlField.text, Notes:notesField.text },
             function(data){
                 frameModule.topmost().navigate("app/views/main");
             },
             function(error){
                 dialogs.alert(JSON.stringify(error));
             });    
-    } else 
+    } 
+    else 
     {
-        el.data('Task').updateSingle({ Id:taskId, Name : nameField.text, ProjectId : selectedProjectId, Email:emailField.text, Url:urlField.text, Notes:notesField.text },
+        el.data('Task').updateSingle({ Id:task.Id, Name : nameField.text, Email:emailField.text, Url:urlField.text, Notes:notesField.text },
             function(data){
                 frameModule.topmost().navigate("app/views/main");
             },
@@ -103,6 +64,6 @@ function saveTask(args) {
 exports.saveTask = saveTask;
 
 function cancel(args) {
-    frameModule.topmost().navigate("app/views/main");
+    frameModule.topmost().goBack();
 }
 exports.cancel = cancel;

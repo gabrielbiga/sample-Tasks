@@ -32,19 +32,16 @@ Object.defineProperty(mainViewModel.prototype, "tasks", {
 
 mainViewModel.prototype.addTask = function () {
     var topmost = frameModule.topmost();
-    localSettings.remove(TASK_ID_DATA_KEY);
     topmost.navigate("app/views/editTask");
 }
 
 mainViewModel.prototype.viewTask = function (task) {
     var topmost = frameModule.topmost();
-    /*var navigationEntry = {
+    var navigationEntry = {
         moduleName: "app/views/viewTask",
-        context: {taskId: args},
-        animated: false
-    };*/
-    localSettings.setString("taskId", task.Id); // TODO: passing parameters not working
-    topmost.navigate("app/views/viewTask");
+        context: task
+    };
+    topmost.navigate(navigationEntry);
 }
 
 exports.mainViewModel = mainViewModel;

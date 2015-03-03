@@ -7,25 +7,18 @@ var localSettings = require("local-settings");
 var observable = require("data/observable");
 var viewTaskVM = require("../view-models/viewTaskViewModel")
 
-var page;
-var vm={};
-function pageLoaded(args) {
-    page = args.object;  
-    
-    var el = new everlive({ apiKey: TELERIK_BAAS_KEY, token : localSettings.getString(TOKEN_DATA_KEY)});
-    el.data('Task').getById(localSettings.getString(TASK_ID_DATA_KEY)).then(
-        function(data) {
-            vm.task = data.result;            
-            vm.ProjectName = "to do";
-            vm.DueDateText = "12-March";
-            vm.ReminderText = "5 minutes before";
-            page.bindingContext = vm;
-        },
-        function(error) {
-            alert(JSON.stringify(error));
-        });
+var vm = {};
+onNavigatedTo = function (args)
+{
+    var page = args.object;
+
+    vm.task = page.navigationContext;            
+    vm.ProjectName = "to do";
+    vm.DueDateText = "12-March";
+    vm.ReminderText = "5 minutes before";
+    page.bindingContext = vm;
 }
-exports.pageLoaded = pageLoaded;
+exports.onNavigatedTo = onNavigatedTo;
 
 function onDeleteButtonTap(args) 
 {
@@ -51,9 +44,13 @@ function onDeleteButtonTap(args)
 }
 exports.onDeleteButtonTap = onDeleteButtonTap;
 
-onCompleteButtonTap
 function onEditButtonTap(args) {
-    topMostFrame.navigate("app/views/editTask");   
+    var navigationEntry = 
+        {
+            context : vm.task,
+            moduleName: "app/views/editTask"
+        };
+    topMostFrame.navigate(navigationEntry);   
 }
 
 exports.onEditButtonTap = onEditButtonTap;

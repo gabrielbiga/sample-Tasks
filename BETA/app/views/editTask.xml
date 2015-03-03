@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd"  loaded="pageLoaded">
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
     <GridLayout rows="auto, auto,*, auto">
         <StackLayout row="0">
             <TextField id="name" hint="Task name" text="{{Name}}"/>
@@ -8,20 +8,19 @@
             <TextField id="email" keyboardType="email" hint="email" text="{{Email}}"/>
             <TextField id="url" hint="url" keyboardType="url" text="{{Url}}"/>
             <TextField id="notes" hint="notes" text="{{Notes}}"/>
-            
-            <Button tap="viewProject" text="{{ ProjectName }}" />
+            <Button isEnabled="false" tap="viewProject" text="{{ ProjectName }}" />
         </StackLayout>        
-        <ListView id="projectList" row="2" itemTap="onProjectSelected">
+        <!--<ListView id="projectList" row="2" itemTap="onProjectSelected">
             <ListView.itemTemplate>
               <StackLayout>
                  <Label text="{{ Name }}" />
-                 <!--<Switch checked="{{ selected }}"/>-->
+                 <!--<Switch checked="{{ selected }}"/>--
               </StackLayout>
             </ListView.itemTemplate>
-        </ListView>
+        </ListView>-->
        <StackLayout row="3">
-           <Button text="Save" tap="saveTask"/>        
-           <Button text="Cancel" tap="cancel"/>
+           <Button text="Save" tap="saveTask" cssClass="primaryActionButton"/>        
+           <Button text="Cancel" tap="cancel" cssClass="secondaryActionButton"/>
        </StackLayout>
        <ActivityIndicator id="activityIndicator"/>
     </GridLayout>
