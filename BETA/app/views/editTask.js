@@ -67,6 +67,10 @@ function saveTask(args) {
         return;        
     }    
 
+    var emailField = view.getViewById(page, "email");
+    var urlField = view.getViewById(page, "url");
+    var notesField = view.getViewById(page, "notes");
+    
     var el = new everlive({
                             apiKey : global.TELERIK_BAAS_KEY,
                             token : localSettings.getString(TOKEN_DATA_KEY)
@@ -77,7 +81,7 @@ function saveTask(args) {
 //    alert("TaskId is [" + taskId + "]");
   if (!taskId)
     {
-        el.data('Task').create({ Name : nameField.text, ProjectId : selectedProjectId },
+        el.data('Task').create({ Name : nameField.text, ProjectId : selectedProjectId, Email:emailField.text, Url:urlField.text, Notes:notesField.text },
             function(data){
                 frameModule.topmost().navigate("app/views/main");
             },
@@ -86,7 +90,7 @@ function saveTask(args) {
             });    
     } else 
     {
-        el.data('Task').updateSingle({ Id:taskId, Name : nameField.text, ProjectId : selectedProjectId },
+        el.data('Task').updateSingle({ Id:taskId, Name : nameField.text, ProjectId : selectedProjectId, Email:emailField.text, Url:urlField.text, Notes:notesField.text },
             function(data){
                 frameModule.topmost().navigate("app/views/main");
             },

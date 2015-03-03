@@ -29,16 +29,7 @@ var viewTaskViewModel = (function (_super) {
         get: function () 
         {
             if (!this._taskRequested) {
-                var el = new everlive({ apiKey: TELERIK_BAAS_KEY, token : localSettings.getString(TOKEN_DATA_KEY)});
-                var that = this;
-                el.data('Task').getById(localSettings.getString(TASK_ID_DATA_KEY)).then(
-                    function(data) {
-                        
-                        that.set("task", data.result);
-                    },
-                    function(error) {
-                        alert(JSON.stringify(error));
-                    });
+                
                 this._taskRequested = true;
             }
             return this._task;
@@ -50,8 +41,6 @@ var viewTaskViewModel = (function (_super) {
                 this._task = value;
                 this.notify({ object: this, eventName: observable.knownEvents.propertyChange, propertyName: "task", value: value });
             }
-        
-            alert("Asdasd[" + JSON.stringify(value) + "]");        
         }
     });
     return viewTaskViewModel;

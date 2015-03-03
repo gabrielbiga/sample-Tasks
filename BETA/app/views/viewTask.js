@@ -8,45 +8,58 @@ var observable = require("data/observable");
 var viewTaskVM = require("../view-models/viewTaskViewModel")
 
 var page;
-var vm;
+var vm={};
 function pageLoaded(args) {
     page = args.object;  
-    var vm = new viewTaskVM.viewTaskViewModel();
-  /*  vm.addEventListener(observable.knownEvents.propertyChange, 
-        function (pcd) {
-            alert(pcd.eventName.toString() + " " + pcd.propertyName.toString() + " " + pcd.value.toString());
-        }
-    );*/
-
-    page.bindingContext = vm;
+    
+    var el = new everlive({ apiKey: TELERIK_BAAS_KEY, token : localSettings.getString(TOKEN_DATA_KEY)});
+    el.data('Task').getById(localSettings.getString(TASK_ID_DATA_KEY)).then(
+        function(data) {
+            vm.task = data.result;            
+            vm.ProjectName = "to do";
+            vm.DueDateText = "12-March";
+            vm.ReminderText = "5 minutes before";
+            page.bindingContext = vm;
+        },
+        function(error) {
+            alert(JSON.stringify(error));
+        });
 }
 exports.pageLoaded = pageLoaded;
 
-function onDeleteButtonClick(args) 
+function onDeleteButtonTap(args) 
 {
     dialogs.confirm("Are you sure you want to delete task?").then(function (result) {
-        if (result) 
-        {
-            
-            var activityIndicator = view.getViewById(page, "activityIndicator");
-            activityIndicator.busy = true;
-            var el = new everlive({ apiKey: TELERIK_BAAS_KEY, token : localSettings.getString(TOKEN_DATA_KEY)});
-            el.data('Task').destroySingle({ Id: localSettings.getString(TASK_ID_DATA_KEY) },
-                function() {
-                    activityIndicator.busy = false;
-                    topMostFrame.navigate("app/views/main");
-                },
-                function(error){
-                    activityIndicator.busy = false;
-                    alert(JSON.stringify(error));
-                });
-        }
+        if (!result) return;
+
+        var activityIndicator = view.getViewById(page, "activityIndicator");
+        activityIndicator.busy = true;
+        
+        var el = new everlive({ apiKey: TELERIK_BAAS_KEY, token : localSettings.getString(TOKEN_DATA_KEY)});
+
+        // TODO: delete do not work.
+        el.data('Task').destroy({ Id: localSettings.getString(TASK_ID_DATA_KEY) },
+            function(data) {
+                activityIndicator.busy = false;
+                topMostFrame.navigate("app/views/main");
+            },
+            function(error){
+                activityIndicator.busy = false;
+                alert("Error deleting Task:[" + localSettings.getString(TASK_ID_DATA_KEY) + "][" + JSON.stringify(error) + "]");
+            });
     });
 }
-exports.onDeleteButtonClick = onDeleteButtonClick;
+exports.onDeleteButtonTap = onDeleteButtonTap;
 
-function onEditButtonClick(args) {
+onCompleteButtonTap
+function onEditButtonTap(args) {
     topMostFrame.navigate("app/views/editTask");   
 }
 
-exports.onEditButtonClick = onEditButtonClick;
+exports.onEditButtonTap = onEditButtonTap;
+
+function onCompleteButtonTap(args) {
+    // todo
+}
+
+exports.onCompleteButtonTap = onCompleteButtonTap;

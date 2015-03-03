@@ -1,13 +1,14 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"  loaded="pageLoaded">
     <GridLayout rows="auto, auto,*, auto">
         <StackLayout row="0">
-            <Label text="Name"/>
-            <TextField id="name" text="{{Name}}"/>
+            <TextField id="name" hint="Task name" text="{{Name}}"/>
          </StackLayout>
         <StackLayout row="1">
-            <Label text="Due"/>
-            <TextField id="dueDate" />
-            <Label text="Project"/>
+            <TextField id="dueDate" hint="due date"/>
+            <TextField id="email" keyboardType="email" hint="email" text="{{Email}}"/>
+            <TextField id="url" hint="url" keyboardType="url" text="{{Url}}"/>
+            <TextField id="notes" hint="notes" text="{{Notes}}"/>
+            
             <Button tap="viewProject" text="{{ ProjectName }}" />
         </StackLayout>        
         <ListView id="projectList" row="2" itemTap="onProjectSelected">

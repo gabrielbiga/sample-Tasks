@@ -51,12 +51,11 @@ function loginTap(args) {
                     function (data) {
                         activityIndicator.busy=false;
                         saveToken(data.result.access_token);
-
                         frameModule.topmost().navigate("app/main-page");
                     },
                     function(error){
                         activityIndicator.busy=false;
-                        dialogs.alert(JSON.stringify(error));
+                        dialogs.alert("Error logging you in:[" + JSON.stringify(error) + "]");
                     }
     );
 

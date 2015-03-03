@@ -7,7 +7,7 @@ Label
     color: #55443B; 
 }
 
-TextField
+TextField, TextView
 {
     margin:8;
     color:#95938F;
