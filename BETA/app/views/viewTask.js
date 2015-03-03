@@ -8,9 +8,10 @@ var observable = require("data/observable");
 var viewTaskVM = require("../view-models/viewTaskViewModel")
 
 var vm = {};
+var page;
 onNavigatedTo = function (args)
 {
-    var page = args.object;
+    page = args.object;
 
     vm.task = page.navigationContext;            
     vm.ProjectName = "to do";
@@ -23,6 +24,7 @@ exports.onNavigatedTo = onNavigatedTo;
 function onDeleteButtonTap(args) 
 {
     dialogs.confirm("Are you sure you want to delete task?").then(function (result) {
+        
         if (!result) return;
 
         var activityIndicator = view.getViewById(page, "activityIndicator");
@@ -31,14 +33,14 @@ function onDeleteButtonTap(args)
         var el = new everlive({ apiKey: TELERIK_BAAS_KEY, token : localSettings.getString(TOKEN_DATA_KEY)});
 
         // TODO: delete do not work.
-        el.data('Task').destroy({ Id: localSettings.getString(TASK_ID_DATA_KEY) },
+        el.data('Task').destroySingle({ Id: vm.task.Id },
             function(data) {
                 activityIndicator.busy = false;
                 topMostFrame.navigate("app/views/main");
             },
             function(error){
                 activityIndicator.busy = false;
-                alert("Error deleting Task:[" + localSettings.getString(TASK_ID_DATA_KEY) + "][" + JSON.stringify(error) + "]");
+                alert("Error deleting Task:[" + JSON.stringify(error) + "]");
             });
     });
 }

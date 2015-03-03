@@ -28,6 +28,9 @@ var MODULES = {
     "WebView": "ui/web-view",
     "SegmentedBar": "ui/segmented-bar",
     "SegmentedBarEntry": "ui/segmented-bar",
+    "TimePicker": "ui/time-picker",
+    "DatePicker": "ui/date-picker",
+    "ListPicker": "ui/list-picker",
 };
 var ROW = "row";
 var COL = "col";
