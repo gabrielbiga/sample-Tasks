@@ -1,6 +1,8 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
+<ScrollView>
     <GridLayout>
         <StackLayout>
+            <Image stretch="fill" height="180" id="image"  style.visibility="{{ task.Photo ? 'visible' : 'collapsed' }}"/>
             <Label cssClass="projectName">
                 <Label.formattedText>
                     <FormattedString>
@@ -44,4 +46,5 @@
         
         <ActivityIndicator id="activityIndicator"/>
      </GridLayout>
+    </ScrollView>
 </Page>

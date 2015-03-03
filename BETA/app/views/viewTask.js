@@ -9,11 +9,25 @@ var viewTaskVM = require("../view-models/viewTaskViewModel")
 
 var vm = {};
 var page;
-onNavigatedTo = function (args)
-{
+onNavigatedTo = function (args) {
     page = args.object;
 
-    vm.task = page.navigationContext;            
+    vm.task = page.navigationContext;
+    if (vm.task.Photo) {
+        var el = new everlive({
+            apiKey: TELERIK_BAAS_KEY,
+            token: localSettings.getString(TOKEN_DATA_KEY)
+        });
+
+        el.Files.getDownloadUrlById(vm.task.Photo)
+            .then(function (downloadUrl) {
+                    page.getViewById("image").url = downloadUrl;
+                },
+                function (error) {
+                    alert(JSON.stringify(error));
+                });
+    }
+    
     vm.ProjectName = "to do";
     vm.DueDateText = "12-March";
     vm.ReminderText = "5 minutes before";
@@ -21,24 +35,28 @@ onNavigatedTo = function (args)
 }
 exports.onNavigatedTo = onNavigatedTo;
 
-function onDeleteButtonTap(args) 
-{
+function onDeleteButtonTap(args) {
     dialogs.confirm("Are you sure you want to delete task?").then(function (result) {
-        
+
         if (!result) return;
 
         var activityIndicator = view.getViewById(page, "activityIndicator");
         activityIndicator.busy = true;
-        
-        var el = new everlive({ apiKey: TELERIK_BAAS_KEY, token : localSettings.getString(TOKEN_DATA_KEY)});
+
+        var el = new everlive({
+            apiKey: TELERIK_BAAS_KEY,
+            token: localSettings.getString(TOKEN_DATA_KEY)
+        });
 
         // TODO: delete do not work.
-        el.data('Task').destroySingle({ Id: vm.task.Id },
-            function(data) {
+        el.data('Task').destroySingle({
+                Id: vm.task.Id
+            },
+            function (data) {
                 activityIndicator.busy = false;
                 topMostFrame.navigate("app/views/main");
             },
-            function(error){
+            function (error) {
                 activityIndicator.busy = false;
                 alert("Error deleting Task:[" + JSON.stringify(error) + "]");
             });
@@ -47,12 +65,11 @@ function onDeleteButtonTap(args)
 exports.onDeleteButtonTap = onDeleteButtonTap;
 
 function onEditButtonTap(args) {
-    var navigationEntry = 
-        {
-            context : vm.task,
-            moduleName: "app/views/editTask"
-        };
-    topMostFrame.navigate(navigationEntry);   
+    var navigationEntry = {
+        context: vm.task,
+        moduleName: "app/views/editTask"
+    };
+    topMostFrame.navigate(navigationEntry);
 }
 
 exports.onEditButtonTap = onEditButtonTap;

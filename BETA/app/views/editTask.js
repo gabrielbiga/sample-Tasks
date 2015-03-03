@@ -41,40 +41,48 @@ function saveTask(args) {
     var activityIndicator = view.getViewById(page, "activityIndicator");
     activityIndicator.busy = true;
     //    alert("TaskId is [" + taskId + "]");
-
+    var taskData = {
+        Name: nameField.text,
+        Email: emailField.text,
+        Url: urlField.text,
+        Notes: notesField.text
+    };
     if (imgSource) {
+        var file = {
+            "Filename": "NativeScriptIsAwesome.jpg",
+            "ContentType": "image/jpeg",
+            "base64": imgSource.toBase64String("JPEG", 100)
+        };
 
-    }
-
-    if (isNewTask) {
-        el.data('Task').create({
-                Name: nameField.text,
-                Email: emailField.text,
-                Url: urlField.text,
-                Notes: notesField.text
-            },
+        el.Files.create(file,
             function (data) {
-                frameModule.topmost().navigate("app/views/main");
+                taskData.Photo = data.result.Id;
+                if (isNewTask) {
+                    el.data('Task').create(taskData,
+                        function (data) {
+                            frameModule.topmost().navigate("app/views/main");
+                        },
+                        function (error) {
+                            dialogs.alert(JSON.stringify(error));
+                        });
+                } else {
+                    taskData.Id = task.Id
+                    el.data('Task').updateSingle(taskData,
+                        function (data) {
+                            frameModule.topmost().navigate("app/views/main");
+                        },
+                        function (error) {
+                            dialogs.alert(JSON.stringify(error));
+                        });
+
+                }
+
             },
             function (error) {
-                dialogs.alert(JSON.stringify(error));
+                alert("error adding image[" + JSON.stringify(error) + "]")
             });
-    } else {
-        el.data('Task').updateSingle({
-                Id: task.Id,
-                Name: nameField.text,
-                Email: emailField.text,
-                Url: urlField.text,
-                Notes: notesField.text
-            },
-            function (data) {
-                frameModule.topmost().navigate("app/views/main");
-            },
-            function (error) {
-                dialogs.alert(JSON.stringify(error));
-            });
-
     }
+
 }
 exports.saveTask = saveTask;
 
@@ -83,31 +91,6 @@ function cancel(args) {
 }
 exports.cancel = cancel;
 var imgSource;
-
-function onUploadPictureTap(args) {
-
-    var el = new everlive({
-        apiKey: global.TELERIK_BAAS_KEY,
-        token: localSettings.getString(TOKEN_DATA_KEY)
-    });
-
-    var file = {
-        "Filename": "NativeScriptIsAwesome.jpg",
-        "ContentType": "image/jpeg",
-        "base64": imgSource.toBase64String("JPEG", 100)
-    };
-
-    el.Files.create(file,
-        function (data) {
-            alert("File " + JSON.stringify(data) + "added.");
-        page.getViewById("img").url = data.result.Uri;
-        
-        },
-        function (error) {
-            alert("error adding image[" + JSON.stringify(error) + "]")
-        });
-}
-exports.onUploadPictureTap = onUploadPictureTap;
 
 function onTakePictureTap(args) {
     camera.takePicture().then(function (result) {
