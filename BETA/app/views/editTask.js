@@ -6,10 +6,12 @@ var frameModule = require("ui/frame");
 var view = require("ui/core/view");
 var localSettings = require("local-settings");
 var camera = require("camera");
+var gestures = require("ui/gestures");
 
 var isNewTask = true;
 var task;
 var page;
+var imgSource;
 onNavigatedTo = function (args) {
     page = args.object;
     task = page.navigationContext;
@@ -18,6 +20,9 @@ onNavigatedTo = function (args) {
     task.listItems = ["uno", "due", "tre"];
     page.bindingContext = task;
 
+    page.getViewById("photoPicker").observe(gestures.GestureTypes.Tap, function (args) {
+        takePicture();
+    });
 }
 exports.onNavigatedTo = onNavigatedTo;
 
@@ -90,15 +95,11 @@ function cancel(args) {
     frameModule.topmost().goBack();
 }
 exports.cancel = cancel;
-var imgSource;
 
-function onTakePictureTap(args) {
+
+function takePicture() {
     camera.takePicture().then(function (result) {
         imgSource = result;
         page.getViewById("img").source = result;
-        //alert(JSON.stringify(result));
-
-
     });
 }
-exports.onTakePictureTap = onTakePictureTap;

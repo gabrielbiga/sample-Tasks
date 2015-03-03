@@ -1,26 +1,40 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
     <ScrollView>
-        <GridLayout rows="auto, auto,*, auto">
-            <StackLayout row="0">
+        <StackLayout >
                 <TextField id="name" hint="Task name" text="{{Name}}"/>
-             </StackLayout>
-            <StackLayout row="1">
-                <Button text="take picture" tap="onTakePictureTap"/>
-                <Image id="img" width="100" height="100" stretch="none"/>
+                <Label text="project"/>
+                <Button isEnabled="false" tap="viewProject" text="{{ ProjectName }}" />                
+                <StackLayout cssClass="iconContainer" orientation="horizontal" id="photoPicker">
+                    <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="none"/>
+                    <Label text="Tap to set photo"/>
+                    <Image id="img" width="10" height="10" stretch="none"/>
+                </StackLayout>
+                
+                <StackLayout cssClass="iconContainer" orientation="horizontal">
+                    <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="none"/>
+                    <TextField id="email" keyboardType="email" hint="email" text="{{Email}}"/>
+                </StackLayout>
+                
+                <StackLayout cssClass="iconContainer" orientation="horizontal" >
+                    <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
+                    <TextField id="url" hint="url" keyboardType="url" text="{{Url}}"/>
+                </StackLayout>
+            <StackLayout>
+
     <!--            <TimePicker hour="10"/>
                 <ListPicker items="{{listItems}}" selectedIndex="1"/> -->
                 <TextField id="dueDate" hint="due date"/>
-                <TextField id="email" keyboardType="email" hint="email" text="{{Email}}"/>
-                <TextField id="url" hint="url" keyboardType="url" text="{{Url}}"/>
+                
+                
                 <TextField id="notes" hint="notes" text="{{Notes}}"/>
 
-                <Button isEnabled="false" tap="viewProject" text="{{ ProjectName }}" />
             </StackLayout>        
-           <StackLayout row="3">
+                
+
                <Button text="Save" tap="saveTask" cssClass="primaryActionButton"/>        
                <Button text="Cancel" tap="cancel" cssClass="secondaryActionButton"/>
-           </StackLayout>
+
            <ActivityIndicator id="activityIndicator"/>
-        </GridLayout>
+        </StackLayout>
     </ScrollView>
 </Page>
