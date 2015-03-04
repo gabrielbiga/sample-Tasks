@@ -1,13 +1,13 @@
 {
-  "ProjectName": "BETA",
+  "ProjectName": "Tasks",
   "ProjectGuid": "5f746bff-3506-4712-80d0-5e53149ff92b",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.Tasks",
+  "AppIdentifier": "org.nativescript.Tasks",
   "DisplayName": "Tasks",
-  "Author": "Valio stoychev",
+  "Author": "Valio Stoychev",
   "Description": "Mobilize your tasks!",
-  "BundleVersion": "1.0",
-  "AndroidVersionCode": "1",
+  "BundleVersion": "2.0",
+  "AndroidVersionCode": "2",
   "iOSDeviceFamily": [
     "1",
     "2"
