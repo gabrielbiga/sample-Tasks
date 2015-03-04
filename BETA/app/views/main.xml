@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo" loaded="pageLoaded">
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
         <GridLayout rows="auto, *, auto">
 <!--            <SegmentedBar selectedIndex="{{ selectedIndex }}" cssClass="segmentedBar">
                 <SegmentedBar.items>

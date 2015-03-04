@@ -124,6 +124,11 @@ function saveUserInfo(name, email, username, password) {
 
 function onUserUpdated()
 {
+     dialogs.alert({
+                    title: "Registration sucess!",
+                    message : "Please login with your credentials now.",
+                    okButtonText: "Close"
+            });
     frameModule.topmost().goBack();
 }
 

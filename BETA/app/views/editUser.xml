@@ -1,7 +1,6 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
     <ScrollView>
         <GridLayout>
-            <ActivityIndicator id="activityIndicator"/>
             <StackLayout>
                 <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="none"/>        
                 <Label text="Enter your info" cssClass="header"/> 
@@ -15,6 +14,7 @@
                 <Button text="Save" cssClass="primaryActionButton" tap="onSaveButtonTap"/>        
                 <Button text="Cancel" cssClass="secondaryActionButton" tap="onCancelButtonTap"/>
             </StackLayout>
+            <ActivityIndicator id="activityIndicator" />
         </GridLayout>
     </ScrollView>
 </Page>

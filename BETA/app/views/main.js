@@ -10,7 +10,11 @@ var absoluteLayoutModule = require("ui/layouts/absolute-layout");
 var page;
 var vm;
 onNavigatedTo = function (args) {
-    frameModule.topmost().android.actionBar.show();
+    
+    if (platformModule.device.os == ANDROID_OS_NAME) {
+        frameModule.topmost().android.actionBar.show();
+    }
+    
     page = args.object;
     //getBackendData();
     vm = new mainViewModel.mainViewModel();
@@ -19,11 +23,6 @@ onNavigatedTo = function (args) {
 
 }
 exports.onNavigatedTo = onNavigatedTo;
-
-pageLoaded = function (args) {
-    //initFAB();
-}
-exports.pageLoaded = pageLoaded;
 
 function initFAB() {
     

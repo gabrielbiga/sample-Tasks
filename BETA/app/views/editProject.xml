@@ -1,3 +1,4 @@
+<!-- this view is still not implemented -->
 <Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
     <StackLayout>
         <Label text="Name"/>

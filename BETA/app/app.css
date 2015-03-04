@@ -49,3 +49,9 @@ SegmentedBar
     font-size: 22; 
     color: black; 
 } 
+
+ActivityIndicator
+{
+    horizontal-align:center;
+    vertical-align:center;
+}

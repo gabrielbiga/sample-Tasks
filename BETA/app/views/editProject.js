@@ -1,3 +1,6 @@
+/*
+ This view is still not implemented.
+*/
 var everlive = require("../lib/everlive");
 var application = require("application");
 var dialogs = require("ui/dialogs");

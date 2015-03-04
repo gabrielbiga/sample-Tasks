@@ -1,9 +1,8 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
     <ScrollView>
-        <StackLayout >
+        <GridLayout>
+            <StackLayout style="horizontal-align:stretch">
                 <TextField id="name" hint="Task name" text="{{Name}}"/>
-                <Label text="project"/>
-                <Button isEnabled="false" tap="viewProject" text="{{ ProjectName }}" />                
                 <StackLayout cssClass="iconContainer" orientation="horizontal" tap="takePicture" id="photoPicker">
                     <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="none"/>
                     <Label text="Tap to set photo"/>
@@ -19,22 +18,16 @@
                     <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
                     <TextField id="url" hint="url" keyboardType="url" text="{{Url}}"/>
                 </StackLayout>
-            <StackLayout>
-
-    <!--            <TimePicker hour="10"/>
-                <ListPicker items="{{listItems}}" selectedIndex="1"/> -->
-                <TextField id="dueDate" hint="due date"/>
-                
-                
-                <TextField id="notes" hint="notes" text="{{Notes}}"/>
-
-            </StackLayout>        
-                
-
+                <!--        
+                    To-Do
+                    <TimePicker hour="10"/>
+                    <TextField id="dueDate" hint="due date"/>
+                -->
+               <TextField id="notes" hint="notes" text="{{Notes}}"/>
                <Button text="Save" tap="saveTask" cssClass="primaryActionButton"/>        
                <Button text="Cancel" tap="cancel" cssClass="secondaryActionButton"/>
-
-           <ActivityIndicator id="activityIndicator"/>
-        </StackLayout>
+            </StackLayout>
+            <ActivityIndicator id="activityIndicator"/>
+        </GridLayout>
     </ScrollView>
 </Page>

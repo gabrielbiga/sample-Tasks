@@ -24,8 +24,6 @@ onNavigatedTo = function (args) {
         task = {};
     }
     
-    task.ProjectName = PROJECT_NAME;
-    task.listItems = ["uno", "due", "tre"];
     page.bindingContext = task;
 }
 exports.onNavigatedTo = onNavigatedTo;
@@ -41,8 +39,6 @@ function saveTask(args) {
     var emailField = view.getViewById(page, "email");
     var urlField = view.getViewById(page, "url");
     var notesField = view.getViewById(page, "notes");
-
-
 
     var activityIndicator = view.getViewById(page, "activityIndicator");
     activityIndicator.busy = true;
