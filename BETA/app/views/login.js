@@ -1,4 +1,4 @@
-var everlive = require("../lib/everlive.js");
+var everlive = require("../lib/everlive");
 var dialogs = require("ui/dialogs");
 var buttonModule = require("ui/button");
 var frameModule = require("ui/frame");
