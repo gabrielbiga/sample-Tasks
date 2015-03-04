@@ -1,9 +1,9 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
 <ScrollView>
     <GridLayout>
-        <StackLayout>
+        <GridLayout rows="auto,auto,auto,auto,*,auto,auto">
             <Image stretch="aspectFill" height="180" id="image" style.visibility="{{ task.hasPhoto ? 'visible' : 'collapsed' }}"/>
-            <Label cssClass="projectName">
+            <Label row="1" cssClass="projectName">
                 <Label.formattedText>
                     <FormattedString>
                       <FormattedString.spans>
@@ -12,8 +12,8 @@
                     </FormattedString>
                   </Label.formattedText>
             </Label>
-            <Label text="{{task.Name}}" cssClass="taskName" textWrap="true"/>
-            <GridLayout rows="auto, auto, auto" columns="*,*">
+            <Label row="2" text="{{task.Name}}" cssClass="taskName" textWrap="true"/>
+            <GridLayout row="3" rows="auto, auto, auto" columns="*,*">
                 
                  <GridLayout cssClass="iconContainer" columns="auto, *" style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_duedate.png" cssClass="smallIcon" stretch="none"/>
@@ -37,13 +37,14 @@
                  
             </GridLayout>
 
-            <Label text="{{task.Notes}}" cssClass="notesContainer" textWrap="true"/>
+            <Label row="4" text="{{task.Notes}}" cssClass="notesContainer" textWrap="true"/>
             
-            <Button text="Delete" tap="onDeleteButtonTap" cssClass="primaryActionButton"/>
-            <Button text="Complete" tap="onCompleteButtonTap" cssClass="primaryActionButton"/>
-            <Button text="Edit" tap="onEditButtonTap" cssClass="secondaryActionButton"/>
-        </StackLayout>
-        
+            <Button row="5" text="Delete" tap="onDeleteButtonTap" cssClass="primaryActionButton"/>
+            <Button row="6" text="Edit" tap="onEditButtonTap" cssClass="secondaryActionButton"/>
+        </GridLayout>
+        <AbsoluteLayout row="1">
+            <Image id="FAB" url="~/app/res/FAB_complete.png" tap="onCompleteButtonTap" stretch="none"/>
+        </AbsoluteLayout>
         <ActivityIndicator id="activityIndicator"/>
      </GridLayout>
     </ScrollView>

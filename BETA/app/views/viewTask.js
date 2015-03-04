@@ -6,6 +6,8 @@ var view = require("ui/core/view");
 var localSettings = require("local-settings");
 var observable = require("data/observable");
 var viewTaskVM = require("../view-models/viewTaskViewModel")
+var platformModule = require("platform");
+var absoluteLayoutModule = require("ui/layouts/absolute-layout");
 
 var vm = {};
 var page;
@@ -34,8 +36,22 @@ onNavigatedTo = function (args) {
     vm.DueDateText = "12-March";
     vm.ReminderText = "5 minutes before";
     page.bindingContext = vm;
+    initFAB();
+
 }
 exports.onNavigatedTo = onNavigatedTo;
+
+function initFAB() {
+    
+    var FABelement = page.getViewById("FAB");
+    var widthDIP = platformModule.screen.mainScreen.widthPixels / platformModule.screen.mainScreen.scale;
+    var heightDIP = platformModule.screen.mainScreen.heightPixels / platformModule.screen.mainScreen.scale;
+    var FABSize = 150;
+    var FABMargin = 16;
+    
+    absoluteLayoutModule.AbsoluteLayout.setLeft(FABelement, widthDIP - 70 - FABMargin);
+    absoluteLayoutModule.AbsoluteLayout.setTop(FABelement, heightDIP - 70 - FABSize - FABMargin);
+}
 
 function taskHasPhoto()
 {
@@ -88,7 +104,7 @@ function onEditButtonTap(args) {
 exports.onEditButtonTap = onEditButtonTap;
 
 function onCompleteButtonTap(args) {
-    // todo
+    alert("This functionality will be implemented in the next version!")
 }
 
 exports.onCompleteButtonTap = onCompleteButtonTap;
