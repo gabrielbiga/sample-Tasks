@@ -39,7 +39,7 @@
 
             <Label text="{{task.Notes}}" cssClass="notesContainer" textWrap="true"/>
             
-            <!--<Button text="Delete" tap="onDeleteButtonTap"/>-->
+            <Button text="Delete" tap="onDeleteButtonTap" cssClass="primaryActionButton"/>
             <Button text="Complete" tap="onCompleteButtonTap" cssClass="primaryActionButton"/>
             <Button text="Edit" tap="onEditButtonTap" cssClass="secondaryActionButton"/>
         </StackLayout>

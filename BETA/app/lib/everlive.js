@@ -3745,7 +3745,8 @@ var isNativeScriptApplication = ((typeof android !== 'undefined' && android && a
             Everlive.sendRequest = function (request) {
                 var url = request.buildUrl(request.setup) + request.endpoint;
                 url = Everlive.disableRequestCache(url, request.method);
-                var data = request.method === 'GET' ? request.data : JSON.stringify(request.data);
+                //var data = request.method === 'GET' ? request.data : JSON.stringify(request.data);
+                var data = (request.method === 'GET' || request.method === 'DELETE') ? request.data : JSON.stringify(request.data);
 
                 //$.ajax(url, {
                 reqwest({
