@@ -27,10 +27,6 @@ onNavigatedTo = function (args) {
     task.ProjectName = PROJECT_NAME;
     task.listItems = ["uno", "due", "tre"];
     page.bindingContext = task;
-
-    page.getViewById("photoPicker").observe(gestures.GestureTypes.Tap, function (args) {
-        takePicture();
-    });
 }
 exports.onNavigatedTo = onNavigatedTo;
 
@@ -115,3 +111,4 @@ function takePicture() {
         page.getViewById("img").source = result;
     });
 }
+exports.takePicture = takePicture;

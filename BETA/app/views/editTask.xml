@@ -4,7 +4,7 @@
                 <TextField id="name" hint="Task name" text="{{Name}}"/>
                 <Label text="project"/>
                 <Button isEnabled="false" tap="viewProject" text="{{ ProjectName }}" />                
-                <StackLayout cssClass="iconContainer" orientation="horizontal" id="photoPicker">
+                <StackLayout cssClass="iconContainer" orientation="horizontal" tap="takePicture" id="photoPicker">
                     <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="none"/>
                     <Label text="Tap to set photo"/>
                     <Image id="img" width="10" height="10" stretch="none"/>

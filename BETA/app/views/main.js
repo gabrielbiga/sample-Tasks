@@ -34,11 +34,7 @@ function initFAB() {
     var FABMargin = 16;
     
     absoluteLayoutModule.AbsoluteLayout.setLeft(FABelement, widthDIP - 70 - FABMargin);
-    absoluteLayoutModule.AbsoluteLayout.setTop(FABelement, heightDIP - 70- FABSize - FABMargin);
-    
-    FABelement.observe(gestures.GestureTypes.Tap, function (args) {
-        addTask(args);
-    });
+    absoluteLayoutModule.AbsoluteLayout.setTop(FABelement, heightDIP - 70 - FABSize - FABMargin);
 }
 
 function listViewItemTap(args) {
