@@ -18,7 +18,7 @@ var isNativeScriptApplication = ((typeof android !== 'undefined' && android && a
     if(typeof(isNativeScriptApplication) !== 'undefined' && isNativeScriptApplication) {
         return;
     }
-
+ 
     var win = window
         , doc = document
         , twoHundo = /^20\d$/

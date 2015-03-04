@@ -34,7 +34,7 @@
                     <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
                     <Label text="{{task.Url}}" col="1" margin="2"/>
                 </GridLayout>
-                
+                 
             </GridLayout>
 
             <Label text="{{task.Notes}}" cssClass="notesContainer" textWrap="true"/>
