@@ -7,56 +7,55 @@ var app = require("application");
 var localSettings = require("local-settings");
 
 app.onUncaughtError = function (error) {
-    dialogs.alert("Uncaught error[" + JSON.stringify(error) +"]")
+    dialogs.alert("Uncaught error[" + JSON.stringify(error) + "]")
 }
 
-onNavigatedTo = function (args)
-{
+onNavigatedTo = function (args) {
     frameModule.topmost().android.actionBar.hide();
 }
 exports.onNavigatedTo = onNavigatedTo;
 
 var page;
+
 function pageLoaded(args) {
     page = args.object;
     global.topMostFrame = frameModule.topmost();
     var authToken = localSettings.getString(TOKEN_DATA_KEY);
-    if (authToken)
-    {
+    if (authToken) {
         frameModule.topmost().navigate("app/views/main");
-    }    
+    }
 }
 
 exports.pageLoaded = pageLoaded;
 
 function loginTap(args) {
-   var usernameField = view.getViewById(page, "username");
+    var usernameField = view.getViewById(page, "username");
     if (usernameField.text == "") {
         dialogs.alert("Please enter username.");
         return;
     }
-    
+
     var passwordField = view.getViewById(page, "password");
     if (passwordField.text == "") {
         dialogs.alert("Please enter password.");
-        return;        
+        return;
     }
-    
+
     var el = new everlive(global.TELERIK_BAAS_KEY);
     var activityIndicator = view.getViewById(page, "activityIndicator");
-    activityIndicator.busy=true;
-    
+    activityIndicator.busy = true;
+
     el.Users.login(usernameField.text, // username
-                    passwordField.text, // password
-                    function (data) {
-                        activityIndicator.busy=false;
-                        saveToken(data.result.access_token);
-                        frameModule.topmost().navigate("app/main-page");
-                    },
-                    function(error){
-                        activityIndicator.busy=false;
-                        dialogs.alert("Error logging you in:[" + JSON.stringify(error) + "]");
-                    }
+        passwordField.text, // password
+        function (data) {
+            activityIndicator.busy = false;
+            saveToken(data.result.access_token);
+            frameModule.topmost().navigate("app/views/main");
+        },
+        function (error) {
+            activityIndicator.busy = false;
+            dialogs.alert("Error logging you in:[" + JSON.stringify(error) + "]");
+        }
     );
 
 }
@@ -67,7 +66,6 @@ function registerTap(args) {
 }
 exports.registerTap = registerTap;
 
-function saveToken(token)
-{
+function saveToken(token) {
     localSettings.setString("authenticationToken", token);
 }
