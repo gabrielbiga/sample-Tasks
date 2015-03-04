@@ -15,25 +15,25 @@
             <Label text="{{task.Name}}" cssClass="taskName" textWrap="true"/>
             <GridLayout rows="auto, auto, auto" columns="*,*">
                 
-                <StackLayout cssClass="iconContainer" orientation="horizontal" style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}">
+                 <GridLayout cssClass="iconContainer" columns="auto, *" style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_duedate.png" cssClass="smallIcon" stretch="none"/>
-                    <Label text="{{DueDateText}}"/>
-                </StackLayout>
+                    <Label text="{{DueDateText}}" col="1" margin="2"/>
+                </GridLayout>
                 
-                <StackLayout cssClass="iconContainer" col="1" orientation="horizontal" style.visibility="{{ ReminderText ? 'visible' : 'collapsed' }}">
+                 <GridLayout cssClass="iconContainer" columns="auto, *" col="1" style.visibility="{{ ReminderText ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_reminder.png" cssClass="smallIcon" stretch="none"/>
-                    <Label text="{{ReminderText}}"/>
-                </StackLayout>
+                    <Label text="{{ReminderText}}" col="1" margin="2"/>
+                </GridLayout>
                 
-                <StackLayout cssClass="iconContainer" row="1" orientation="horizontal" style.visibility="{{ task.Email ? 'visible' : 'collapsed' }}">
+                 <GridLayout cssClass="iconContainer" columns="auto, *" row="1" style.visibility="{{ task.Email ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="none"/>
-                    <Label text="{{task.Email}}"/>
-                </StackLayout>
+                    <Label text="{{task.Email}}" col="1" margin="2"/>
+                </GridLayout>
                 
-                <StackLayout cssClass="iconContainer" row="2" orientation="horizontal" style.visibility="{{ task.Url ? 'visible' : 'collapsed' }}">
+                 <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" row="2" style.visibility="{{ task.Url ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
-                    <Label text="{{task.Url}}" />
-                </StackLayout>
+                    <Label text="{{task.Url}}" col="1" margin="2"/>
+                </GridLayout>
                 
             </GridLayout>
 

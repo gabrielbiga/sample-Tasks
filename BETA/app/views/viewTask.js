@@ -40,7 +40,7 @@ exports.onNavigatedTo = onNavigatedTo;
 function taskHasPhoto()
 {
     var photoId = vm.task.Photo;
-    if (photoId.indexOf("000") > -1)
+    if (!photoId || photoId.indexOf("000") > -1)
     {
         return false;
     }

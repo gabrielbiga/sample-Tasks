@@ -1,32 +1,34 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
     <ScrollView>
         <GridLayout>
-            <StackLayout style="horizontal-align:stretch">
+            <GridLayout rows="auto, auto, auto, auto,auto, auto, auto">
+                
                 <TextField id="name" hint="Task name" text="{{Name}}"/>
-                <StackLayout cssClass="iconContainer" orientation="horizontal" tap="takePicture" id="photoPicker">
+                
+                <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" tap="takePicture" id="photoPicker">
                     <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="none"/>
-                    <Label text="Tap to set photo"/>
-                    <Image id="img" width="10" height="10" stretch="none"/>
-                </StackLayout>
+                    <Label text="Tap to set photo" col="1" style="margin:2;"/>
+                    <Image id="img" width="10" height="10" col="2" stretch="none"/>
+                </GridLayout>
                 
-                <StackLayout cssClass="iconContainer" orientation="horizontal">
-                    <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="none"/>
-                    <TextField id="email" keyboardType="email" hint="email" text="{{Email}}"/>
-                </StackLayout>
+                <GridLayout row="2" cssClass="iconContainer" columns="auto, *" cssClass="iconContainer">
+                    <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="none" />
+                    <TextField margin="0" id="email" keyboardType="email" hint="email" text="{{Email}}" col="1"/>
+                </GridLayout>
                 
-                <StackLayout cssClass="iconContainer" orientation="horizontal" >
+                <GridLayout row="3" cssClass="iconContainer" columns="auto, *">
                     <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
-                    <TextField id="url" hint="url" keyboardType="url" text="{{Url}}"/>
-                </StackLayout>
+                    <TextField margin="0" id="url" hint="url" keyboardType="url" text="{{Url}}" col="1"/>
+                </GridLayout>
                 <!--        
                     To-Do
                     <TimePicker hour="10"/>
                     <TextField id="dueDate" hint="due date"/>
                 -->
-               <TextField id="notes" hint="notes" text="{{Notes}}"/>
-               <Button text="Save" tap="saveTask" cssClass="primaryActionButton"/>        
-               <Button text="Cancel" tap="cancel" cssClass="secondaryActionButton"/>
-            </StackLayout>
+               <TextField row="4" id="notes" hint="notes" text="{{Notes}}"/>
+               <Button text="Save" row="5" tap="saveTask" cssClass="primaryActionButton"/>        
+               <Button text="Cancel" row="6" tap="cancel" cssClass="secondaryActionButton"/>
+        </GridLayout>
             <ActivityIndicator id="activityIndicator"/>
         </GridLayout>
     </ScrollView>
