@@ -1,9 +1,11 @@
-var everlive = require("../lib/everlive.js");
+var everlive = require("../lib/everlive");
 var dialogs = require("ui/dialogs");
 var mainViewModel = require("../view-models/mainViewModel")
 var frameModule = require("ui/frame");
 var localSettings = require("local-settings");
 var gestures = require("ui/gestures");
+var platformModule = require("platform");
+var absoluteLayoutModule = require("ui/layouts/absolute-layout");
 
 var page;
 var vm;
@@ -13,7 +15,7 @@ onNavigatedTo = function (args) {
     //getBackendData();
     vm = new mainViewModel.mainViewModel();
     page.bindingContext = vm;
-initFAB()
+    initFAB();
 
 }
 exports.onNavigatedTo = onNavigatedTo;
@@ -24,7 +26,17 @@ pageLoaded = function (args) {
 exports.pageLoaded = pageLoaded;
 
 function initFAB() {
-    page.getViewById("FAB").observe(gestures.GestureTypes.Tap, function (args) {
+    
+    var FABelement = page.getViewById("FAB");
+    var widthDIP = platformModule.screen.mainScreen.widthPixels / platformModule.screen.mainScreen.scale;
+    var heightDIP = platformModule.screen.mainScreen.heightPixels / platformModule.screen.mainScreen.scale;
+    var FABSize = 150;
+    var FABMargin = 16;
+    
+    absoluteLayoutModule.AbsoluteLayout.setLeft(FABelement, widthDIP - 70 - FABMargin);
+    absoluteLayoutModule.AbsoluteLayout.setTop(FABelement, heightDIP - 70- FABSize - FABMargin);
+    
+    FABelement.observe(gestures.GestureTypes.Tap, function (args) {
         addTask(args);
     });
 }

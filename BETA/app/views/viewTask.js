@@ -1,4 +1,4 @@
-var everlive = require("../lib/everlive.js");
+var everlive = require("../lib/everlive");
 var dialogs = require("ui/dialogs");
 var buttonModule = require("ui/button");
 var frameModule = require("ui/frame");
@@ -11,9 +11,10 @@ var vm = {};
 var page;
 onNavigatedTo = function (args) {
     page = args.object;
-
     vm.task = page.navigationContext;
-    if (vm.task.Photo) {
+    vm.task.hasPhoto = false;
+    
+    if (taskHasPhoto()) {
         var el = new everlive({
             apiKey: TELERIK_BAAS_KEY,
             token: localSettings.getString(TOKEN_DATA_KEY)
@@ -26,6 +27,7 @@ onNavigatedTo = function (args) {
                 function (error) {
                     alert(JSON.stringify(error));
                 });
+        vm.task.hasPhoto = true;
     }
     
     vm.ProjectName = "to do";
@@ -34,6 +36,17 @@ onNavigatedTo = function (args) {
     page.bindingContext = vm;
 }
 exports.onNavigatedTo = onNavigatedTo;
+
+function taskHasPhoto()
+{
+    var photoId = vm.task.Photo;
+    if (photoId.indexOf("000") > -1)
+    {
+        return false;
+    }
+    
+    return true;
+}
 
 function onDeleteButtonTap(args) {
     dialogs.confirm("Are you sure you want to delete task?").then(function (result) {

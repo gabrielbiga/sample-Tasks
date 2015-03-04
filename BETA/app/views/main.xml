@@ -35,7 +35,7 @@
             </StackLayout>
             
             <AbsoluteLayout row="1">
-                <Image id="FAB" url="~/app/res/FAB_add.png" left="270" top="400" stretch="none"/>
+                <Image id="FAB" url="~/app/res/FAB_add.png" stretch="none"/>
             </AbsoluteLayout>
 
         </GridLayout>
