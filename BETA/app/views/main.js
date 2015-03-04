@@ -3,33 +3,42 @@ var dialogs = require("ui/dialogs");
 var mainViewModel = require("../view-models/mainViewModel")
 var frameModule = require("ui/frame");
 var localSettings = require("local-settings");
+var gestures = require("ui/gestures");
 
 var page;
 var vm;
-function pageLoaded(args) {
+onNavigatedTo = function (args) {
+    frameModule.topmost().android.actionBar.show();
     page = args.object;
     //getBackendData();
     vm = new mainViewModel.mainViewModel();
     page.bindingContext = vm;
-}
-exports.pageLoaded = pageLoaded;
+initFAB()
 
-onNavigatedTo = function (args)
-{
-    frameModule.topmost().android.actionBar.show();
 }
 exports.onNavigatedTo = onNavigatedTo;
 
+pageLoaded = function (args) {
+    //initFAB();
+}
+exports.pageLoaded = pageLoaded;
+
+function initFAB() {
+    page.getViewById("FAB").observe(gestures.GestureTypes.Tap, function (args) {
+        addTask(args);
+    });
+}
+
 function listViewItemTap(args) {
-   vm.viewTask(args.view.bindingContext); 
+    vm.viewTask(args.view.bindingContext);
 }
 exports.listViewItemTap = listViewItemTap;
 
 /*
     TODO refactor all these methods below to bind directly to the VM
 */
-function addTask(args) {   
-   vm.addTask();
+function addTask(args) {
+    vm.addTask();
 }
 exports.addTask = addTask;
 

@@ -1,31 +1,41 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded" navigatedTo="onNavigatedTo">
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo" loaded="pageLoaded">
         <GridLayout rows="auto, *, auto">
-            <SegmentedBar selectedIndex="{{ selectedIndex }}">
+<!--            <SegmentedBar selectedIndex="{{ selectedIndex }}" cssClass="segmentedBar">
                 <SegmentedBar.items>
-                    <SegmentedBarEntry title="TODAY" />
+                    <SegmentedBarEntry cssClass="segmentedBar" title="TODAY" />
                     <SegmentedBarEntry title="TOMORROW" />
                     <SegmentedBarEntry title="NEXT" />
                 </SegmentedBar.items>
             </SegmentedBar>
-
+-->
             <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
                 <ListView.itemTemplate>
-                  <StackLayout>
-                      <Label text="{{ ProjectName}}"/>
-                      <Label text="{{ Name }}" />
+                  <StackLayout orientation="horizontal" >
+                      <Image url="~/app/res/ic_checkmark.png" stretch="none" cssClass="completeIcon"/>
+                  <StackLayout cssClass="taskContainer">
+                       <Label cssClass="projectName">
+                            <Label.formattedText>
+                                <FormattedString>
+                                  <FormattedString.spans>
+                                    <Span text="To-do" fontAttributes="Bold, Italic" />
+                                  </FormattedString.spans>
+                                </FormattedString>
+                              </Label.formattedText>
+                        </Label>
+                      <Label text="{{ Name }}" cssClass="taskName" />
                   </StackLayout>
+                      </StackLayout>
                 </ListView.itemTemplate>
             </ListView>
 
             <StackLayout row="2">
-                <Button text="+ Task" tap="addTask" />
-                <Button text="+ Project" tap="addProject"/>
-                <Button text="- Logout" tap="logout"/>
-                <Button text="+ Userinfo" tap="editUser"/>
+                <!--<Button text="+ Project" tap="addProject"/>-->
+                <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
+                <!--<Button text="+ Userinfo" tap="editUser"/>-->
             </StackLayout>
             
             <AbsoluteLayout row="1">
-                <Image id="FAB" url="~/app/res/FAB_add.png" left="100" top="400" stretch="none"/>
+                <Image id="FAB" url="~/app/res/FAB_add.png" left="270" top="400" stretch="none"/>
             </AbsoluteLayout>
 
         </GridLayout>

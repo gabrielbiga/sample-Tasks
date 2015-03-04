@@ -8,14 +8,22 @@ var localSettings = require("local-settings");
 var camera = require("camera");
 var gestures = require("ui/gestures");
 
-var isNewTask = true;
+var isNewTask = false;
 var task;
 var page;
 var imgSource;
+    var el = new everlive({
+        apiKey: global.TELERIK_BAAS_KEY,
+        token: localSettings.getString(TOKEN_DATA_KEY)
+    });
 onNavigatedTo = function (args) {
     page = args.object;
     task = page.navigationContext;
-    if (task.Id) isNewTask = false;
+    if (!task) {
+        isNewTask = true;
+        task = {};
+    }
+    
     task.ProjectName = PROJECT_NAME;
     task.listItems = ["uno", "due", "tre"];
     page.bindingContext = task;
@@ -38,10 +46,7 @@ function saveTask(args) {
     var urlField = view.getViewById(page, "url");
     var notesField = view.getViewById(page, "notes");
 
-    var el = new everlive({
-        apiKey: global.TELERIK_BAAS_KEY,
-        token: localSettings.getString(TOKEN_DATA_KEY)
-    });
+
 
     var activityIndicator = view.getViewById(page, "activityIndicator");
     activityIndicator.busy = true;
@@ -62,7 +67,20 @@ function saveTask(args) {
         el.Files.create(file,
             function (data) {
                 taskData.Photo = data.result.Id;
-                if (isNewTask) {
+                saveTaskData(taskData);
+            },
+            function (error) {
+                alert("error adding image[" + JSON.stringify(error) + "]")
+            });
+    } else {
+        saveTaskData(taskData)
+    }
+}
+exports.saveTask = saveTask;
+
+function saveTaskData(taskData){
+    
+    if (isNewTask) {
                     el.data('Task').create(taskData,
                         function (data) {
                             frameModule.topmost().navigate("app/views/main");
@@ -82,14 +100,8 @@ function saveTask(args) {
 
                 }
 
-            },
-            function (error) {
-                alert("error adding image[" + JSON.stringify(error) + "]")
-            });
-    }
-
 }
-exports.saveTask = saveTask;
+
 
 function cancel(args) {
     frameModule.topmost().goBack();
