@@ -8,9 +8,9 @@ Use this application to find-out how to implement common mobile scenarios with N
 We chose an app that we know will cover a lot of useful scenarios:
 
 1. User management
-1. User authentication
-2. User registration
-3. User welcome email
+  1. User authentication
+  2. User registration
+  3. User welcome email
 
 2. Cloud data 
   1. read, update, delete and create data entry stored in the cloud
