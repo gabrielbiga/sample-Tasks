@@ -6,26 +6,23 @@ Use this application to find-out how to implement common mobile scenarios with N
 **Scenario**
 
 We chose an app that we know will cover a lot of useful scenarios:
-1. User management 
 
+1. User management
 1. User authentication
-  
 2. User registration
 3. User welcome email
 
 2. Cloud data 
-
   1. read, update, delete and create data entry stored in the cloud
   2. Offline support for the data (not in this article, but coming soon)
 
 3. Modern UX
   1. Using SideBar
   2. Pull to Refresh
-3. FAB (floating action button for Android Lollipop)
-4. Load on demand for many tasks
+  3. FAB (floating action button for Android Lollipop)
+  4. Load on demand for many tasks
 
 4. Device integration
-
   1. using camera
   2. using phone contacts
 
