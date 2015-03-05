@@ -12,10 +12,12 @@ var isNewTask = false;
 var task;
 var page;
 var imgSource;
-    var el = new everlive({
-        apiKey: global.TELERIK_BAAS_KEY,
-        token: localSettings.getString(TOKEN_DATA_KEY)
-    });
+
+var el = new everlive({
+    apiKey: global.TELERIK_BAAS_KEY,
+    token: localSettings.getString(TOKEN_DATA_KEY)
+});
+
 onNavigatedTo = function (args) {
     page = args.object;
     task = page.navigationContext;
@@ -23,7 +25,7 @@ onNavigatedTo = function (args) {
         isNewTask = true;
         task = {};
     }
-    
+    alert("New Task[" + isNewTask + "]");
     page.bindingContext = task;
 }
 exports.onNavigatedTo = onNavigatedTo;

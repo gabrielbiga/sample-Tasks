@@ -36,7 +36,7 @@
         </StackLayout>
 
         <AbsoluteLayout row="1">
-            <Image id="FAB" url="~/app/res/FAB_add.png" stretch="none"/>
+            <Image id="FAB" url="~/app/res/FAB_add.png" tap="addTask" stretch="none"/>
         </AbsoluteLayout>
 
     </GridLayout>
