@@ -6,8 +6,8 @@
   "DisplayName": "Tasks",
   "Author": "Valio Stoychev",
   "Description": "Mobilize your tasks!",
-  "BundleVersion": "2.1",
-  "AndroidVersionCode": "3",
+  "BundleVersion": "2.2",
+  "AndroidVersionCode": "4",
   "iOSDeviceFamily": [
     "1",
     "2"

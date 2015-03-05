@@ -73,7 +73,7 @@ function saveTask(args) {
 exports.saveTask = saveTask;
 
 function saveTaskData(taskData) {
-  
+
     if (isNewTask) {
         el.data('Task').create(taskData,
             function (data) {
