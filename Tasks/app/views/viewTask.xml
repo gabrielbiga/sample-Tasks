@@ -44,7 +44,7 @@
             <Button row="6" text="Edit" tap="onEditButtonTap" cssClass="secondaryActionButton"/>
         </GridLayout>
         <AbsoluteLayout row="1">
-            <Image id="FAB" url="~/app/res/FAB_complete.png" tap="onCompleteButtonTap" stretch="none"/>
+            <Image id="FAB" url="~/app/res/FAB_complete.png" tap="onCompleteButtonTap" stretch="fill" width="50" height="50"/>
         </AbsoluteLayout>
         <ActivityIndicator id="activityIndicator" busy="{{httpRequestRunning}}"/>
      </GridLayout>
