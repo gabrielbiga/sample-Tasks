@@ -1,17 +1,15 @@
 var observable = require("data/observable");
 var observableArray = require("data/observable-array");
-
 var virtualArray = require("data/virtual-array");
 var localSettings = require("local-settings");
-
 var everlive = require("../lib/everlive");
-//var taskModel = require("../models/Task");
 var frameModule = require("ui/frame");
 
-var mainViewModel = function (source) {
-        this._tasks = new observableArray.ObservableArray();        
-        this._tasksRequested = false;
-    }
+var mainViewModel = function (source)
+{
+    this._tasks = new observableArray.ObservableArray();        
+    this._tasksRequested = false;
+}
 
 Object.defineProperty(mainViewModel.prototype, "tasks", {
     get: function () 
@@ -21,8 +19,8 @@ Object.defineProperty(mainViewModel.prototype, "tasks", {
             var that = this;
             el.data('Task').get().then(function(data) {
                that._tasks.push(data.result); 
-            }, function(err) {
-               alert('Error gettings tasks[' + JSON.stringify(err) + ']');
+            }, function(error) {
+               alert('Error gettings tasks[' + error.message + ']');
             });      
             this._tasksRequested = true;
         }

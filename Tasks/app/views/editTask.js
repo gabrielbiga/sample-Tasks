@@ -25,7 +25,6 @@ onNavigatedTo = function (args) {
         isNewTask = true;
         task = {};
     }
-    alert("New Task[" + isNewTask + "]");
     page.bindingContext = task;
 }
 exports.onNavigatedTo = onNavigatedTo;
@@ -51,6 +50,7 @@ function saveTask(args) {
         Url: urlField.text,
         Notes: notesField.text
     };
+    
     if (imgSource) {
         var file = {
             "Filename": "NativeScriptIsAwesome.jpg",
@@ -64,7 +64,7 @@ function saveTask(args) {
                 saveTaskData(taskData);
             },
             function (error) {
-                alert("error adding image[" + JSON.stringify(error) + "]")
+                alert("Error uploading image[" + error.message + "]")
             });
     } else {
         saveTaskData(taskData)
@@ -72,42 +72,39 @@ function saveTask(args) {
 }
 exports.saveTask = saveTask;
 
-function saveTaskData(taskData){
-    
+function saveTaskData(taskData) {
+  
     if (isNewTask) {
-                    el.data('Task').create(taskData,
-                        function (data) {
-                            frameModule.topmost().navigate("app/views/main");
-                        },
-                        function (error) {
-                            dialogs.alert(JSON.stringify(error));
-                        });
-                } else {
-                    taskData.Id = task.Id
-                    el.data('Task').updateSingle(taskData,
-                        function (data) {
-                            frameModule.topmost().navigate("app/views/main");
-                        },
-                        function (error) {
-                            dialogs.alert(JSON.stringify(error));
-                        });
-
-                }
+        el.data('Task').create(taskData,
+            function (data) {
+                frameModule.topmost().navigate("app/views/main");
+            },
+            function (error) {
+                alert("Error creating task [" + error.message + "]");
+            });
+    } else {
+        taskData.Id = task.Id
+        el.data('Task').updateSingle(taskData,
+            function (data) {
+                frameModule.topmost().navigate("app/views/main");
+            },
+            function (error) {
+               alert("Error updating task [" + error.message + "]");
+            });
+    }
 }
-
 
 function cancel(args) {
     frameModule.topmost().goBack();
 }
 exports.cancel = cancel;
 
-
 function takePicture() {
     camera.takePicture().then(function (result) {
         imgSource = result;
         var imgPreviewElement = page.getViewById("img");
-        imgPreviewElement.source = result;
-        imgPreviewElement.style.visibility="visible";
+        imgPreviewElement.source = imgSource;
+        imgPreviewElement.style.visibility = "visible";
     });
 }
 exports.takePicture = takePicture;
