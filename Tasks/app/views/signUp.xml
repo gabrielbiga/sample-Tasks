@@ -2,7 +2,7 @@
     <ScrollView>
         <GridLayout>
             <StackLayout>
-                <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="none"/>        
+                <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="fill" width="100" height="100"/>        
                 <Label text="Enter your info" cssClass="header"/> 
 
                 <TextField id="name" hint="name" text="{{DisplayName}}"/>

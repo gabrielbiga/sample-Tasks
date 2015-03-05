@@ -5,7 +5,6 @@ var frameModule = require("ui/frame");
 var view = require("ui/core/view");
 var localSettings = require("local-settings");
 var observable = require("data/observable");
-var viewTaskVM = require("../view-models/viewTaskViewModel")
 var platformModule = require("platform");
 var absoluteLayoutModule = require("ui/layouts/absolute-layout");
 
