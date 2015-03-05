@@ -1,19 +1,22 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
-        <GridLayout rows="auto, *, auto">
-<!--            <SegmentedBar selectedIndex="{{ selectedIndex }}" cssClass="segmentedBar">
-                <SegmentedBar.items>
-                    <SegmentedBarEntry cssClass="segmentedBar" title="TODAY" />
-                    <SegmentedBarEntry title="TOMORROW" />
-                    <SegmentedBarEntry title="NEXT" />
-                </SegmentedBar.items>
-            </SegmentedBar>
+    <GridLayout rows="auto, *, auto">
+<!--    
+        In the next iteration we will show you how to work with this component.
+
+        <SegmentedBar selectedIndex="{{ selectedIndex }}" cssClass="segmentedBar">
+            <SegmentedBar.items>
+                <SegmentedBarEntry cssClass="segmentedBar" title="TODAY" />
+                <SegmentedBarEntry title="TOMORROW" />
+                <SegmentedBarEntry title="NEXT" />
+            </SegmentedBar.items>
+        </SegmentedBar>
 -->
-            <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
-                <ListView.itemTemplate>
-                  <StackLayout orientation="horizontal" >
-                      <Image url="~/app/res/ic_checkmark.png" stretch="none" cssClass="completeIcon"/>
-                  <StackLayout cssClass="taskContainer">
-                       <Label cssClass="projectName">
+        <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
+            <ListView.itemTemplate>
+                <StackLayout orientation="horizontal" >
+                    <Image url="~/app/res/ic_checkmark.png" stretch="none" cssClass="completeIcon"/>
+                    <StackLayout cssClass="taskContainer">
+                        <Label cssClass="projectName">
                             <Label.formattedText>
                                 <FormattedString>
                                   <FormattedString.spans>
@@ -22,21 +25,19 @@
                                 </FormattedString>
                               </Label.formattedText>
                         </Label>
-                      <Label text="{{ Name }}" cssClass="taskName" />
-                  </StackLayout>
-                      </StackLayout>
-                </ListView.itemTemplate>
-            </ListView>
+                        <Label text="{{ Name }}" cssClass="taskName" />
+                    </StackLayout>
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
 
-            <StackLayout row="2">
-                <!--<Button text="+ Project" tap="addProject"/>-->
-                <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
-                <!--<Button text="+ Userinfo" tap="editUser"/>-->
-            </StackLayout>
-            
-            <AbsoluteLayout row="1">
-                <Image id="FAB" url="~/app/res/FAB_add.png" tap="addTask" stretch="none"/>
-            </AbsoluteLayout>
+        <StackLayout row="2">
+            <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
+        </StackLayout>
 
-        </GridLayout>
+        <AbsoluteLayout row="1">
+            <Image id="FAB" url="~/app/res/FAB_add.png" stretch="none"/>
+        </AbsoluteLayout>
+
+    </GridLayout>
 </Page>

@@ -7,8 +7,8 @@
                 
                 <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" tap="takePicture" id="photoPicker">
                     <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="none"/>
-                    <Label text="Tap to set photo" col="1" style="margin:2;"/>
-                    <Image id="img" width="10" height="10" col="2" stretch="none"/>
+                    <Label text="Tap to set photo" col="1" style="margin:2; vertical-align:center;"/>
+                    <Image id="img" width="50" height="50" col="2" stretch="fill" style="margin-right:8;visibility:collapsed;"/>
                 </GridLayout>
                 
                 <GridLayout row="2" cssClass="iconContainer" columns="auto, *" cssClass="iconContainer">
@@ -20,15 +20,11 @@
                     <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
                     <TextField margin="0" id="url" hint="url" keyboardType="url" text="{{Url}}" col="1"/>
                 </GridLayout>
-                <!--        
-                    To-Do
-                    <TimePicker hour="10"/>
-                    <TextField id="dueDate" hint="due date"/>
-                -->
+
                <TextField row="4" id="notes" hint="notes" text="{{Notes}}"/>
                <Button text="Save" row="5" tap="saveTask" cssClass="primaryActionButton"/>        
                <Button text="Cancel" row="6" tap="cancel" cssClass="secondaryActionButton"/>
-        </GridLayout>
+            </GridLayout>
             <ActivityIndicator id="activityIndicator"/>
         </GridLayout>
     </ScrollView>

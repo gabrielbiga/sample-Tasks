@@ -91,7 +91,6 @@ function saveTaskData(taskData){
                         });
 
                 }
-
 }
 
 
@@ -104,7 +103,9 @@ exports.cancel = cancel;
 function takePicture() {
     camera.takePicture().then(function (result) {
         imgSource = result;
-        page.getViewById("img").source = result;
+        var imgPreviewElement = page.getViewById("img");
+        imgPreviewElement.source = result;
+        imgPreviewElement.style.visibility="visible";
     });
 }
 exports.takePicture = takePicture;

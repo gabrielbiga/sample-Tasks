@@ -1,7 +1,7 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
 <ScrollView>
     <GridLayout>
-        <GridLayout rows="auto,auto,auto,auto,*,auto,auto">
+        <GridLayout rows="auto, auto, auto, auto, *, auto, auto">
             <Image stretch="aspectFill" height="180" id="image" style.visibility="{{ task.hasPhoto ? 'visible' : 'collapsed' }}"/>
             <Label row="1" cssClass="projectName">
                 <Label.formattedText>
@@ -12,9 +12,10 @@
                     </FormattedString>
                   </Label.formattedText>
             </Label>
+            
             <Label row="2" text="{{task.Name}}" cssClass="taskName" textWrap="true"/>
-            <GridLayout row="3" rows="auto, auto, auto" columns="*,*">
-                
+            
+            <GridLayout row="3" rows="auto, auto, auto" columns="*,*">                
                  <GridLayout cssClass="iconContainer" columns="auto, *" style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_duedate.png" cssClass="smallIcon" stretch="none"/>
                     <Label text="{{DueDateText}}" col="1" margin="2"/>
@@ -33,19 +34,19 @@
                  <GridLayout row="2" colSpan="2" cssClass="iconContainer" columns="auto, *" style.visibility="{{ task.Url ? 'visible' : 'collapsed' }}">
                     <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
                     <Label text="{{task.Url}}" col="1" margin="2"/>
-                </GridLayout>
-                 
+                </GridLayout>                 
             </GridLayout>
 
             <Label row="4" text="{{task.Notes}}" cssClass="notesContainer" textWrap="true"/>
             
+            <!-- in the next iteration we will show you how to add these buttons in the AppBar -->
             <Button row="5" text="Delete" tap="onDeleteButtonTap" cssClass="primaryActionButton"/>
             <Button row="6" text="Edit" tap="onEditButtonTap" cssClass="secondaryActionButton"/>
         </GridLayout>
         <AbsoluteLayout row="1">
             <Image id="FAB" url="~/app/res/FAB_complete.png" tap="onCompleteButtonTap" stretch="none"/>
         </AbsoluteLayout>
-        <ActivityIndicator id="activityIndicator"/>
+        <ActivityIndicator id="activityIndicator" busy="{{httpRequestRunning}}"/>
      </GridLayout>
     </ScrollView>
 </Page>

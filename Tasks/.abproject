@@ -2,19 +2,28 @@
   "ProjectName": "Tasks",
   "ProjectGuid": "5f746bff-3506-4712-80d0-5e53149ff92b",
   "projectVersion": 1,
-  "AppIdentifier": "org.nativescript.Tasks",
+  "AppIdentifier": "com.telerik.Tasks",
   "DisplayName": "Tasks",
   "Author": "Valio Stoychev",
   "Description": "Mobilize your tasks!",
-  "BundleVersion": "2.0",
-  "AndroidVersionCode": "2",
+  "BundleVersion": "2.1",
+  "AndroidVersionCode": "3",
   "iOSDeviceFamily": [
     "1",
     "2"
   ],
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
-  "AndroidPermissions": [],
+  "AndroidPermissions": [
+    "android.permission.ACCESS_COARSE_LOCATION",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.CAMERA",
+    "android.permission.INTERNET",
+    "android.permission.READ_CALENDAR",
+    "android.permission.READ_CONTACTS",
+    "android.permission.WRITE_CALENDAR",
+    "com.android.alarm.permission.SET_ALARM"
+  ],
   "DeviceOrientations": [
     "Portrait"
   ],

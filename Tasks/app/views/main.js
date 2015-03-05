@@ -10,22 +10,29 @@ var absoluteLayoutModule = require("ui/layouts/absolute-layout");
 var page;
 var vm;
 onNavigatedTo = function (args) {
-    
+    /*
+     * By design (see "/app/res/Design/" folder) the actionBar should be visible in the "internal" pages of the app.
+     *
+     * So after we hide the appBar in the login page we are showing it again here.
+     *
+     * This code will be gone once we implement the proper abstraction for working with ActionBars
+     * (coming soon - probably in v1 in May.2015);
+     *
+     */
     if (platformModule.device.os == ANDROID_OS_NAME) {
         frameModule.topmost().android.actionBar.show();
     }
     
     page = args.object;
-    //getBackendData();
     vm = new mainViewModel.mainViewModel();
     page.bindingContext = vm;
     initFAB();
-
 }
 exports.onNavigatedTo = onNavigatedTo;
 
 function initFAB() {
     
+    // this code should be revisited
     var FABelement = page.getViewById("FAB");
     var widthDIP = platformModule.screen.mainScreen.widthPixels / platformModule.screen.mainScreen.scale;
     var heightDIP = platformModule.screen.mainScreen.heightPixels / platformModule.screen.mainScreen.scale;
@@ -41,25 +48,10 @@ function listViewItemTap(args) {
 }
 exports.listViewItemTap = listViewItemTap;
 
-/*
-    TODO refactor all these methods below to bind directly to the VM
-*/
 function addTask(args) {
     vm.addTask();
 }
 exports.addTask = addTask;
-
-function editUser(args) {
-    var topmost = frameModule.topmost();
-    topmost.navigate("app/views/editUser");
-}
-exports.editUser = editUser;
-
-function addProject(args) {
-    var topmost = frameModule.topmost();
-    topmost.navigate("app/views/editProject");
-}
-exports.addProject = addProject;
 
 function logout(args) {
     localSettings.remove(TOKEN_DATA_KEY);
