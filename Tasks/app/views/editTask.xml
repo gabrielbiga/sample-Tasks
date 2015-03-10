@@ -6,18 +6,18 @@
                 <TextField id="name" hint="Task name" text="{{Name}}"/>
                 
                 <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" tap="takePicture" id="photoPicker">
-                    <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="none"/>
+                    <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
                     <Label text="Tap to set photo" col="1" style="margin:2; vertical-align:center;"/>
                     <Image id="img" width="50" height="50" col="2" stretch="fill" style="margin-right:8;visibility:collapsed;"/>
                 </GridLayout>
                 
                 <GridLayout row="2" cssClass="iconContainer" columns="auto, *" cssClass="iconContainer">
-                    <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="none" />
+                    <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="fill" width="24" height="24" />
                     <TextField margin="0" id="email" keyboardType="email" hint="email" text="{{Email}}" col="1"/>
                 </GridLayout>
                 
                 <GridLayout row="3" cssClass="iconContainer" columns="auto, *">
-                    <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
+                    <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
                     <TextField margin="0" id="url" hint="url" keyboardType="url" text="{{Url}}" col="1"/>
                 </GridLayout>
 

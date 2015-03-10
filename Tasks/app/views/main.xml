@@ -14,7 +14,7 @@
         <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
             <ListView.itemTemplate>
                 <StackLayout orientation="horizontal" >
-                    <Image url="~/app/res/ic_checkmark.png" stretch="none" cssClass="completeIcon"/>
+                    <Image url="~/app/res/ic_checkmark.png" stretch="fill" width="24" height="24" cssClass="completeIcon"/>
                     <StackLayout cssClass="taskContainer">
                         <Label cssClass="projectName">
                             <Label.formattedText>
@@ -32,10 +32,11 @@
         </ListView>
 
         <StackLayout row="2">
+            <Button text="+ Task" id="addTaskButton" tap="addTask" cssClass="primaryActionButton"/>
             <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
         </StackLayout>
 
-        <AbsoluteLayout row="1">
+        <AbsoluteLayout row="1" id="FABContainer">
             <Image id="FAB" url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" width="60" height="60"/>
         </AbsoluteLayout>
 

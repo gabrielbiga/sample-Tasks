@@ -14,12 +14,12 @@ onNavigatedTo = function (args) {
     page = args.object;
     vm.task = page.navigationContext;
     vm.task.hasPhoto = false;
-    
+
     if (taskHasPhoto()) {
-        
+
         var activityIndicator = view.getViewById(page, "activityIndicator");
         activityIndicator.busy = true;
-        
+
         var el = new everlive({
             apiKey: TELERIK_BAAS_KEY,
             token: localSettings.getString(TOKEN_DATA_KEY)
@@ -52,16 +52,26 @@ onNavigatedTo = function (args) {
 exports.onNavigatedTo = onNavigatedTo;
 
 function initFAB() {
+    var FABContainer = page.getViewById("FABContainer");
+    var addTaskButton = page.getViewById("addTaskButton");
+    if (platformModule.device.os == ANDROID_OS_NAME) {
+        // this code should be revisited
+        var FABelement = page.getViewById("FAB");
 
-    // this code needs revisiting
-    var FABelement = page.getViewById("FAB");
-    var widthDIP = platformModule.screen.mainScreen.widthPixels / platformModule.screen.mainScreen.scale;
-    var heightDIP = platformModule.screen.mainScreen.heightPixels / platformModule.screen.mainScreen.scale;
-    var FABSize = 150;
-    var FABMargin = 16;
+        FABContainer.style.visibility = "visible";
+        // this code needs revisiting
+        var FABelement = page.getViewById("FAB");
+        var widthDIP = platformModule.screen.mainScreen.widthPixels / platformModule.screen.mainScreen.scale;
+        var heightDIP = platformModule.screen.mainScreen.heightPixels / platformModule.screen.mainScreen.scale;
+        var FABSize = 150;
+        var FABMargin = 16;
 
-    absoluteLayoutModule.AbsoluteLayout.setLeft(FABelement, widthDIP - 70 - FABMargin);
-    absoluteLayoutModule.AbsoluteLayout.setTop(FABelement, heightDIP - 70 - FABSize - FABMargin);
+        absoluteLayoutModule.AbsoluteLayout.setLeft(FABelement, widthDIP - 70 - FABMargin);
+        absoluteLayoutModule.AbsoluteLayout.setTop(FABelement, heightDIP - 70 - FABSize - FABMargin);
+    } else 
+        {
+             FABContainer.style.visibility = "collapsed";
+        }
 }
 
 function taskHasPhoto() {
@@ -74,14 +84,14 @@ function taskHasPhoto() {
 }
 
 function onDeleteButtonTap(args) {
-    
+
     dialogs.confirm("Are you sure you want to delete task?").then(function (result) {
 
         if (!result) return;
 
         var activityIndicator = view.getViewById(page, "activityIndicator");
         activityIndicator.busy = true;
-        
+
         var el = new everlive({
             apiKey: TELERIK_BAAS_KEY,
             token: localSettings.getString(TOKEN_DATA_KEY)

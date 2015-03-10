@@ -22,7 +22,7 @@ onNavigatedTo = function (args) {
     if (platformModule.device.os == ANDROID_OS_NAME) {
         frameModule.topmost().android.actionBar.show();
     }
-    
+
     page = args.object;
     vm = new mainViewModel.mainViewModel();
     page.bindingContext = vm;
@@ -31,16 +31,25 @@ onNavigatedTo = function (args) {
 exports.onNavigatedTo = onNavigatedTo;
 
 function initFAB() {
-    
-    // this code should be revisited
-    var FABelement = page.getViewById("FAB");
-    var widthDIP = platformModule.screen.mainScreen.widthPixels / platformModule.screen.mainScreen.scale;
-    var heightDIP = platformModule.screen.mainScreen.heightPixels / platformModule.screen.mainScreen.scale;
-    var FABSize = 150;
-    var FABMargin = 16;
-    
-    absoluteLayoutModule.AbsoluteLayout.setLeft(FABelement, widthDIP - 70 - FABMargin);
-    absoluteLayoutModule.AbsoluteLayout.setTop(FABelement, heightDIP - 70 - FABSize - FABMargin);
+    var FABContainer = page.getViewById("FABContainer");
+    var addTaskButton= page.getViewById("addTaskButton");
+    if (platformModule.device.os == ANDROID_OS_NAME) {
+        // this code should be revisited
+        var FABelement = page.getViewById("FAB");
+
+        FABContainer.style.visibility = "visible";
+        addTaskButton.style.visibility = "collapsed";
+        var widthDIP = platformModule.screen.mainScreen.widthPixels / platformModule.screen.mainScreen.scale;
+        var heightDIP = platformModule.screen.mainScreen.heightPixels / platformModule.screen.mainScreen.scale;
+        var FABSize = 150;
+        var FABMargin = 16;
+
+        absoluteLayoutModule.AbsoluteLayout.setLeft(FABelement, widthDIP - 70 - FABMargin);
+        absoluteLayoutModule.AbsoluteLayout.setTop(FABelement, heightDIP - 70 - FABSize - FABMargin);
+    } else {
+        FABContainer.style.visibility = "collapsed";
+        addTaskButton.style.visibility = "visible";
+    }
 }
 
 function listViewItemTap(args) {

@@ -17,22 +17,22 @@
             
             <GridLayout row="3" rows="auto, auto, auto" columns="*,*">                
                  <GridLayout cssClass="iconContainer" columns="auto, *" style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}">
-                    <Image url="~/app/res/ic_duedate.png" cssClass="smallIcon" stretch="none"/>
+                    <Image url="~/app/res/ic_duedate.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
                     <Label text="{{DueDateText}}" col="1" margin="2"/>
                 </GridLayout>
                 
                  <GridLayout cssClass="iconContainer" columns="auto, *" col="1" style.visibility="{{ ReminderText ? 'visible' : 'collapsed' }}">
-                    <Image url="~/app/res/ic_reminder.png" cssClass="smallIcon" stretch="none"/>
+                    <Image url="~/app/res/ic_reminder.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
                     <Label text="{{ReminderText}}" col="1" margin="2"/>
                 </GridLayout>
                 
                  <GridLayout colSpan="2" cssClass="iconContainer" columns="auto, *" row="1" style.visibility="{{ task.Email ? 'visible' : 'collapsed' }}">
-                    <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="none"/>
+                    <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
                     <Label text="{{task.Email}}" col="1" margin="2"/>
                 </GridLayout>
                 
                  <GridLayout row="2" colSpan="2" cssClass="iconContainer" columns="auto, *" style.visibility="{{ task.Url ? 'visible' : 'collapsed' }}">
-                    <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="none"/>
+                    <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
                     <Label text="{{task.Url}}" col="1" margin="2"/>
                 </GridLayout>                 
             </GridLayout>
@@ -43,7 +43,7 @@
             <Button row="5" text="Delete" tap="onDeleteButtonTap" cssClass="primaryActionButton"/>
             <Button row="6" text="Edit" tap="onEditButtonTap" cssClass="secondaryActionButton"/>
         </GridLayout>
-        <AbsoluteLayout row="1">
+        <AbsoluteLayout row="1" id="FABContainer">
             <Image id="FAB" url="~/app/res/FAB_complete.png" tap="onCompleteButtonTap" stretch="fill" width="50" height="50"/>
         </AbsoluteLayout>
         <ActivityIndicator id="activityIndicator" busy="{{httpRequestRunning}}"/>
