@@ -12,5 +12,6 @@ global.TELERIK_BAAS_KEY = "Rw5X5HlnO1s9E0kf";
 global.TOKEN_DATA_KEY = "authenticationToken";
 global.PROJECT_NAME = "To-do";
 global.ANDROID_OS_NAME = "Android";
+global.IOS_OS_NAME = "iOS";
 
 application.start();

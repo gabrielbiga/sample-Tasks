@@ -50,6 +50,21 @@ function pageLoaded(args) {
     var authToken = localSettings.getString(TOKEN_DATA_KEY);
     if (authToken) {
         frameModule.topmost().navigate("app/views/main");
+        return;
+    }
+    
+    /*
+     * we will have cross-platform way to disable intellisense for the textfield in v1
+     *
+     * https://github.com/NativeScript/cross-platform-modules/issues/147
+     * https://github.com/NativeScript/cross-platform-modules/issues/146
+     *
+     */    
+    if (platformModule.device.os == IOS_OS_NAME) 
+    {
+        var usernameField = view.getViewById(page, "username");
+        usernameField.ios.autocorrectionType = UITextAutocorrectionType.UITextAutocorrectionTypeNo;
+        usernameField.ios.autocapitalizationType = UITextAutocapitalizationType.UITextAutocapitalizationTypeNone;
     }
 }
 exports.pageLoaded = pageLoaded;
