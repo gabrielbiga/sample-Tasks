@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo" loaded="pageLoaded">
     <GridLayout rows="auto, *, auto">
 <!--    
         In the next iteration we will show you how to work with this component.
@@ -32,13 +32,9 @@
         </ListView>
 
         <StackLayout row="2">
-            <Button text="+ Task" id="addTaskButton" tap="addTask" cssClass="primaryActionButton"/>
+            <Image url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" cssClass="fapButton" visibility="{{ testtest, testtest }}" />
+            <Button text="+ Task" tap="addTask" cssClass="primaryActionButton" visibility="collapsed" />
             <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
         </StackLayout>
-
-        <AbsoluteLayout row="1" id="FABContainer">
-            <Image id="FAB" url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" width="60" height="60"/>
-        </AbsoluteLayout>
-
     </GridLayout>
 </Page>

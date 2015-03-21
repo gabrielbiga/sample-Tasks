@@ -38,6 +38,14 @@ SegmentedBar
     margin:10;
 }
 
+.fapButton
+{
+    width: 60;
+    height: 60;
+    horizontal-align: right;
+    margin: 10;
+}
+
 .secondaryActionButton
 {
     color:#259B24;   
