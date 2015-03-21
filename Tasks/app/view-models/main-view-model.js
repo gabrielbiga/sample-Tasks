@@ -11,6 +11,8 @@ var enumsModule = require("ui/enums");
 var localSettings = require("local-settings");
 
 var everliveModule = require("../lib/everlive");
+var viewTaskViewModelModule = require("./view-task-view-model");
+var editTaskViewModelModule = require("./edit-task-view-model");
 
 var MainViewModel = (function (_super) {
     __extends(MainViewModel, _super);
@@ -19,9 +21,14 @@ var MainViewModel = (function (_super) {
 
         this.refresh();
     }
-    Object.defineProperty(MainViewModel.prototype, "testtest", {
+    Object.defineProperty(MainViewModel.prototype, "androidVisible", {
         get: function () {
-            return "visible";
+            var topmost = frameModule.topmost();
+            if (topmost.android) {
+                return enumsModule.Visibility.visible;
+            }
+
+            return enumsModule.Visibility.collapsed;
         },
         enumerable: true,
         configurable: true
@@ -42,46 +49,45 @@ var MainViewModel = (function (_super) {
 
     MainViewModel.prototype.addTask = function () {
         var topmost = frameModule.topmost();
-        topmost.navigate("app/views/edit-task");
+        var mainViewModel = this;
+        topmost.navigate({
+            moduleName: "app/views/edit-task",
+            context: new editTaskViewModelModule.EditTaskViewModel(mainViewModel, {})
+        });
+    };
+
+    MainViewModel.prototype.editTask = function (task) {
+        var topmost = frameModule.topmost();
+        var mainViewModel = this;
+        topmost.navigate({
+            moduleName: "app/views/edit-task",
+            context: new editTaskViewModelModule.EditTaskViewModel(mainViewModel, task)
+        });
     };
 
     MainViewModel.prototype.viewTask = function (task) {
         var topmost = frameModule.topmost();
-        var navigationEntry = {
+        var mainViewModel = this;
+        topmost.navigate({
             moduleName: "app/views/view-task",
-            context: task
-        };
+            context: new viewTaskViewModelModule.ViewTaskViewModel(mainViewModel, task)
+        });
+    };
 
-        topmost.navigate(navigationEntry);
+    MainViewModel.prototype.logout = function () {
+        localSettings.remove(TOKEN_DATA_KEY);
+        var topmost = frameModule.topmost();
+        topmost.navigate("app/views/login");
     };
 
     MainViewModel.prototype.refresh = function () {
         var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
         var that = this;
         everlive.data('Task').get().then(function (data) {
-            var tasks = new observableArrayModule.ObservableArray();
-            for (var i = 0; i < data.result.length; i++) {
-                tasks.push(MainViewModel.wrap(data.result[i]));
-            }
-
-            that.set("tasks", tasks);
+            that.set("tasks", new observableArrayModule.ObservableArray(data.result));
         }, function (error) {
             alert('Error gettings tasks[' + error.message + ']');
         });
-    };
-
-    MainViewModel.wrap = function (object) {
-        var result = new observableModule.Observable();
-        for (var key in object) {
-            var value = object[key];
-            if (typeof (value) === "object") {
-                //result.set(key, MainViewModel.wrap(value));
-            } else {
-                result.set(key, value);
-            }
-        }
-
-        return result;
     };
     return MainViewModel;
 })(observableModule.Observable);

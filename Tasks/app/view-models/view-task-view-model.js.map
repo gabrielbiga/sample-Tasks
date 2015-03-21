@@ -1,0 +1,1 @@
+{"version":3,"file":"view-task-view-model.js","sourceRoot":"","sources":["view-task-view-model.ts"],"names":["ViewTaskViewModel","ViewTaskViewModel.constructor"],"mappings":";;;;;;AAAA,+DAAmE;;AAGnE;IAAuCA,oCAAyCA;IAC5EA,2BAAYA,aAAgDA,EAAEA,IAAiCA;QAC3FC,WAAMA,OAAAA,aAAaA,EAAEA,IAAIA,CAACA;IAC9BA,CAACA;IACLD,yBAACA;AAADA,CAACA,EAJsC,uBAAuB,CAAC,iBAAiB,EAI/E;AAJD,8CAIC;AAAA"}

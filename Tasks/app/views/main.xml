@@ -32,7 +32,7 @@
         </ListView>
 
         <StackLayout row="2">
-            <Image url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" cssClass="fapButton" visibility="{{ testtest, testtest }}" />
+            <Image url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" cssClass="fapButton" style.visibility="{{ androidVisible }}" />
             <Button text="+ Task" tap="addTask" cssClass="primaryActionButton" visibility="collapsed" />
             <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
         </StackLayout>

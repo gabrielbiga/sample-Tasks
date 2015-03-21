@@ -6,18 +6,8 @@ var absoluteLayoutModule = require("ui/layouts/absolute-layout");
 
 var mainViewModelModule = require("../view-models/main-view-model")
 
-var page;
-var vm;
+var viewModel;
 navigatedTo = function (args) {
-    /*
-     * By design (see "/app/res/Design/" folder) the actionBar should be visible in the "internal" pages of the app.
-     *
-     * So after we hide the appBar in the login page we are showing it again here.
-     *
-     * This code will be gone once we implement the proper abstraction for working with ActionBars
-     * (coming soon - probably in v1 in May.2015);
-     *
-     */
     if (platformModule.device.os === ANDROID_OS_NAME) {
         frameModule.topmost().android.actionBar.show();
     }
@@ -26,25 +16,27 @@ navigatedTo = function (args) {
 exports.navigatedTo = navigatedTo;
 
 pageLoaded = function(args) {
-    page = args.object;
-    vm = new mainViewModelModule.MainViewModel();
-    page.bindingContext = vm;
+    var page = args.object;
+    viewModel = new mainViewModelModule.MainViewModel();
+    page.bindingContext = viewModel;
 }
 
 exports.pageLoaded = pageLoaded;
 
 function listViewItemTap(args) {
-    vm.viewTask(args.view.bindingContext);
+    viewModel.viewTask(args.view.bindingContext);
 }
+
 exports.listViewItemTap = listViewItemTap;
 
 function addTask(args) {
-    vm.addTask();
+    viewModel.addTask();
 }
+
 exports.addTask = addTask;
 
 function logout(args) {
-    localSettings.remove(TOKEN_DATA_KEY);
-    topMostFrame.navigate("app/views/login");
+    viewModel.logout();
 }
+
 exports.logout = logout;

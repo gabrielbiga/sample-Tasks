@@ -7,7 +7,7 @@ var localSettings = require("local-settings");
 var platformModule = require("platform");
 
 // this handler is defined in the XML
-onNavigatedTo = function (args) {
+navigatedTo = function (args) {
     
     /*
      * By design (see "/app/res/Design/" folder) there shouldn't be an actionBar in Android on the login page.
@@ -18,8 +18,7 @@ onNavigatedTo = function (args) {
      * (coming soon - probably in v1 in May.2015);
      *
      */
-    if (platformModule.device.os == ANDROID_OS_NAME) {
-        
+        if (platformModule.device.os === ANDROID_OS_NAME) {
         /*
          * By using ".android", or ".ios" properties in any of the cross-platform
          * abstraction you get direct access to the native elements and you can use
@@ -39,7 +38,7 @@ onNavigatedTo = function (args) {
  * If you don't need it in the XML - you don't need to export it.
  *
  */
-exports.onNavigatedTo = onNavigatedTo;
+exports.navigatedTo = navigatedTo;
 
 var page;
 function pageLoaded(args) {

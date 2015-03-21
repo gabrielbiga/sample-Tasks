@@ -1,0 +1,1 @@
+{"version":3,"file":"edit-task-view-model.js","sourceRoot":"","sources":["edit-task-view-model.ts"],"names":["EditTaskViewModel","EditTaskViewModel.constructor"],"mappings":";;;;;;AAAA,+DAAmE;;AAGnE;IAAuCA,oCAAyCA;IAC5EA,2BAAYA,aAAgDA,EAAEA,IAAiCA;QAC3FC,WAAMA,OAAAA,aAAaA,EAAEA,IAAIA,CAACA;IAC9BA,CAACA;IACLD,yBAACA;AAADA,CAACA,EAJsC,uBAAuB,CAAC,iBAAiB,EAI/E;AAJD,8CAIC;AAAA"}
