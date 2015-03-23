@@ -22,55 +22,55 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
         this._passwordRepeat = "";
     }
 
-    public get name(): string {
+    get name(): string {
         return this._name;
     }
 
-    public set name(value: string) {
+    set name(value: string) {
         if (this._name !== value) {
             this._name = value;
             this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "name", value: value });
         }
     }
 
-    public get email(): string {
+    get email(): string {
         return this._email;
     }
 
-    public set email(value: string) {
+    set email(value: string) {
         if (this._email !== value) {
             this._email = value;
             this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "email", value: value });
         }
     }
 
-    public get username(): string {
+    get username(): string {
         return this._username;
     }
 
-    public set username(value: string) {
+    set username(value: string) {
         if (this._username !== value) {
             this._username = value;
             this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "username", value: value });
         }
     }
 
-    public get password(): string {
+    get password(): string {
         return this._password;
     }
 
-    public set password(value: string) {
+    set password(value: string) {
         if (this._password !== value) {
             this._password = value;
             this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "password", value: value });
         }
     }
 
-    public get passwordRepeat(): string {
+    get passwordRepeat(): string {
         return this._passwordRepeat;
     }
 
-    public set passwordRepeat(value: string) {
+    set passwordRepeat(value: string) {
         if (this._passwordRepeat !== value) {
             this._passwordRepeat = value;
             this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "passwordRepeat", value: value });

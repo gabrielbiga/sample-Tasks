@@ -1,5 +1,6 @@
-import dialogs = require("ui/dialogs");
 import localSettings = require("local-settings");
+import dialogs = require("ui/dialogs");
+import observableModule = require("data/observable");
 
 import everliveModule = require("../lib/everlive");
 
@@ -7,6 +8,8 @@ import taskViewModelBaseModule = require("./task-view-model-base");
 import editTaskViewModelModule = require("./edit-task-view-model");
 
 export class ViewTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase {
+    private _pictureUrl: string;
+    
     constructor(task: any) {
         super(task);
 
@@ -18,8 +21,19 @@ export class ViewTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
         this.ProjectName = "to do";
         this.DueDateText = "12-March";
         this.ReminderText = "5 minutes before";
-        
-        this.loadPhoto();
+
+        this.loadPicture();
+    }
+
+    get pictureUrl(): any {
+        return this._pictureUrl;
+    }
+
+    set pictureUrl(value: any) {
+        if (this._pictureUrl !== value) {
+            this._pictureUrl = value;
+            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "pictureUrl", value: value });
+        }
     }
 
     deleteTask() {
@@ -56,23 +70,14 @@ export class ViewTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
         alert("This functionality will be implemented in the next version!")
     }
 
-    private static hasPhoto(task: any): bool {
-        var photoId = task.Photo;
-        if (!photoId || photoId.indexOf("000") > -1) {
-            return false;
-        }
-
-        return true;
-    }
-
-    private loadPhoto() {
+    private loadPicture() {
         var that = this;
-        if (ViewTaskViewModel.hasPhoto(that.task)) {
+        if (that.task.Photo) {
             that.beginLoading();
             var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
             everlive.Files.getDownloadUrlById(this.task.Photo)
                 .then(function(url) {
-                    that.set("photoUrl", url);
+                    that.pictureUrl = url;
                     that.endLoading();
                 }, function(error) {
                     alert("Error loading image:[" + error.message + "]");

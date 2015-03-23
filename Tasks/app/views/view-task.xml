@@ -2,7 +2,7 @@
   <GridLayout rows="*, auto">
     <ScrollView>
       <GridLayout rows="auto, auto, auto, auto, *, auto, auto">
-        <Image stretch="aspectFill" height="180" id="image" style.visibility="{{ task.hasPhoto ? 'visible' : 'collapsed' }}"/>
+        <Image stretch="aspectFill" height="180" url="{{ pictureUrl }}" style.visibility="{{ task.Photo ? 'visible' : 'collapsed' }}"/>
 
         <Label row="1" cssClass="projectName">
           <Label.formattedText>

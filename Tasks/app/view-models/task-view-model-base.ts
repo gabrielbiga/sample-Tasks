@@ -11,11 +11,11 @@ export class TaskViewModelBase extends viewModelBaseModule.ViewModelBase {
         this.task = task;
     }
     
-     public get task(): any {
+    get task(): any {
         return this._task;
     }
 
-    public set task(value: any) {
+    set task(value: any) {
         if (this._task !== value) {
             this._task = value;
             this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "task", value: value });

@@ -4,8 +4,9 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var dialogs = require("ui/dialogs");
 var localSettings = require("local-settings");
+var dialogs = require("ui/dialogs");
+var observableModule = require("data/observable");
 
 var everliveModule = require("../lib/everlive");
 
@@ -26,8 +27,23 @@ var ViewTaskViewModel = (function (_super) {
         this.DueDateText = "12-March";
         this.ReminderText = "5 minutes before";
 
-        this.loadPhoto();
+        this.loadPicture();
     }
+    Object.defineProperty(ViewTaskViewModel.prototype, "pictureUrl", {
+        get: function () {
+            return this._pictureUrl;
+        },
+        set: function (value) {
+            if (this._pictureUrl !== value) {
+                this._pictureUrl = value;
+                this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "pictureUrl", value: value });
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+
+
     ViewTaskViewModel.prototype.deleteTask = function () {
         var that = this;
         dialogs.confirm("Are you sure you want to delete task?").then(function (result) {
@@ -61,22 +77,13 @@ var ViewTaskViewModel = (function (_super) {
         alert("This functionality will be implemented in the next version!");
     };
 
-    ViewTaskViewModel.hasPhoto = function (task) {
-        var photoId = task.Photo;
-        if (!photoId || photoId.indexOf("000") > -1) {
-            return false;
-        }
-
-        return true;
-    };
-
-    ViewTaskViewModel.prototype.loadPhoto = function () {
+    ViewTaskViewModel.prototype.loadPicture = function () {
         var that = this;
-        if (ViewTaskViewModel.hasPhoto(that.task)) {
+        if (that.task.Photo) {
             that.beginLoading();
             var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
             everlive.Files.getDownloadUrlById(this.task.Photo).then(function (url) {
-                that.set("photoUrl", url);
+                that.pictureUrl = url;
                 that.endLoading();
             }, function (error) {
                 alert("Error loading image:[" + error.message + "]");

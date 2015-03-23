@@ -16,11 +16,11 @@ export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
         this._everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
     }
 
-    public get picture(): any {
+    get picture(): any {
         return this._picture;
     }
 
-    public set picture(value: any) {
+    set picture(value: any) {
         if (this._picture !== value) {
             this._picture = value;
             this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "picture", value: value });
