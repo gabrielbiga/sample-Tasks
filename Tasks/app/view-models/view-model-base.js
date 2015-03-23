@@ -61,6 +61,11 @@ var ViewModelBase = (function (_super) {
         topmost.navigate(navigationContext);
     };
 
+    ViewModelBase.prototype.navigateToAndClearHistory = function (navigationContext) {
+        this.goBack();
+        this.navigateTo(navigationContext);
+    };
+
     ViewModelBase.prototype.goBack = function () {
         var topmost = frameModule.topmost();
         topmost.goBack();

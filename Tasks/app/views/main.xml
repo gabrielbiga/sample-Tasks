@@ -32,10 +32,13 @@
     </ListView>
 
     <StackLayout row="2">
-      <Image url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" cssClass="fab" style.visibility="{{ androidVisibility }}" />
-      <Button text="+ Task" tap="addTask" cssClass="primaryActionButton"  style.visibility="{{ iosVisibility }}" />
+      <Button text="+ Task" tap="addTask" cssClass="primaryActionButton" style.visibility="{{ iosVisibility }}" />
       <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
     </StackLayout>
+
+    <AbsoluteLayout row="1" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
+      <Image url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" cssClass="fab" />
+    </AbsoluteLayout>
 
     <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" cssClass="activityIndicator"/>
   </GridLayout>

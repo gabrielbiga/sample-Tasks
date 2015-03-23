@@ -104,7 +104,7 @@ var EditTaskViewModel = (function (_super) {
 
     EditTaskViewModel.prototype.validate = function () {
         if (this.task.Name === "") {
-            dialogs.alert("Please enter task name.");
+            alert("Please enter task name.");
             return false;
         }
 

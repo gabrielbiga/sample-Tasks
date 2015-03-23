@@ -98,6 +98,10 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
         }
     }
 
+    cancel() {
+        this.goBack();
+    }
+
     private clearPasswords() {
         this.password = "";
         this.passwordRepeat = "";

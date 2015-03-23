@@ -3,7 +3,7 @@ var application = require("application");
 /*
  * Define which is the main page of the app.
  */
-application.mainModule = "app/views/login";
+application.mainModule = "app/views/main";
 
 /*
  * Define constants which we will use across the application

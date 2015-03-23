@@ -41,7 +41,6 @@ export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
                 that._everlive.Files.create(file,
                     function(data) {
                         that.task.Photo = data.result.Id;
-                        alert(that.task.Photo);
                         that.saveTaskData();
                         that.endLoading();
                     },
@@ -103,7 +102,7 @@ export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
     
     private validate(): boolean {
         if (this.task.Name === "") {
-            dialogs.alert("Please enter task name.");
+            alert("Please enter task name.");
             return false;
         }
 

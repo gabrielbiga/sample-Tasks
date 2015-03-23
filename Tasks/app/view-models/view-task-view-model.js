@@ -33,16 +33,10 @@ var ViewTaskViewModel = (function (_super) {
         dialogs.confirm("Are you sure you want to delete task?").then(function (result) {
             if (result) {
                 that.beginLoading();
-                var everlive = new everliveModule({
-                    apiKey: TELERIK_BAAS_KEY,
-                    token: localSettings.getString(TOKEN_DATA_KEY)
-                });
-
-                everlive.data('Task').destroySingle({
-                    Id: that.task.Id
-                }, function (data) {
+                var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
+                everlive.data('Task').destroySingle({ Id: that.task.Id }, function (data) {
                     that.endLoading();
-                    topMostFrame.navigate("app/views/main");
+                    that.navigateToAndClearHistory("app/views/main");
                 }, function (error) {
                     that.endLoading();
                     alert("Error deleting Task:[" + error.message + "]");

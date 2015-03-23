@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="onNavigatedTo">
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
     <ScrollView>
         <GridLayout>
             <StackLayout>
@@ -11,8 +11,8 @@
                 <TextField id="password" hint="password" secure="true" text="{{ password }}"/>
                 <TextField id="passwordRepeat" hint="repeat password" secure="true" text="{{ passwordRepeat }}"/>
 
-                <Button text="Save" cssClass="primaryActionButton" tap="onSaveButtonTap"/>        
-                <Button text="Cancel" cssClass="secondaryActionButton" tap="onCancelButtonTap"/>
+                <Button text="Save" cssClass="primaryActionButton" tap="saveButtonTap"/>        
+                <Button text="Cancel" cssClass="secondaryActionButton" tap="cancelButtonTap"/>
             </StackLayout>
             <ActivityIndicator busy="{{ isLoading }}" cssClass="activityIndicator"/>
         </GridLayout>

@@ -1,22 +1,22 @@
 var signUpViewModelModule = require("../view-models/sign-up-view-model")
 
 var viewModel;
-function onNavigatedTo(args) {
+function navigatedTo(args) {
     var page = args.object;
     viewModel = new signUpViewModelModule.SignUpViewModel();
     page.bindingContext = viewModel;
 }
 
-exports.onNavigatedTo = onNavigatedTo;
+exports.navigatedTo = navigatedTo;
 
-function onSaveButtonTap(args) {
+function saveButtonTap(args) {
     viewModel.register();
 }
 
-exports.onSaveButtonTap = onSaveButtonTap;
+exports.saveButtonTap = saveButtonTap;
 
-function onCancelButtonTap(args) {
-    viewModel.goBack();
+function cancelButtonTap(args) {
+    viewModel.cancel();
 }
 
-exports.onCancelButtonTap = onCancelButtonTap;
+exports.cancelButtonTap = cancelButtonTap;

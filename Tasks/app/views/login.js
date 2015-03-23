@@ -40,14 +40,6 @@ exports.navigatedTo = navigatedTo;
 var viewModel;
 function pageLoaded(args) {
     var page = args.object;
-    
-    // see if the user is already logged and if so redirect him to the main page.
-    var authToken = localSettingsModule.getString(TOKEN_DATA_KEY);
-    if (authToken) {
-        frameModule.topmost().navigate("app/views/main");
-        return;
-    }
-    
     viewModel = new loginViewModelModule.LoginViewModel();
     page.bindingContext = viewModel;
     

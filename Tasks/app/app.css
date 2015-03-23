@@ -46,6 +46,12 @@ SegmentedBar
     margin: 10;
 }
 
+.fabContainer
+{
+    vertical-align: bottom;
+    horizontal-align: right;
+}
+
 .secondaryActionButton
 {
     color:#259B24;   

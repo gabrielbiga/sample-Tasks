@@ -1,5 +1,5 @@
 var frameModule = require("ui/frame");
-var localSettings = require("local-settings");
+var localSettingsModule = require("local-settings");
 var gestures = require("ui/gestures");
 var platformModule = require("platform");
 var absoluteLayoutModule = require("ui/layouts/absolute-layout");
@@ -16,6 +16,14 @@ navigatedTo = function (args) {
 exports.navigatedTo = navigatedTo;
 
 pageLoaded = function(args) {
+    // see if the user is already logged and if no redirect him to the login page.
+    var authToken = localSettingsModule.getString(TOKEN_DATA_KEY);
+    if (!authToken) {
+        frameModule.topmost().navigate("app/views/login");
+        return;
+    }
+    
+    
     var page = args.object;
     viewModel = new mainViewModelModule.MainViewModel();
     page.bindingContext = viewModel;

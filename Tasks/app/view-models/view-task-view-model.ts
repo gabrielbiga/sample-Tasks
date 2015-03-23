@@ -28,17 +28,11 @@ export class ViewTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
             .then(function(result) {
                 if (result) {
                     that.beginLoading();
-                    var everlive = new everliveModule({
-                        apiKey: TELERIK_BAAS_KEY,
-                        token: localSettings.getString(TOKEN_DATA_KEY)
-                    });
-
-                    everlive.data('Task').destroySingle({
-                        Id: that.task.Id
-                    }, function(data) {
-                            that.endLoading();
-                            topMostFrame.navigate("app/views/main");
-                        }, function(error) {
+                    var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
+                    everlive.data('Task').destroySingle({ Id: that.task.Id }, function(data) {
+                        that.endLoading();
+                        that.navigateToAndClearHistory("app/views/main");
+                    }, function(error) {
                             that.endLoading();
                             alert("Error deleting Task:[" + error.message + "]");
                         });

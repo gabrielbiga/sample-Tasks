@@ -116,6 +116,10 @@ var SignUpViewModel = (function (_super) {
         }
     };
 
+    SignUpViewModel.prototype.cancel = function () {
+        this.goBack();
+    };
+
     SignUpViewModel.prototype.clearPasswords = function () {
         this.password = "";
         this.passwordRepeat = "";
