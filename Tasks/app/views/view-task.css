@@ -13,7 +13,8 @@ Label
 
 .smallIcon
 {
-    margin-right: 4;   
+    width: 24;
+    height: 24;
 }
 
 .projectName
@@ -32,5 +33,11 @@ Label
 .notesContainer
 {
      margin-left: 16;
+}
+
+.label
+{
+    margin-left: 10;
+    margin-top: 2;
 }
 

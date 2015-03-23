@@ -1,8 +1,112 @@
+import cameraModule = require("camera");
+import localSettings = require("local-settings");
+import observableModule = require("data/observable");
+
+import everliveModule = require("../lib/everlive");
+
 import taskViewModelBaseModule = require("./task-view-model-base");
-import mainViewModelModule = require("./main-view-model");
 
 export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase {
-    constructor(mainViewModel: mainViewModelModule.MainViewModel, task: observableModule.Observable) {
-        super(mainViewModel, task);
+    private _everlive: any;
+    private _picture: any;
+    
+    constructor(task: any) {
+        super(task);
+
+        this._everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
+    }
+
+    public get picture(): any {
+        return this._picture;
+    }
+
+    public set picture(value: any) {
+        if (this._picture !== value) {
+            this._picture = value;
+            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "picture", value: value });
+        }
+    }
+
+    save() {
+        if (this.validate()) {
+            if (this.picture) {
+                var that = this;
+                that.beginLoading();
+                var file = {
+                    "Filename": "NativeScriptIsAwesome.jpg",
+                    "ContentType": "image/jpeg",
+                    "base64": that.picture.toBase64String("JPEG", 100)
+                };
+
+                that._everlive.Files.create(file,
+                    function(data) {
+                        that.task.Photo = data.result.Id;
+                        alert(that.task.Photo);
+                        that.saveTaskData();
+                        that.endLoading();
+                    },
+                    function(error) {
+                        that.endLoading();
+                        alert("Error uploading image[" + error.message + "]")
+            });
+            } else {
+                this.saveTaskData()
+            }
+        }
+    }
+
+    cancel() {
+        this.goBack();        
+    }
+
+    takePicture() {
+        var that = this;
+        cameraModule.takePicture().then(function(result) {
+            that.picture = result;
+        });
+    }
+    
+        private saveTaskData() {
+        if (this.task.Id) {
+            this.updateTask();
+        } else {
+            this.createTask();
+        }
+    }
+
+    private createTask() {
+        var that = this;
+        that.beginLoading();
+        that._everlive.data('Task').create(that.task, function(data) {
+            that.endLoading();
+            that.navigateTo("app/views/main");
+        }, function(error) {
+                that.endLoading();
+                alert("Error creating task [" + error.message + "]");
+            });
+
+    }
+
+    private updateTask() {
+        var that = this;
+        that.beginLoading();
+        that._everlive.data('Task').updateSingle(that.task,
+            function(data) {
+                that.endLoading();
+                that.navigateTo("app/views/main");
+            },
+            function(error) {
+                that.endLoading();
+                alert("Error updating task [" + error.message + "]");
+            });
+    }
+    
+    private validate(): boolean {
+        if (this.task.Name === "") {
+            dialogs.alert("Please enter task name.");
+            return false;
+        }
+
+        return true;
     }
 }

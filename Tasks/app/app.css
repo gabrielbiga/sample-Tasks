@@ -38,7 +38,7 @@ SegmentedBar
     margin:10;
 }
 
-.fapButton
+.fab
 {
     width: 60;
     height: 60;
@@ -58,7 +58,7 @@ SegmentedBar
     color: black; 
 } 
 
-ActivityIndicator
+.activityIndicator
 {
     horizontal-align:center;
     vertical-align:center;

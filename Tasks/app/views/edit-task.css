@@ -14,7 +14,7 @@ Label
 .smallIcon
 {
     margin-right: 4;
-    vertical-align:center;
+    vertical-align: center;
     width: 24;
     height: 24;
 }
@@ -29,10 +29,21 @@ Label
 {
     margin-left: 16;
     margin-bottom: 14;
-    margin-top: 14;    
+    margin-top: 14; 
 }
 
 .notesContainer
 {
-     margin-left: 16;
+    margin-left: 16;
+}
+
+.label 
+{
+    margin: 2; 
+    vertical-align: center;
+}
+
+.image 
+{
+    margin-right: 8;
 }

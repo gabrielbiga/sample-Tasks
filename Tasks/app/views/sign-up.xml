@@ -5,16 +5,16 @@
                 <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="fill" width="100" height="100"/>        
                 <Label text="Enter your info" cssClass="header"/> 
 
-                <TextField id="name" hint="name" text="{{DisplayName}}"/>
-                <TextField id="email" keyboardType="email" hint="e-mail" text="{{Email}}"/><!--  editable="false"  -->
-                <TextField id="username" hint="username" text="{{Username}}"/>
-                <TextField id="password" hint="password" secure="true" text="{{Password}}"/>
-                <TextField id="passwordRepeat" hint="repeat password" secure="true" text="{{Password}}"/>
+                <TextField id="name" hint="name" text="{{ name }}"/>
+                <TextField id="email" keyboardType="email" hint="e-mail" text="{{ email }}"/><!--  editable="false"  -->
+                <TextField id="username" hint="username" text="{{ username }}"/>
+                <TextField id="password" hint="password" secure="true" text="{{ password }}"/>
+                <TextField id="passwordRepeat" hint="repeat password" secure="true" text="{{ passwordRepeat }}"/>
 
                 <Button text="Save" cssClass="primaryActionButton" tap="onSaveButtonTap"/>        
                 <Button text="Cancel" cssClass="secondaryActionButton" tap="onCancelButtonTap"/>
             </StackLayout>
-            <ActivityIndicator id="activityIndicator" />
+            <ActivityIndicator busy="{{ isLoading }}" cssClass="activityIndicator"/>
         </GridLayout>
     </ScrollView>
 </Page>

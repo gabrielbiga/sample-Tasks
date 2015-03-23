@@ -6,30 +6,30 @@ var __extends = this.__extends || function (d, b) {
 };
 var observableModule = require("data/observable");
 
+var viewModelBaseModule = require("./view-model-base");
+
 var TaskViewModelBase = (function (_super) {
     __extends(TaskViewModelBase, _super);
-    function TaskViewModelBase(mainViewModel, task) {
+    function TaskViewModelBase(task) {
         _super.call(this);
 
-        this._mainViewModel = mainViewModel;
-        this._task = task;
+        this.task = task;
     }
-    Object.defineProperty(TaskViewModelBase.prototype, "mainViewModel", {
+    Object.defineProperty(TaskViewModelBase.prototype, "task", {
         get: function () {
-            return this._mainViewModel;
+            return this._task;
+        },
+        set: function (value) {
+            if (this._task !== value) {
+                this._task = value;
+                this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "task", value: value });
+            }
         },
         enumerable: true,
         configurable: true
     });
 
-    Object.defineProperty(TaskViewModelBase.prototype, "task", {
-        get: function () {
-            return this_task;
-        },
-        enumerable: true,
-        configurable: true
-    });
     return TaskViewModelBase;
-})(observableModule.Observable);
+})(viewModelBaseModule.ViewModelBase);
 exports.TaskViewModelBase = TaskViewModelBase;
 //# sourceMappingURL=task-view-model-base.js.map

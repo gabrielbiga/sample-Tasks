@@ -1,40 +1,42 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo" loaded="pageLoaded">
-    <GridLayout rows="auto, *, auto">
-<!--    
-        In the next iteration we will show you how to work with this component.
+  <GridLayout rows="auto, *, auto">
+    <!--    
+    In the next iteration we will show you how to work with this component.
 
-        <SegmentedBar selectedIndex="{{ selectedIndex }}" cssClass="segmentedBar">
-            <SegmentedBar.items>
-                <SegmentedBarEntry cssClass="segmentedBar" title="TODAY" />
-                <SegmentedBarEntry title="TOMORROW" />
-                <SegmentedBarEntry title="NEXT" />
-            </SegmentedBar.items>
-        </SegmentedBar>
--->
-        <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
-            <ListView.itemTemplate>
-                <StackLayout orientation="horizontal" >
-                    <Image url="~/app/res/ic_checkmark.png" stretch="fill" width="24" height="24" cssClass="completeIcon"/>
-                    <StackLayout cssClass="taskContainer">
-                        <Label cssClass="projectName">
-                            <Label.formattedText>
-                                <FormattedString>
-                                  <FormattedString.spans>
-                                    <Span text="To-do" fontAttributes="Bold, Italic" />
-                                  </FormattedString.spans>
-                                </FormattedString>
-                              </Label.formattedText>
-                        </Label>
-                        <Label text="{{ Name }}" cssClass="taskName" />
-                    </StackLayout>
-                </StackLayout>
-            </ListView.itemTemplate>
-        </ListView>
-
-        <StackLayout row="2">
-            <Image url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" cssClass="fapButton" style.visibility="{{ androidVisible }}" />
-            <Button text="+ Task" tap="addTask" cssClass="primaryActionButton" visibility="collapsed" />
-            <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
+    <SegmentedBar selectedIndex="{{ selectedIndex }}" cssClass="segmentedBar">
+    <SegmentedBar.items>
+    <SegmentedBarEntry cssClass="segmentedBar" title="TODAY" />
+    <SegmentedBarEntry title="TOMORROW" />
+    <SegmentedBarEntry title="NEXT" />
+    </SegmentedBar.items>
+    </SegmentedBar>
+    -->
+    <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
+      <ListView.itemTemplate>
+        <StackLayout orientation="horizontal" >
+          <Image url="~/app/res/ic_checkmark.png" stretch="fill" width="24" height="24" cssClass="completeIcon"/>
+          <StackLayout cssClass="taskContainer">
+            <Label cssClass="projectName">
+              <Label.formattedText>
+                <FormattedString>
+                  <FormattedString.spans>
+                    <Span text="To-do" fontAttributes="Bold, Italic" />
+                  </FormattedString.spans>
+                </FormattedString>
+              </Label.formattedText>
+            </Label>
+            <Label text="{{ Name }}" cssClass="taskName" />
+          </StackLayout>
         </StackLayout>
-    </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+    <StackLayout row="2">
+      <Image url="~/app/res/FAB_add.png" tap="addTask" stretch="fill" cssClass="fab" style.visibility="{{ androidVisibility }}" />
+      <Button text="+ Task" tap="addTask" cssClass="primaryActionButton"  style.visibility="{{ iosVisibility }}" />
+      <Button text="- Logout" tap="logout" cssClass="primaryActionButton"/>
+    </StackLayout>
+
+    <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" cssClass="activityIndicator"/>
+  </GridLayout>
 </Page>

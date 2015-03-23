@@ -1,23 +1,24 @@
 import observableModule = require("data/observable");
 
-import mainViewModelModule = require("./main-view-model");
+import viewModelBaseModule = require("./view-model-base");
 
-export class TaskViewModelBase extends observableModule.Observable {
-    private _mainViewModel: mainViewModelModule.MainViewModel;
-    private _task: observableModule.Observable;
+export class TaskViewModelBase extends viewModelBaseModule.ViewModelBase {
+    private _task: any;
 
-    constructor(mainViewModel: mainViewModelModule.MainViewModel, task: observableModule.Observable) {
+    constructor(task: any) {
         super();
 
-        this._mainViewModel = mainViewModel;
-        this._task = task;
+        this.task = task;
+    }
+    
+     public get task(): any {
+        return this._task;
     }
 
-    get mainViewModel(): mainViewModelModule.MainViewModel {
-        return this._mainViewModel;
-    }
-
-    get task(): observableModule.Observable {
-        return this_task;
+    public set task(value: any) {
+        if (this._task !== value) {
+            this._task = value;
+            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "task", value: value });
+        }
     }
 }
