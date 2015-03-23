@@ -2,13 +2,13 @@
   <GridLayout rows="*, auto">
     <ScrollView>
       <GridLayout rows="auto, auto, auto, auto, *, auto, auto">
-        <Image stretch="aspectFill" height="180" url="{{ pictureUrl }}" style.visibility="{{ task.Photo ? 'visible' : 'collapsed' }}"/>
+        <Image stretch="aspectFill" cssClass="picture" url="{{ pictureUrl }}" style.visibility="{{ task.Photo ? 'visible' : 'collapsed' }}"/>
 
         <Label row="1" cssClass="projectName">
           <Label.formattedText>
             <FormattedString>
               <FormattedString.spans>
-                <Span text="To-do" fontAttributes="Bold, Italic" />
+                <Span text="To do" fontAttributes="Bold, Italic" />
               </FormattedString.spans>
             </FormattedString>
           </Label.formattedText>
@@ -17,25 +17,40 @@
         <Label row="2" text="{{ task.Name }}" cssClass="taskName" textWrap="true"/>
 
         <GridLayout row="3" rows="auto, auto, auto" columns="*,*">
-          <GridLayout cssClass="iconContainer" columns="auto, *" style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}">
-            <Image url="~/app/res/ic_duedate.png" cssClass="smallIcon" stretch="fill" />
-            <Label text="{{ DueDateText }}" cssClass="label" col="1" />
-          </GridLayout>
+          <Border borderWidth="1" borderColor="#EFE9DC">
+            <StackLayout cssClass="iconContainer" orientation="horizontal"  style.visibility="{{ DueDateText ? 'visible' : 'collapsed' }}" >
+              <Image url="~/app/res/ic_duedate.png" cssClass="smallIcon" stretch="fill" />
+              <Label text="{{ DueDateText }}" cssClass="label" col="1" />
+            </StackLayout>
+          </Border>
 
-          <GridLayout cssClass="iconContainer" columns="auto, *" col="1" style.visibility="{{ ReminderText ? 'visible' : 'collapsed' }}">
-            <Image url="~/app/res/ic_reminder.png" cssClass="smallIcon" stretch="fill" />
-            <Label text="{{ ReminderText }}" cssClass="label" col="1" />
-          </GridLayout>
+          <Border col="1" borderWidth="1" borderColor="#EFE9DC">
+            <StackLayout cssClass="iconContainer" orientation="horizontal" style.visibility="{{ ReminderText ? 'visible' : 'collapsed' }}">
+              <Image url="~/app/res/ic_reminder.png" cssClass="smallIcon" stretch="fill" />
+              <Label text="{{ ReminderText }}" cssClass="label" col="1" />
+            </StackLayout>
+          </Border>
 
-          <GridLayout colSpan="2" cssClass="iconContainer" columns="auto, *" row="1" style.visibility="{{ task.Email ? 'visible' : 'collapsed' }}">
-            <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="fill" />
-            <Label text="{{ task.Email }}" cssClass="label" col="1" />
-          </GridLayout>
+          <Border row="1" borderWidth="1" borderColor="#EFE9DC">
+            <StackLayout cssClass="iconContainer" orientation="horizontal" style.visibility="{{ Phone ? 'visible' : 'collapsed' }}">
+              <Image url="~/app/res/ic_phone.png" cssClass="smallIcon" stretch="fill" />
+              <Label text="{{ Phone }}" cssClass="label" col="1" />
+            </StackLayout>
+          </Border>
 
-          <GridLayout row="2" colSpan="2" cssClass="iconContainer" columns="auto, *" style.visibility="{{ task.Url ? 'visible' : 'collapsed' }}">
-            <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="fill" />
-            <Label text="{{ task.Url }}" cssClass="label" col="1" />
-          </GridLayout>
+          <Border row="1" col="1" borderWidth="1" borderColor="#EFE9DC">
+            <StackLayout cssClass="iconContainer" orientation="horizontal" style.visibility="{{ task.Email ? 'visible' : 'collapsed' }}">
+              <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="fill" />
+              <Label text="{{ task.Email }}" cssClass="label" col="1" />
+            </StackLayout>
+          </Border>
+
+          <Border row="2" colSpan="2" borderWidth="1" borderColor="#EFE9DC">
+            <StackLayout cssClass="iconContainer" orientation="horizontal" style.visibility="{{ task.Url ? 'visible' : 'collapsed' }}">
+              <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="fill" />
+              <Label text="{{ task.Url }}" cssClass="label" col="1" />
+            </StackLayout>
+          </Border>
         </GridLayout>
 
         <Label row="4" text="{{ task.Notes }}" cssClass="notesContainer" textWrap="true"/>
@@ -43,7 +58,7 @@
     </ScrollView>
 
     <StackLayout row="1">
-      <Button text="Delete" tap="deleteButtonTap" cssClass="primaryActionButton"/>
+      <Button text="Delete" tap="deleteButtonTap" cssClass="deleteButton"/>
       <Button text="Edit" tap="editButtonTap" cssClass="secondaryActionButton"/>
     </StackLayout>
 

@@ -43,7 +43,7 @@ var MainViewModel = (function (_super) {
 
     MainViewModel.prototype.logout = function () {
         localSettings.remove(TOKEN_DATA_KEY);
-        this.navigateTo("app/views/login");
+        this.navigateToAndClearHistory("app/views/login");
     };
 
     MainViewModel.prototype.refresh = function () {

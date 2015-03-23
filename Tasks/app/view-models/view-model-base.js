@@ -62,7 +62,7 @@ var ViewModelBase = (function (_super) {
     };
 
     ViewModelBase.prototype.navigateToAndClearHistory = function (navigationContext) {
-        this.goBack();
+        var topmost = frameModule.topmost();
         this.navigateTo(navigationContext);
     };
 

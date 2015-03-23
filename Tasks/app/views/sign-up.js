@@ -9,14 +9,14 @@ function navigatedTo(args) {
 
 exports.navigatedTo = navigatedTo;
 
-function saveButtonTap(args) {
-    viewModel.register();
+function signUpButtonTap(args) {
+    viewModel.signUp();
 }
 
-exports.saveButtonTap = saveButtonTap;
+exports.signUpButtonTap = signUpButtonTap;
 
-function cancelButtonTap(args) {
-    viewModel.cancel();
+function loginButtonTap(args) {
+    viewModel.login();
 }
 
-exports.cancelButtonTap = cancelButtonTap;
+exports.cancelButtonTap = loginButtonTap;

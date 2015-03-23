@@ -37,7 +37,7 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
 
     logout() {
         localSettings.remove(TOKEN_DATA_KEY);
-        this.navigateTo("app/views/login");
+        this.navigateToAndClearHistory("app/views/login");
     }
 
     refresh() {

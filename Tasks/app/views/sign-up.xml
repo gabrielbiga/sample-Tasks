@@ -2,17 +2,17 @@
     <ScrollView>
         <GridLayout>
             <StackLayout>
-                <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="fill" width="100" height="100"/>        
-                <Label text="Enter your info" cssClass="header"/> 
+                <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="fill" />        
+                <Label text="Sign up for an account" cssClass="header"/> 
 
-                <TextField id="name" hint="name" text="{{ name }}"/>
-                <TextField id="email" keyboardType="email" hint="e-mail" text="{{ email }}"/><!--  editable="false"  -->
-                <TextField id="username" hint="username" text="{{ username }}"/>
-                <TextField id="password" hint="password" secure="true" text="{{ password }}"/>
-                <TextField id="passwordRepeat" hint="repeat password" secure="true" text="{{ passwordRepeat }}"/>
+                <TextField hint="name" text="{{ name }}"/>
+                <TextField keyboardType="email" hint="e-mail" text="{{ email }}"/><!--  editable="false"  -->
+                <TextField hint="username" text="{{ username }}"/>
+                <TextField hint="password" secure="true" text="{{ password }}"/>
+                <TextField hint="confirm password" secure="true" text="{{ passwordConfirm }}"/>
 
-                <Button text="Save" cssClass="primaryActionButton" tap="saveButtonTap"/>        
-                <Button text="Cancel" cssClass="secondaryActionButton" tap="cancelButtonTap"/>
+                <Button text="SIGN UP" cssClass="primaryActionButton" tap="signUpButtonTap"/>        
+                <Button text="LOGIN" cssClass="secondaryActionButton" tap="loginButtonTap"/>
             </StackLayout>
             <ActivityIndicator busy="{{ isLoading }}" cssClass="activityIndicator"/>
         </GridLayout>

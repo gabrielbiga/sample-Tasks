@@ -56,7 +56,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
                 function(data) {
                     that.endLoading();
                     that.saveToken(data.result.access_token);
-                    that.navigateTo("app/views/main");
+                    that.navigateToAndClearHistory("app/views/main");
                 }, function(error) {
                     that.endLoading();
                     that.clearPassword();

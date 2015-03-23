@@ -82,14 +82,14 @@ var SignUpViewModel = (function (_super) {
     });
 
 
-    Object.defineProperty(SignUpViewModel.prototype, "passwordRepeat", {
+    Object.defineProperty(SignUpViewModel.prototype, "passwordConfirm", {
         get: function () {
-            return this._passwordRepeat;
+            return this._passwordConfirm;
         },
         set: function (value) {
-            if (this._passwordRepeat !== value) {
-                this._passwordRepeat = value;
-                this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "passwordRepeat", value: value });
+            if (this._passwordConfirm !== value) {
+                this._passwordConfirm = value;
+                this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "passwordConfirm", value: value });
             }
         },
         enumerable: true,
@@ -97,7 +97,7 @@ var SignUpViewModel = (function (_super) {
     });
 
 
-    SignUpViewModel.prototype.register = function () {
+    SignUpViewModel.prototype.signUp = function () {
         if (this.validate()) {
             var that = this;
             that.beginLoading();
@@ -116,7 +116,7 @@ var SignUpViewModel = (function (_super) {
         }
     };
 
-    SignUpViewModel.prototype.cancel = function () {
+    SignUpViewModel.prototype.login = function () {
         this.goBack();
     };
 

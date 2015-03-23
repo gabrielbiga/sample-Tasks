@@ -10,7 +10,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     private _email: string;
     private _username: string;
     private _password: string;
-    private _passwordRepeat: string;
+    private _passwordConfirm: string;
 
     constructor() {
         super();
@@ -66,18 +66,18 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
         }
     }
 
-    get passwordRepeat(): string {
-        return this._passwordRepeat;
+    get passwordConfirm(): string {
+        return this._passwordConfirm;
     }
 
-    set passwordRepeat(value: string) {
-        if (this._passwordRepeat !== value) {
-            this._passwordRepeat = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "passwordRepeat", value: value });
+    set passwordConfirm(value: string) {
+        if (this._passwordConfirm !== value) {
+            this._passwordConfirm = value;
+            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "passwordConfirm", value: value });
         }
     }
 
-    register() {
+    signUp() {
         if (this.validate()) {
             var that = this;
             that.beginLoading();
@@ -98,7 +98,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
         }
     }
 
-    cancel() {
+    login() {
         this.goBack();
     }
 

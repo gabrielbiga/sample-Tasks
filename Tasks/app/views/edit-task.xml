@@ -1,31 +1,33 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
+  <GridLayout>
     <ScrollView>
-        <GridLayout>
-            <GridLayout rows="auto, auto, auto, auto, auto, auto, auto">
-                <TextField id="name" hint="Task name" text="{{ task.Name }}"/>
-                
-                <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" tap="takePicture" id="photoPicker">
-                    <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="fill"/>
-                    <Label text="Tap to set photo" col="1" cssClass="label"/>
-                    <Image id="img" width="50" height="50" col="2" stretch="fill" cssClass="image" source="{{ picture }}" style.visibility="{{ picture ? 'visible' : 'collapsed' }}" />
-                </GridLayout>
-                
-                <GridLayout row="2" cssClass="iconContainer" columns="auto, *" cssClass="iconContainer">
-                    <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="fill" width="24" height="24" />
-                    <TextField margin="0" id="email" keyboardType="email" hint="email" text="{{ task.Email }}" col="1"/>
-                </GridLayout>
-                
-                <GridLayout row="3" cssClass="iconContainer" columns="auto, *">
-                    <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
-                    <TextField margin="0" id="url" hint="url" keyboardType="url" text="{{ task.Url }}" col="1"/>
-                </GridLayout>
 
-               <TextField row="4" id="notes" hint="notes" text="{{ task.Notes }}"/>
+      <GridLayout rows="auto, auto, auto, auto, auto, auto, auto">
+        <TextField id="name" hint="Task name" text="{{ task.Name }}"/>
 
-               <Button text="Save" row="5" tap="save" cssClass="primaryActionButton"/>        
-               <Button text="Cancel" row="6" tap="cancel" cssClass="secondaryActionButton"/>
-            </GridLayout>
-            <ActivityIndicator cssClass="activityIndicator" busy="{{ isLoading }}" />
+        <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" tap="takePicture" id="photoPicker">
+          <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="fill"/>
+          <Label text="Tap to set photo" col="1" cssClass="label"/>
+          <Image id="img" width="50" height="50" col="2" stretch="fill" cssClass="image" source="{{ picture }}" style.visibility="{{ picture ? 'visible' : 'collapsed' }}" />
         </GridLayout>
+
+        <GridLayout row="2" cssClass="iconContainer" columns="auto, *" cssClass="iconContainer">
+          <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="fill" width="24" height="24" />
+          <TextField margin="0" id="email" keyboardType="email" hint="email" text="{{ task.Email }}" col="1"/>
+        </GridLayout>
+
+        <GridLayout row="3" cssClass="iconContainer" columns="auto, *">
+          <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
+          <TextField margin="0" id="url" hint="url" keyboardType="url" text="{{ task.Url }}" col="1"/>
+        </GridLayout>
+
+        <TextView row="4" id="notes" hint="notes" text="{{ task.Notes }}"/>
+
+        <Button text="Save" row="5" tap="save" cssClass="primaryActionButton"/>
+        <Button text="Cancel" row="6" tap="cancel" cssClass="secondaryActionButton"/>
+      </GridLayout>
     </ScrollView>
+
+    <ActivityIndicator cssClass="activityIndicator" busy="{{ isLoading }}" />
+  </GridLayout>
 </Page>

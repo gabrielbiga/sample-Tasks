@@ -19,14 +19,14 @@ pageLoaded = function(args) {
     // see if the user is already logged and if no redirect him to the login page.
     var authToken = localSettingsModule.getString(TOKEN_DATA_KEY);
     if (!authToken) {
-        frameModule.topmost().navigate("app/views/login");
-        return;
+        var topmost = frameModule.topmost();
+        topmost.backStack.pop();
+        topmost.navigate("app/views/login");
+    } else {
+        var page = args.object;
+        viewModel = new mainViewModelModule.MainViewModel();
+        page.bindingContext = viewModel;
     }
-    
-    
-    var page = args.object;
-    viewModel = new mainViewModelModule.MainViewModel();
-    page.bindingContext = viewModel;
 }
 
 exports.pageLoaded = pageLoaded;

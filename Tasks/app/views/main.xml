@@ -14,18 +14,18 @@
     <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
       <ListView.itemTemplate>
         <StackLayout orientation="horizontal" >
-          <Image url="~/app/res/ic_checkmark.png" stretch="fill" width="24" height="24" cssClass="completeIcon"/>
+          <Image url="~/app/res/ic_checkmark.png" stretch="fill" cssClass="completeIcon"/>
           <StackLayout cssClass="taskContainer">
             <Label cssClass="projectName">
               <Label.formattedText>
                 <FormattedString>
                   <FormattedString.spans>
-                    <Span text="To-do" fontAttributes="Bold, Italic" />
+                    <Span text="To do" fontAttributes="Bold, Italic" />
                   </FormattedString.spans>
                 </FormattedString>
               </Label.formattedText>
             </Label>
-            <Label text="{{ Name }}" cssClass="taskName" />
+            <Label text="{{ Name }}" cssClass="taskName" textWrap="true" />
           </StackLayout>
         </StackLayout>
       </ListView.itemTemplate>

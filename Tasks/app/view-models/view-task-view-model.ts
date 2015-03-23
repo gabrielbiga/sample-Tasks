@@ -18,9 +18,10 @@ export class ViewTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
          * In the following iterations we will enable this functionality.
          * Follow our blog posts here - https://www.nativescript.org/blog and on twitter @NativeScript.
          */
-        this.ProjectName = "to do";
-        this.DueDateText = "12-March";
-        this.ReminderText = "5 minutes before";
+        this.ProjectName = "To do";
+        this.DueDateText = "today, 10:00 am";
+        this.ReminderText = "8:00 am";
+        this.Phone = "+359 88 055 5555";
 
         this.loadPicture();
     }

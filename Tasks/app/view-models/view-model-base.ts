@@ -50,7 +50,7 @@ export class ViewModelBase extends observableModule.Observable {
     }
 
     navigateToAndClearHistory(navigationContext: any) {
-        this.goBack();
+        var topmost = frameModule.topmost();
         this.navigateTo(navigationContext);
     }
 
