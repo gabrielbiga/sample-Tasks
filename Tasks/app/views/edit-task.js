@@ -7,20 +7,20 @@ navigatedTo = function (args) {
 
 exports.navigatedTo = navigatedTo;
 
-function save(args) {
+function saveButtonClick(args) {
     viewModel.save();
 }
 
-exports.save = save;
+exports.saveButtonClick = saveButtonClick;
 
-function cancel(args) {
+function cancelButtonClick(args) {
     viewModel.cancel();
 }
 
-exports.cancel = cancel;
+exports.cancelButtonClick = cancelButtonClick;
 
-function takePicture() {
+function takePictureButtonClick() {
     viewModel.takePicture();
 }
 
-exports.takePicture = takePicture;
+exports.takePictureButtonClick = takePictureButtonClick;

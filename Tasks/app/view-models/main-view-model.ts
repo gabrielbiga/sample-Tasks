@@ -21,13 +21,6 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
         });
     }
 
-    editTask(task: any) {
-        this.navigateTo({
-            moduleName: "app/views/edit-task",
-            context: new editTaskViewModelModule.EditTaskViewModel(task)
-        });
-    }
-
     viewTask(task: any) {
         this.navigateTo({
             moduleName: "app/views/view-task",

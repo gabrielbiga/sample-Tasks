@@ -5,7 +5,7 @@
       <GridLayout rows="auto, auto, auto, auto, auto, auto, auto">
         <TextField id="name" hint="Task name" text="{{ task.Name }}"/>
 
-        <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" tap="takePicture" id="photoPicker">
+        <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" tap="takePictureButtonClick" >
           <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="fill"/>
           <Label text="Tap to set photo" col="1" cssClass="label"/>
           <Image id="img" width="50" height="50" col="2" stretch="fill" cssClass="image" source="{{ picture }}" style.visibility="{{ picture ? 'visible' : 'collapsed' }}" />
@@ -23,8 +23,8 @@
 
         <TextView row="4" id="notes" hint="notes" text="{{ task.Notes }}"/>
 
-        <Button text="Save" row="5" tap="save" cssClass="primaryActionButton"/>
-        <Button text="Cancel" row="6" tap="cancel" cssClass="secondaryActionButton"/>
+        <Button text="SAVE" row="5" tap="saveButtonClick" cssClass="primaryActionButton"/>
+        <Button text="CANCEL" row="6" tap="cancelButtonClick" cssClass="secondaryActionButton"/>
       </GridLayout>
     </ScrollView>
 

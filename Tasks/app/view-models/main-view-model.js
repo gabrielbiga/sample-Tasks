@@ -27,13 +27,6 @@ var MainViewModel = (function (_super) {
         });
     };
 
-    MainViewModel.prototype.editTask = function (task) {
-        this.navigateTo({
-            moduleName: "app/views/edit-task",
-            context: new editTaskViewModelModule.EditTaskViewModel(task)
-        });
-    };
-
     MainViewModel.prototype.viewTask = function (task) {
         this.navigateTo({
             moduleName: "app/views/view-task",
