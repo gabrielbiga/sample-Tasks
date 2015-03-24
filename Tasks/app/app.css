@@ -72,3 +72,16 @@ SegmentedBar
     horizontal-align:center;
     vertical-align:center;
 }
+
+.iconContainer
+{
+    margin-left: 16;
+    margin-bottom: 14;
+    margin-top: 14; 
+}
+
+.smallIcon
+{
+    width: 24;
+    height: 24;
+}

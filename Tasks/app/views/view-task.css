@@ -10,24 +10,11 @@ Label
     margin-left: 16;
 }
 
-.smallIcon
-{
-    width: 24;
-    height: 24;
-}
-
 .projectName
 {
     font-size: 18;
     margin-left: 16;
     margin-top: 16;
-}
-
-.iconContainer
-{
-    margin-left: 16;
-    margin-bottom: 14;
-    margin-top: 14; 
 }
 
 .notesContainer

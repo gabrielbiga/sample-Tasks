@@ -8,18 +8,18 @@
         <GridLayout row="1" cssClass="iconContainer" columns="auto, *, auto" tap="takePictureButtonClick" >
           <Image url="~/app/res/ic_photo.png" cssClass="smallIcon" stretch="fill"/>
           <Label text="Tap to set photo" col="1" cssClass="label"/>
-          <Image id="img" width="50" height="50" col="2" stretch="fill" cssClass="image" source="{{ picture }}" style.visibility="{{ picture ? 'visible' : 'collapsed' }}" />
+          <Image id="img" col="2" stretch="fill" cssClass="image" source="{{ picture }}" style.visibility="{{ picture ? 'visible' : 'collapsed' }}" />
         </GridLayout>
 
-        <GridLayout row="2" cssClass="iconContainer" columns="auto, *" cssClass="iconContainer">
-          <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="fill" width="24" height="24" />
+        <StackLayout row="2" cssClass="iconContainer" orientation="horizontal" >
+          <Image url="~/app/res/ic_email.png" cssClass="smallIcon" stretch="fill" />
           <TextField margin="0" id="email" keyboardType="email" hint="email" text="{{ task.Email }}" col="1"/>
-        </GridLayout>
+        </StackLayout>
 
-        <GridLayout row="3" cssClass="iconContainer" columns="auto, *">
+        <StackLayout row="3" cssClass="iconContainer" orientation="horizontal">
           <Image url="~/app/res/ic_url.png" cssClass="smallIcon" stretch="fill" width="24" height="24"/>
           <TextField margin="0" id="url" hint="url" keyboardType="url" text="{{ task.Url }}" col="1"/>
-        </GridLayout>
+        </StackLayout>
 
         <TextView row="4" id="notes" hint="notes" text="{{ task.Notes }}"/>
 

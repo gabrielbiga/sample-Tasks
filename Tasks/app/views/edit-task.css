@@ -1,4 +1,3 @@
-
 Label
 {
     color: #554E4A; 
@@ -11,25 +10,10 @@ Label
     margin-left: 16;
 }
 
-.smallIcon
-{
-    margin-right: 4;
-    vertical-align: center;
-    width: 24;
-    height: 24;
-}
-
 .projectName
 {
     font-size: 18;
     margin-left: 16;
-}
-
-.iconContainer
-{
-    margin-left: 16;
-    margin-bottom: 14;
-    margin-top: 14; 
 }
 
 .notesContainer
@@ -46,4 +30,6 @@ Label
 .image 
 {
     margin-right: 8;
+    width: 50;
+    height: 50;
 }
