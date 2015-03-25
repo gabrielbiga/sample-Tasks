@@ -38,23 +38,13 @@ navigatedTo = function (args) {
 exports.navigatedTo = navigatedTo;
 
 var viewModel;
+
 function pageLoaded(args) {
     var page = args.object;
     viewModel = new loginViewModelModule.LoginViewModel();
     page.bindingContext = viewModel;
     
-    /*
-     * we will have cross-platform way to disable intellisense for the textfield in v1
-     *
-     * https://github.com/NativeScript/cross-platform-modules/issues/147
-     * https://github.com/NativeScript/cross-platform-modules/issues/146
-     *
-     */    
-    if (platformModule.device.os === IOS_OS_NAME) {
-        var usernameField = viewModule.getViewById(page, "username");
-        usernameField.ios.autocorrectionType = UITextAutocorrectionType.UITextAutocorrectionTypeNo;
-        usernameField.ios.autocapitalizationType = UITextAutocapitalizationType.UITextAutocapitalizationTypeNone;
-    }
+    viewModel.disableAutoCorrect(page, "username");
 }
 
 exports.pageLoaded = pageLoaded;

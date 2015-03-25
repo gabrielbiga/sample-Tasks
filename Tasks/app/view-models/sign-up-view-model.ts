@@ -19,7 +19,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
         this._email = "";
         this._username = "";
         this._password = "";
-        this._passwordRepeat = "";
+        this._passwordConfirm = "";
     }
 
     get name(): string {
@@ -104,7 +104,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
     private clearPasswords() {
         this.password = "";
-        this.passwordRepeat = "";
+        this.passwordConfirm = "";
     }
 
     private validate(): boolean {
@@ -128,7 +128,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
             return false;
         }
 
-        if (this.passwordRepeat != this.password) {
+        if (this.passwordConfirm != this.password) {
             alert("Passwords did not match.");
             return false;
         }

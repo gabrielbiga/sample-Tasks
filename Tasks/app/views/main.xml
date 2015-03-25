@@ -11,7 +11,7 @@
     </SegmentedBar.items>
     </SegmentedBar>
     -->
-    <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1">
+    <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1" cssClass="listView">
       <ListView.itemTemplate>
         <StackLayout orientation="horizontal" >
           <Image url="~/app/res/ic_checkmark.png" stretch="fill" cssClass="completeIcon"/>

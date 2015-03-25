@@ -1,4 +1,5 @@
 var viewModel;
+
 navigatedTo = function (args) {
     var page = args.object;
     viewModel = page.navigationContext;

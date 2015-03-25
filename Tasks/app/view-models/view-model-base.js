@@ -6,6 +6,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var platformModule = require("platform");
 var observableModule = require("data/observable");
+var viewModule = require("ui/core/view");
 var enumsModule = require("ui/enums");
 var frameModule = require("ui/frame");
 
@@ -56,13 +57,27 @@ var ViewModelBase = (function (_super) {
         }
     };
 
+    ViewModelBase.prototype.disableAutoCorrect = function (page, viewName) {
+        /*
+        * we will have cross-platform way to disable intellisense for the textfield in v1
+        *
+        * https://github.com/NativeScript/cross-platform-modules/issues/147
+        * https://github.com/NativeScript/cross-platform-modules/issues/146
+        *
+        */
+        if (platformModule.device.os === IOS_OS_NAME) {
+            var view = viewModule.getViewById(page, "username");
+            view.ios.autocorrectionType = UITextAutocorrectionType.UITextAutocorrectionTypeNo;
+            view.ios.autocapitalizationType = UITextAutocapitalizationType.UITextAutocapitalizationTypeNone;
+        }
+    };
+
     ViewModelBase.prototype.navigateTo = function (navigationContext) {
         var topmost = frameModule.topmost();
         topmost.navigate(navigationContext);
     };
 
     ViewModelBase.prototype.navigateToAndClearHistory = function (navigationContext) {
-        var topmost = frameModule.topmost();
         this.navigateTo(navigationContext);
     };
 

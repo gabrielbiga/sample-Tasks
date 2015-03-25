@@ -1,12 +1,9 @@
 var frameModule = require("ui/frame");
 var localSettingsModule = require("local-settings");
-var gestures = require("ui/gestures");
 var platformModule = require("platform");
-var absoluteLayoutModule = require("ui/layouts/absolute-layout");
 
 var mainViewModelModule = require("../view-models/main-view-model")
 
-var viewModel;
 navigatedTo = function (args) {
     if (platformModule.device.os === ANDROID_OS_NAME) {
         frameModule.topmost().android.actionBar.show();
@@ -15,12 +12,12 @@ navigatedTo = function (args) {
 
 exports.navigatedTo = navigatedTo;
 
+var viewModel;
 pageLoaded = function(args) {
     // see if the user is already logged and if no redirect him to the login page.
     var authToken = localSettingsModule.getString(TOKEN_DATA_KEY);
     if (!authToken) {
         var topmost = frameModule.topmost();
-        topmost.backStack.pop();
         topmost.navigate("app/views/login");
     } else {
         var page = args.object;

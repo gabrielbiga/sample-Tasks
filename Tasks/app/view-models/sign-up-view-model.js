@@ -20,7 +20,7 @@ var SignUpViewModel = (function (_super) {
         this._email = "";
         this._username = "";
         this._password = "";
-        this._passwordRepeat = "";
+        this._passwordConfirm = "";
     }
     Object.defineProperty(SignUpViewModel.prototype, "name", {
         get: function () {
@@ -122,7 +122,7 @@ var SignUpViewModel = (function (_super) {
 
     SignUpViewModel.prototype.clearPasswords = function () {
         this.password = "";
-        this.passwordRepeat = "";
+        this.passwordConfirm = "";
     };
 
     SignUpViewModel.prototype.validate = function () {
@@ -146,7 +146,7 @@ var SignUpViewModel = (function (_super) {
             return false;
         }
 
-        if (this.passwordRepeat != this.password) {
+        if (this.passwordConfirm != this.password) {
             alert("Passwords did not match.");
             return false;
         }
