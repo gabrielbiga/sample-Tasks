@@ -6,6 +6,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var cameraModule = require("camera");
 var localSettings = require("local-settings");
+var imageSourceModule = require("image-source");
 var observableModule = require("data/observable");
 
 var everliveModule = require("../lib/everlive");
@@ -40,9 +41,9 @@ var EditTaskViewModel = (function (_super) {
                 var that = this;
                 that.beginLoading();
                 var file = {
-                    "Filename": "NativeScriptIsAwesome.jpg",
+                    "Filename": "NativeScriptIsAwesome.jpeg",
                     "ContentType": "image/jpeg",
-                    "base64": that.picture.toBase64String("JPEG", 100)
+                    "base64": that.picture.toBase64String(imageSourceModule.ImageFormat.JPEG, 100)
                 };
 
                 that._everlive.Files.create(file, function (data) {

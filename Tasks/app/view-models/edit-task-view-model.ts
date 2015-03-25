@@ -1,5 +1,6 @@
 import cameraModule = require("camera");
 import localSettings = require("local-settings");
+import imageSourceModule = require("image-source");
 import observableModule = require("data/observable");
 
 import everliveModule = require("../lib/everlive");
@@ -8,7 +9,7 @@ import taskViewModelBaseModule = require("./task-view-model-base");
 
 export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase {
     private _everlive: any;
-    private _picture: any;
+    private _picture: imageSourceModule.ImageSource;
     
     constructor(task: any) {
         super(task);
@@ -16,11 +17,11 @@ export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
         this._everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
     }
 
-    get picture(): any {
+    get picture(): imageSourceModule.ImageSource {
         return this._picture;
     }
 
-    set picture(value: any) {
+    set picture(value: imageSourceModule.ImageSource) {
         if (this._picture !== value) {
             this._picture = value;
             this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "picture", value: value });
@@ -33,9 +34,9 @@ export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
                 var that = this;
                 that.beginLoading();
                 var file = {
-                    "Filename": "NativeScriptIsAwesome.jpg",
+                    "Filename": "NativeScriptIsAwesome.jpeg",
                     "ContentType": "image/jpeg",
-                    "base64": that.picture.toBase64String("JPEG", 100)
+                    "base64": that.picture.toBase64String(imageSourceModule.ImageFormat.JPEG, 100)
                 };
 
                 that._everlive.Files.create(file,
@@ -60,12 +61,12 @@ export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
 
     takePicture() {
         var that = this;
-        cameraModule.takePicture().then(function(result) {
+        cameraModule.takePicture().then((result: imageSourceModule.ImageSource) => {
             that.picture = result;
         });
     }
-    
-        private saveTaskData() {
+
+    private saveTaskData() {
         if (this.task.Id) {
             this.updateTask();
         } else {
@@ -99,7 +100,7 @@ export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
                 alert("Error updating task [" + error.message + "]");
             });
     }
-    
+
     private validate(): boolean {
         if (this.task.Name === "") {
             alert("Please enter task name.");
