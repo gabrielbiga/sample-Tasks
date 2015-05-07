@@ -2,5 +2,6 @@
 */obj
 *.user-settings.xml
 
+*.map
 platforms/
 lib/
