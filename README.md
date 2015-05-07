@@ -38,11 +38,16 @@ Please read the series of articles that explain how this application is being im
 ## Running the sample
 
 1. Make sure you have the [NativeScript Command-line Interface](https://www.npmjs.com/package/nativescript) installed as well as all the prerequisites for the NativeScript development, described in the package page.
-2. Add the preferred platform-specific tools to the project library. Note that iOS development is only available with a Mac machine.
+2. Compile the TypeScript code
+    2.1. Install the dev dependencies of the sample (TypeScript)
+        `npm install`
+    2.2. Compile the TypeScript code to JavaScript
+        `node_modules/typescript/bin/tsc --outDir app/ -t ES5 -m commonjs app/**/*.tsz
+3. Add the preferred platform-specific tools to the project library. Note that iOS development is only available with a Mac machine.
 
     `tns platform add ios|android`
 
-3. Run the project.
+4. Run the project.
 
     `tns run ios|android [--emulator]`
 

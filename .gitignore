@@ -3,5 +3,8 @@
 *.user-settings.xml
 
 *.map
+node_modules/
+
 platforms/
 lib/
+
