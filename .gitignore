@@ -1,3 +1,12 @@
 */bin
 */obj
 *.user-settings.xml
+
+*.map
+node_modules/
+
+platforms/
+lib/
+
+app/**/*.d.ts
+!app/tns_modules/**/*.*

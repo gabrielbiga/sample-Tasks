@@ -1,0 +1,21 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+  <GridLayout>
+    <ScrollView>
+      <StackLayout>
+        <Image url="~/app/res/login_logo.png" cssClass="logoImage" stretch="fill" />
+        <Label text="Sign up for an account" cssClass="header"/>
+
+        <TextField hint="name" text="{{ name }}"/>
+        <TextField id="email" keyboardType="email" hint="e-mail" text="{{ email }}"/>
+        <TextField id="username" hint="username" text="{{ username }}"/>
+        <TextField hint="password" secure="true" text="{{ password }}"/>
+        <TextField hint="confirm password" secure="true" text="{{ passwordConfirm }}"/>
+
+        <Button text="SIGN UP" cssClass="primaryActionButton" tap="signUpButtonTap"/>
+        <Button text="LOGIN" cssClass="secondaryActionButton" tap="loginButtonTap"/>
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator busy="{{ isLoading }}" cssClass="activityIndicator"/>
+  </GridLayout>
+</Page>
