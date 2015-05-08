@@ -8,3 +8,5 @@ node_modules/
 platforms/
 lib/
 
+app/**/*.d.ts
+!app/tns_modules/**/*.*
