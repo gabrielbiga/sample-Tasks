@@ -1,4 +1,4 @@
-import localSettings = require("local-settings");
+import applicationSettings = require("application-settings");
 import observableModule = require("data/observable");
 
 import everliveModule = require("../lib/everlive");
@@ -29,7 +29,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set name(value: string) {
         if (this._name !== value) {
             this._name = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "name", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "name", value: value });
         }
     }
 
@@ -40,7 +40,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set email(value: string) {
         if (this._email !== value) {
             this._email = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "email", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "email", value: value });
         }
     }
 
@@ -51,7 +51,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set username(value: string) {
         if (this._username !== value) {
             this._username = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "username", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "username", value: value });
         }
     }
 
@@ -62,7 +62,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set password(value: string) {
         if (this._password !== value) {
             this._password = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "password", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "password", value: value });
         }
     }
 
@@ -73,7 +73,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set passwordConfirm(value: string) {
         if (this._passwordConfirm !== value) {
             this._passwordConfirm = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "passwordConfirm", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "passwordConfirm", value: value });
         }
     }
 
@@ -81,7 +81,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
         if (this.validate()) {
             var that = this;
             that.beginLoading();
-            var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
+            var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: applicationSettings.getString(TOKEN_DATA_KEY) });
             everlive.Users.register(that.username, that.password, { Email: that.email, DisplayName: that.name },
                 function(data) {
                     that.endLoading();

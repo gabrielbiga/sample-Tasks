@@ -1,4 +1,4 @@
-import localSettings = require("local-settings");
+import applicationSettings = require("application-settings");
 import observableModule = require("data/observable");
 
 import everliveModule = require("../lib/everlive");
@@ -23,7 +23,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     set username(value: string) {
         if (this._username !== value) {
             this._username = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "username", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "username", value: value });
         }
     }
 
@@ -34,7 +34,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     set password(value: string) {
         if (this._password !== value) {
             this._password = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "password", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "password", value: value });
         }
     }
 
@@ -97,6 +97,6 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     private saveToken(token: string) {
-        localSettings.setString(TOKEN_DATA_KEY, token);
+        applicationSettings.setString(TOKEN_DATA_KEY, token);
     }
 }

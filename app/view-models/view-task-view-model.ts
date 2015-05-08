@@ -1,4 +1,4 @@
-import localSettings = require("local-settings");
+import applicationSettings = require("application-settings");
 import dialogs = require("ui/dialogs");
 import observableModule = require("data/observable");
 
@@ -33,7 +33,7 @@ export class ViewTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
     set pictureUrl(value: any) {
         if (this._pictureUrl !== value) {
             this._pictureUrl = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "pictureUrl", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "pictureUrl", value: value });
         }
     }
 
@@ -43,7 +43,7 @@ export class ViewTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
             .then(function(result) {
                 if (result) {
                     that.beginLoading();
-                    var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
+                    var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: applicationSettings.getString(TOKEN_DATA_KEY) });
                     everlive.data('Task').destroySingle({ Id: that.task.Id }, function(data) {
                         that.endLoading();
                         that.navigateToAndClearHistory("app/views/main");
@@ -75,7 +75,7 @@ export class ViewTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
         var that = this;
         if (that.task.Photo) {
             that.beginLoading();
-            var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
+            var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: applicationSettings.getString(TOKEN_DATA_KEY) });
             everlive.Files.getDownloadUrlById(this.task.Photo)
                 .then(function(url) {
                     that.pictureUrl = url;

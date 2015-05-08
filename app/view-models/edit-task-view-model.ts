@@ -1,8 +1,8 @@
 import cameraModule = require("camera");
-import localSettings = require("local-settings");
+import applicationSettings = require("application-settings");
 import imageSourceModule = require("image-source");
 import observableModule = require("data/observable");
-
+/// <reference path="../app/everlive.d.ts" />
 import everliveModule = require("../lib/everlive");
 
 import taskViewModelBaseModule = require("./task-view-model-base");
@@ -10,11 +10,11 @@ import taskViewModelBaseModule = require("./task-view-model-base");
 export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase {
     private _everlive: any;
     private _picture: imageSourceModule.ImageSource;
-    
+
     constructor(task: any) {
         super(task);
 
-        this._everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
+        this._everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: applicationSettings.getString(TOKEN_DATA_KEY) });
     }
 
     get picture(): imageSourceModule.ImageSource {
@@ -24,7 +24,7 @@ export class EditTaskViewModel extends taskViewModelBaseModule.TaskViewModelBase
     set picture(value: imageSourceModule.ImageSource) {
         if (this._picture !== value) {
             this._picture = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "picture", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "picture", value: value });
         }
     }
 

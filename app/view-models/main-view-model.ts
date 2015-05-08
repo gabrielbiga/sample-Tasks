@@ -1,5 +1,5 @@
 import observableArrayModule = require("data/observable-array");
-import localSettings = require("local-settings");
+import applicationSettings = require("application-settings");
 
 import everliveModule = require("../lib/everlive");
 
@@ -29,12 +29,12 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     logout() {
-        localSettings.remove(TOKEN_DATA_KEY);
+        applicationSettings.remove(TOKEN_DATA_KEY);
         this.navigateToAndClearHistory("app/views/login");
     }
 
     refresh() {
-        var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: localSettings.getString(TOKEN_DATA_KEY) });
+        var everlive = new everliveModule({ apiKey: TELERIK_BAAS_KEY, token: applicationSettings.getString(TOKEN_DATA_KEY) });
         var that = this;
         this.beginLoading();
         everlive.data('Task').get()

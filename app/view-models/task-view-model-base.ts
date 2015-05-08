@@ -18,7 +18,7 @@ export class TaskViewModelBase extends viewModelBaseModule.ViewModelBase {
     set task(value: any) {
         if (this._task !== value) {
             this._task = value;
-            this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: "task", value: value });
+            this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: "task", value: value });
         }
     }
 }
