@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <color name="navBarColor">#CDDC39</color>
+  
+    <style parent="android:Theme.Material.Light" name="AppTheme">
+      <item name="android:colorPrimary">@color/navBarColor</item>
+      <item name="android:windowContentOverlay">@null</item>
+      <item name="android:elevation">0dp</item>
+    </style>
+</resources>

@@ -1,17 +1,27 @@
-var application = require("application");
-
-/*
- * Define which is the main page of the app.
- */
-application.mainModule = "app/views/main";
-
-/*
- * Define constants which we will use across the application
- */
-global.TELERIK_BAAS_KEY = "Rw5X5HlnO1s9E0kf";
-global.TOKEN_DATA_KEY = "authenticationToken";
-global.PROJECT_NAME = "To-do";
-global.ANDROID_OS_NAME = "Android";
-global.IOS_OS_NAME = "iOS";
-
-application.start();
+var applicationModule = require("application");
+var viewsModule = require("./utils/views");
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+applicationModule.resources = {
+    formatDate: function (date) {
+        return date.getDate() + " " + months[date.getMonth()] + ", " + date.getFullYear();
+    },
+    formatTime: function (date) {
+        return date.getHours() + ":" + date.getMinutes();
+    },
+    formatReminder: function (reminder, dueDate) {
+        console.log("REMINDER: " + reminder);
+        console.log("DUE DATE: " + dueDate);
+        return "10 min before";
+    }
+};
+applicationModule.onLaunch = function (context) {
+    var serviceModule = require("./utils/service");
+    if (serviceModule.service.isAuthenticated) {
+        applicationModule.mainModule = viewsModule.Views.main;
+    }
+    else {
+        applicationModule.mainModule = viewsModule.Views.login;
+    }
+};
+applicationModule.start();
+//# sourceMappingURL=app.js.map

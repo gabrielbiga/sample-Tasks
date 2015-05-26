@@ -1,1 +1,0 @@
-All these resources should be made resolution dependent. But for now we will just use the same images in all resolutions. We will fix this for the next app iteration.

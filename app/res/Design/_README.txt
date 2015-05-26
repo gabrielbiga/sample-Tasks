@@ -1,1 +1,0 @@
-This folder is here only for learning purposes. You don't need to distribut such folder as part of your apps.

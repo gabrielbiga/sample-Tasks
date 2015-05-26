@@ -151,7 +151,7 @@ function onFragmentShown(fragment) {
     var page = entry.resolvedPage;
     frame._currentEntry = entry;
     frame._addView(page);
-    page.onNavigatedTo(entry.entry.context);
+    page.onNavigatedTo();
     frame._processNavigationQueue(page);
 }
 function onFragmentHidden(fragment) {
@@ -292,11 +292,6 @@ var Frame = (function (_super) {
         }
     };
     Frame.prototype._clearAndroidReference = function () {
-    };
-    Frame.prototype._invalidateOptionsMenu = function () {
-        if (this.android && this.android.activity) {
-            this.android.activity.invalidateOptionsMenu();
-        }
     };
     return Frame;
 })(frameCommon.Frame);

@@ -1,0 +1,83 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
+  <Page.optionsMenu>
+    <MenuItem text="{{ strings.save }}" tap="{{ logout }}" android.position="actionBar" />
+  </Page.optionsMenu>
+  <GridLayout rows="*, auto">
+    <ScrollView>
+      <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto">
+        <TextField hint="Task name" text="{{ task.Name }}" cssClass="taskNameTextField"/>
+
+        <StackLayout row="1" cssClass="pickerContainer" tap="projectPickerTap" >
+          <Label text="Project" cssClass="pickerLabel" />
+          <GridLayout columns="*, auto" cssClass="innerContainer" bindingContext="{{ category }}">
+            <Label text="{{ project.Name }}" cssClass="pickerValue" />
+            <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
+          </GridLayout>
+          <Border cssClass="pickerBorder" />
+        </StackLayout>
+
+        <GridLayout row="2" columns="auto, 2*, *">
+          <Image src="res://ic_duedate" cssClass="detailsIcon" stretch="none"/>
+
+          <StackLayout col="1" cssClass="pickerContainer" tap="datePickerTap" >
+            <Label text="Due date" cssClass="pickerLabel" />
+            <GridLayout columns="*, auto" cssClass="innerContainer">
+              <Label text="{{ item.DueDate | formatDate }}" cssClass="pickerValue" />
+              <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
+            </GridLayout>
+            <Border cssClass="pickerBorder" />
+          </StackLayout>
+
+          <StackLayout col="2" cssClass="pickerContainer" tap="timePickerTap" >
+            <Label text="Time" cssClass="pickerLabel" />
+            <GridLayout columns="*, auto" cssClass="innerContainer">
+              <Label text="{{ item.DueDate  | formatTime }}" cssClass="pickerValue" />
+              <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
+            </GridLayout>
+            <Border cssClass="pickerBorder" />
+          </StackLayout>
+        </GridLayout>
+
+        <GridLayout row="3" columns="auto, *" >
+          <Image src="res://ic_reminder" cssClass="detailsIcon" stretch="none"/>
+
+          <StackLayout col="1" cssClass="pickerContainer" tap="reminderPickerTap" >
+            <Label text="Reminder" cssClass="pickerLabel" />
+            <GridLayout columns="*, auto" cssClass="innerContainer">
+              <Label text="{{ item.Reminder | formatReminder item.DueDate }}" cssClass="pickerValue" />
+              <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
+            </GridLayout>
+            <Border cssClass="pickerBorder" />
+          </StackLayout>
+        </GridLayout>
+
+        <GridLayout row="4" cssClass="iconContainer" columns="auto, *, auto" tap="takePictureButtonClick" >
+          <Image src="res://ic_photo" cssClass="detailsIcon" stretch="none"/>
+          <Label text="Tap to set photo" col="1" />
+          <Image col="2" stretch="fill" cssClass="image" source="{{ picture }}" visibility="{{ picture ? 'visible' : 'collapsed' }}" />
+        </GridLayout>
+        
+        <GridLayout row="5" cssClass="iconContainer" columns="auto, *" >
+          <Image src="res://ic_phone" cssClass="detailsIcon" stretch="none" />
+          <TextField keyboardType="number" hint="Contact phone" text="{{ item.Phone }}" col="1"/>
+        </GridLayout>
+        
+        <GridLayout row="6" cssClass="iconContainer" columns="auto, *" >
+          <Image src="res://ic_email" cssClass="detailsIcon" stretch="none" />
+          <TextField keyboardType="email" hint="Contact email" text="{{ item.Email }}" col="1"/>
+        </GridLayout>
+
+        <GridLayout row="7" cssClass="iconContainer" columns="auto, *" >
+          <Image src="res://ic_url" cssClass="detailsIcon" stretch="none" width="24" height="24"/>
+          <TextField cssClass="label" hint="url" keyboardType="url" text="{{ item.Url }}" col="1"/>
+        </GridLayout>
+
+        <TextView row="8" hint="notes" text="{{ item.Notes }}"/>
+      </GridLayout>
+    </ScrollView>
+
+    <Button text="{{ strings.delete }}" row="1" tap="{{ delete }}" cssClass="deleteButton"/>
+
+    <ActivityIndicator cssClass="activityIndicator" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

@@ -1,4 +1,4 @@
-﻿/* tslint:disable:class-name */
+/* tslint:disable:class-name */
 
 declare function CGRectMake(x: number, y: number, width: number, height: number): CGRect;
 declare function CGPointMake(x: number, y: number): CGPoint;

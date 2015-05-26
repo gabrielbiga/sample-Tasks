@@ -1,0 +1,28 @@
+﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:g="components/grid-view/grid-view"
+      loaded="pageLoaded"
+      >
+  <Page.optionsMenu>
+    <MenuItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
+    <MenuItem text="{{ resources.reports }}" android.position="actionBar" />
+  </Page.optionsMenu>
+  <TabView>
+    <TabView.items>
+      <TabViewItem title="{{ resources.reports }}" iconSource="res://ic_reports" >
+        <TabViewItem.view>
+          <StackLayout>
+            <Label text="{{ resources.reports }}" />
+            <Label text="Page 1" />
+          </StackLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+      <TabViewItem title="settings" >
+        <TabViewItem.view>
+          <StackLayout>
+            <Label text="Page 2" />
+          </StackLayout>
+        </TabViewItem.view>
+      </TabViewItem>
+    </TabView.items>
+  </TabView>
+</Page>

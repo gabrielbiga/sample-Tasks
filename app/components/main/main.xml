@@ -1,0 +1,39 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
+  <Page.optionsMenu>
+    <MenuItem text="{{ strings.logout }}" tap="{{ logout }}" android.position="popup" />
+  </Page.optionsMenu>
+  <GridLayout rows="auto, *, auto">
+    <SegmentedBar backgroundColor="#CDDC39" selectedBackgroundColor="#259B24" selectedIndex="{{ selectedIndex }}">
+      <SegmentedBar.items>
+        <SegmentedBarItem title="Today" />
+        <SegmentedBarItem title="Tomorrow" />
+        <SegmentedBarItem title="Next" />
+      </SegmentedBar.items>
+    </SegmentedBar>
+    <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1" cssClass="listView">
+      <ListView.itemTemplate>
+        <StackLayout orientation="horizontal" >
+          <Image src="res://ic_checkmark" stretch="none" cssClass="completeIcon"/>
+          <StackLayout cssClass="taskContainer">
+            <Label cssClass="projectName">
+              <Label.formattedText>
+                <FormattedString>
+                  <FormattedString.spans>
+                    <Span text="{{ project.Name }}" fontAttributes="Bold, Italic" />
+                  </FormattedString.spans>
+                </FormattedString>
+              </Label.formattedText>
+            </Label>
+            <Label text="{{ task.Name }}" cssClass="taskName" textWrap="true" />
+          </StackLayout>
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+    <AbsoluteLayout row="1" cssClass="fabContainer" >
+      <Image src="res://fab_add" tap="{{ addTask }}" stretch="none" cssClass="fab" />
+    </AbsoluteLayout>
+
+    <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>
