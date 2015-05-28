@@ -33,7 +33,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     createItem(): any {
         var item = super.createItem();
         item.DueDate = new Date();
-        item.Reminder = new Date();
+        item.ReminderDate = new Date();
         item.Project = constantsModule.defaultProjectId;
         item.Phone = "+359 555 55 555";
         item.Email = "zlobcho@mail.bg";

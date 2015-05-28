@@ -1,11 +1,13 @@
 ﻿import observableModule = require("data/observable");
 
+import viewModule = require("ui/core/view");
+import listViewModule = require("ui/list-view");
 import frameModule = require("ui/frame");
 import pageModule = require("ui/page");
-import localSettingsModule = require("application-settings");
-import platformModule = require("platform");
+import gesturesModule = require("ui/gestures");
 
 import mainViewModelModule = require("./main-view-model")
+import viewTaskViewModelModule = require("../view-task/view-task-view-model")
 import serviceModule = require("../../utils/service")
 import viewsModule = require("../../utils/views")
 
@@ -17,6 +19,12 @@ export function navigatedTo(args: observableModule.EventData) {
     viewModel.refresh();
 }
 
-export function listViewItemTap(args) {
+export function listViewItemTap(args: listViewModule.ItemEventData) {
     viewModel.viewTask(args.view.bindingContext);
+}
+
+export function completeTaskButtonTap(args: gesturesModule.GestureEventData) {
+    var view = <viewModule.View>args.view;
+    var viewTaskViewModel = <viewTaskViewModelModule.ViewTaskViewModel>view.bindingContext;
+    viewTaskViewModel.completeTask();
 }

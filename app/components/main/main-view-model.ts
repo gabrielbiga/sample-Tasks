@@ -9,9 +9,12 @@ import viewsModule = require("../../utils/views");
 
 export class MainViewModel extends viewModelBaseModule.ViewModelBase {
     private _tasks: Array<viewTaskViewModelModule.ViewTaskViewModel>;
+    private _selectedDay: number;
 
     constructor() {
         super();
+
+        this._selectedDay = 1;
     }
 
     get tasks(): Array<viewTaskViewModelModule.ViewTaskViewModel> {
@@ -22,6 +25,18 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
         if (this._tasks != value) {
             this._tasks = value;
             this.notifyPropertyChanged("tasks", value);
+        }
+    }
+
+    get selectedDay(): number {
+        return this._selectedDay;
+    }
+
+    set selectedDay(value: number) {
+        if (this._selectedDay != value) {
+            this._selectedDay = value;
+            this.notifyPropertyChanged("selectedDay", value);
+            this.refresh();
         }
     }
 
@@ -48,7 +63,8 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
 
     refresh() {
         this.beginLoading();
-        serviceModule.service.getTasks().then((data: any[]) => {
+        var getTasksMethod = getMethodByFilter(this.selectedDay);
+        getTasksMethod.then((data: any[]) => {
             var tasks = new Array<viewTaskViewModelModule.ViewTaskViewModel>();
             for (var i = 0; i < data.length; i++) {
                 tasks.push(new viewTaskViewModelModule.ViewTaskViewModel(data[i]));
@@ -59,5 +75,21 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
         },(error: any) => {
                 this.endLoading();
             });
+    }
+}
+
+function getMethodByFilter(selectedDay: number): Promise<any[]> {
+    switch (selectedDay) {
+        case 0:
+            return serviceModule.service.getOverdueTasks();
+
+        case 1:
+            return serviceModule.service.getTasksForToday();
+
+        case 2:
+            return serviceModule.service.getTasksForTomorrow();
+
+        default:
+            return serviceModule.service.getTasksAfterTomorrow();
     }
 }

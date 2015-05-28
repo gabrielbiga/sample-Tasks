@@ -3,8 +3,9 @@
     <MenuItem text="{{ strings.logout }}" tap="{{ logout }}" android.position="popup" />
   </Page.optionsMenu>
   <GridLayout rows="auto, *, auto">
-    <SegmentedBar backgroundColor="#CDDC39" selectedBackgroundColor="#259B24" selectedIndex="{{ selectedIndex }}">
+    <SegmentedBar selectedBackgroundColor="#259B24" selectedIndex="{{ selectedDay }}" cssClass="segmentedBar">
       <SegmentedBar.items>
+        <SegmentedBarItem title="Overdue" />
         <SegmentedBarItem title="Today" />
         <SegmentedBarItem title="Tomorrow" />
         <SegmentedBarItem title="Next" />
@@ -12,10 +13,10 @@
     </SegmentedBar>
     <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1" cssClass="listView">
       <ListView.itemTemplate>
-        <StackLayout orientation="horizontal" >
-          <Image src="res://ic_checkmark" stretch="none" cssClass="completeIcon"/>
-          <StackLayout cssClass="taskContainer">
-            <Label cssClass="projectName">
+        <StackLayout orientation="horizontal" cssClass="listViewItem">
+          <Image src="{{ task | getStatusImage }}" stretch="none" tap="completeTaskButtonTap" cssClass="listViewItemIcon"/>
+          <StackLayout>
+            <Label cssClass="listViewItemHeader">
               <Label.formattedText>
                 <FormattedString>
                   <FormattedString.spans>
@@ -24,14 +25,14 @@
                 </FormattedString>
               </Label.formattedText>
             </Label>
-            <Label text="{{ task.Name }}" cssClass="taskName" textWrap="true" />
+            <Label text="{{ task.Name }}" cssClass="listViewItemLabel" textWrap="true" />
           </StackLayout>
         </StackLayout>
       </ListView.itemTemplate>
     </ListView>
 
     <AbsoluteLayout row="1" cssClass="fabContainer" >
-      <Image src="res://fab_add" tap="{{ addTask }}" stretch="none" cssClass="fab" />
+      <Image src="res://fab_add" tap="{{ addTask }}" cssClass="fab" />
     </AbsoluteLayout>
 
     <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />

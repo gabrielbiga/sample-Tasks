@@ -6,12 +6,20 @@ applicationModule.resources = {
         return date.getDate() + " " + months[date.getMonth()] + ", " + date.getFullYear();
     },
     formatTime: function (date) {
-        return date.getHours() + ":" + date.getMinutes();
+        var minutes = date.getMinutes().toString();
+        if (minutes.length === 1) {
+            minutes = "0" + date.getMinutes();
+        }
+        return date.getHours() + ":" + minutes;
     },
-    formatReminder: function (reminder, dueDate) {
-        console.log("REMINDER: " + reminder);
-        console.log("DUE DATE: " + dueDate);
+    formatReminder: function (task) {
         return "10 min before";
+    },
+    getStatusImage: function (task) {
+        return task.IsCompleted ? "res://ic_checkmark_checked" : "res://ic_checkmark";
+    },
+    getStatusFab: function (task) {
+        return task.IsCompleted ? "res://fab_completed" : "res://fab_complete";
     }
 };
 applicationModule.onLaunch = function (context) {

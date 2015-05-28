@@ -1,0 +1,7 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      navigatedTo="navigatedTo" >
+  <Page.optionsMenu>
+    <MenuItem text="{{ resources.done }}" tap="doneMenuItemTap" android.position="actionBar" />
+  </Page.optionsMenu>
+    <DatePicker cssClass="datePickerControl" day="{{ day }}" month="{{ month }}" year="{{ year }}"/>
+</Page>

@@ -5,18 +5,20 @@
   <GridLayout rows="*, auto">
     <ScrollView>
       <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto">
-        <TextField hint="Task name" text="{{ task.Name }}" cssClass="taskNameTextField"/>
+        <TextField hint="Task name" text="{{ task.Name }}" cssClass="headerTextField"/>
 
-        <StackLayout row="1" cssClass="pickerContainer" tap="projectPickerTap" >
-          <Label text="Project" cssClass="pickerLabel" />
-          <GridLayout columns="*, auto" cssClass="innerContainer" bindingContext="{{ category }}">
-            <Label text="{{ project.Name }}" cssClass="pickerValue" />
-            <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
-          </GridLayout>
-          <Border cssClass="pickerBorder" />
-        </StackLayout>
-
-        <GridLayout row="2" columns="auto, 2*, *">
+        <GridLayout row="1" cssClass="detailsContainer">
+          <StackLayout cssClass="pickerContainer" tap="projectPickerTap" >
+            <Label text="Project" cssClass="pickerLabel" />
+            <GridLayout columns="*, auto" cssClass="innerContainer" bindingContext="{{ category }}">
+              <Label text="{{ project.Name }}" cssClass="pickerValue" />
+              <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
+            </GridLayout>
+            <Border cssClass="pickerBorder" />
+          </StackLayout>
+        </GridLayout>
+        
+        <GridLayout row="2" columns="auto, 2*, *" cssClass="detailsContainer">
           <Image src="res://ic_duedate" cssClass="detailsIcon" stretch="none"/>
 
           <StackLayout col="1" cssClass="pickerContainer" tap="datePickerTap" >
@@ -28,7 +30,7 @@
             <Border cssClass="pickerBorder" />
           </StackLayout>
 
-          <StackLayout col="2" cssClass="pickerContainer" tap="timePickerTap" >
+          <StackLayout col="2" margin="0 4 0 16" cssClass="pickerContainer" tap="timePickerTap" >
             <Label text="Time" cssClass="pickerLabel" />
             <GridLayout columns="*, auto" cssClass="innerContainer">
               <Label text="{{ item.DueDate  | formatTime }}" cssClass="pickerValue" />
@@ -38,41 +40,41 @@
           </StackLayout>
         </GridLayout>
 
-        <GridLayout row="3" columns="auto, *" >
+        <GridLayout row="3" columns="auto, *" cssClass="detailsContainer">
           <Image src="res://ic_reminder" cssClass="detailsIcon" stretch="none"/>
 
           <StackLayout col="1" cssClass="pickerContainer" tap="reminderPickerTap" >
             <Label text="Reminder" cssClass="pickerLabel" />
             <GridLayout columns="*, auto" cssClass="innerContainer">
-              <Label text="{{ item.Reminder | formatReminder item.DueDate }}" cssClass="pickerValue" />
+              <Label text="{{ item | formatReminder }}" cssClass="pickerValue" />
               <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
             </GridLayout>
             <Border cssClass="pickerBorder" />
           </StackLayout>
         </GridLayout>
 
-        <GridLayout row="4" cssClass="iconContainer" columns="auto, *, auto" tap="takePictureButtonClick" >
+        <GridLayout row="4" cssClass="detailsContainer" padding="8 16 8 16" columns="auto, *, auto" tap="takePictureButtonClick" >
           <Image src="res://ic_photo" cssClass="detailsIcon" stretch="none"/>
-          <Label text="Tap to set photo" col="1" />
+          <Label text="Tap to add photo" col="1" margin="0 0 0 4" />
           <Image col="2" stretch="fill" cssClass="image" source="{{ picture }}" visibility="{{ picture ? 'visible' : 'collapsed' }}" />
         </GridLayout>
-        
-        <GridLayout row="5" cssClass="iconContainer" columns="auto, *" >
+
+        <GridLayout row="5" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_phone" cssClass="detailsIcon" stretch="none" />
           <TextField keyboardType="number" hint="Contact phone" text="{{ item.Phone }}" col="1"/>
         </GridLayout>
-        
-        <GridLayout row="6" cssClass="iconContainer" columns="auto, *" >
+
+        <GridLayout row="6" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_email" cssClass="detailsIcon" stretch="none" />
           <TextField keyboardType="email" hint="Contact email" text="{{ item.Email }}" col="1"/>
         </GridLayout>
 
-        <GridLayout row="7" cssClass="iconContainer" columns="auto, *" >
+        <GridLayout row="7" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_url" cssClass="detailsIcon" stretch="none" width="24" height="24"/>
           <TextField cssClass="label" hint="url" keyboardType="url" text="{{ item.Url }}" col="1"/>
         </GridLayout>
 
-        <TextView row="8" hint="notes" text="{{ item.Notes }}"/>
+        <TextView row="8" hint="notes" text="{{ item.Notes }}" cssClass="notesTextView"/>
       </GridLayout>
     </ScrollView>
 

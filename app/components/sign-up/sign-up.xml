@@ -10,7 +10,7 @@
         <TextField hint="e-mail" text="{{ email }}" autocapitalizationType="none" keyboardType="email"/>
         <TextField hint="username" text="{{ username }}" autocapitalizationType="none" />
         <TextField hint="password" text="{{ password }}" secure="true" />
-        <TextField hint="confirm password" text="{{ passwordConfirm }}" secure="true" />
+        <TextField hint="confirm password" text="{{ confirmPassword }}" secure="true" />
 
         <Button text="{{ strings.signUp }}" cssClass="primaryButton" tap="signUpButtonTap"/>
         <Button text="{{ strings.login }}" cssClass="secondaryButton" tap="loginButtonTap"/>

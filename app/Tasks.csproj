@@ -180,6 +180,12 @@
     <Content Include="App_Resources\iOS\Icon-Small-50.png" />
     <Content Include="App_Resources\iOS\Icon-Small.png" />
     <Content Include="App_Resources\iOS\icon.png" />
+    <Content Include="components\time-picker\time-picker.css" />
+    <Content Include="components\time-picker\time-picker.xml" />
+    <Content Include="components\date-picker\date-picker.css" />
+    <Content Include="components\date-picker\date-picker.xml" />
+    <Content Include="components\list-picker\list-picker.css" />
+    <Content Include="components\list-picker\list-picker.xml" />
     <Content Include="tns_modules\application-settings\application-settings-common.js" />
     <Content Include="tns_modules\application-settings\application-settings.android.js" />
     <Content Include="tns_modules\application-settings\application-settings.ios.js" />
@@ -355,13 +361,17 @@
     <Content Include="tns_modules\utils\utils.android.js" />
     <Content Include="tns_modules\utils\utils.ios.js" />
     <Content Include="tns_modules\xml\xml.js" />
+    <TypeScriptCompile Include="components\time-picker\time-picker-view-model.ts" />
+    <TypeScriptCompile Include="components\time-picker\time-picker.ts" />
+    <TypeScriptCompile Include="components\date-picker\date-picker-view-model.ts" />
+    <TypeScriptCompile Include="components\date-picker\date-picker.ts" />
     <TypeScriptCompile Include="components\edit-task\edit-task-view-model.ts" />
     <TypeScriptCompile Include="components\edit-task\edit-task.ts" />
+    <TypeScriptCompile Include="components\list-picker\list-picker-view-model.ts" />
+    <TypeScriptCompile Include="components\list-picker\list-picker.ts" />
     <TypeScriptCompile Include="components\login\login.ts" />
-    <Content Include="components\edit-task\edit-task.css" />
     <Content Include="components\edit-task\edit-task.xml" />
     <Content Include="components\login\login.xml" />
-    <Content Include="components\main\main.css" />
     <Content Include="components\main\main.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -370,7 +380,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\test\page1.xml" />
-    <Content Include="components\view-task\view-task.css" />
     <Content Include="components\view-task\view-task.xml" />
     <Content Include="lib\everlive.js" />
     <Content Include="package.json" />

@@ -4,11 +4,7 @@ Page {
 
 Label {
     color: #55443B;
-}
-
-TextField, TextView {
-    margin: 0 16 0 16;
-    color: #95938F;
+    font-size: 16;
 }
 
 ActivityIndicator {
@@ -16,46 +12,105 @@ ActivityIndicator {
     vertical-align: center;
 }
 
-.textFieldContainer {
+.segmentedBar {
+    background-color: #CDDC39;
 }
 
-.firstTextFieldContainer {
-    margin-top: 16;
+.listViewItem {
+    padding: 16 16 16 30;
 }
 
-.logo {
-    margin-top: 30;
-    margin-bottom: 20;
-    horizontal-align: center;
+.listViewItemHeader {
+    font-size: 18;
 }
 
-.icon {
-    width: 24;
-    height: 24;
-}
-
-.header {
+.listViewItemLabel {
     font-size: 24;
-    margin: 10;
 }
 
-.primaryButton {
-    background-color: #259B24;
-    color: #FFFFFF;
-    margin: 10;
-}
-
-.secondaryButton {
-    color: #259B24;
-    background-color: #00FFFFFF;
-    margin: 10;
+.listViewItemIcon {
+    vertical-align: center;
+    margin-right: 16;
 }
 
 .fab {
-        margin: 0 16 28 0;
+    margin: 0 16 28 0;
 }
 
 .fabContainer {
     vertical-align: bottom;
     horizontal-align: right;
+}
+
+.header {
+    font-size: 26;
+    margin: 8 16 0 16;
+}
+
+.subHeader {
+    font-size: 30;
+    margin: 0 16 8 16;
+}
+
+.detailsBorder {
+}
+
+.detailsContainer {
+    padding: 16 16 16 20;
+}
+
+.detailsIcon {
+    margin-right: 8;
+    vertical-align: center;
+}
+
+.notesLabel {
+    color: #55443B;
+    margin: 8 16 8 16;
+}
+
+.headerTextField {
+    font-size: 28;
+    margin: 32 16 0 16;
+}
+
+.pickerContainer {
+    margin: 0 4 0 4;
+}
+
+.pickerLabel {
+    color: #8F8F8F;
+    font-size: 14;
+    margin-bottom: 4;
+}
+
+.pickerValue {
+    margin: 0;
+}
+
+.pickerIcon {
+    vertical-align: center;
+}
+
+.pickerBorder {
+    background-color: #D1D1D1;
+    height: 1;
+}
+
+.innerContainer {
+}
+
+.detailsContainer {
+    padding: 8 16 8 16;
+}
+
+.notesTextView {
+    margin: 8 16 8 16;
+}
+
+.deleteButton {
+    background-color: #FF5252;
+    color: #FFFFFF;
+    margin: 0;
+    
 }
