@@ -26,14 +26,14 @@
           <Border borderWidth="1" borderColor="#EFE9DC" cssClass="detailsBorder" visibility="{{ task.DueDate || task.ReminderDate ? 'visible' : 'collapsed' }}">
             <StackLayout cssClass="detailsContainer" orientation="horizontal" visibility="{{ task.DueDate ? 'visible' : 'collapsed' }}">
               <Image src="res://ic_duedate" cssClass="detailsIcon" stretch="none" />
-              <Label text="{{ task.DueDate }}" col="1" />
+              <Label text="{{ task.DueDate | formatDueDate }}" col="1" />
             </StackLayout>
           </Border>
 
           <Border col="1" borderWidth="1" borderColor="#EFE9DC" cssClass="detailsBorder" visibility="{{ task.DueDate || task.ReminderDate ? 'visible' : 'collapsed' }}">
             <StackLayout cssClass="detailsContainer" orientation="horizontal" visibility="{{ task.ReminderDate ? 'visible' : 'collapsed' }}">
               <Image src="res://ic_reminder" cssClass="detailsIcon" stretch="none" />
-              <Label text="{{ task.Reminder }}" col="1" />
+              <Label text="{{ task | formatReminder }}" col="1" />
             </StackLayout>
           </Border>
 

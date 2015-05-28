@@ -3,6 +3,7 @@ exports.strings = {
     login: "LOGIN",
     signUp: "SIGN UP",
     save: "SAVE",
+    done: "DONE",
     delete: "DELETE",
     loginMessage: "Login with Tasks account",
     signUpMessage: "Sign up for an account",

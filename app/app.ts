@@ -4,21 +4,16 @@ import viewsModule = require("./utils/views");
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 applicationModule.resources = {
-    formatDate: function (date: Date): string {
-        return date.getDate() + " " + months[date.getMonth()] + ", " + date.getFullYear();
-    },
+    formatDate: formatDate,
 
-    formatTime: function (date: Date) {
-        var minutes = date.getMinutes().toString();
-        if (minutes.length === 1) {
-            minutes = "0" + date.getMinutes();
-        }
-
-        return date.getHours() + ":" + minutes;
-    },
+    formatTime: formatTime,
 
     formatReminder: function (task: any) {
         return "10 min before";
+    },
+
+    formatDueDate: function (dueDate: Date) {
+        return formatDate(dueDate) + ", " + formatTime(dueDate);
     },
 
     getStatusImage: function (task: any) {
@@ -28,6 +23,19 @@ applicationModule.resources = {
     getStatusFab: function (task: any) {
         return task.IsCompleted ? "res://fab_completed" : "res://fab_complete";
     }
+}
+
+function formatDate(date: Date): string {
+    return date.getDate() + " " + months[date.getMonth()] + ", " + date.getFullYear();
+}
+
+function formatTime(date: Date): string {
+    var minutes = date.getMinutes().toString();
+    if (minutes.length === 1) {
+        minutes = "0" + date.getMinutes();
+    }
+
+    return date.getHours() + ":" + minutes;
 }
 
 applicationModule.onLaunch = function (context: any) {

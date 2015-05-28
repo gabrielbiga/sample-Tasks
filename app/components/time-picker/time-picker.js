@@ -2,9 +2,11 @@ var viewModel;
 function navigatedTo(args) {
     var page = args.object;
     viewModel = page.navigationContext;
-    page.bindingContext = null;
     page.bindingContext = viewModel;
-    viewModel.loadPhoto();
 }
 exports.navigatedTo = navigatedTo;
-//# sourceMappingURL=view-task.js.map
+function doneMenuItemTap(args) {
+    viewModel.done();
+}
+exports.doneMenuItemTap = doneMenuItemTap;
+//# sourceMappingURL=time-picker.js.map

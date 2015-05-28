@@ -5,6 +5,11 @@ Page {
 Label {
     color: #55443B;
     font-size: 16;
+    vertical-align: center;
+}
+
+TextField, TextView {
+    margin: 0 16 0 16;
 }
 
 ActivityIndicator {
@@ -64,6 +69,10 @@ ActivityIndicator {
     vertical-align: center;
 }
 
+.detailsTextField {
+    margin: 0;
+}
+
 .notesLabel {
     color: #55443B;
     margin: 8 16 8 16;
@@ -112,5 +121,21 @@ ActivityIndicator {
     background-color: #FF5252;
     color: #FFFFFF;
     margin: 0;
-    
+}
+
+.primaryButton {
+    background-color: #259B24;
+    color: #FFFFFF;
+    margin: 10;
+}
+
+.secondaryButton {
+    color: #259B24;
+    background-color: #00FFFFFF;
+    margin: 10;
+}
+
+.logo {
+    horizontal-align: center;
+    margin-top: 40
 }

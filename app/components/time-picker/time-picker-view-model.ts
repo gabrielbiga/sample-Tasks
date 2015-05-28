@@ -10,7 +10,7 @@ export class TimePickerViewModel extends viewModelBaseModule.ViewModelBase {
         super();
 
         this.hour = selectedDate.getHours();
-        this.minute = selectedDate.getMinutes() + 1;
+        this.minute = selectedDate.getMinutes();
 
         this._selectedCallback = selectedCallback;
     }

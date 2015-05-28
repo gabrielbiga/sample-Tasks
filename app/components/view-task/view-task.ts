@@ -4,7 +4,8 @@ var viewModel: viewTaskViewModel.ViewTaskViewModel;
 export function navigatedTo(args) {
     var page = args.object;
     viewModel = page.navigationContext;
-    page.bindingContext = viewModel
+    page.bindingContext = null;
+    page.bindingContext = viewModel;
 
     viewModel.loadPhoto();
 }

@@ -4,10 +4,11 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+var cameraModule = require("camera");
 var editViewModelBaseModule = require("../common/edit-view-model-base");
 var notificationsModule = require("../../utils/notifications");
+var navigationModule = require("../../utils/navigation");
 var serviceModule = require("../../utils/service");
-var constantsModule = require("../../utils/constants");
 var EditTaskViewModel = (function (_super) {
     __extends(EditTaskViewModel, _super);
     function EditTaskViewModel(task) {
@@ -33,10 +34,6 @@ var EditTaskViewModel = (function (_super) {
         var item = _super.prototype.createItem.call(this);
         item.DueDate = new Date();
         item.ReminderDate = new Date();
-        item.Project = constantsModule.defaultProjectId;
-        item.Phone = "+359 555 55 555";
-        item.Email = "zlobcho@mail.bg";
-        item.Url = "telerik.com";
         return item;
     };
     EditTaskViewModel.prototype.addItem = function (item) {
@@ -49,6 +46,7 @@ var EditTaskViewModel = (function (_super) {
         return serviceModule.service.deleteTask(item);
     };
     EditTaskViewModel.prototype.takePicture = function () {
+        cameraModule.takePicture();
     };
     EditTaskViewModel.prototype.validate = function () {
         if (!this.item.Name || this.item.Name === "") {
@@ -56,6 +54,10 @@ var EditTaskViewModel = (function (_super) {
             return false;
         }
         return _super.prototype.validate.call(this);
+    };
+    EditTaskViewModel.prototype.onItemDeleted = function (item) {
+        _super.prototype.onItemDeleted.call(this, item);
+        navigationModule.goBack();
     };
     return EditTaskViewModel;
 })(editViewModelBaseModule.EditViewModelBase);

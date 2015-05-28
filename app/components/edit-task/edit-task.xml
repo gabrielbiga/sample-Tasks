@@ -1,11 +1,12 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+      navigatedTo="navigatedTo">
   <Page.optionsMenu>
-    <MenuItem text="{{ strings.save }}" tap="{{ logout }}" android.position="actionBar" />
+    <MenuItem text="{{ strings.save }}" tap="saveButtonTap" android.position="actionBar" />
   </Page.optionsMenu>
   <GridLayout rows="*, auto">
     <ScrollView>
       <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto, auto">
-        <TextField hint="Task name" text="{{ task.Name }}" cssClass="headerTextField"/>
+        <TextField hint="Task name" text="{{ item.Name }}" cssClass="headerTextField"/>
 
         <GridLayout row="1" cssClass="detailsContainer">
           <StackLayout cssClass="pickerContainer" tap="projectPickerTap" >
@@ -40,7 +41,7 @@
           </StackLayout>
         </GridLayout>
 
-        <GridLayout row="3" columns="auto, *" cssClass="detailsContainer">
+        <!--<GridLayout row="3" columns="auto, *" cssClass="detailsContainer">
           <Image src="res://ic_reminder" cssClass="detailsIcon" stretch="none"/>
 
           <StackLayout col="1" cssClass="pickerContainer" tap="reminderPickerTap" >
@@ -51,9 +52,9 @@
             </GridLayout>
             <Border cssClass="pickerBorder" />
           </StackLayout>
-        </GridLayout>
+        </GridLayout>-->
 
-        <GridLayout row="4" cssClass="detailsContainer" padding="8 16 8 16" columns="auto, *, auto" tap="takePictureButtonClick" >
+        <GridLayout row="4" cssClass="detailsContainer" padding="8 16 8 16" columns="auto, *, auto" tap="takePictureButtonTap" >
           <Image src="res://ic_photo" cssClass="detailsIcon" stretch="none"/>
           <Label text="Tap to add photo" col="1" margin="0 0 0 4" />
           <Image col="2" stretch="fill" cssClass="image" source="{{ picture }}" visibility="{{ picture ? 'visible' : 'collapsed' }}" />
@@ -61,24 +62,24 @@
 
         <GridLayout row="5" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_phone" cssClass="detailsIcon" stretch="none" />
-          <TextField keyboardType="number" hint="Contact phone" text="{{ item.Phone }}" col="1"/>
+          <TextField keyboardType="number" hint="Contact phone" text="{{ item.Phone }}" col="1" cssClass="detailsTextField" />
         </GridLayout>
 
         <GridLayout row="6" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_email" cssClass="detailsIcon" stretch="none" />
-          <TextField keyboardType="email" hint="Contact email" text="{{ item.Email }}" col="1"/>
+          <TextField keyboardType="email" hint="Contact email" text="{{ item.Email }}" col="1" cssClass="detailsTextField" />
         </GridLayout>
 
         <GridLayout row="7" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_url" cssClass="detailsIcon" stretch="none" width="24" height="24"/>
-          <TextField cssClass="label" hint="url" keyboardType="url" text="{{ item.Url }}" col="1"/>
+          <TextField cssClass="label" hint="url" keyboardType="url" text="{{ item.Url }}" col="1" cssClass="detailsTextField" />
         </GridLayout>
 
         <TextView row="8" hint="notes" text="{{ item.Notes }}" cssClass="notesTextView"/>
       </GridLayout>
     </ScrollView>
 
-    <Button text="{{ strings.delete }}" row="1" tap="{{ delete }}" cssClass="deleteButton"/>
+    <Button text="{{ strings.delete }}" row="1" tap="deleteButtonTap" cssClass="deleteButton" visibility="{{ editVisibility }}"/>
 
     <ActivityIndicator cssClass="activityIndicator" busy="{{ isLoading }}" />
   </GridLayout>

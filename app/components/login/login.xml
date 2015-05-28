@@ -2,9 +2,10 @@
   <GridLayout>
     <ScrollView>
       <StackLayout>
-        <Image src="res://login_logo" cssClass="logoImage" stretch="fill" />
+        <Image src="res://login_logo" cssClass="logo" stretch="none" />
 
-        <Label text="{{ strings.loginMessage }}" cssClass="header"/>
+        <Label text="{{ strings.loginMessage }}" margin="8 16 40 16" cssClass="header"/>
+        
         <TextField id="username" text="{{ username }}" hint="username" autocapitalizationType="none" />
         <TextField id="password" text="{{ password }}" secure="true" hint="password" />
 

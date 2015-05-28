@@ -2,12 +2,12 @@
 
 import pagesModule = require("ui/page");
 
-import datePickerViewModelModule = require("./date-picker-view-model");
+import timePickerViewModelModule = require("./time-picker-view-model");
 
-var viewModel: datePickerViewModelModule.DatePickerViewModel;
+var viewModel: timePickerViewModelModule.TimePickerViewModel;
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pagesModule.Page>args.object;
-    viewModel = <datePickerViewModelModule.DatePickerViewModel>page.navigationContext;
+    viewModel = <timePickerViewModelModule.TimePickerViewModel>page.navigationContext;
     page.bindingContext = viewModel;
 }
 

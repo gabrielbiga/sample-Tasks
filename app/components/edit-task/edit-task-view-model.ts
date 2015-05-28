@@ -4,6 +4,7 @@ import observableModule = require("data/observable");
 
 import editViewModelBaseModule = require("../common/edit-view-model-base");
 import notificationsModule = require("../../utils/notifications");
+import navigationModule = require("../../utils/navigation");
 import serviceModule = require("../../utils/service");
 import constantsModule = require("../../utils/constants");
 
@@ -34,10 +35,6 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
         var item = super.createItem();
         item.DueDate = new Date();
         item.ReminderDate = new Date();
-        item.Project = constantsModule.defaultProjectId;
-        item.Phone = "+359 555 55 555";
-        item.Email = "zlobcho@mail.bg";
-        item.Url = "telerik.com";
 
         return item;
     }
@@ -55,6 +52,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     }
 
     takePicture() {
+        cameraModule.takePicture();
     }
 
     validate(): boolean {
@@ -64,5 +62,10 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
         }
 
         return super.validate();
+    }
+
+    onItemDeleted(item: any) {
+        super.onItemDeleted(item);
+        navigationModule.goBack();
     }
 }

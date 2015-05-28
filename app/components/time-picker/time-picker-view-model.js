@@ -11,7 +11,7 @@ var TimePickerViewModel = (function (_super) {
     function TimePickerViewModel(selectedDate, selectedCallback) {
         _super.call(this);
         this.hour = selectedDate.getHours();
-        this.minute = selectedDate.getMinutes() + 1;
+        this.minute = selectedDate.getMinutes();
         this._selectedCallback = selectedCallback;
     }
     Object.defineProperty(TimePickerViewModel.prototype, "hour", {
