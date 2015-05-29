@@ -8,7 +8,6 @@ function navigatedTo(args) {
     viewModel = page.navigationContext;
     page.bindingContext = null;
     page.bindingContext = viewModel;
-    console.log("DUE DATE: " + viewModel.item.DueDate);
 }
 exports.navigatedTo = navigatedTo;
 function takePictureButtonTap() {

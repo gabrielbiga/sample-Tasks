@@ -1,4 +1,5 @@
 ﻿import applicationSettingsModule = require("application-settings");
+import imageSourceModule = require("image-source");
 
 import constantsModule = require("./constants");
 import notificationsModule = require("./notifications");
@@ -133,8 +134,27 @@ export class Service {
         });
     }
 
+    uploadPicture(picture: imageSourceModule.ImageSource): Promise<any> {
+        return new Promise<string>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            var file = {
+                "Filename": "NativeScriptIsAwesome.jpg",
+                "ContentType": "image/jpeg",
+                "base64": picture.toBase64String("JPEG", 100)
+            };
+
+            everlive.Files.create(file,
+                function (data) {
+                    resolve(data);
+                },
+                function (error) {
+                    Service.showErrorAndReject(error, reject);
+                });
+        });
+    }
+
     private createEverlive(): any {
-        if (!this._everlive) {
+                if(!this._everlive) {
             this._everlive = new everliveModule({
                 apiKey: constantsModule.telerikApiKey,
                 token: applicationSettingsModule.getString(constantsModule.authenticationTokenKey)
@@ -183,8 +203,8 @@ export class Service {
         query
             .where()
             .or()
-                .gte(DUE_DATE, date)
-                .eq(DUE_DATE, null)
+            .gte(DUE_DATE, date)
+            .eq(DUE_DATE, null)
             .done();
 
         return this.getTasks(query);

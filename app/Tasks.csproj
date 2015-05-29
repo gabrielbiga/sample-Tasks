@@ -372,7 +372,7 @@
     <TypeScriptCompile Include="components\login\login.ts" />
     <Content Include="components\edit-task\edit-task.xml" />
     <Content Include="components\login\login.xml" />
-    <Content Include="components\main\main.xml">
+    <Content Include="components\tasks\tasks.xml">
       <SubType>Designer</SubType>
     </Content>
     <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
@@ -392,8 +392,8 @@
     <TypeScriptCompile Include="components\common\edit-view-model-base.ts" />
     <TypeScriptCompile Include="components\common\view-model-base.ts" />
     <TypeScriptCompile Include="components\login\login-view-model.ts" />
-    <TypeScriptCompile Include="components\main\main-view-model.ts" />
-    <TypeScriptCompile Include="components\main\main.ts" />
+    <TypeScriptCompile Include="components\tasks\tasks-view-model.ts" />
+    <TypeScriptCompile Include="components\tasks\tasks.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="components\test\page1-view-model.ts" />
     <TypeScriptCompile Include="components\test\page1.ts" />
@@ -550,5 +550,8 @@
     <Content Include="tns_modules\ui\tool-bar\package.json" />
     <Content Include="tns_modules\ui\web-view\package.json" />
     <Content Include="tns_modules\xml\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="components\main\" />
   </ItemGroup>
 </Project>

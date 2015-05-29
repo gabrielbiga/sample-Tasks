@@ -1,6 +1,8 @@
 var Views;
 (function (Views) {
-    Views.main = "components/main/main";
+    Views.main = "components/tasks/tasks";
+    Views.tasks = "components/tasks/tasks";
+    Views.projects = "components/projects/projects";
     Views.login = "components/login/login";
     Views.signUp = "components/sign-up/sign-up";
     Views.viewTask = "components/view-task/view-task";

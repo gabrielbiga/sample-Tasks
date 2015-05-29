@@ -9,3 +9,15 @@ export function navigatedTo(args) {
 
     viewModel.loadPhoto();
 }
+
+export function editTaskButtonTap() {
+    viewModel.editTask();
+}
+
+export function deleteTaskButtonTap() {
+    viewModel.deleteTask();
+}
+
+export function completeTaskButtonTap() {
+    viewModel.completeTask();
+}

@@ -30,6 +30,19 @@ var EditTaskViewModel = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(EditTaskViewModel.prototype, "picture", {
+        get: function () {
+            return this._picture;
+        },
+        set: function (value) {
+            if (this._picture != value) {
+                this._picture = value;
+                this.notifyPropertyChanged("picture", value);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     EditTaskViewModel.prototype.createItem = function () {
         var item = _super.prototype.createItem.call(this);
         item.DueDate = new Date();
@@ -46,7 +59,10 @@ var EditTaskViewModel = (function (_super) {
         return serviceModule.service.deleteTask(item);
     };
     EditTaskViewModel.prototype.takePicture = function () {
-        cameraModule.takePicture();
+        var _this = this;
+        cameraModule.takePicture().then(function (picture) {
+            _this.picture = picture;
+        });
     };
     EditTaskViewModel.prototype.validate = function () {
         if (!this.item.Name || this.item.Name === "") {
@@ -54,6 +70,20 @@ var EditTaskViewModel = (function (_super) {
             return false;
         }
         return _super.prototype.validate.call(this);
+    };
+    EditTaskViewModel.prototype.onSaving = function (item) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            if (_this.picture) {
+                serviceModule.service.uploadPicture(_this.picture).then(function (data) {
+                    item.Photo = data.result.Id;
+                    resolve(false);
+                });
+            }
+            else {
+                resolve(false);
+            }
+        });
     };
     EditTaskViewModel.prototype.onItemDeleted = function (item) {
         _super.prototype.onItemDeleted.call(this, item);

@@ -121,6 +121,22 @@ var Service = (function () {
             });
         });
     };
+    Service.prototype.uploadPicture = function (picture) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            var file = {
+                "Filename": "NativeScriptIsAwesome.jpg",
+                "ContentType": "image/jpeg",
+                "base64": picture.toBase64String("JPEG", 100)
+            };
+            everlive.Files.create(file, function (data) {
+                resolve(data);
+            }, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    };
     Service.prototype.createEverlive = function () {
         if (!this._everlive) {
             this._everlive = new everliveModule({

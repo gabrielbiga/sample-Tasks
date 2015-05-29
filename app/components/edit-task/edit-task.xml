@@ -57,7 +57,7 @@
         <GridLayout row="4" cssClass="detailsContainer" padding="8 16 8 16" columns="auto, *, auto" tap="takePictureButtonTap" >
           <Image src="res://ic_photo" cssClass="detailsIcon" stretch="none"/>
           <Label text="Tap to add photo" col="1" margin="0 0 0 4" />
-          <Image col="2" stretch="fill" cssClass="image" source="{{ picture }}" visibility="{{ picture ? 'visible' : 'collapsed' }}" />
+          <Image col="2" stretch="fill" src="{{ picture }}" visibility="{{ picture ? 'visible' : 'collapsed' }}" cssClass="picturePreview" />
         </GridLayout>
 
         <GridLayout row="5" cssClass="detailsContainer" columns="auto, *" >
@@ -72,7 +72,7 @@
 
         <GridLayout row="7" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_url" cssClass="detailsIcon" stretch="none" width="24" height="24"/>
-          <TextField cssClass="label" hint="url" keyboardType="url" text="{{ item.Url }}" col="1" cssClass="detailsTextField" />
+          <TextField hint="url" keyboardType="url" text="{{ item.Url }}" col="1" cssClass="detailsTextField" />
         </GridLayout>
 
         <TextView row="8" hint="notes" text="{{ item.Notes }}" cssClass="notesTextView"/>

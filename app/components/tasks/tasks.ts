@@ -6,12 +6,12 @@ import frameModule = require("ui/frame");
 import pageModule = require("ui/page");
 import gesturesModule = require("ui/gestures");
 
-import mainViewModelModule = require("./main-view-model")
+import tasksViewModelModule = require("./tasks-view-model")
 import viewTaskViewModelModule = require("../view-task/view-task-view-model")
 import serviceModule = require("../../utils/service")
 import viewsModule = require("../../utils/views")
 
-var viewModel = new mainViewModelModule.MainViewModel();
+var viewModel = new tasksViewModelModule.TasksViewModel();
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pageModule.Page>args.object;
     page.bindingContext = viewModel;

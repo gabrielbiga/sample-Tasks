@@ -7,7 +7,7 @@ import navigationModule = require("../../utils/navigation");
 import serviceModule = require("../../utils/service");
 import viewsModule = require("../../utils/views");
 
-export class MainViewModel extends viewModelBaseModule.ViewModelBase {
+export class TasksViewModel extends viewModelBaseModule.ViewModelBase {
     private _tasks: Array<viewTaskViewModelModule.ViewTaskViewModel>;
     private _selectedDay: number;
 

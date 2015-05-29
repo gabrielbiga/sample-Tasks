@@ -6,6 +6,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var viewModelBaseModule = require("../common/view-model-base");
 var editTaskViewModelModule = require("../edit-task/edit-task-view-model");
+var notificationsModule = require("../../utils/notifications");
 var serviceModule = require("../../utils/service");
 var navigationModule = require("../../utils/navigation");
 var viewsModule = require("../../utils/views");
@@ -60,7 +61,7 @@ var ViewTaskViewModel = (function (_super) {
     });
     ViewTaskViewModel.prototype.loadPhoto = function () {
         var _this = this;
-        if (this.task.Photo && !this.pictureUrl) {
+        if (this.task.Photo) {
             this.beginLoading();
             serviceModule.service.getDownloadUrlFromId(this.task.Photo).then(function (url) {
                 _this.pictureUrl = url;
@@ -81,6 +82,18 @@ var ViewTaskViewModel = (function (_super) {
         });
     };
     ViewTaskViewModel.prototype.deleteTask = function () {
+        var _this = this;
+        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then(function (value) {
+            if (value) {
+                _this.beginLoading();
+                serviceModule.service.deleteTask(_this.task).then(function (data) {
+                    navigationModule.goBack();
+                    _this.endLoading();
+                }, function (error) {
+                    _this.endLoading();
+                });
+            }
+        });
     };
     ViewTaskViewModel.prototype.completeTask = function () {
         alert("This functionality will be implemented in the next version!");

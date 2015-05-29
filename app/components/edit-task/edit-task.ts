@@ -17,8 +17,6 @@ export function navigatedTo(args: observableModule.EventData) {
     viewModel = page.navigationContext;
     page.bindingContext = null;
     page.bindingContext = viewModel;
-
-    console.log("DUE DATE: " + viewModel.item.DueDate);
 }
 
 export function takePictureButtonTap() {

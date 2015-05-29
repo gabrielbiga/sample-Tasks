@@ -1,7 +1,7 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
   <Page.optionsMenu>
-    <MenuItem icon="ic_edit" tap="{{ editTask }}" android.position="actionBar" />
-    <MenuItem text="{{ strings.delete }}" tap="{{ deleteTask }}" android.position="popup" />
+    <MenuItem icon="ic_edit" tap="editTaskButtonTap" android.position="actionBar" />
+    <MenuItem text="{{ strings.delete }}" tap="deleteTaskButtonTap" android.position="popup" />
   </Page.optionsMenu>
   <GridLayout rows="*, auto">
     <ScrollView>
@@ -64,7 +64,7 @@
     </ScrollView>
 
     <AbsoluteLayout cssClass="fabContainer" >
-      <Image src="{{ task | getStatusFab }}" tap="{{ completeTask }}" cssClass="fab" />
+      <Image src="{{ task | getStatusFab }}" tap="completeTaskButtonTap" cssClass="fab" />
     </AbsoluteLayout>
 
     <ActivityIndicator rowSpan="2" cssClass="activityIndicator" busy="{{ isLoading }}"/>

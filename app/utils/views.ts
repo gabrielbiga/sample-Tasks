@@ -1,5 +1,7 @@
 ﻿export module Views {
-    export var main = "components/main/main";
+    export var main = "components/tasks/tasks";
+    export var tasks = "components/tasks/tasks";
+    export var projects = "components/projects/projects";
     export var login = "components/login/login";
     export var signUp = "components/sign-up/sign-up";
     export var viewTask = "components/view-task/view-task";

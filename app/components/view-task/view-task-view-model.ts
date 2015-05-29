@@ -57,7 +57,7 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     loadPhoto() {
-        if (this.task.Photo && !this.pictureUrl) {
+        if (this.task.Photo) {
             this.beginLoading();
             serviceModule.service.getDownloadUrlFromId(this.task.Photo).then(url => {
                 this.pictureUrl = url;
@@ -80,6 +80,17 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     deleteTask() {
+        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then((value: boolean) => {
+            if (value) {
+                this.beginLoading();
+                serviceModule.service.deleteTask(this.task).then((data) => {
+                    navigationModule.goBack();
+                    this.endLoading();
+                },(error) => {
+                        this.endLoading();
+                    });
+            }
+        });
     }
 
     completeTask() {

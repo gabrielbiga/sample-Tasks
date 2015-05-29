@@ -8,10 +8,10 @@ import navigationModule = require("../../utils/navigation");
 import serviceModule = require("../../utils/service");
 import constantsModule = require("../../utils/constants");
 
-export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase{
+export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase {
     private _project: any;
     private _picture: imageSourceModule.ImageSource;
-    
+
     constructor(task?: any) {
         super(task);
 
@@ -28,6 +28,17 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
         if (this._project !== value) {
             this._project = value;
             this.notifyPropertyChanged("project", value);
+        }
+    }
+
+    get picture(): imageSourceModule.ImageSource {
+        return this._picture;
+    }
+
+    set picture(value: imageSourceModule.ImageSource) {
+        if (this._picture != value) {
+            this._picture = value;
+            this.notifyPropertyChanged("picture", value);
         }
     }
 
@@ -52,7 +63,9 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     }
 
     takePicture() {
-        cameraModule.takePicture();
+        cameraModule.takePicture().then(picture => {
+            this.picture = picture;
+        });
     }
 
     validate(): boolean {
@@ -62,6 +75,20 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
         }
 
         return super.validate();
+    }
+
+    onSaving(item: any): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+            if (this.picture) {
+                serviceModule.service.uploadPicture(this.picture).then(data => {
+                    item.Photo = data.result.Id;
+                    resolve(false);
+                });
+            }
+            else {
+                resolve(false);
+            }
+        });
     }
 
     onItemDeleted(item: any) {

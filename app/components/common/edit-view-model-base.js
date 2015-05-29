@@ -59,14 +59,19 @@ var EditViewModelBase = (function (_super) {
         return {};
     };
     EditViewModelBase.prototype.save = function () {
+        var _this = this;
         if (this.validate()) {
             this.beginLoading();
-            if (this._isAdd) {
-                this.add();
-            }
-            else {
-                this.update();
-            }
+            this.onSaving(this.item).then(function (cancel) {
+                if (!cancel) {
+                    if (_this._isAdd) {
+                        _this.add();
+                    }
+                    else {
+                        _this.update();
+                    }
+                }
+            });
         }
     };
     EditViewModelBase.prototype.add = function () {
@@ -120,6 +125,10 @@ var EditViewModelBase = (function (_super) {
     };
     EditViewModelBase.prototype.onItemDeleted = function (item) {
         navigationModule.goBack();
+    };
+    EditViewModelBase.prototype.onSaving = function (item) {
+        return new Promise(function (resolve, reject) {
+        });
     };
     EditViewModelBase.clone = function (item) {
         var clone = {};

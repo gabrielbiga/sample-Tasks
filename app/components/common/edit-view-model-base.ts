@@ -58,12 +58,16 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     save() {
         if (this.validate()) {
             this.beginLoading();
-            if (this._isAdd) {
-                this.add();
-            }
-            else {
-                this.update();
-            }
+            this.onSaving(this.item).then(cancel => {
+                if (!cancel) {
+                    if (this._isAdd) {
+                        this.add();
+                    }
+                    else {
+                        this.update();
+                    }
+                }
+            });
         }
     }
 
@@ -123,6 +127,12 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
     onItemDeleted(item: any) {
         navigationModule.goBack();
+    }
+
+    onSaving(item: any): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject) => {
+
+        });
     }
 
     private static clone(item: any): any {

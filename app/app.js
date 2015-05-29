@@ -30,7 +30,7 @@ function formatTime(date) {
 applicationModule.onLaunch = function (context) {
     var serviceModule = require("./utils/service");
     if (serviceModule.service.isAuthenticated) {
-        applicationModule.mainModule = viewsModule.Views.main;
+        applicationModule.mainModule = viewsModule.Views.tasks;
     }
     else {
         applicationModule.mainModule = viewsModule.Views.login;

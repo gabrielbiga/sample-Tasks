@@ -139,3 +139,10 @@ ActivityIndicator {
     horizontal-align: center;
     margin-top: 40
 }
+
+.picturePreview {
+    width: 50;
+    height: 50;
+    horizontal-align: center;
+    vertical-align: center;
+}
