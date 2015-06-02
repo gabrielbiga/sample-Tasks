@@ -5,3 +5,7 @@
 .item {
     color: #000000;
 }
+
+.itemContainer {
+    padding: 16;
+}

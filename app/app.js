@@ -11,10 +11,16 @@ applicationModule.resources = {
         return formatDate(dueDate) + ", " + formatTime(dueDate);
     },
     formatTasksCount: function (tasksCount) {
+        if (tasksCount === undefined || isNaN(tasksCount)) {
+            return "";
+        }
         if (tasksCount === 0 || tasksCount > 1) {
             return tasksCount + " tasks";
         }
         return "1 task";
+    },
+    getProjectName: function (project) {
+        return project.Name;
     },
     getStatusImage: function (task) {
         return task.IsCompleted ? "res://ic_checkmark_checked" : "res://ic_checkmark";

@@ -7,7 +7,7 @@ export function navigatedTo(args) {
     page.bindingContext = null;
     page.bindingContext = viewModel;
 
-    viewModel.loadPhoto();
+    viewModel.refresh();
 }
 
 export function editTaskButtonTap() {

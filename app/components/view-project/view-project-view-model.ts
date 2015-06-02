@@ -47,7 +47,7 @@ export class ViewProjectViewModel extends viewModelBaseModule.ViewModelBase {
             return this.tasks.length
         }
 
-        return 0;
+        return undefined;
     }
 
     editProject() {

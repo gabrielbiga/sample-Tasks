@@ -2,12 +2,14 @@
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
   <Page.optionsMenu>
-    <MenuItem text="{{ resources.done }}" tap="doneMenuItemTap" android.position="actionBar" />
+    <MenuItem text="{{ strings.done }}" tap="doneMenuItemTap" android.position="actionBar" />
   </Page.optionsMenu>
   <GridLayout>
     <ListView items="{{ items }}" itemTap="itemTap" >
       <ListView.itemTemplate>
-        <Label text="{{ data.Title }}" cssClass="{{ isSelected ? 'item-selected' : 'item' }}" />
+        <GridLayout cssClass="itemContainer">
+          <Label text="{{ data.Name }}" cssClass="{{ isSelected ? 'item-selected' : 'item' }}" />
+        </GridLayout>
       </ListView.itemTemplate>
     </ListView>
 

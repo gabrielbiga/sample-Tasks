@@ -76,6 +76,17 @@ export class Service {
         });
     }
 
+    getProject(projectId: number): Promise<any> {
+        return new Promise<any[]>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(PROJECT).getById(projectId).then(data => {
+                resolve(data.result);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
     getOverdueTasks(): Promise<any[]> {
         var now = new Date();
         var start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);

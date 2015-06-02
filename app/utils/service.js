@@ -70,6 +70,17 @@ var Service = (function () {
             });
         });
     };
+    Service.prototype.getProject = function (projectId) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.data(PROJECT).getById(projectId).then(function (data) {
+                resolve(data.result);
+            }, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    };
     Service.prototype.getOverdueTasks = function () {
         var now = new Date();
         var start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);

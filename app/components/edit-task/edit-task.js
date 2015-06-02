@@ -1,7 +1,9 @@
 var datePickerViewModelModule = require("../date-picker/date-picker-view-model");
 var timePickerViewModelModule = require("../time-picker/time-picker-view-model");
+var listPickerViewModelModule = require("../list-picker/list-picker-view-model");
 var navigationModule = require("../../utils/navigation");
 var viewsModule = require("../../utils/views");
+var serviceModule = require("../../utils/service");
 var viewModel;
 function navigatedTo(args) {
     var page = args.object;
@@ -15,6 +17,14 @@ function takePictureButtonTap() {
 }
 exports.takePictureButtonTap = takePictureButtonTap;
 function projectPickerTap() {
+    navigationModule.navigate({
+        moduleName: viewsModule.Views.listPicker,
+        context: new listPickerViewModelModule.ListPickerViewModel(function () {
+            return serviceModule.service.getProjects();
+        }, viewModel.project, function (selectedItem) {
+            viewModel.project = selectedItem;
+        })
+    });
 }
 exports.projectPickerTap = projectPickerTap;
 function datePickerTap() {

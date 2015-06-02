@@ -15,9 +15,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     constructor(task?: any) {
         super(task);
 
-        this.project = {
-            Name: "To do"
-        };
+        this.loadProject();
     }
 
     get project(): any {
@@ -95,5 +93,17 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     onItemDeleted(item: any) {
         super.onItemDeleted(item);
         navigationModule.goBack();
+    }
+
+    loadProject() {
+        if (this.item.Project) {
+            this.beginLoading();
+            serviceModule.service.getProject(this.item.Project).then(project => {
+                this.project = project;
+                this.endLoading();
+            }, error => {
+                    this.endLoading();
+                });
+        }
     }
 }

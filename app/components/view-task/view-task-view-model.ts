@@ -16,11 +16,9 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
         super();
 
         this.task = task;
-        this.project = {
-            Name: "To do"
-        };
-
         this.pictureUrl = null;
+
+        this.loadProject();
     }
 
     get task(): any {
@@ -56,18 +54,6 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
         }
     }
 
-    loadPhoto() {
-        if (this.task.Photo) {
-            this.beginLoading();
-            serviceModule.service.getDownloadUrlFromId(this.task.Photo).then(url => {
-                this.pictureUrl = url;
-                this.endLoading();
-            }, error => {
-                    this.endLoading();
-                });
-        }
-    }
-
     editTask() {
         /*
         * This is how you pass and argument to the next page.
@@ -96,4 +82,33 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     completeTask() {
         alert("This functionality will be implemented in the next version!")
     }
-} 
+
+    refresh() {
+        this.loadPhoto();
+        this.loadProject();
+    }
+
+    loadPhoto() {
+        if (this.task.Photo) {
+            this.beginLoading();
+            serviceModule.service.getDownloadUrlFromId(this.task.Photo).then(url => {
+                this.pictureUrl = url;
+                this.endLoading();
+            }, error => {
+                    this.endLoading();
+                });
+        }
+    }
+
+    loadProject() {
+        if (this.task.Project) {
+            this.beginLoading();
+            serviceModule.service.getProject(this.task.Project).then(project => {
+                this.project = project;
+                this.endLoading();
+            }, error => {
+                    this.endLoading();
+                });
+        }
+    }
+}

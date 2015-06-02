@@ -17,11 +17,19 @@ applicationModule.resources = {
     },
 
     formatTasksCount: function (tasksCount: number) {
+        if (tasksCount === undefined || isNaN(tasksCount)) {
+            return "";
+        }
+
         if (tasksCount === 0 || tasksCount > 1) {
             return tasksCount + " tasks";
         }
 
         return "1 task";
+    },
+
+    getProjectName: function (project: any) {
+        return project.Name;
     },
 
     getStatusImage: function (task: any) {

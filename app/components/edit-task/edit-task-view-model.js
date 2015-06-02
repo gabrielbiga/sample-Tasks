@@ -13,9 +13,7 @@ var EditTaskViewModel = (function (_super) {
     __extends(EditTaskViewModel, _super);
     function EditTaskViewModel(task) {
         _super.call(this, task);
-        this.project = {
-            Name: "To do"
-        };
+        this.loadProject();
     }
     Object.defineProperty(EditTaskViewModel.prototype, "project", {
         get: function () {
@@ -89,6 +87,18 @@ var EditTaskViewModel = (function (_super) {
     EditTaskViewModel.prototype.onItemDeleted = function (item) {
         _super.prototype.onItemDeleted.call(this, item);
         navigationModule.goBack();
+    };
+    EditTaskViewModel.prototype.loadProject = function () {
+        var _this = this;
+        if (this.item.Project) {
+            this.beginLoading();
+            serviceModule.service.getProject(this.item.Project).then(function (project) {
+                _this.project = project;
+                _this.endLoading();
+            }, function (error) {
+                _this.endLoading();
+            });
+        }
     };
     return EditTaskViewModel;
 })(editViewModelBaseModule.EditViewModelBase);

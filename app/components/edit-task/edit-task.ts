@@ -10,6 +10,7 @@ import listPickerViewModelModule = require("../list-picker/list-picker-view-mode
 
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import serviceModule = require("../../utils/service");
 
 var viewModel: editTaskViewModelModule.EditTaskViewModel;
 export function navigatedTo(args: observableModule.EventData) {
@@ -24,6 +25,12 @@ export function takePictureButtonTap() {
 } 
 
 export function projectPickerTap() {
+    navigationModule.navigate({
+        moduleName: viewsModule.Views.listPicker,
+        context: new listPickerViewModelModule.ListPickerViewModel(() => { return serviceModule.service.getProjects(); }, viewModel.project, (selectedItem: any) => {
+            viewModel.project = selectedItem;
+        })
+    });
 }
 
 export function datePickerTap() {

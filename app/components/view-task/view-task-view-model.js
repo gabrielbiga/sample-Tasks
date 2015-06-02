@@ -15,10 +15,8 @@ var ViewTaskViewModel = (function (_super) {
     function ViewTaskViewModel(task) {
         _super.call(this);
         this.task = task;
-        this.project = {
-            Name: "To do"
-        };
         this.pictureUrl = null;
+        this.loadProject();
     }
     Object.defineProperty(ViewTaskViewModel.prototype, "task", {
         get: function () {
@@ -59,18 +57,6 @@ var ViewTaskViewModel = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    ViewTaskViewModel.prototype.loadPhoto = function () {
-        var _this = this;
-        if (this.task.Photo) {
-            this.beginLoading();
-            serviceModule.service.getDownloadUrlFromId(this.task.Photo).then(function (url) {
-                _this.pictureUrl = url;
-                _this.endLoading();
-            }, function (error) {
-                _this.endLoading();
-            });
-        }
-    };
     ViewTaskViewModel.prototype.editTask = function () {
         /*
         * This is how you pass and argument to the next page.
@@ -97,6 +83,34 @@ var ViewTaskViewModel = (function (_super) {
     };
     ViewTaskViewModel.prototype.completeTask = function () {
         alert("This functionality will be implemented in the next version!");
+    };
+    ViewTaskViewModel.prototype.refresh = function () {
+        this.loadPhoto();
+        this.loadProject();
+    };
+    ViewTaskViewModel.prototype.loadPhoto = function () {
+        var _this = this;
+        if (this.task.Photo) {
+            this.beginLoading();
+            serviceModule.service.getDownloadUrlFromId(this.task.Photo).then(function (url) {
+                _this.pictureUrl = url;
+                _this.endLoading();
+            }, function (error) {
+                _this.endLoading();
+            });
+        }
+    };
+    ViewTaskViewModel.prototype.loadProject = function () {
+        var _this = this;
+        if (this.task.Project) {
+            this.beginLoading();
+            serviceModule.service.getProject(this.task.Project).then(function (project) {
+                _this.project = project;
+                _this.endLoading();
+            }, function (error) {
+                _this.endLoading();
+            });
+        }
     };
     return ViewTaskViewModel;
 })(viewModelBaseModule.ViewModelBase);

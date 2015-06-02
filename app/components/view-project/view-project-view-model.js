@@ -50,7 +50,7 @@ var ViewProjectViewModel = (function (_super) {
             if (this.tasks) {
                 return this.tasks.length;
             }
-            return 0;
+            return undefined;
         },
         enumerable: true,
         configurable: true
