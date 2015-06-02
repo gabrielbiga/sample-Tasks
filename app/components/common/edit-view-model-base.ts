@@ -60,35 +60,18 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
             this.beginLoading();
             this.onSaving(this.item).then(cancel => {
                 if (!cancel) {
-                    if (this._isAdd) {
-                        this.add();
-                    }
-                    else {
-                        this.update();
-                    }
+                    var method = this._isAdd ? this.add : this.update;
+                    method.call(this).then(item => {
+                        this.onSaved(this.item).then(result => {
+                            this.endLoading();
+                        });
+                    });
+                }
+                else {
+                    this.endLoading();
                 }
             });
         }
-    }
-
-    add() {
-        this.addItem(this.item).then((data) => {
-            this.item.Id = data.result.Id;
-            this.onItemAdded(this.item);
-            this.endLoading();
-        }, error => {
-                this.endLoading();
-            });
-    }
-
-    update() {
-        this.updateItem(this.item).then((data) => {
-            EditViewModelBase.copy(this.item, this._originalItem);
-            this.endLoading();
-            navigationModule.goBack();
-        }, error => {
-                this.endLoading();
-            });
     }
 
     del() {
@@ -131,7 +114,13 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
     onSaving(item: any): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
+            resolve(false);
+        });
+    }
 
+    onSaved(item: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            resolve({});
         });
     }
 
@@ -148,5 +137,25 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
                 toItem[prop] = fromItem[prop];
             }
         }
+    }
+
+    add(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            this.addItem(this.item).then((data) => {
+                this.item.Id = data.result.Id;
+                this.onItemAdded(this.item);
+                resolve(this.item);
+            }, reject);
+        });
+    }
+
+    update() {
+        return new Promise<any>((resolve, reject) => {
+            this.updateItem(this.item).then((data) => {
+                EditViewModelBase.copy(this.item, this._originalItem);
+                navigationModule.goBack();
+                resolve(this.item);
+            }, reject);
+        });
     }
 } 

@@ -24,7 +24,6 @@ var EditTaskViewModel = (function (_super) {
         set: function (value) {
             if (this._project !== value) {
                 this._project = value;
-                this.item.Project = this.project.Id;
                 this.notifyPropertyChanged("project", value);
             }
         },

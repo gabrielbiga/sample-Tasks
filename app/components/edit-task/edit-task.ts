@@ -34,9 +34,7 @@ export function datePickerTap() {
             date.setDate(day);
             date.setMonth(month);
             date.setFullYear(year);
-
             viewModel.item.DueDate = date;
-            console.log("DUE DATE: " + viewModel.item.DueDate);
         })
     });
 }
@@ -48,10 +46,7 @@ export function timePickerTap() {
             var date = <Date>viewModel.item.DueDate;
             date.setHours(hour);
             date.setMinutes(minute);
-
             viewModel.item.DueDate = date;
-            console.log("DUE DATE: " + viewModel.item.DueDate);
-            console.log("HOUR: " + hour + ":" + minute);
         })
     });
 }

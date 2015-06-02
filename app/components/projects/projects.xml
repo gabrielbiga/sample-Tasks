@@ -1,0 +1,29 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
+  <Page.optionsMenu>
+    <MenuItem text="{{ strings.logout }}" tap="{{ logout }}" android.position="popup" />
+  </Page.optionsMenu>
+  <GridLayout>
+    <ListView items="{{ projects }}" itemTap="listViewItemTap" row="1" cssClass="listView">
+      <ListView.itemTemplate>
+        <StackLayout cssClass="listViewItem">
+          <Label text="{{ project.Name }}" cssClass="listViewItemLabel" textWrap="true" />
+          <Label cssClass="listViewItemHeader" >
+            <Label.formattedText>
+              <FormattedString>
+                <FormattedString.spans>
+                  <Span text="{{ tasksCount | formatTasksCount }}" fontAttributes="Bold, Italic" />
+                </FormattedString.spans>
+              </FormattedString>
+            </Label.formattedText>
+          </Label>
+        </StackLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+    <AbsoluteLayout cssClass="fabContainer" >
+      <Image src="res://fab_add" tap="{{ addProject }}" cssClass="fab" />
+    </AbsoluteLayout>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

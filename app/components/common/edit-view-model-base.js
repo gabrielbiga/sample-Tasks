@@ -64,35 +64,18 @@ var EditViewModelBase = (function (_super) {
             this.beginLoading();
             this.onSaving(this.item).then(function (cancel) {
                 if (!cancel) {
-                    if (_this._isAdd) {
-                        _this.add();
-                    }
-                    else {
-                        _this.update();
-                    }
+                    var method = _this._isAdd ? _this.add : _this.update;
+                    method.call(_this).then(function (item) {
+                        _this.onSaved(_this.item).then(function (result) {
+                            _this.endLoading();
+                        });
+                    });
+                }
+                else {
+                    _this.endLoading();
                 }
             });
         }
-    };
-    EditViewModelBase.prototype.add = function () {
-        var _this = this;
-        this.addItem(this.item).then(function (data) {
-            _this.item.Id = data.result.Id;
-            _this.onItemAdded(_this.item);
-            _this.endLoading();
-        }, function (error) {
-            _this.endLoading();
-        });
-    };
-    EditViewModelBase.prototype.update = function () {
-        var _this = this;
-        this.updateItem(this.item).then(function (data) {
-            EditViewModelBase.copy(_this.item, _this._originalItem);
-            _this.endLoading();
-            navigationModule.goBack();
-        }, function (error) {
-            _this.endLoading();
-        });
     };
     EditViewModelBase.prototype.del = function () {
         var _this = this;
@@ -128,6 +111,12 @@ var EditViewModelBase = (function (_super) {
     };
     EditViewModelBase.prototype.onSaving = function (item) {
         return new Promise(function (resolve, reject) {
+            resolve(false);
+        });
+    };
+    EditViewModelBase.prototype.onSaved = function (item) {
+        return new Promise(function (resolve, reject) {
+            resolve({});
         });
     };
     EditViewModelBase.clone = function (item) {
@@ -141,6 +130,26 @@ var EditViewModelBase = (function (_super) {
                 toItem[prop] = fromItem[prop];
             }
         }
+    };
+    EditViewModelBase.prototype.add = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.addItem(_this.item).then(function (data) {
+                _this.item.Id = data.result.Id;
+                _this.onItemAdded(_this.item);
+                resolve(_this.item);
+            }, reject);
+        });
+    };
+    EditViewModelBase.prototype.update = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.updateItem(_this.item).then(function (data) {
+                EditViewModelBase.copy(_this.item, _this._originalItem);
+                navigationModule.goBack();
+                resolve(_this.item);
+            }, reject);
+        });
     };
     return EditViewModelBase;
 })(viewModelBaseModule.ViewModelBase);

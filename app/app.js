@@ -10,6 +10,12 @@ applicationModule.resources = {
     formatDueDate: function (dueDate) {
         return formatDate(dueDate) + ", " + formatTime(dueDate);
     },
+    formatTasksCount: function (tasksCount) {
+        if (tasksCount === 0 || tasksCount > 1) {
+            return tasksCount + " tasks";
+        }
+        return "1 task";
+    },
     getStatusImage: function (task) {
         return task.IsCompleted ? "res://ic_checkmark_checked" : "res://ic_checkmark";
     },
@@ -30,7 +36,7 @@ function formatTime(date) {
 applicationModule.onLaunch = function (context) {
     var serviceModule = require("./utils/service");
     if (serviceModule.service.isAuthenticated) {
-        applicationModule.mainModule = viewsModule.Views.tasks;
+        applicationModule.mainModule = viewsModule.Views.projects;
     }
     else {
         applicationModule.mainModule = viewsModule.Views.login;

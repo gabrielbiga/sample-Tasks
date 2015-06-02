@@ -7,6 +7,7 @@ import notificationsModule = require("./notifications");
 var everliveModule = require("../lib/everlive");
 
 var TASK = "Task";
+var PROJECT = "Project";
 var DUE_DATE = "DueDate";
 
 export class Service {
@@ -14,6 +15,10 @@ export class Service {
 
     get isAuthenticated(): boolean {
         return applicationSettingsModule.hasKey(constantsModule.authenticationTokenKey);
+    }
+
+    isDefaultProject(project: any): boolean {
+        return false;
     }
 
     login(username: string, password: string): Promise<any> {
@@ -60,6 +65,17 @@ export class Service {
         }
     }
 
+    getProjects(): Promise<any[]> {
+        return new Promise<any[]>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(PROJECT).get().then(data => {
+                resolve(<any[]>data.result);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
     getOverdueTasks(): Promise<any[]> {
         var now = new Date();
         var start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
@@ -94,41 +110,47 @@ export class Service {
         return this.getTasksAfter(date);
     }
 
+    getTasksByProject(project: any): Promise<any[]> {
+        var query = new everliveModule.Query();
+        query
+            .where()
+            .eq(PROJECT, project.Id)
+
+        return this.getTasks(query);
+
+    }
+
     createTask(task: any): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            var everlive = this.createEverlive();
-            everlive.data(TASK).create(task, resolve, error => {
-                Service.showErrorAndReject(error, reject);
-            })
-        });
+        return this.createItem(TASK, task);
     }
 
     updateTask(task: any): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            var everlive = this.createEverlive();
-            everlive.data(TASK).updateSingle(task, resolve, error => {
-                Service.showErrorAndReject(error, reject);
-            })
-        });
+        return this.updateItem(TASK, task);
     }
 
     deleteTask(task: any): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            var everlive = this.createEverlive();
-            everlive.data(TASK).destroySingle({ Id: task.Id }, resolve, error => {
-                Service.showErrorAndReject(error, reject);
-            })
-        });
+        return this.deleteItem(TASK, task);
+    }
+
+    createProject(project: any): Promise<any> {
+        console.log("CREATE PROJECT");
+        return this.createItem(PROJECT, project);
+    }
+
+    updateProject(project: any): Promise<any> {
+        return this.updateItem(PROJECT, project);
+    }
+
+    deleteProject(project: any): Promise<any> {
+        return this.deleteItem(PROJECT, project);
     }
 
     getDownloadUrlFromId(fileId: any): Promise<string> {
         return new Promise<string>((resolve, reject) => {
             var everlive = this.createEverlive();
             everlive.Files.getDownloadUrlById(fileId).then(url => {
-                console.log("READY: " + url);
                 resolve(url);
             }, error => {
-                    console.log("INNER ERROR: ");
                     Service.showErrorAndReject(error, reject);
                 });
         });
@@ -154,7 +176,7 @@ export class Service {
     }
 
     private createEverlive(): any {
-                if(!this._everlive) {
+        if (!this._everlive) {
             this._everlive = new everliveModule({
                 apiKey: constantsModule.telerikApiKey,
                 token: applicationSettingsModule.getString(constantsModule.authenticationTokenKey)
@@ -218,6 +240,35 @@ export class Service {
             }, error => {
                     Service.showErrorAndReject(error, reject);
                 })
+        });
+    }
+
+    private createItem(dataName: string, item: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(dataName).create(item, result => {
+                resolve(result);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
+    private updateItem(dataName: string, item: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(dataName).updateSingle(item, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            })
+        });
+    }
+
+    private deleteItem(dataName: string, item: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(dataName).destroySingle({ Id: item.Id }, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            })
         });
     }
 }

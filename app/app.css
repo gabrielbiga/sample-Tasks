@@ -39,7 +39,7 @@ ActivityIndicator {
 }
 
 .fab {
-    margin: 0 16 28 0;
+    margin: 0 16 28 16;
 }
 
 .fabContainer {
@@ -145,4 +145,20 @@ ActivityIndicator {
     height: 50;
     horizontal-align: center;
     vertical-align: center;
+}
+
+.headerBorder {
+    background-color: #CDDC39;
+    margin-bottom: 30;
+}
+
+.fabHeader {
+    font-size: 30;
+    margin: 16 16 16 80;
+}
+
+.upperFabContainer {
+    vertical-align: top;
+    horizontal-align: left;
+    margin-top: -60;
 }

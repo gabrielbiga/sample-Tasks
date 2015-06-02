@@ -3,6 +3,7 @@ var constantsModule = require("./constants");
 var notificationsModule = require("./notifications");
 var everliveModule = require("../lib/everlive");
 var TASK = "Task";
+var PROJECT = "Project";
 var DUE_DATE = "DueDate";
 var Service = (function () {
     function Service() {
@@ -14,6 +15,9 @@ var Service = (function () {
         enumerable: true,
         configurable: true
     });
+    Service.prototype.isDefaultProject = function (project) {
+        return false;
+    };
     Service.prototype.login = function (username, password) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -55,6 +59,17 @@ var Service = (function () {
             this._everlive = null;
         }
     };
+    Service.prototype.getProjects = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.data(PROJECT).get().then(function (data) {
+                resolve(data.result);
+            }, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    };
     Service.prototype.getOverdueTasks = function () {
         var now = new Date();
         var start = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
@@ -81,42 +96,37 @@ var Service = (function () {
         date.setDate(date.getDate() + 2);
         return this.getTasksAfter(date);
     };
+    Service.prototype.getTasksByProject = function (project) {
+        var query = new everliveModule.Query();
+        query.where().eq(PROJECT, project.Id);
+        return this.getTasks(query);
+    };
     Service.prototype.createTask = function (task) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var everlive = _this.createEverlive();
-            everlive.data(TASK).create(task, resolve, function (error) {
-                Service.showErrorAndReject(error, reject);
-            });
-        });
+        return this.createItem(TASK, task);
     };
     Service.prototype.updateTask = function (task) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var everlive = _this.createEverlive();
-            everlive.data(TASK).updateSingle(task, resolve, function (error) {
-                Service.showErrorAndReject(error, reject);
-            });
-        });
+        return this.updateItem(TASK, task);
     };
     Service.prototype.deleteTask = function (task) {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var everlive = _this.createEverlive();
-            everlive.data(TASK).destroySingle({ Id: task.Id }, resolve, function (error) {
-                Service.showErrorAndReject(error, reject);
-            });
-        });
+        return this.deleteItem(TASK, task);
+    };
+    Service.prototype.createProject = function (project) {
+        console.log("CREATE PROJECT");
+        return this.createItem(PROJECT, project);
+    };
+    Service.prototype.updateProject = function (project) {
+        return this.updateItem(PROJECT, project);
+    };
+    Service.prototype.deleteProject = function (project) {
+        return this.deleteItem(PROJECT, project);
     };
     Service.prototype.getDownloadUrlFromId = function (fileId) {
         var _this = this;
         return new Promise(function (resolve, reject) {
             var everlive = _this.createEverlive();
             everlive.Files.getDownloadUrlById(fileId).then(function (url) {
-                console.log("READY: " + url);
                 resolve(url);
             }, function (error) {
-                console.log("INNER ERROR: ");
                 Service.showErrorAndReject(error, reject);
             });
         });
@@ -178,6 +188,35 @@ var Service = (function () {
             everlive.data(TASK).get(query).then(function (data) {
                 resolve(data.result);
             }, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    };
+    Service.prototype.createItem = function (dataName, item) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.data(dataName).create(item, function (result) {
+                resolve(result);
+            }, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    };
+    Service.prototype.updateItem = function (dataName, item) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.data(dataName).updateSingle(item, resolve, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    };
+    Service.prototype.deleteItem = function (dataName, item) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.data(dataName).destroySingle({ Id: item.Id }, resolve, function (error) {
                 Service.showErrorAndReject(error, reject);
             });
         });

@@ -27,6 +27,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     set project(value: any) {
         if (this._project !== value) {
             this._project = value;
+            this.item.Project = this.project.Id;
             this.notifyPropertyChanged("project", value);
         }
     }
