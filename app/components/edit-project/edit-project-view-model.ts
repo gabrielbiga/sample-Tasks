@@ -9,27 +9,19 @@ import serviceModule = require("../../utils/service");
 import constantsModule = require("../../utils/constants");
 
 export class EditProjectViewModel extends editViewModelBaseModule.EditViewModelBase {
-    private _isDefault: boolean;
-
     constructor(project?: any) {
         super(project);
-
-        this.isDefault = serviceModule.service.isDefaultProject(project);
     }
 
-    get isDefault(): boolean {
-        return this._isDefault;
+    get deleteHeader(): string {
+        return constantsModule.deleteProjectMessage;
     }
 
-    set isDefault(value: boolean) {
-        if (this._isDefault != value) {
-            this._isDefault = value;
-            this.notifyPropertyChanged("isDefault", value);
-        }
+    get deleteMessage(): string {
+        return constantsModule.deleteProjectMessage;
     }
 
     addItem(item: any): Promise<any> {
-        console.log("ADD PROJECT");
         return serviceModule.service.createProject(item);
     }
 

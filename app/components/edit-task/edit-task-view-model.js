@@ -9,6 +9,7 @@ var editViewModelBaseModule = require("../common/edit-view-model-base");
 var notificationsModule = require("../../utils/notifications");
 var navigationModule = require("../../utils/navigation");
 var serviceModule = require("../../utils/service");
+var constantsModule = require("../../utils/constants");
 var EditTaskViewModel = (function (_super) {
     __extends(EditTaskViewModel, _super);
     function EditTaskViewModel(task) {
@@ -38,6 +39,20 @@ var EditTaskViewModel = (function (_super) {
                 this._picture = value;
                 this.notifyPropertyChanged("picture", value);
             }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EditTaskViewModel.prototype, "deleteHeader", {
+        get: function () {
+            return constantsModule.deleteTaskHeader;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EditTaskViewModel.prototype, "deleteMessage", {
+        get: function () {
+            return constantsModule.deleteTaskMessage;
         },
         enumerable: true,
         configurable: true

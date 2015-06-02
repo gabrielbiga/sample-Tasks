@@ -20,7 +20,7 @@
               <Label.formattedText>
                 <FormattedString>
                   <FormattedString.spans>
-                    <Span text="{{ project.Name }}" fontAttributes="Bold, Italic" />
+                    <Span text="{{ project | getProjectName }}" fontAttributes="Bold, Italic" />
                   </FormattedString.spans>
                 </FormattedString>
               </Label.formattedText>

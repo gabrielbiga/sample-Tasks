@@ -10,6 +10,7 @@ var notificationsModule = require("../../utils/notifications");
 var serviceModule = require("../../utils/service");
 var navigationModule = require("../../utils/navigation");
 var viewsModule = require("../../utils/views");
+var constantsModule = require("../../utils/constants");
 var ViewTaskViewModel = (function (_super) {
     __extends(ViewTaskViewModel, _super);
     function ViewTaskViewModel(task) {
@@ -69,7 +70,7 @@ var ViewTaskViewModel = (function (_super) {
     };
     ViewTaskViewModel.prototype.deleteTask = function () {
         var _this = this;
-        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then(function (value) {
+        notificationsModule.confirm(constantsModule.deleteTaskHeader, constantsModule.deleteTaskMessage).then(function (value) {
             if (value) {
                 _this.beginLoading();
                 serviceModule.service.deleteTask(_this.task).then(function (data) {

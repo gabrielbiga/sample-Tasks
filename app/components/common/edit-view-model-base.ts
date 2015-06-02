@@ -51,6 +51,14 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
         return enumsModule.Visibility.visible;
     }
 
+    get deleteMessage(): string {
+        return "Do you want to delete the item?";
+    }
+
+    get deleteHeader(): string {
+        return "Delete Item";
+    }
+
     createItem(): any {
         return {};
     }
@@ -75,7 +83,7 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     }
 
     del() {
-        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then((value: boolean) => {
+        notificationsModule.confirm(this.deleteHeader, this.deleteMessage).then((value: boolean) => {
             if (value) {
                 this.beginLoading();
                 this.deleteItem(this.item).then((data) => {

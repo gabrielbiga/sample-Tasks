@@ -17,10 +17,6 @@ export class Service {
         return applicationSettingsModule.hasKey(constantsModule.authenticationTokenKey);
     }
 
-    isDefaultProject(project: any): boolean {
-        return false;
-    }
-
     login(username: string, password: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             var everlive = new everliveModule(constantsModule.telerikApiKey);
@@ -144,7 +140,6 @@ export class Service {
     }
 
     createProject(project: any): Promise<any> {
-        console.log("CREATE PROJECT");
         return this.createItem(PROJECT, project);
     }
 
@@ -153,7 +148,14 @@ export class Service {
     }
 
     deleteProject(project: any): Promise<any> {
-        return this.deleteItem(PROJECT, project);
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(TASK).destroy({ Project: project.Id }, data => {
+                this.deleteItem(PROJECT, project).then(resolve, reject);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
     }
 
     getDownloadUrlFromId(fileId: any): Promise<string> {

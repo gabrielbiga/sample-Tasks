@@ -6,6 +6,7 @@ import notificationsModule = require("../../utils/notifications");
 import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import constantsModule = require("../../utils/constants");
 
 export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     private _project: any;
@@ -66,7 +67,7 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     deleteTask() {
-        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then((value: boolean) => {
+        notificationsModule.confirm(constantsModule.deleteTaskHeader, constantsModule.deleteTaskMessage).then((value: boolean) => {
             if (value) {
                 this.beginLoading();
                 serviceModule.service.deleteTask(this.task).then((data) => {

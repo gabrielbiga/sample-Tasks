@@ -17,7 +17,7 @@ var ListPickerViewModel = (function (_super) {
             var listItems = new Array();
             for (var i = 0; i < items.length; i++) {
                 var listItem = new ListItem(items[i]);
-                if (items[i].Id === selectedItem.Id) {
+                if (selectedItem && items[i].Id === selectedItem.Id) {
                     _this.selectItem(listItem);
                 }
                 listItems.push(listItem);

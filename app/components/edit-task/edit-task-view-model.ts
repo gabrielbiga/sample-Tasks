@@ -41,6 +41,14 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
         }
     }
 
+    get deleteHeader(): string {
+        return constantsModule.deleteTaskHeader;
+    }
+
+    get deleteMessage(): string {
+        return constantsModule.deleteTaskMessage;
+    }
+
     createItem(): any {
         var item = super.createItem();
         item.DueDate = new Date();

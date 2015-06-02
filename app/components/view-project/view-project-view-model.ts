@@ -8,6 +8,7 @@ import notificationsModule = require("../../utils/notifications");
 import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import constantsModule = require("../../utils/constants");
 
 export class ViewProjectViewModel extends viewModelBaseModule.ViewModelBase {
     private _project: any;
@@ -58,7 +59,7 @@ export class ViewProjectViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     deleteProject() {
-        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then((value: boolean) => {
+        notificationsModule.confirm(constantsModule.deleteProjectHeader, constantsModule.deleteProjectMessage).then((value: boolean) => {
             if (value) {
                 this.beginLoading();
                 serviceModule.service.deleteProject(this.project).then((data) => {

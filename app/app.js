@@ -19,8 +19,17 @@ applicationModule.resources = {
         }
         return "1 task";
     },
+    getProjectNameForProjectsPicker: function (project) {
+        if (project) {
+            return project.Name;
+        }
+        return "Select project";
+    },
     getProjectName: function (project) {
-        return project.Name;
+        if (project) {
+            return project.Name;
+        }
+        return "Default";
     },
     getStatusImage: function (task) {
         return task.IsCompleted ? "res://ic_checkmark_checked" : "res://ic_checkmark";
@@ -42,7 +51,7 @@ function formatTime(date) {
 applicationModule.onLaunch = function (context) {
     var serviceModule = require("./utils/service");
     if (serviceModule.service.isAuthenticated) {
-        applicationModule.mainModule = viewsModule.Views.projects;
+        applicationModule.mainModule = viewsModule.Views.tasks;
     }
     else {
         applicationModule.mainModule = viewsModule.Views.login;

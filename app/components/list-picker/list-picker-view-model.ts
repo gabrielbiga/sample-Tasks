@@ -17,7 +17,7 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
             var listItems = new Array<ListItem>();
             for (var i = 0; i < items.length; i++) {
                 var listItem = new ListItem(items[i]);
-                if (items[i].Id === selectedItem.Id) {
+                if (selectedItem && items[i].Id === selectedItem.Id) {
                     this.selectItem(listItem);
                 }
 

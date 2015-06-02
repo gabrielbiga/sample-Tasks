@@ -55,6 +55,20 @@ var EditViewModelBase = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(EditViewModelBase.prototype, "deleteMessage", {
+        get: function () {
+            return "Do you want to delete the item?";
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EditViewModelBase.prototype, "deleteHeader", {
+        get: function () {
+            return "Delete Item";
+        },
+        enumerable: true,
+        configurable: true
+    });
     EditViewModelBase.prototype.createItem = function () {
         return {};
     };
@@ -79,7 +93,7 @@ var EditViewModelBase = (function (_super) {
     };
     EditViewModelBase.prototype.del = function () {
         var _this = this;
-        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then(function (value) {
+        notificationsModule.confirm(this.deleteHeader, this.deleteMessage).then(function (value) {
             if (value) {
                 _this.beginLoading();
                 _this.deleteItem(_this.item).then(function (data) {

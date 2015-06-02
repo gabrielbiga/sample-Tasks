@@ -12,6 +12,7 @@ var notificationsModule = require("../../utils/notifications");
 var serviceModule = require("../../utils/service");
 var navigationModule = require("../../utils/navigation");
 var viewsModule = require("../../utils/views");
+var constantsModule = require("../../utils/constants");
 var ViewProjectViewModel = (function (_super) {
     __extends(ViewProjectViewModel, _super);
     function ViewProjectViewModel(project) {
@@ -63,7 +64,7 @@ var ViewProjectViewModel = (function (_super) {
     };
     ViewProjectViewModel.prototype.deleteProject = function () {
         var _this = this;
-        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then(function (value) {
+        notificationsModule.confirm(constantsModule.deleteProjectHeader, constantsModule.deleteProjectMessage).then(function (value) {
             if (value) {
                 _this.beginLoading();
                 serviceModule.service.deleteProject(_this.project).then(function (data) {

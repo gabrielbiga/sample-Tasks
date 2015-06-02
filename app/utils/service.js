@@ -15,9 +15,6 @@ var Service = (function () {
         enumerable: true,
         configurable: true
     });
-    Service.prototype.isDefaultProject = function (project) {
-        return false;
-    };
     Service.prototype.login = function (username, password) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -122,14 +119,21 @@ var Service = (function () {
         return this.deleteItem(TASK, task);
     };
     Service.prototype.createProject = function (project) {
-        console.log("CREATE PROJECT");
         return this.createItem(PROJECT, project);
     };
     Service.prototype.updateProject = function (project) {
         return this.updateItem(PROJECT, project);
     };
     Service.prototype.deleteProject = function (project) {
-        return this.deleteItem(PROJECT, project);
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.data(TASK).destroy({ Project: project.Id }, function (data) {
+                _this.deleteItem(PROJECT, project).then(resolve, reject);
+            }, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
     };
     Service.prototype.getDownloadUrlFromId = function (fileId) {
         var _this = this;

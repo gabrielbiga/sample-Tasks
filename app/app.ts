@@ -28,8 +28,20 @@ applicationModule.resources = {
         return "1 task";
     },
 
+    getProjectNameForProjectsPicker: function (project: any) {
+        if (project) {
+            return project.Name;
+        }
+
+        return "Select project";
+    },
+
     getProjectName: function (project: any) {
-        return project.Name;
+        if (project) {
+            return project.Name;
+        }
+
+        return "Default";
     },
 
     getStatusImage: function (task: any) {
@@ -57,7 +69,7 @@ function formatTime(date: Date): string {
 applicationModule.onLaunch = function (context: any) {
     var serviceModule = require("./utils/service");
     if (serviceModule.service.isAuthenticated) {
-        applicationModule.mainModule = viewsModule.Views.projects;
+        applicationModule.mainModule = viewsModule.Views.tasks;
     }
     else {
         applicationModule.mainModule = viewsModule.Views.login;

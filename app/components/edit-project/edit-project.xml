@@ -7,12 +7,6 @@
     <ScrollView>
       <GridLayout rows="auto, auto">
         <TextField hint="Project name" text="{{ item.Name }}" cssClass="headerTextField"/>
-
-        <GridLayout row="1" columns="*, auto" cssClass="detailsContainer">
-          <Label text="{{ strings.isDefault }}" />
-          <Switch col="1" checked="{{ isDefault }}"/>
-        </GridLayout>
-        
       </GridLayout>
     </ScrollView>
 

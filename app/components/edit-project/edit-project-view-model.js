@@ -8,27 +8,27 @@ var editViewModelBaseModule = require("../common/edit-view-model-base");
 var notificationsModule = require("../../utils/notifications");
 var navigationModule = require("../../utils/navigation");
 var serviceModule = require("../../utils/service");
+var constantsModule = require("../../utils/constants");
 var EditProjectViewModel = (function (_super) {
     __extends(EditProjectViewModel, _super);
     function EditProjectViewModel(project) {
         _super.call(this, project);
-        this.isDefault = serviceModule.service.isDefaultProject(project);
     }
-    Object.defineProperty(EditProjectViewModel.prototype, "isDefault", {
+    Object.defineProperty(EditProjectViewModel.prototype, "deleteHeader", {
         get: function () {
-            return this._isDefault;
+            return constantsModule.deleteProjectMessage;
         },
-        set: function (value) {
-            if (this._isDefault != value) {
-                this._isDefault = value;
-                this.notifyPropertyChanged("isDefault", value);
-            }
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(EditProjectViewModel.prototype, "deleteMessage", {
+        get: function () {
+            return constantsModule.deleteProjectMessage;
         },
         enumerable: true,
         configurable: true
     });
     EditProjectViewModel.prototype.addItem = function (item) {
-        console.log("ADD PROJECT");
         return serviceModule.service.createProject(item);
     };
     EditProjectViewModel.prototype.updateItem = function (item) {
