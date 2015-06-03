@@ -107,22 +107,22 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     private validate(): boolean {
-        if (this.name === "") {
+        if (!this.name || this.name === "") {
             this.showError("Please enter your name.");
             return false;
         }
 
-        if (this.email == "") {
+        if (!this.email || this.email == "") {
             this.showError("Please enter your email.");
             return false;
         }
 
-        if (this.username == "") {
+        if (!this.username || this.username == "") {
             this.showError("Please enter username.");
             return false;
         }
 
-        if (this.password == "") {
+        if (!this.password || this.password == "") {
             this.showError("Please enter password.");
             return false;
         }

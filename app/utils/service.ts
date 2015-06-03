@@ -63,8 +63,10 @@ export class Service {
 
     getProjects(): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
+            var query = new everliveModule.Query();
+            query.order("Name");
             var everlive = this.createEverlive();
-            everlive.data(PROJECT).get().then(data => {
+            everlive.data(PROJECT).get(query).then(data => {
                 resolve(<any[]>data.result);
             }, error => {
                     Service.showErrorAndReject(error, reject);
@@ -247,6 +249,7 @@ export class Service {
 
     private getTasks(query: any): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
+            query.order("Name");
             var everlive = this.createEverlive();
             everlive.data(TASK).get(query).then(data => {
                 resolve(<any[]>data.result);

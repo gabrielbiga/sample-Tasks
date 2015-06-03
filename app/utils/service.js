@@ -59,8 +59,10 @@ var Service = (function () {
     Service.prototype.getProjects = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
+            var query = new everliveModule.Query();
+            query.order("Name");
             var everlive = _this.createEverlive();
-            everlive.data(PROJECT).get().then(function (data) {
+            everlive.data(PROJECT).get(query).then(function (data) {
                 resolve(data.result);
             }, function (error) {
                 Service.showErrorAndReject(error, reject);
@@ -199,6 +201,7 @@ var Service = (function () {
     Service.prototype.getTasks = function (query) {
         var _this = this;
         return new Promise(function (resolve, reject) {
+            query.order("Name");
             var everlive = _this.createEverlive();
             everlive.data(TASK).get(query).then(function (data) {
                 resolve(data.result);

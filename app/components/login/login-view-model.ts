@@ -64,12 +64,12 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     private validate(): boolean {
-        if (this.username === "") {
+        if (!this.username || this.username === "") {
             this.showError("Please enter username.");
             return false;
         }
 
-        if (this.password === "") {
+        if (!this.password || this.password === "") {
             this.showError("Please enter password.");
             return false;
         }

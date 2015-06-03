@@ -83,7 +83,15 @@ var ViewTaskViewModel = (function (_super) {
         });
     };
     ViewTaskViewModel.prototype.completeTask = function () {
-        alert("This functionality will be implemented in the next version!");
+        var _this = this;
+        this.task.IsCompleted = !this.task.IsCompleted;
+        this.task.CompletionDate = this.task.IsCompleted ? new Date() : null;
+        this.beginLoading();
+        serviceModule.service.updateTask(this.task).then(function (data) {
+            _this.endLoading();
+        }, function (error) {
+            _this.endLoading();
+        });
     };
     ViewTaskViewModel.prototype.refresh = function () {
         this.loadPhoto();

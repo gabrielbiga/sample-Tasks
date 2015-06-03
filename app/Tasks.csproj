@@ -180,6 +180,9 @@
     <Content Include="App_Resources\iOS\Icon-Small-50.png" />
     <Content Include="App_Resources\iOS\Icon-Small.png" />
     <Content Include="App_Resources\iOS\icon.png" />
+    <Content Include="components\edit-profile\edit-profile.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="components\edit-project\edit-project.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -369,6 +372,8 @@
     <Content Include="tns_modules\utils\utils.android.js" />
     <Content Include="tns_modules\utils\utils.ios.js" />
     <Content Include="tns_modules\xml\xml.js" />
+    <TypeScriptCompile Include="components\edit-profile\edit-profile-view-model.ts" />
+    <TypeScriptCompile Include="components\edit-profile\edit-profile.ts" />
     <TypeScriptCompile Include="components\edit-project\edit-project-view-model.ts" />
     <TypeScriptCompile Include="components\edit-project\edit-project.ts" />
     <TypeScriptCompile Include="components\projects\projects-view-model.ts" />

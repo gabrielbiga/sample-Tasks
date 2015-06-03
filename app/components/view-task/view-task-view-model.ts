@@ -81,7 +81,15 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     completeTask() {
-        alert("This functionality will be implemented in the next version!")
+        this.task.IsCompleted = !this.task.IsCompleted;
+        this.task.CompletionDate = this.task.IsCompleted ? new Date() : null;
+        
+        this.beginLoading()
+        serviceModule.service.updateTask(this.task).then(data => {
+            this.endLoading();
+        }, error => {
+                this.endLoading();
+            });
     }
 
     refresh() {
