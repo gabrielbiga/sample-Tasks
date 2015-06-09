@@ -1,5 +1,7 @@
 import observableArrayModule = require("data/observable-array");
 
+import listViewModule = require("ui/list-view");
+
 import viewModelBaseModule = require("../common/view-model-base");
 import viewTaskViewModelModule = require("../view-task/view-task-view-model");
 import editTaskViewModelModule = require("../edit-task/edit-task-view-model");
@@ -47,10 +49,10 @@ export class TasksViewModel extends viewModelBaseModule.ViewModelBase {
         });
     }
 
-    viewTask(viewTaskViewModel: any) {
+    viewTask(args: listViewModule.ItemEventData) {
         navigationModule.navigate({
             moduleName: viewsModule.Views.viewTask,
-            context: viewTaskViewModel
+            context: args.view.bindingContext
         });
     }
 

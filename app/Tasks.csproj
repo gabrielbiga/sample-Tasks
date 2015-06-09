@@ -74,7 +74,8 @@
     </PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
+    <Content Include="app.android.css" />
+    <Content Include="app.ios.css" />
     <Content Include="App_Resources\Android\drawable-hdpi\fab_add.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\fab_complete.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\fab_completed.png" />
@@ -165,6 +166,21 @@
     <Content Include="App_Resources\Android\values\colors.xml" />
     <Content Include="App_Resources\Android\values\strings.xml" />
     <Content Include="App_Resources\Android\values\styles.xml" />
+    <Content Include="App_Resources\iOS\add-icon%402x.png" />
+    <Content Include="App_Resources\iOS\add-icon%403x.png" />
+    <Content Include="App_Resources\iOS\add-icon.png" />
+    <Content Include="App_Resources\iOS\arrow-right-icon%402x.png" />
+    <Content Include="App_Resources\iOS\arrow-right-icon%403x.png" />
+    <Content Include="App_Resources\iOS\arrow-right-icon.png" />
+    <Content Include="App_Resources\iOS\back-icon%402x.png" />
+    <Content Include="App_Resources\iOS\back-icon%403x.png" />
+    <Content Include="App_Resources\iOS\back-icon.png" />
+    <Content Include="App_Resources\iOS\ic_checkmark%402x.png" />
+    <Content Include="App_Resources\iOS\ic_checkmark%403x.png" />
+    <Content Include="App_Resources\iOS\ic_checkmark.png" />
+    <Content Include="App_Resources\iOS\ic_checkmark_checked%402x.png" />
+    <Content Include="App_Resources\iOS\ic_checkmark_checked%403x.png" />
+    <Content Include="App_Resources\iOS\ic_checkmark_checked.png" />
     <Content Include="App_Resources\iOS\Default%402x.png" />
     <Content Include="App_Resources\iOS\Default-568h%402x.png" />
     <Content Include="App_Resources\iOS\Default-Landscape%402x.png" />
@@ -187,12 +203,46 @@
     <Content Include="App_Resources\iOS\Icon-Small.png" />
     <Content Include="App_Resources\iOS\icon.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\profile_picture.png" />
+    <Content Include="App_Resources\iOS\ic_close%402.png" />
+    <Content Include="App_Resources\iOS\ic_close%403.png" />
+    <Content Include="App_Resources\iOS\ic_close.png" />
+    <Content Include="App_Resources\iOS\ic_duedate%402.png" />
+    <Content Include="App_Resources\iOS\ic_duedate%403.png" />
+    <Content Include="App_Resources\iOS\ic_duedate.png" />
+    <Content Include="App_Resources\iOS\ic_edit%402.png" />
+    <Content Include="App_Resources\iOS\ic_edit%403.png" />
+    <Content Include="App_Resources\iOS\ic_edit.png" />
+    <Content Include="App_Resources\iOS\ic_email%402.png" />
+    <Content Include="App_Resources\iOS\ic_email%403.png" />
+    <Content Include="App_Resources\iOS\ic_email.png" />
+    <Content Include="App_Resources\iOS\ic_phone%402.png" />
+    <Content Include="App_Resources\iOS\ic_phone%403.png" />
+    <Content Include="App_Resources\iOS\ic_phone.png" />
+    <Content Include="App_Resources\iOS\ic_photo%402.png" />
+    <Content Include="App_Resources\iOS\ic_photo%403.png" />
+    <Content Include="App_Resources\iOS\ic_photo.png" />
+    <Content Include="App_Resources\iOS\ic_reminder%402.png" />
+    <Content Include="App_Resources\iOS\ic_reminder%403.png" />
+    <Content Include="App_Resources\iOS\ic_reminder.png" />
+    <Content Include="App_Resources\iOS\ic_url%402.png" />
+    <Content Include="App_Resources\iOS\ic_url%403.png" />
+    <Content Include="App_Resources\iOS\ic_url.png" />
+    <Content Include="App_Resources\iOS\login_logo%402.png" />
+    <Content Include="App_Resources\iOS\login_logo%403.png" />
+    <Content Include="App_Resources\iOS\login_logo.png" />
+    <Content Include="App_Resources\iOS\profile_picture%402.png" />
+    <Content Include="App_Resources\iOS\profile_picture%403.png" />
+    <Content Include="App_Resources\iOS\profile_picture.png" />
     <Content Include="components\edit-profile\edit-profile.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\edit-project\edit-project.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="components\edit-task\due-date-picker.ios.xml" />
+    <Content Include="components\edit-task\due-date-picker.android.xml" />
+    <Content Include="components\edit-task\project-picker.ios.xml" />
+    <Content Include="components\edit-task\project-picker.android.xml" />
     <Content Include="components\main\main.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -200,11 +250,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\tasks\tasks.xml" />
-    <Content Include="components\time-picker\time-picker.css" />
     <Content Include="components\time-picker\time-picker.xml" />
-    <Content Include="components\date-picker\date-picker.css" />
     <Content Include="components\date-picker\date-picker.xml" />
     <Content Include="components\list-picker\list-picker.xml" />
+    <Content Include="components\view-task\view-task-diff.android.xml" />
+    <Content Include="components\view-task\view-task-diff.ios.xml" />
     <Content Include="components\view-task\view-task.xml" />
     <Content Include="tns_modules\application-settings\application-settings-common.js" />
     <Content Include="tns_modules\application-settings\application-settings.android.js" />
@@ -426,10 +476,6 @@
     <TypeScriptCompile Include="components\view-task\view-task-view-model.ts" />
     <TypeScriptCompile Include="components\view-project\view-project.ts" />
     <TypeScriptCompile Include="components\view-task\view-task.ts" />
-    <TypeScriptCompile Include="controls\sidedrawer\sideDrawer-common.ts" />
-    <TypeScriptCompile Include="controls\sidedrawer\sidedrawer.android.ts" />
-    <TypeScriptCompile Include="controls\sidedrawer\sideDrawer.d.ts" />
-    <TypeScriptCompile Include="controls\sidedrawer\sideDrawer.ios.ts" />
     <TypeScriptCompile Include="resources\strings.android.ts" />
     <TypeScriptCompile Include="resources\strings.ios.ts" />
     <TypeScriptCompile Include="tns_modules\android17.d.ts" />
@@ -581,8 +627,5 @@
     <Content Include="tns_modules\ui\tool-bar\package.json" />
     <Content Include="tns_modules\ui\web-view\package.json" />
     <Content Include="tns_modules\xml\package.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="controls\sidedrawer\package.json" />
   </ItemGroup>
 </Project>

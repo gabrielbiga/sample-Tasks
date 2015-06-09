@@ -19,6 +19,18 @@ applicationModule.resources = {
         }
         return "1 task";
     },
+    formatDateForPicker: function (date) {
+        if (date) {
+            return formatDate(date);
+        }
+        return "Select date";
+    },
+    formatTimeForPicker: function (date) {
+        if (date) {
+            return formatTime(date);
+        }
+        return "Select time";
+    },
     getProjectNameForProjectsPicker: function (project) {
         if (project) {
             return project.Name;

@@ -1,0 +1,15 @@
+<GridLayout row="1" rows="auto, auto" columns="auto, *">
+  <Image rowSpan="2" src="{{ task | getStatusImage }}" stretch="none" tap="{{ completeTask }}" cssClass="listViewItemIcon"/>
+
+  <Label row="0" col="1" cssClass="header">
+    <Label.formattedText>
+      <FormattedString>
+        <FormattedString.spans>
+          <Span text="{{  project | getProjectName(task.Project) }}" fontAttributes="Bold, Italic" />
+        </FormattedString.spans>
+      </FormattedString>
+    </Label.formattedText>
+  </Label>
+
+  <Label row="1" col="1" text="{{ task.Name }}" cssClass="subHeader" textWrap="true"/>
+</GridLayout>

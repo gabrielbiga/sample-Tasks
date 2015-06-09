@@ -1,4 +1,4 @@
-Page {
+Page, ListView {
     background-color: #F7F4ED;
 }
 
@@ -17,12 +17,18 @@ ActivityIndicator {
     vertical-align: center;
 }
 
+.segmentedBarContainer {
+    background-color: #CDDC39;
+    padding: 12;
+}
+
 .segmentedBar {
     background-color: #CDDC39;
 }
 
 .listViewItem {
     padding: 16 16 16 30;
+    background-color: #F7F4ED;
 }
 
 .listViewItemHeader {
@@ -36,6 +42,11 @@ ActivityIndicator {
 .listViewItemIcon {
     vertical-align: center;
     margin-right: 16;
+}
+
+.completeTaskIcon {
+    vertical-align: center;
+    margin-left: 16;
 }
 
 .fab {
@@ -95,6 +106,7 @@ ActivityIndicator {
 
 .pickerValue {
     margin: 0;
+    horizontal-align: right;
 }
 
 .pickerIcon {
@@ -120,7 +132,8 @@ ActivityIndicator {
 .deleteButton {
     background-color: #FF5252;
     color: #FFFFFF;
-    margin: 0;
+    margin: 8;
+    height: 44;
 }
 
 .primaryButton {
@@ -179,7 +192,7 @@ ActivityIndicator {
 
 .sideDrawerHeader {
     background-color: #FAC950;
-    padding: 16 0 16 0;
+    padding: 32 0 16 0;
     margin-bottom: 8;
 }
 
@@ -194,6 +207,7 @@ ActivityIndicator {
 
 .itemContainer {
     padding: 16;
+    background-color: #F7F4ED;
 }
 
 .itemContainer-selected {

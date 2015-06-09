@@ -28,6 +28,22 @@ applicationModule.resources = {
         return "1 task";
     },
 
+    formatDateForPicker: function (date: Date) {
+        if (date) {
+            return formatDate(date);
+        }
+
+        return "Select date";
+    },
+
+    formatTimeForPicker: function (date: Date) {
+        if (date) {
+            return formatTime(date);
+        }
+
+        return "Select time";
+    },
+
     getProjectNameForProjectsPicker: function (project: any) {
         if (project) {
             return project.Name;

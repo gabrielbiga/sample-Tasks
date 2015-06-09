@@ -49,10 +49,10 @@ var TasksViewModel = (function (_super) {
             context: new editTaskViewModelModule.EditTaskViewModel()
         });
     };
-    TasksViewModel.prototype.viewTask = function (viewTaskViewModel) {
+    TasksViewModel.prototype.viewTask = function (args) {
         navigationModule.navigate({
             moduleName: viewsModule.Views.viewTask,
-            context: viewTaskViewModel
+            context: args.view.bindingContext
         });
     };
     TasksViewModel.prototype.logout = function () {

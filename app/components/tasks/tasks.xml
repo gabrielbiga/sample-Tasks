@@ -1,17 +1,20 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
   <Page.optionsMenu>
-    <MenuItem text="{{ strings.logout }}" tap="{{ logout }}" android.position="popup" />
+    <MenuItem icon="ic_add" tap="{{ addTask }}" android.position="actionBar" />
   </Page.optionsMenu>
-  <GridLayout rows="auto, *, auto">
-    <SegmentedBar selectedBackgroundColor="#259B24" selectedIndex="{{ selectedDay }}" cssClass="segmentedBar">
-      <SegmentedBar.items>
-        <SegmentedBarItem title="Overdue" />
-        <SegmentedBarItem title="Today" />
-        <SegmentedBarItem title="Tomorrow" />
-        <SegmentedBarItem title="Next" />
-      </SegmentedBar.items>
-    </SegmentedBar>
-    <ListView items="{{ tasks }}" itemTap="listViewItemTap" row="1" cssClass="listView">
+  <GridLayout rows="auto, *">
+    <GridLayout cssClass="segmentedBarContainer">
+      <SegmentedBar android:selectedBackgroundColor="#259B24" ios:selectedBackgroundColor="#554E4A" selectedIndex="{{ selectedDay }}" cssClass="segmentedBar">
+        <SegmentedBar.items>
+          <SegmentedBarItem title="Overdue" />
+          <SegmentedBarItem title="Today" />
+          <SegmentedBarItem title="Tomorrow" />
+          <SegmentedBarItem title="Next" />
+        </SegmentedBar.items>
+      </SegmentedBar>
+    </GridLayout>
+    
+    <ListView items="{{ tasks }}" itemTap="{{ viewTask }}" row="1" cssClass="listView">
       <ListView.itemTemplate>
         <StackLayout orientation="horizontal" cssClass="listViewItem">
           <Image src="{{ task | getStatusImage }}" stretch="none" tap="completeTaskButtonTap" cssClass="listViewItemIcon"/>
@@ -35,6 +38,6 @@
       <Image src="res://fab_add" tap="{{ addTask }}" cssClass="fab" />
     </AbsoluteLayout>
 
-    <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>

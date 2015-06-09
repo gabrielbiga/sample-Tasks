@@ -12,7 +12,7 @@
       <Label bindingContext="{{ user }}" text="{{ Email }}" cssClass="sideDrawerLabel" />
     </StackLayout>
 
-    <ListView row="1" items="{{ views.items }}" itemTap="viewTap">
+    <ListView row="1" items="{{ views.items }}" itemTap="viewTap" >
       <ListView.itemTemplate>
         <GridLayout cssClass="{{ isSelected ? 'itemContainer-selected' : 'itemContainer' }}">
           <Label text="{{ data.Name }}" />
