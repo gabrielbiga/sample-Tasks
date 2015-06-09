@@ -12,6 +12,10 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
     constructor(getItemsFunction: () => Promise<any[]>, selectedItem: any, selectedCallback: (selectedItem: any) => void) {
         super();
 
+
+        this._selectedCallback = selectedCallback;
+        this.items = [];
+
         this.beginLoading();
         getItemsFunction().then((items) => {
             var listItems = new Array<ListItem>();
@@ -30,8 +34,6 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
                 this.endLoading();
             });
 
-        this._selectedCallback = selectedCallback;
-        this.items = [];
     }
 
     get items(): ListItem[] {

@@ -36,9 +36,14 @@ applicationModule.resources = {
         return "Select project";
     },
 
-    getProjectName: function (project: any) {
-        if (project) {
-            return project.Name;
+    getProjectName: function (project: any, projectId: any) {
+        if (projectId) {
+            if (project) {
+                return project.Name;
+            }
+            else {
+                return "";
+            }
         }
 
         return "Default";
@@ -69,7 +74,7 @@ function formatTime(date: Date): string {
 applicationModule.onLaunch = function (context: any) {
     var serviceModule = require("./utils/service");
     if (serviceModule.service.isAuthenticated) {
-        applicationModule.mainModule = viewsModule.Views.tasks;
+        applicationModule.mainModule = viewsModule.Views.main;
     }
     else {
         applicationModule.mainModule = viewsModule.Views.login;

@@ -43,17 +43,6 @@ export class Service {
         });
     }
 
-    getCurrentUser(): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            var everlive = this.createEverlive();
-            everlive.Users.currentUser().then((data) => {
-                resolve(data.result);
-            }, error => {
-                    Service.showErrorAndReject(error, reject);
-                })
-        });
-    }
-
     clearEverlive() {
         if (this._everlive) {
             //this._everlive.offlineStorage.purgeAll();
@@ -149,6 +138,35 @@ export class Service {
         return this.updateItem(PROJECT, project);
     }
 
+    getCurrentUser(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.Users.currentUser().then((data) => {
+                resolve(data.result);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
+    updateUser(user: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.Users.updateSingle(user, resolve, error => {
+                Service.showErrorAndReject(error, reject)
+            });
+        });
+    }
+
+    changeUserPassword(username: string, oldPassword: string, newPassword: string): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.Users.changePassword(username, oldPassword, newPassword, true, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    }
+
     deleteProject(project: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             var everlive = this.createEverlive();
@@ -156,7 +174,7 @@ export class Service {
                 this.deleteItem(PROJECT, project).then(resolve, reject);
             }, error => {
                     Service.showErrorAndReject(error, reject);
-                })
+                });
         });
     }
 

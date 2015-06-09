@@ -14,7 +14,7 @@
           <Label.formattedText>
             <FormattedString>
               <FormattedString.spans>
-                <Span text="{{ project | getProjectName }}" fontAttributes="Bold, Italic" />
+                <Span text="{{  project | getProjectName(task.Project) }}" fontAttributes="Bold, Italic" />
               </FormattedString.spans>
             </FormattedString>
           </Label.formattedText>

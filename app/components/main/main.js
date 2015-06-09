@@ -1,19 +1,25 @@
 var mainViewModelModule = require("./main-view-model");
+var navigationModule = require("../../utils/navigation");
 var viewModel = new mainViewModelModule.MainViewModel();
 function navigatedTo(args) {
     var page = args.object;
+    page.bindingContext = null;
     page.bindingContext = viewModel;
-    viewModel.refresh();
 }
 exports.navigatedTo = navigatedTo;
-function listViewItemTap(args) {
-    viewModel.viewTask(args.view.bindingContext);
-}
-exports.listViewItemTap = listViewItemTap;
-function completeTaskButtonTap(args) {
+function viewTap(args) {
     var view = args.view;
-    var viewTaskViewModel = view.bindingContext;
-    viewTaskViewModel.completeTask();
+    viewModel.views.selectItem(view.bindingContext);
+    var data = view.bindingContext.data;
+    navigationModule.navigate(data.View);
 }
-exports.completeTaskButtonTap = completeTaskButtonTap;
+exports.viewTap = viewTap;
+function editProfileButtonTap() {
+    viewModel.editProfile();
+}
+exports.editProfileButtonTap = editProfileButtonTap;
+function logoutButtonTap() {
+    viewModel.logout();
+}
+exports.logoutButtonTap = logoutButtonTap;
 //# sourceMappingURL=main.js.map

@@ -12,6 +12,8 @@ var ListPickerViewModel = (function (_super) {
     function ListPickerViewModel(getItemsFunction, selectedItem, selectedCallback) {
         var _this = this;
         _super.call(this);
+        this._selectedCallback = selectedCallback;
+        this.items = [];
         this.beginLoading();
         getItemsFunction().then(function (items) {
             var listItems = new Array();
@@ -27,8 +29,6 @@ var ListPickerViewModel = (function (_super) {
         }, function (error) {
             _this.endLoading();
         });
-        this._selectedCallback = selectedCallback;
-        this.items = [];
     }
     Object.defineProperty(ListPickerViewModel.prototype, "items", {
         get: function () {

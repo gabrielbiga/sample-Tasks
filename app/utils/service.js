@@ -39,17 +39,6 @@ var Service = (function () {
             });
         });
     };
-    Service.prototype.getCurrentUser = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var everlive = _this.createEverlive();
-            everlive.Users.currentUser().then(function (data) {
-                resolve(data.result);
-            }, function (error) {
-                Service.showErrorAndReject(error, reject);
-            });
-        });
-    };
     Service.prototype.clearEverlive = function () {
         if (this._everlive) {
             //this._everlive.offlineStorage.purgeAll();
@@ -125,6 +114,35 @@ var Service = (function () {
     };
     Service.prototype.updateProject = function (project) {
         return this.updateItem(PROJECT, project);
+    };
+    Service.prototype.getCurrentUser = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.Users.currentUser().then(function (data) {
+                resolve(data.result);
+            }, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    };
+    Service.prototype.updateUser = function (user) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.Users.updateSingle(user, resolve, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
+    };
+    Service.prototype.changeUserPassword = function (username, oldPassword, newPassword) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var everlive = _this.createEverlive();
+            everlive.Users.changePassword(username, oldPassword, newPassword, true, resolve, function (error) {
+                Service.showErrorAndReject(error, reject);
+            });
+        });
     };
     Service.prototype.deleteProject = function (project) {
         var _this = this;

@@ -95,6 +95,7 @@
     <Content Include="App_Resources\Android\drawable-hdpi\ic_reminder.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_url.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\login_logo.png" />
+    <Content Include="App_Resources\Android\drawable-hdpi\profile_picture.png" />
     <Content Include="App_Resources\Android\drawable-ldpi\icon.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\fab_add.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\fab_complete.png" />
@@ -116,6 +117,7 @@
     <Content Include="App_Resources\Android\drawable-mdpi\ic_reminder.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\ic_url.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\login_logo.png" />
+    <Content Include="App_Resources\Android\drawable-mdpi\profile_picture.png" />
     <Content Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\fab_add.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\fab_complete.png" />
@@ -136,6 +138,7 @@
     <Content Include="App_Resources\Android\drawable-xhdpi\ic_reminder.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\ic_url.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\login_logo.png" />
+    <Content Include="App_Resources\Android\drawable-xhdpi\profile_picture.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\fab_add.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\fab_complete.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\fab_completed.png" />
@@ -155,8 +158,11 @@
     <Content Include="App_Resources\Android\drawable-xxhdpi\ic_reminder.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\ic_url.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\login_logo.png" />
+    <Content Include="App_Resources\Android\drawable-xxhdpi\profile_picture.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_launcher.png" />
+    <Content Include="App_Resources\Android\values-v21\colors.xml" />
     <Content Include="App_Resources\Android\values-v21\styles.xml" />
+    <Content Include="App_Resources\Android\values\colors.xml" />
     <Content Include="App_Resources\Android\values\strings.xml" />
     <Content Include="App_Resources\Android\values\styles.xml" />
     <Content Include="App_Resources\iOS\Default%402x.png" />
@@ -180,10 +186,14 @@
     <Content Include="App_Resources\iOS\Icon-Small-50.png" />
     <Content Include="App_Resources\iOS\Icon-Small.png" />
     <Content Include="App_Resources\iOS\icon.png" />
+    <Content Include="App_Resources\Android\drawable-xxxhdpi\profile_picture.png" />
     <Content Include="components\edit-profile\edit-profile.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\edit-project\edit-project.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="components\main\main.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\projects\projects.xml">
@@ -194,7 +204,6 @@
     <Content Include="components\time-picker\time-picker.xml" />
     <Content Include="components\date-picker\date-picker.css" />
     <Content Include="components\date-picker\date-picker.xml" />
-    <Content Include="components\list-picker\list-picker.css" />
     <Content Include="components\list-picker\list-picker.xml" />
     <Content Include="components\view-task\view-task.xml" />
     <Content Include="tns_modules\application-settings\application-settings-common.js" />
@@ -376,6 +385,8 @@
     <TypeScriptCompile Include="components\edit-profile\edit-profile.ts" />
     <TypeScriptCompile Include="components\edit-project\edit-project-view-model.ts" />
     <TypeScriptCompile Include="components\edit-project\edit-project.ts" />
+    <TypeScriptCompile Include="components\main\main.ts" />
+    <TypeScriptCompile Include="components\main\main-view-model.ts" />
     <TypeScriptCompile Include="components\projects\projects-view-model.ts" />
     <TypeScriptCompile Include="components\projects\projects.ts" />
     <TypeScriptCompile Include="components\tasks\tasks-view-model.ts" />
@@ -415,6 +426,10 @@
     <TypeScriptCompile Include="components\view-task\view-task-view-model.ts" />
     <TypeScriptCompile Include="components\view-project\view-project.ts" />
     <TypeScriptCompile Include="components\view-task\view-task.ts" />
+    <TypeScriptCompile Include="controls\sidedrawer\sideDrawer-common.ts" />
+    <TypeScriptCompile Include="controls\sidedrawer\sidedrawer.android.ts" />
+    <TypeScriptCompile Include="controls\sidedrawer\sideDrawer.d.ts" />
+    <TypeScriptCompile Include="controls\sidedrawer\sideDrawer.ios.ts" />
     <TypeScriptCompile Include="resources\strings.android.ts" />
     <TypeScriptCompile Include="resources\strings.ios.ts" />
     <TypeScriptCompile Include="tns_modules\android17.d.ts" />
@@ -568,6 +583,6 @@
     <Content Include="tns_modules\xml\package.json" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="components\main\" />
+    <Content Include="controls\sidedrawer\package.json" />
   </ItemGroup>
 </Project>

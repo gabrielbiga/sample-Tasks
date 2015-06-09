@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gingerbread_background"
+    android:layout_gravity="center_vertical">
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:textColor="@color/listItemTextColor"
+        android:textSize="16sp"
+        android:padding="16dp" />
+</FrameLayout>
+<!-- From: file:/C:/_J/jobs/BuildAll_Release/workspace/List/src/main/res/layout/simple_list_item.xml -->

@@ -5,54 +5,57 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var viewModelBaseModule = require("../common/view-model-base");
-var viewTaskViewModelModule = require("../view-task/view-task-view-model");
-var editTaskViewModelModule = require("../edit-task/edit-task-view-model");
-var navigationModule = require("../../utils/navigation");
+var editProfileViewModelModule = require("../edit-profile/edit-profile-view-model");
+var listPickerViewModelModule = require("../list-picker/list-picker-view-model");
 var serviceModule = require("../../utils/service");
+var navigationModule = require("../../utils/navigation");
 var viewsModule = require("../../utils/views");
 var MainViewModel = (function (_super) {
     __extends(MainViewModel, _super);
     function MainViewModel() {
         _super.call(this);
-        this._selectedDay = 1;
-    }
-    Object.defineProperty(MainViewModel.prototype, "tasks", {
-        get: function () {
-            return this._tasks;
-        },
-        set: function (value) {
-            if (this._tasks != value) {
-                this._tasks = value;
-                this.notifyPropertyChanged("tasks", value);
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(MainViewModel.prototype, "selectedDay", {
-        get: function () {
-            return this._selectedDay;
-        },
-        set: function (value) {
-            if (this._selectedDay != value) {
-                this._selectedDay = value;
-                this.notifyPropertyChanged("selectedDay", value);
-                this.refresh();
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    MainViewModel.prototype.addTask = function () {
-        navigationModule.navigate({
-            moduleName: viewsModule.Views.editTask,
-            context: new editTaskViewModelModule.EditTaskViewModel()
+        var tasksView = {
+            Id: 1,
+            Name: "Tasks",
+            View: viewsModule.Views.tasks
+        };
+        var projectsView = {
+            Id: 2,
+            Name: "Projects",
+            View: viewsModule.Views.projects
+        };
+        this._views = new listPickerViewModelModule.ListPickerViewModel(function () {
+            return new Promise(function (resolve, reject) {
+                resolve([tasksView, projectsView]);
+            });
+        }, tasksView, function (selectedItem) {
         });
-    };
-    MainViewModel.prototype.viewTask = function (viewTaskViewModel) {
+        this.refresh();
+    }
+    Object.defineProperty(MainViewModel.prototype, "user", {
+        get: function () {
+            return this._user;
+        },
+        set: function (value) {
+            if (this._user !== value) {
+                this._user = value;
+                this.notifyPropertyChanged("user", value);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(MainViewModel.prototype, "views", {
+        get: function () {
+            return this._views;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MainViewModel.prototype.editProfile = function () {
         navigationModule.navigate({
-            moduleName: viewsModule.Views.viewTask,
-            context: viewTaskViewModel
+            moduleName: viewsModule.Views.editProfile,
+            navigationContext: new editProfileViewModelModule.EditProfileViewModel(this.user)
         });
     };
     MainViewModel.prototype.logout = function () {
@@ -64,13 +67,8 @@ var MainViewModel = (function (_super) {
     MainViewModel.prototype.refresh = function () {
         var _this = this;
         this.beginLoading();
-        var getTasksMethod = getMethodByFilter(this.selectedDay);
-        getTasksMethod.then(function (data) {
-            var tasks = new Array();
-            for (var i = 0; i < data.length; i++) {
-                tasks.push(new viewTaskViewModelModule.ViewTaskViewModel(data[i]));
-            }
-            _this.tasks = tasks;
+        serviceModule.service.getCurrentUser().then(function (user) {
+            _this.user = user;
             _this.endLoading();
         }, function (error) {
             _this.endLoading();
@@ -79,16 +77,4 @@ var MainViewModel = (function (_super) {
     return MainViewModel;
 })(viewModelBaseModule.ViewModelBase);
 exports.MainViewModel = MainViewModel;
-function getMethodByFilter(selectedDay) {
-    switch (selectedDay) {
-        case 0:
-            return serviceModule.service.getOverdueTasks();
-        case 1:
-            return serviceModule.service.getTasksForToday();
-        case 2:
-            return serviceModule.service.getTasksForTomorrow();
-        default:
-            return serviceModule.service.getTasksAfterTomorrow();
-    }
-}
 //# sourceMappingURL=main-view-model.js.map

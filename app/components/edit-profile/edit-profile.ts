@@ -4,17 +4,14 @@ import pageModule = require("ui/page");
 
 import editProfileViewModelModule = require("./edit-profile-view-model")
 
-var viewModel: signUpViewModelModule.SignUpViewModel;
+var viewModel: editProfileViewModelModule.EditProfileViewModel;
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pageModule.Page>args.object;
-    viewModel = new signUpViewModelModule.SignUpViewModel();
+    viewModel = page.navigationContext;
+    page.bindingContext = null;
     page.bindingContext = viewModel;
 }
 
-export function signUpButtonTap(args) {
-    viewModel.signUp();
-}
-
-export function loginButtonTap(args) {
-    viewModel.login();
+export function saveButtonTap(args) {
+    viewModel.save();
 }

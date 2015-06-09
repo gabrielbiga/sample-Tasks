@@ -7,8 +7,8 @@
   <GridLayout>
     <ListView items="{{ items }}" itemTap="itemTap" >
       <ListView.itemTemplate>
-        <GridLayout cssClass="itemContainer">
-          <Label text="{{ data.Name }}" cssClass="{{ isSelected ? 'item-selected' : 'item' }}" />
+        <GridLayout cssClass="{{ isSelected ? 'itemContainer-selected' : 'itemContainer' }}">
+          <Label text="{{ data.Name }}" />
         </GridLayout>
       </ListView.itemTemplate>
     </ListView>

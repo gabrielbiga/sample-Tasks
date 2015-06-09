@@ -25,9 +25,14 @@ applicationModule.resources = {
         }
         return "Select project";
     },
-    getProjectName: function (project) {
-        if (project) {
-            return project.Name;
+    getProjectName: function (project, projectId) {
+        if (projectId) {
+            if (project) {
+                return project.Name;
+            }
+            else {
+                return "";
+            }
         }
         return "Default";
     },
@@ -51,7 +56,7 @@ function formatTime(date) {
 applicationModule.onLaunch = function (context) {
     var serviceModule = require("./utils/service");
     if (serviceModule.service.isAuthenticated) {
-        applicationModule.mainModule = viewsModule.Views.tasks;
+        applicationModule.mainModule = viewsModule.Views.main;
     }
     else {
         applicationModule.mainModule = viewsModule.Views.login;

@@ -162,3 +162,54 @@ ActivityIndicator {
     horizontal-align: left;
     margin-top: -60;
 }
+
+.profilePictureContainer {
+    margin: 32, 0, 32, 0;
+    horizontal-align: center;
+}
+
+.profilePicture {
+    horizontal-align: center;
+    vertical-align: center;
+}
+
+.sideDrawerContent {
+    background-color: #F7F4ED;
+}
+
+.sideDrawerHeader {
+    background-color: #FAC950;
+    padding: 16 0 16 0;
+    margin-bottom: 8;
+}
+
+.sideDrawerProfilePictureContainer {
+    margin-bottom: 16;
+    horizontal-align: center;
+}
+
+.sideDrawerLabel {
+    horizontal-align: center;
+}
+
+.itemContainer {
+    padding: 16;
+}
+
+.itemContainer-selected {
+    padding: 16;
+    background-color: #FDEFCA;
+}
+
+.menuSeparator {
+    height: 1;
+    background-color: #EFE9DC;
+}
+
+.menuButton {
+    padding: 16;
+}
+
+.menuButtonContent {
+    vertical-align: center;
+}
