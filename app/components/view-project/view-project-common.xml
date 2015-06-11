@@ -1,4 +1,4 @@
-<ListView items="{{ tasks }}" itemTap="{{ viewTask }}" cssClass="listView">
+<ListView items="{{ tasks }}" itemTap="itemTap" cssClass="listView">
   <ListView.itemTemplate>
     <StackLayout orientation="horizontal" cssClass="listViewItem">
       <Image src="{{ task | getStatusImage }}" stretch="none" tap="completeTaskButtonTap" cssClass="listViewItemIcon"/>

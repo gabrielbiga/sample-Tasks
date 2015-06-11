@@ -15,3 +15,11 @@ export function navigatedTo(args) {
 
     viewModel.refresh();
 }
+
+export function editProjectButtonTap() {
+    viewModel.editProject();
+}
+
+export function addTaskButtonTap() {
+    viewModel.addTask();
+}

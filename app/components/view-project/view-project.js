@@ -7,4 +7,12 @@ function navigatedTo(args) {
     viewModel.refresh();
 }
 exports.navigatedTo = navigatedTo;
+function editProjectButtonTap() {
+    viewModel.editProject();
+}
+exports.editProjectButtonTap = editProjectButtonTap;
+function addTaskButtonTap() {
+    viewModel.addTask();
+}
+exports.addTaskButtonTap = addTaskButtonTap;
 //# sourceMappingURL=view-project.js.map

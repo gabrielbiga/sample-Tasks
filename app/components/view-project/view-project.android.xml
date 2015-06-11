@@ -2,9 +2,9 @@
       xmlns:vp="components/view-project"
       navigatedTo="navigatedTo">
   <Page.optionsMenu>
-    <MenuItem icon="ic_edit" tap="{{ editProject }}" android.position="actionBar" />
+    <MenuItem icon="ic_edit" tap="editProjectButtonTap" android.position="actionBar" />
   </Page.optionsMenu>
-  <GridLayout rows="auto, *, auto">
+  <GridLayout rows="auto, *">
     <Border cssClass="headerBorder">
       <Label text="{{ project.Name }}" cssClass="fabHeader" />
     </Border>
@@ -15,6 +15,6 @@
       <Image src="res://fab_add" tap="addTaskButtonTap" cssClass="fab" />
     </AbsoluteLayout>
 
-    <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>

@@ -7,6 +7,7 @@
     <ScrollView>
       <GridLayout rows="auto, auto">
         <TextField hint="Project name" text="{{ item.Name }}" cssClass="headerTextField"/>
+        <Border cssClass="textFieldBorder" />
       </GridLayout>
     </ScrollView>
 

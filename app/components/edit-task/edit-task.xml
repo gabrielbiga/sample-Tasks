@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" 
+<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:et="components/edit-task"
       navigatedTo="navigatedTo">
   <Page.optionsMenu>
@@ -8,6 +8,7 @@
     <ScrollView>
       <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto">
         <TextField hint="Task name" text="{{ item.Name }}" cssClass="headerTextField"/>
+        <Border cssClass="textFieldBorder" />
 
         <GridLayout row="1" cssClass="detailsContainer">
           <et:project-picker />
@@ -39,17 +40,26 @@
 
         <GridLayout row="4" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_phone" cssClass="detailsIcon" stretch="none" />
-          <TextField keyboardType="number" hint="Contact phone" text="{{ item.Phone }}" col="1" cssClass="detailsTextField" />
+          <StackLayout col="1" >
+            <TextField keyboardType="number" hint="Contact phone" text="{{ item.Phone }}" cssClass="detailsTextField" />
+            <Border cssClass="detailsTextFieldBorder" />
+          </StackLayout>
         </GridLayout>
 
         <GridLayout row="5" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_email" cssClass="detailsIcon" stretch="none" />
-          <TextField keyboardType="email" hint="Contact email" text="{{ item.Email }}" col="1" cssClass="detailsTextField" />
+          <StackLayout col="1" >
+            <TextField keyboardType="email" hint="Contact email" text="{{ item.Email }}" cssClass="detailsTextField" />
+            <Border cssClass="detailsTextFieldBorder" />
+          </StackLayout>
         </GridLayout>
 
         <GridLayout row="6" cssClass="detailsContainer" columns="auto, *" >
           <Image src="res://ic_url" cssClass="detailsIcon" stretch="none" width="24" height="24"/>
-          <TextField hint="url" keyboardType="url" text="{{ item.Url }}" col="1" cssClass="detailsTextField" />
+          <StackLayout col="1" >
+            <TextField hint="url" keyboardType="url" text="{{ item.Url }}" cssClass="detailsTextField" />
+            <Border cssClass="detailsTextFieldBorder" />
+          </StackLayout>
         </GridLayout>
 
         <TextView row="7" hint="notes" text="{{ item.Notes }}" cssClass="notesTextView"/>

@@ -9,7 +9,7 @@ Label {
 }
 
 TextField, TextView {
-    margin: 0 16 0 16;
+    margin: 12 16 4 16;
 }
 
 ActivityIndicator {
@@ -81,7 +81,7 @@ ActivityIndicator {
 }
 
 .detailsTextField {
-    margin: 0;
+    margin: 0 12 0 4;
 }
 
 .notesLabel {
@@ -117,6 +117,18 @@ ActivityIndicator {
     height: 1;
 }
 
+.textFieldBorder {
+    background-color: #D1D1D1;
+    height: 1;
+    margin: 0 16 0 16;
+}
+
+.detailsTextFieldBorder {
+    background-color: #D1D1D1;
+    height: 1;
+    margin: 0;
+}
+
 .innerContainer {
 }
 
@@ -138,13 +150,13 @@ ActivityIndicator {
 .primaryButton {
     background-color: #259B24;
     color: #FFFFFF;
-    margin: 10;
+    margin: 16 16 0 16;
 }
 
 .secondaryButton {
     color: #259B24;
     background-color: #00FFFFFF;
-    margin: 10;
+    margin: 16;
 }
 
 .logo {

@@ -454,7 +454,9 @@
     <TypeScriptCompile Include="components\list-picker\list-picker.ts" />
     <TypeScriptCompile Include="components\login\login.ts" />
     <Content Include="components\edit-task\edit-task.xml" />
-    <Content Include="components\login\login.xml" />
+    <Content Include="components\login\login.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
     <Content Include="components\sign-up\sign-up.xml">
       <SubType>Designer</SubType>

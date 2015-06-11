@@ -2,12 +2,11 @@
       xmlns:vp="components/view-project"
       navigatedTo="navigatedTo">
   <Page.optionsMenu>
-    <MenuItem icon="ic_edit" tap="{{ editProject }}" android.position="actionBar" />
-    <MenuItem icon="ic_add" tap="{{ addTask }}" android.position="actionBar" />
+    <MenuItem icon="ic_edit" tap="editProjectButtonTap" />
+    <MenuItem icon="ic_add" tap="addTaskButtonTap" />
   </Page.optionsMenu>
   <GridLayout >
     <vp:view-project-common />
-
     <ActivityIndicator busy="{{ isLoading }}" />
   </GridLayout>
 </Page>
