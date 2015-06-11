@@ -6,7 +6,7 @@
       <Label text="{{ item.DueDate | formatDateForPicker }}" cssClass="pickerValue" />
     </StackLayout>
 
-    <StackLayout col="2" margin="0 4 0 16" cssClass="timePickerTap" tap="projectPickerTap" >
+    <StackLayout col="2" margin="0 4 0 16" cssClass="pickerContainer" tap="timePickerTap" >
       <Label text="{{ item.DueDate  | formatTimeForPicker }}" cssClass="pickerValue" />
     </StackLayout>
   </GridLayout>

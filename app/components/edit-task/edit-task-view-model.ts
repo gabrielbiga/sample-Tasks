@@ -49,14 +49,6 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
         return constantsModule.deleteTaskMessage;
     }
 
-    createItem(): any {
-        var item = super.createItem();
-        item.DueDate = new Date();
-        item.ReminderDate = new Date();
-
-        return item;
-    }
-
     addItem(item: any): Promise<any> {
         return serviceModule.service.createTask(item);
     }
@@ -90,7 +82,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
                 serviceModule.service.uploadPicture(this.picture).then(data => {
                     item.Photo = data.result.Id;
                     resolve(false);
-                });
+                }, reject);
             }
             else {
                 resolve(false);

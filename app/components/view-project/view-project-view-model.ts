@@ -1,5 +1,7 @@
 import observableModule = require("data/observable");
 
+import listViewModule = require("ui/list-view");
+
 import viewModelBaseModule = require("../common/view-model-base");
 import viewTaskViewModelModule = require("../view-task/view-task-view-model");
 import editTaskViewModelModule = require("../edit-task/edit-task-view-model");
@@ -58,20 +60,6 @@ export class ViewProjectViewModel extends viewModelBaseModule.ViewModelBase {
         });
     }
 
-    deleteProject() {
-        notificationsModule.confirm(constantsModule.deleteProjectHeader, constantsModule.deleteProjectMessage).then((value: boolean) => {
-            if (value) {
-                this.beginLoading();
-                serviceModule.service.deleteProject(this.project).then((data) => {
-                    navigationModule.goBack();
-                    this.endLoading();
-                },(error) => {
-                        this.endLoading();
-                    });
-            }
-        });
-    }
-
     addTask() {
         var editTaskViewModel = new editTaskViewModelModule.EditTaskViewModel();
         editTaskViewModel.project = this.project;
@@ -81,10 +69,10 @@ export class ViewProjectViewModel extends viewModelBaseModule.ViewModelBase {
         });
     }
 
-    viewTask(viewTaskViewModel: any) {
+    viewTask(args: listViewModule.ItemEventData) {
         navigationModule.navigate({
             moduleName: viewsModule.Views.viewTask,
-            context: viewTaskViewModel
+            context: args.view.bindingContext
         });
     }
 

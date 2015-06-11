@@ -99,18 +99,17 @@ ActivityIndicator {
 }
 
 .pickerLabel {
-    color: #8F8F8F;
-    font-size: 14;
-    margin-bottom: 4;
 }
 
 .pickerValue {
+    color: #8F8F8F;
     margin: 0;
     horizontal-align: right;
 }
 
 .pickerIcon {
     vertical-align: center;
+    margin-left: 16;
 }
 
 .pickerBorder {
@@ -132,7 +131,7 @@ ActivityIndicator {
 .deleteButton {
     background-color: #FF5252;
     color: #FFFFFF;
-    margin: 8;
+    margin: 16;
     height: 44;
 }
 

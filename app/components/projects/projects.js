@@ -6,8 +6,4 @@ function navigatedTo(args) {
     viewModel.refresh();
 }
 exports.navigatedTo = navigatedTo;
-function listViewItemTap(args) {
-    viewModel.viewProject(args.view.bindingContext);
-}
-exports.listViewItemTap = listViewItemTap;
 //# sourceMappingURL=projects.js.map

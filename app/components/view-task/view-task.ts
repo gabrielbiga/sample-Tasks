@@ -14,10 +14,6 @@ export function editTaskButtonTap() {
     viewModel.editTask();
 }
 
-export function deleteTaskButtonTap() {
-    viewModel.deleteTask();
-}
-
 export function completeTaskButtonTap() {
     viewModel.completeTask();
 }

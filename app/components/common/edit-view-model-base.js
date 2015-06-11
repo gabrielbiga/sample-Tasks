@@ -88,6 +88,8 @@ var EditViewModelBase = (function (_super) {
                 else {
                     _this.endLoading();
                 }
+            }, function (error) {
+                _this.endLoading();
             });
         }
     };

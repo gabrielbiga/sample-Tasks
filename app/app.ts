@@ -1,4 +1,8 @@
 ﻿import applicationModule = require("application");
+import platformModule = require("platform");
+import colorModule = require("color");
+
+import frameModule = require("ui/frame");
 
 import viewsModule = require("./utils/views");
 

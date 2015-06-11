@@ -253,8 +253,9 @@
     <Content Include="components\time-picker\time-picker.xml" />
     <Content Include="components\date-picker\date-picker.xml" />
     <Content Include="components\list-picker\list-picker.xml" />
-    <Content Include="components\view-task\view-task-diff.android.xml" />
-    <Content Include="components\view-task\view-task-diff.ios.xml" />
+    <Content Include="components\view-project\view-project-common.xml" />
+    <Content Include="components\view-project\view-project.ios.xml" />
+    <Content Include="components\view-project\view-project.android.xml" />
     <Content Include="components\view-task\view-task.xml" />
     <Content Include="tns_modules\application-settings\application-settings-common.js" />
     <Content Include="tns_modules\application-settings\application-settings.android.js" />
@@ -435,6 +436,9 @@
     <TypeScriptCompile Include="components\edit-profile\edit-profile.ts" />
     <TypeScriptCompile Include="components\edit-project\edit-project-view-model.ts" />
     <TypeScriptCompile Include="components\edit-project\edit-project.ts" />
+    <TypeScriptCompile Include="components\edit-task\due-date-picker.ts" />
+    <TypeScriptCompile Include="components\edit-task\project-picker.ts" />
+    <TypeScriptCompile Include="components\edit-task\edit-task-view-model.ts" />
     <TypeScriptCompile Include="components\main\main.ts" />
     <TypeScriptCompile Include="components\main\main-view-model.ts" />
     <TypeScriptCompile Include="components\projects\projects-view-model.ts" />
@@ -445,7 +449,6 @@
     <TypeScriptCompile Include="components\time-picker\time-picker.ts" />
     <TypeScriptCompile Include="components\date-picker\date-picker-view-model.ts" />
     <TypeScriptCompile Include="components\date-picker\date-picker.ts" />
-    <TypeScriptCompile Include="components\edit-task\edit-task-view-model.ts" />
     <TypeScriptCompile Include="components\edit-task\edit-task.ts" />
     <TypeScriptCompile Include="components\list-picker\list-picker-view-model.ts" />
     <TypeScriptCompile Include="components\list-picker\list-picker.ts" />
@@ -457,7 +460,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\test\page1.xml" />
-    <Content Include="components\view-project\view-project.xml" />
     <Content Include="lib\everlive.js" />
     <Content Include="package.json" />
   </ItemGroup>
@@ -472,6 +474,7 @@
     <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="components\test\page1-view-model.ts" />
     <TypeScriptCompile Include="components\test\page1.ts" />
+    <TypeScriptCompile Include="components\view-project\view-project-common.ts" />
     <TypeScriptCompile Include="components\view-project\view-project-view-model.ts" />
     <TypeScriptCompile Include="components\view-task\view-task-view-model.ts" />
     <TypeScriptCompile Include="components\view-project\view-project.ts" />

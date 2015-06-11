@@ -6,11 +6,9 @@ var __extends = this.__extends || function (d, b) {
 };
 var viewModelBaseModule = require("../common/view-model-base");
 var editTaskViewModelModule = require("../edit-task/edit-task-view-model");
-var notificationsModule = require("../../utils/notifications");
 var serviceModule = require("../../utils/service");
 var navigationModule = require("../../utils/navigation");
 var viewsModule = require("../../utils/views");
-var constantsModule = require("../../utils/constants");
 var ViewTaskViewModel = (function (_super) {
     __extends(ViewTaskViewModel, _super);
     function ViewTaskViewModel(task) {
@@ -59,27 +57,9 @@ var ViewTaskViewModel = (function (_super) {
         configurable: true
     });
     ViewTaskViewModel.prototype.editTask = function () {
-        /*
-        * This is how you pass and argument to the next page.
-        * For more options pls visit the documentation article  - http://docs.nativescript.org/navigation#navigation
-        */
         navigationModule.navigate({
             moduleName: viewsModule.Views.editTask,
             context: new editTaskViewModelModule.EditTaskViewModel(this.task)
-        });
-    };
-    ViewTaskViewModel.prototype.deleteTask = function () {
-        var _this = this;
-        notificationsModule.confirm(constantsModule.deleteTaskHeader, constantsModule.deleteTaskMessage).then(function (value) {
-            if (value) {
-                _this.beginLoading();
-                serviceModule.service.deleteTask(_this.task).then(function (data) {
-                    navigationModule.goBack();
-                    _this.endLoading();
-                }, function (error) {
-                    _this.endLoading();
-                });
-            }
         });
     };
     ViewTaskViewModel.prototype.completeTask = function () {

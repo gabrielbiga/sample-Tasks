@@ -57,12 +57,6 @@ var EditTaskViewModel = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    EditTaskViewModel.prototype.createItem = function () {
-        var item = _super.prototype.createItem.call(this);
-        item.DueDate = new Date();
-        item.ReminderDate = new Date();
-        return item;
-    };
     EditTaskViewModel.prototype.addItem = function (item) {
         return serviceModule.service.createTask(item);
     };
@@ -92,7 +86,7 @@ var EditTaskViewModel = (function (_super) {
                 serviceModule.service.uploadPicture(_this.picture).then(function (data) {
                     item.Photo = data.result.Id;
                     resolve(false);
-                });
+                }, reject);
             }
             else {
                 resolve(false);

@@ -1,5 +1,7 @@
 import observableArrayModule = require("data/observable-array");
 
+import listViewModule = require("ui/list-view");
+
 import viewModelBaseModule = require("../common/view-model-base");
 import viewProjectViewModelModule = require("../view-project/view-project-view-model");
 import editProjectViewModelModule = require("../edit-project/edit-project-view-model");
@@ -32,10 +34,10 @@ export class ProjectsViewModel extends viewModelBaseModule.ViewModelBase {
         });
     }
 
-    viewProject(viewProjectViewModel: viewProjectViewModelModule.ViewProjectViewModel) {
+    viewProject(args: listViewModule.ItemEventData) {
         navigationModule.navigate({
             moduleName: viewsModule.Views.viewProject,
-            context: viewProjectViewModel
+            context: args.view.bindingContext
         });
     }
 

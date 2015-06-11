@@ -15,25 +15,3 @@ export function navigatedTo(args) {
 
     viewModel.refresh();
 }
-
-export function editProjectButtonTap() {
-    viewModel.editProject();
-}
-
-export function deleteProjectButtonTap() {
-    viewModel.deleteProject();
-}
-
-export function addTaskButtonTap() {
-    viewModel.addTask();
-}
-
-export function listViewItemTap(args: listViewModule.ItemEventData) {
-    viewModel.viewTask(args.view.bindingContext);
-}
-
-export function completeTaskButtonTap(args: gesturesModule.GestureEventData) {
-    var view = <viewModule.View>args.view;
-    var viewTaskViewModel = <viewTaskViewModelModule.ViewTaskViewModel>view.bindingContext;
-    viewTaskViewModel.completeTask();
-}

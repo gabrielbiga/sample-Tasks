@@ -18,7 +18,3 @@ export function navigatedTo(args: observableModule.EventData) {
 
     viewModel.refresh();
 }
-
-export function listViewItemTap(args: listViewModule.ItemEventData) {
-    viewModel.viewProject(args.view.bindingContext);
-}

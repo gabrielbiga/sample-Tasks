@@ -34,10 +34,10 @@ var ProjectsViewModel = (function (_super) {
             context: new editProjectViewModelModule.EditProjectViewModel()
         });
     };
-    ProjectsViewModel.prototype.viewProject = function (viewProjectViewModel) {
+    ProjectsViewModel.prototype.viewProject = function (args) {
         navigationModule.navigate({
             moduleName: viewsModule.Views.viewProject,
-            context: viewProjectViewModel
+            context: args.view.bindingContext
         });
     };
     ProjectsViewModel.prototype.logout = function () {

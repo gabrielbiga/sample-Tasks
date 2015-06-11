@@ -8,11 +8,9 @@ var viewModelBaseModule = require("../common/view-model-base");
 var viewTaskViewModelModule = require("../view-task/view-task-view-model");
 var editTaskViewModelModule = require("../edit-task/edit-task-view-model");
 var editProjectViewModelModule = require("../edit-project/edit-project-view-model");
-var notificationsModule = require("../../utils/notifications");
 var serviceModule = require("../../utils/service");
 var navigationModule = require("../../utils/navigation");
 var viewsModule = require("../../utils/views");
-var constantsModule = require("../../utils/constants");
 var ViewProjectViewModel = (function (_super) {
     __extends(ViewProjectViewModel, _super);
     function ViewProjectViewModel(project) {
@@ -62,20 +60,6 @@ var ViewProjectViewModel = (function (_super) {
             context: new editProjectViewModelModule.EditProjectViewModel(this.project)
         });
     };
-    ViewProjectViewModel.prototype.deleteProject = function () {
-        var _this = this;
-        notificationsModule.confirm(constantsModule.deleteProjectHeader, constantsModule.deleteProjectMessage).then(function (value) {
-            if (value) {
-                _this.beginLoading();
-                serviceModule.service.deleteProject(_this.project).then(function (data) {
-                    navigationModule.goBack();
-                    _this.endLoading();
-                }, function (error) {
-                    _this.endLoading();
-                });
-            }
-        });
-    };
     ViewProjectViewModel.prototype.addTask = function () {
         var editTaskViewModel = new editTaskViewModelModule.EditTaskViewModel();
         editTaskViewModel.project = this.project;
@@ -84,10 +68,10 @@ var ViewProjectViewModel = (function (_super) {
             context: editTaskViewModel
         });
     };
-    ViewProjectViewModel.prototype.viewTask = function (viewTaskViewModel) {
+    ViewProjectViewModel.prototype.viewTask = function (args) {
         navigationModule.navigate({
             moduleName: viewsModule.Views.viewTask,
-            context: viewTaskViewModel
+            context: args.view.bindingContext
         });
     };
     ViewProjectViewModel.prototype.refresh = function () {

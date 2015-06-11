@@ -56,27 +56,9 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     editTask() {
-        /*
-        * This is how you pass and argument to the next page.
-        * For more options pls visit the documentation article  - http://docs.nativescript.org/navigation#navigation
-        */
         navigationModule.navigate({
             moduleName: viewsModule.Views.editTask,
             context: new editTaskViewModelModule.EditTaskViewModel(this.task)
-        });
-    }
-
-    deleteTask() {
-        notificationsModule.confirm(constantsModule.deleteTaskHeader, constantsModule.deleteTaskMessage).then((value: boolean) => {
-            if (value) {
-                this.beginLoading();
-                serviceModule.service.deleteTask(this.task).then((data) => {
-                    navigationModule.goBack();
-                    this.endLoading();
-                },(error) => {
-                        this.endLoading();
-                    });
-            }
         });
     }
 

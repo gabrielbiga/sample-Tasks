@@ -1,5 +1,5 @@
-<GridLayout>
-  <StackLayout col="1" cssClass="pickerContainer" tap="datePickerTap" >
+<GridLayout columns="2*, *">
+  <StackLayout col="0" cssClass="pickerContainer" tap="datePickerTap" >
     <Label text="Due date" cssClass="pickerLabel" />
     <GridLayout columns="*, auto" cssClass="innerContainer">
       <Label text="{{ item.DueDate | formatDate }}" cssClass="pickerValue" />
@@ -8,7 +8,7 @@
     <Border cssClass="pickerBorder" />
   </StackLayout>
 
-  <StackLayout col="2" margin="0 4 0 16" cssClass="pickerContainer" tap="timePickerTap" >
+  <StackLayout col="1" margin="0 4 0 16" cssClass="pickerContainer" tap="timePickerTap" >
     <Label text="Time" cssClass="pickerLabel" />
     <GridLayout columns="*, auto" cssClass="innerContainer">
       <Label text="{{ item.DueDate  | formatTime }}" cssClass="pickerValue" />

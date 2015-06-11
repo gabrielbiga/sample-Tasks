@@ -78,7 +78,9 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
                 else {
                     this.endLoading();
                 }
-            });
+            }, error => {
+                    this.endLoading();
+                });
         }
     }
 

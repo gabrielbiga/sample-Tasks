@@ -1,9 +1,10 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+      navigatedTo="navigatedTo">
   <Page.optionsMenu>
-    <MenuItem text="{{ strings.logout }}" tap="{{ logout }}" android.position="popup" />
+    <MenuItem icon="ic_add" tap="{{ addProject }}" android.position="actionBar" />
   </Page.optionsMenu>
   <GridLayout>
-    <ListView items="{{ projects }}" itemTap="listViewItemTap" row="1" cssClass="listView">
+    <ListView items="{{ projects }}" itemTap="{{ viewProject }}" row="1" cssClass="listView">
       <ListView.itemTemplate>
         <StackLayout cssClass="listViewItem">
           <Label text="{{ project.Name }}" cssClass="listViewItemLabel" textWrap="true" />

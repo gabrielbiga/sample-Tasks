@@ -201,8 +201,7 @@ export class Service {
             everlive.Files.create(file,
                 function (data) {
                     resolve(data);
-                },
-                function (error) {
+                }, function (error) {
                     Service.showErrorAndReject(error, reject);
                 });
         });
