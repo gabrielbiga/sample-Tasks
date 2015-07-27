@@ -30,7 +30,8 @@ For \*NIX systems the following script runs the sample directly:
 
 `curl https://raw.githubusercontent.com/NativeScript/sample-Tasks/master/run.sh | bash`
 
-**Scenario**
+
+**Application Scenario**
 
 We chose an app that we know will cover a lot of useful scenarios:
 
