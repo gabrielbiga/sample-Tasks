@@ -41,4 +41,3 @@ function androidOptionSelected(args) {
         args.handled = true;
     }
 }
-//# sourceMappingURL=action-bar.js.map

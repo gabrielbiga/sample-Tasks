@@ -80,13 +80,14 @@ var ListView = (function (_super) {
     ListView.prototype._getItemTemplateContent = function (index) {
         var v;
         if (this.itemTemplate && this.items) {
-            v = builder.parse(this.itemTemplate, getExports(this));
+            v = builder.parse(this.itemTemplate, this);
         }
         return v;
     };
     ListView.prototype._prepareItem = function (item, index) {
         if (item) {
             item.bindingContext = this._getDataItem(index);
+            item._inheritProperties(this);
         }
     };
     ListView.prototype._getDataItem = function (index) {
@@ -112,6 +113,8 @@ var ListView = (function (_super) {
     ListView.prototype._onItemsChanged = function (args) {
         this.refresh();
     };
+    ListView.prototype._propagateInheritableProperties = function (view) {
+    };
     ListView.itemLoadingEvent = "itemLoading";
     ListView.itemTapEvent = "itemTap";
     ListView.loadMoreItemsEvent = "loadMoreItems";
@@ -122,10 +125,3 @@ var ListView = (function (_super) {
     return ListView;
 })(view.View);
 exports.ListView = ListView;
-function getExports(instance) {
-    var parent = instance.parent;
-    while (parent && parent.exports === undefined) {
-        parent = parent.parent;
-    }
-    return parent ? parent.exports : undefined;
-}

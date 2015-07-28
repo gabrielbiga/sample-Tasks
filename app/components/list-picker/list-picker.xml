@@ -1,9 +1,13 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
-  <Page.optionsMenu>
-    <MenuItem text="{{ strings.done }}" tap="doneMenuItemTap" android.position="actionBar" />
-  </Page.optionsMenu>
+  <Page.actionBar>
+    <ActionBar>
+      <ActionBar.actionItems>
+        <ActionItem text="{{ strings.done }}" tap="doneMenuItemTap" ios.position="right" android.position="actionBar" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
   <GridLayout>
     <ListView items="{{ items }}" itemTap="itemTap" >
       <ListView.itemTemplate>

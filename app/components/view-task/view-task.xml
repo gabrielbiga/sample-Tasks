@@ -1,6 +1,10 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
   <Page.optionsMenu>
-    <MenuItem icon="ic_edit" tap="editTaskButtonTap" android.position="actionBar" />
+    <ActionBar>
+      <ActionBar.actionItems>
+        <ActionItem icon="res://ic_edit" tap="editTaskButtonTap" ios.position="right" android.position="actionBar" />
+      </ActionBar.actionItems>
+    </ActionBar>
   </Page.optionsMenu>
   <GridLayout rows="*, auto">
     <ScrollView>

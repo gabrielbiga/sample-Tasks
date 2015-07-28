@@ -16,4 +16,3 @@ function confirm(title, message) {
     });
 }
 exports.confirm = confirm;
-//# sourceMappingURL=notifications.js.map

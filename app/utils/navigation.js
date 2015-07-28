@@ -13,4 +13,3 @@ function goBack() {
     topmost.goBack();
 }
 exports.goBack = goBack;
-//# sourceMappingURL=navigation.js.map

@@ -11,4 +11,3 @@ exports.strings = {
     add: "Add",
     today: "Today"
 };
-//# sourceMappingURL=strings.ios.js.map
