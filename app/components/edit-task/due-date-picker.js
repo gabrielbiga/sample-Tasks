@@ -37,4 +37,3 @@ function getDate(date) {
     }
     return date;
 }
-//# sourceMappingURL=due-date-picker.js.map

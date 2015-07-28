@@ -22,4 +22,3 @@ function logoutButtonTap() {
     viewModel.logout();
 }
 exports.logoutButtonTap = logoutButtonTap;
-//# sourceMappingURL=main.js.map

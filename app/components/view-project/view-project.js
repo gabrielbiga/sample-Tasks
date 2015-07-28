@@ -15,4 +15,3 @@ function addTaskButtonTap() {
     viewModel.addTask();
 }
 exports.addTaskButtonTap = addTaskButtonTap;
-//# sourceMappingURL=view-project.js.map

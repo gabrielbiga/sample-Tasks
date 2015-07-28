@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -38,4 +38,3 @@ var Page1ViewModel = (function (_super) {
     return Page1ViewModel;
 })(observableModule.Observable);
 exports.Page1ViewModel = Page1ViewModel;
-//# sourceMappingURL=page1-view-model.js.map

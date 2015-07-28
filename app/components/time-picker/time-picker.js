@@ -9,4 +9,3 @@ function doneMenuItemTap(args) {
     viewModel.done();
 }
 exports.doneMenuItemTap = doneMenuItemTap;
-//# sourceMappingURL=time-picker.js.map

@@ -18,4 +18,3 @@ function deleteButtonTap() {
     viewModel.del();
 }
 exports.deleteButtonTap = deleteButtonTap;
-//# sourceMappingURL=edit-task.js.map

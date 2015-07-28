@@ -9,4 +9,3 @@ function completeTaskButtonTap(args) {
     viewTaskViewModel.completeTask();
 }
 exports.completeTaskButtonTap = completeTaskButtonTap;
-//# sourceMappingURL=view-project-common.js.map
