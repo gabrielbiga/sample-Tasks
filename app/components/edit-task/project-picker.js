@@ -7,12 +7,9 @@ function projectPickerTap(args) {
     var viewModel = view.bindingContext;
     navigationModule.navigate({
         moduleName: viewsModule.Views.listPicker,
-        context: new listPickerViewModelModule.ListPickerViewModel(function () {
-            return serviceModule.service.getProjects();
-        }, viewModel.project, function (selectedItem) {
+        context: new listPickerViewModelModule.ListPickerViewModel(function () { return serviceModule.service.getProjects(); }, viewModel.project, function (selectedItem) {
             viewModel.project = selectedItem;
         })
     });
 }
 exports.projectPickerTap = projectPickerTap;
-//# sourceMappingURL=project-picker.js.map

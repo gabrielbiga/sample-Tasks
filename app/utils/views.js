@@ -15,4 +15,3 @@ var Views;
     Views.listPicker = "components/list-picker/list-picker";
     Views.test = "components/test/page1";
 })(Views = exports.Views || (exports.Views = {}));
-//# sourceMappingURL=views.js.map

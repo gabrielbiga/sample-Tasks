@@ -10,4 +10,3 @@ function saveButtonTap(args) {
     viewModel.save();
 }
 exports.saveButtonTap = saveButtonTap;
-//# sourceMappingURL=edit-profile.js.map

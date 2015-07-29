@@ -14,4 +14,3 @@ function doneMenuItemTap(args) {
     viewModel.done();
 }
 exports.doneMenuItemTap = doneMenuItemTap;
-//# sourceMappingURL=list-picker.js.map

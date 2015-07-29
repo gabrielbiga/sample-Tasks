@@ -14,4 +14,3 @@ function loginButtonTap(args) {
     viewModel.login();
 }
 exports.loginButtonTap = loginButtonTap;
-//# sourceMappingURL=sign-up.js.map

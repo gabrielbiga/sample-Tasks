@@ -1,7 +1,11 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo">
-  <Page.optionsMenu>
-    <MenuItem icon="ic_add" tap="{{ addTask }}" android.position="actionBar" />
-  </Page.optionsMenu>
+  <Page.actionBar>
+    <ActionBar>
+      <ActionBar.actionItems>
+        <ActionItem icon="res://ic_add" tap="{{ addTask }}" ios.position="right" android.position="actionBar" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
   <GridLayout rows="auto, *">
     <GridLayout cssClass="segmentedBarContainer">
       <SegmentedBar android:selectedBackgroundColor="#259B24" ios:selectedBackgroundColor="#554E4A" selectedIndex="{{ selectedDay }}" cssClass="segmentedBar">

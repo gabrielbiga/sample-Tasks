@@ -97,7 +97,9 @@ var Service = (function () {
     };
     Service.prototype.getTasksByProject = function (project) {
         var query = new everliveModule.Query();
-        query.where().eq(PROJECT, project.Id);
+        query
+            .where()
+            .eq(PROJECT, project.Id);
         return this.getTasks(query);
     };
     Service.prototype.createTask = function (task) {
@@ -203,17 +205,29 @@ var Service = (function () {
     };
     Service.prototype.getTasksBetween = function (start, end) {
         var query = new everliveModule.Query();
-        query.where().and().gte(DUE_DATE, start).lt(DUE_DATE, end).done();
+        query
+            .where()
+            .and()
+            .gte(DUE_DATE, start)
+            .lt(DUE_DATE, end)
+            .done();
         return this.getTasks(query);
     };
     Service.prototype.getTasksBefore = function (date) {
         var query = new everliveModule.Query();
-        query.where().lt(DUE_DATE, date);
+        query
+            .where()
+            .lt(DUE_DATE, date);
         return this.getTasks(query);
     };
     Service.prototype.getTasksAfter = function (date) {
         var query = new everliveModule.Query();
-        query.where().or().gte(DUE_DATE, date).eq(DUE_DATE, null).done();
+        query
+            .where()
+            .or()
+            .gte(DUE_DATE, date)
+            .eq(DUE_DATE, null)
+            .done();
         return this.getTasks(query);
     };
     Service.prototype.getTasks = function (query) {
@@ -261,4 +275,3 @@ var Service = (function () {
 })();
 exports.Service = Service;
 exports.service = new Service();
-//# sourceMappingURL=service.js.map

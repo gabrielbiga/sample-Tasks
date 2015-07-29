@@ -6,4 +6,3 @@ function navigatedTo(args) {
     viewModel.refresh();
 }
 exports.navigatedTo = navigatedTo;
-//# sourceMappingURL=projects.js.map

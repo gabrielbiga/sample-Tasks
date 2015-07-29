@@ -12,4 +12,3 @@ function completeTaskButtonTap(args) {
     viewTaskViewModel.completeTask();
 }
 exports.completeTaskButtonTap = completeTaskButtonTap;
-//# sourceMappingURL=tasks.js.map

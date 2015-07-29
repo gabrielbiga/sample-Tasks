@@ -11,4 +11,3 @@ exports.strings = {
     add: "ADD",
     today: "TODAY"
 };
-//# sourceMappingURL=strings.android.js.map

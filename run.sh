@@ -16,7 +16,7 @@ if [[ "$npmresult" == "" ]]; then
 fi
 
 npm install
-node_modules/typescript/bin/tsc -t ES5 -m commonjs app/**/*.ts
+node_modules/typescript/bin/tsc -p ./app
 
 unamestr=`uname`
 if [[ "$unamestr" == "Darwin" ]]; then

@@ -1,4 +1,4 @@
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
@@ -77,7 +77,8 @@ var ViewProjectViewModel = (function (_super) {
     ViewProjectViewModel.prototype.refresh = function () {
         var _this = this;
         this.beginLoading();
-        serviceModule.service.getTasksByProject(this.project).then(function (data) {
+        serviceModule.service.getTasksByProject(this.project)
+            .then(function (data) {
             var tasks = new Array();
             for (var i = 0; i < data.length; i++) {
                 tasks.push(new viewTaskViewModelModule.ViewTaskViewModel(data[i]));
@@ -91,4 +92,3 @@ var ViewProjectViewModel = (function (_super) {
     return ViewProjectViewModel;
 })(viewModelBaseModule.ViewModelBase);
 exports.ViewProjectViewModel = ViewProjectViewModel;
-//# sourceMappingURL=view-project-view-model.js.map

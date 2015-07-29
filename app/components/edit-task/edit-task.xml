@@ -1,9 +1,13 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:et="components/edit-task"
       navigatedTo="navigatedTo">
-  <Page.optionsMenu>
-    <MenuItem text="{{ strings.save }}" tap="saveButtonTap" android.position="actionBar" />
-  </Page.optionsMenu>
+  <Page.actionBar>
+    <ActionBar>
+      <ActionBar.actionItems>
+        <ActionItem text="{{ strings.save }}" tap="saveButtonTap" ios.position="right" android.position="actionBar" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
   <GridLayout rows="*, auto">
     <ScrollView>
       <GridLayout rows="auto, auto, auto, auto, auto, auto, auto, auto">

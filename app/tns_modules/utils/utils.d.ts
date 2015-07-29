@@ -122,7 +122,7 @@ declare module "utils/utils" {
          */
         export var MajorVersion: number;
 
-        export function _layoutRootView(rootView: view.View): void;
+        export function _layoutRootView(rootView: view.View, parentBounds: CGRect): void;
     }
     /**
      * An utility function that copies properties from source object to target object.
@@ -140,4 +140,10 @@ declare module "utils/utils" {
      * @param path The path.
      */
     export function isFileOrResourcePath(path: string): boolean
+
+    /**
+     * Returns true if the specified URI is data URI (http://en.wikipedia.org/wiki/Data_URI_scheme).
+     * @param uri The URI.
+     */
+    export function isDataURI(uri: string): boolean
 }
