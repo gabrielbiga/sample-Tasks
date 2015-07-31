@@ -1,4 +1,4 @@
-# sample-Tasks
+# Tasks sample application
 Open source cross-platform Tasks app built with NativeScript.
 
 Use this application to find-out how to implement common mobile scenarios with NativeScript.
