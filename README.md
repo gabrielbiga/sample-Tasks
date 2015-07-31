@@ -15,7 +15,7 @@ Use this application to find-out how to implement common mobile scenarios with N
         `npm install`
 
         2.2. Compile the TypeScript code to JavaScript
-        `node_modules/typescript/bin/tsc --outDir app/ -t ES5 -m commonjs app/**/*.tsz
+        `node_modules/typescript/bin/tsc -p ./app`
 
 3. Add the preferred platform-specific tools to the project library. Note that iOS development is only available with a Mac machine.
 
