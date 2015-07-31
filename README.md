@@ -2,6 +2,10 @@
 Open source cross-platform Tasks app built with NativeScript.
 
 Use this application to find-out how to implement common mobile scenarios with NativeScript.
+
+![](https://www.nativescript.org/images/default-source/default-album/sample-tasks-list.png)
+![](https://www.nativescript.org/images/default-source/default-album/sample-tasks-details.png)
+
 ## Running the sample
 
 1. Make sure you have the [NativeScript Command-line Interface](https://www.npmjs.com/package/nativescript) installed as well as all the prerequisites for the NativeScript development, described in the package page.
