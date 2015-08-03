@@ -77,7 +77,7 @@ var SignUpViewModel = (function (_super) {
         set: function (value) {
             if (this._confirmPassword !== value) {
                 this._confirmPassword = value;
-                this.notifyPropertyChanged("password", value);
+                this.notifyPropertyChanged("confirmPassword", value);
             }
         },
         enumerable: true,

@@ -72,7 +72,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set confirmPassword(value: string) {
         if (this._confirmPassword !== value) {
             this._confirmPassword = value;
-            this.notifyPropertyChanged("password", value);
+            this.notifyPropertyChanged("confirmPassword", value);
         }
     }
 
