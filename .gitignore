@@ -3,6 +3,7 @@
 *.user-settings.xml
 
 *.map
+*.log
 node_modules/
 
 platforms/
