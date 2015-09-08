@@ -1,13 +1,11 @@
 import observableModule = require("data/observable");
-
 import pageModule = require("ui/page");
-
 import editProfileViewModelModule = require("./edit-profile-view-model")
 
 var viewModel: editProfileViewModelModule.EditProfileViewModel;
-export function navigatedTo(args: observableModule.EventData) {
+export function navigatedTo(args: pageModule.NavigatedData) {
     var page = <pageModule.Page>args.object;
-    viewModel = page.navigationContext;
+    viewModel = args.context;
     page.bindingContext = null;
     page.bindingContext = viewModel;
 }

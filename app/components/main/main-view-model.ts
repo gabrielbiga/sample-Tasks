@@ -53,7 +53,7 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
     editProfile() {
         navigationModule.navigate({
             moduleName: viewsModule.Views.editProfile,
-            navigationContext: new editProfileViewModelModule.EditProfileViewModel(this.user)
+            context: new editProfileViewModelModule.EditProfileViewModel(this.user)
         });
     }
 
@@ -73,4 +73,4 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
                 this.endLoading();
             });
     }
-} 
+}

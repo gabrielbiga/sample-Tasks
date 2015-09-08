@@ -55,7 +55,7 @@ var MainViewModel = (function (_super) {
     MainViewModel.prototype.editProfile = function () {
         navigationModule.navigate({
             moduleName: viewsModule.Views.editProfile,
-            navigationContext: new editProfileViewModelModule.EditProfileViewModel(this.user)
+            context: new editProfileViewModelModule.EditProfileViewModel(this.user)
         });
     };
     MainViewModel.prototype.logout = function () {

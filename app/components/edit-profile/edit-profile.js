@@ -1,7 +1,7 @@
 var viewModel;
 function navigatedTo(args) {
     var page = args.object;
-    viewModel = page.navigationContext;
+    viewModel = args.context;
     page.bindingContext = null;
     page.bindingContext = viewModel;
 }
