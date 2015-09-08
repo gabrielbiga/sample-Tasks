@@ -10,14 +10,14 @@
     <GridLayout cssClass="segmentedBarContainer">
       <SegmentedBar android:selectedBackgroundColor="#259B24" ios:selectedBackgroundColor="#554E4A" selectedIndex="{{ selectedDay }}" cssClass="segmentedBar">
         <SegmentedBar.items>
-          <SegmentedBarItem title="Overdue" />
-          <SegmentedBarItem title="Today" />
-          <SegmentedBarItem title="Tomorrow" />
-          <SegmentedBarItem title="Next" />
+          <SegmentedBarItem title="OVERDUE" />
+          <SegmentedBarItem title="TODAY" />
+          <SegmentedBarItem title="TMRW" />
+          <SegmentedBarItem title="NEXT" />
         </SegmentedBar.items>
       </SegmentedBar>
     </GridLayout>
-    
+
     <ListView items="{{ tasks }}" itemTap="{{ viewTask }}" row="1" cssClass="listView">
       <ListView.itemTemplate>
         <StackLayout orientation="horizontal" cssClass="listViewItem">

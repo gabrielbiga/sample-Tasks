@@ -17,6 +17,10 @@ ActivityIndicator {
     vertical-align: center;
 }
 
+ActionBar {
+    background-color: #CDDC39;
+}
+
 .segmentedBar {
     background-color: #CDDC39;
 }
