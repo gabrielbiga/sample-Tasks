@@ -1,12 +1,13 @@
 ﻿import frameModule = require("ui/frame");
 
-export function navigate(navigationContext: any) {
+export function navigate(navigationEntry: frameModule.NavigationEntry) {
     var topmost = frameModule.topmost();
-    topmost.navigate(navigationContext);
+    topmost.navigate(navigationEntry);
 }
 
-export function navigateWitouthHistory(navigationContext: any) {
-    this.navigate(navigationContext);
+export function navigateWitouthHistory(navigationEntry: frameModule.NavigationEntry) {
+    navigationEntry.backstackVisible = false;
+    this.navigate(navigationEntry);
 }
 
 export function goBack() {
