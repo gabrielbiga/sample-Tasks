@@ -68,7 +68,12 @@ var EditTaskViewModel = (function (_super) {
     };
     EditTaskViewModel.prototype.takePicture = function () {
         var _this = this;
-        cameraModule.takePicture().then(function (picture) {
+        var options = {
+            width: 320,
+            height: 480,
+            keepAspectRatio: true
+        };
+        cameraModule.takePicture(options).then(function (picture) {
             _this.picture = picture;
         });
     };

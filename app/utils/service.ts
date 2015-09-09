@@ -3,6 +3,7 @@ import imageSourceModule = require("image-source");
 
 import constantsModule = require("./constants");
 import notificationsModule = require("./notifications");
+import enums = require("ui/enums");
 
 var everliveModule = require("../lib/everlive");
 
@@ -195,7 +196,7 @@ export class Service {
             var file = {
                 "Filename": "NativeScriptIsAwesome.jpg",
                 "ContentType": "image/jpeg",
-                "base64": picture.toBase64String("JPEG", 100)
+                "base64": picture.toBase64String(enums.ImageFormat.jpeg, 100)
             };
 
             everlive.Files.create(file,

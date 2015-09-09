@@ -1,6 +1,7 @@
 var applicationSettingsModule = require("application-settings");
 var constantsModule = require("./constants");
 var notificationsModule = require("./notifications");
+var enums = require("ui/enums");
 var everliveModule = require("../lib/everlive");
 var TASK = "Task";
 var PROJECT = "Project";
@@ -175,7 +176,7 @@ var Service = (function () {
             var file = {
                 "Filename": "NativeScriptIsAwesome.jpg",
                 "ContentType": "image/jpeg",
-                "base64": picture.toBase64String("JPEG", 100)
+                "base64": picture.toBase64String(enums.ImageFormat.jpeg, 100)
             };
             everlive.Files.create(file, function (data) {
                 resolve(data);

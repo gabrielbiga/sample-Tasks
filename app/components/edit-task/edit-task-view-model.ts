@@ -62,7 +62,12 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     }
 
     takePicture() {
-        cameraModule.takePicture().then(picture => {
+        var options: cameraModule.CameraOptions = {
+            width: 320,
+            height: 480,
+            keepAspectRatio: true
+        };
+        cameraModule.takePicture(options).then(picture => {
             this.picture = picture;
         });
     }
