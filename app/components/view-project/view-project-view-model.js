@@ -25,7 +25,7 @@ var ViewProjectViewModel = (function (_super) {
         set: function (value) {
             if (this._project != value) {
                 this._project = value;
-                this.notifyPropertyChanged("project", value);
+                this.notifyPropertyChange("project", value);
             }
         },
         enumerable: true,
@@ -38,7 +38,7 @@ var ViewProjectViewModel = (function (_super) {
         set: function (value) {
             if (this._tasks != value) {
                 this._tasks = value;
-                this.notifyPropertyChanged("tasks", value);
+                this.notifyPropertyChange("tasks", value);
             }
         },
         enumerable: true,

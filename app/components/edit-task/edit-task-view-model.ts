@@ -26,7 +26,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
         if (this._project !== value) {
             this._project = value;
             this.item.Project = this.project.Id;
-            this.notifyPropertyChanged("project", value);
+            this.notifyPropertyChange("project", value);
         }
     }
 
@@ -37,7 +37,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     set picture(value: imageSourceModule.ImageSource) {
         if (this._picture != value) {
             this._picture = value;
-            this.notifyPropertyChanged("picture", value);
+            this.notifyPropertyChange("picture", value);
         }
     }
 

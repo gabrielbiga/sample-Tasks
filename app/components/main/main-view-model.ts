@@ -42,7 +42,7 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
     set user(value: any) {
         if (this._user !== value) {
             this._user = value;
-            this.notifyPropertyChanged("user", value);
+            this.notifyPropertyChange("user", value);
         }
     }
 

@@ -22,7 +22,7 @@ var ProjectsViewModel = (function (_super) {
         set: function (value) {
             if (this._projects != value) {
                 this._projects = value;
-                this.notifyPropertyChanged("projects", value);
+                this.notifyPropertyChange("projects", value);
             }
         },
         enumerable: true,

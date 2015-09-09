@@ -24,7 +24,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     set username(value: string) {
         if (this._username !== value) {
             this._username = value;
-            this.notifyPropertyChanged("username", value);
+            this.notifyPropertyChange("username", value);
         }
     }
 
@@ -35,7 +35,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     set password(value: string) {
         if (this._password !== value) {
             this._password = value;
-            this.notifyPropertyChanged("password", value);
+            this.notifyPropertyChange("password", value);
         }
     }
 

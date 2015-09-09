@@ -18,7 +18,7 @@ export class Page1ViewModel extends observableModule.Observable {
     set item(value: any) {
         if (this._item !== value) {
             this._item = value;
-            this.notifyPropertyChanged("item", value);
+            this.notifyPropertyChange("item", value);
         }
     }
 

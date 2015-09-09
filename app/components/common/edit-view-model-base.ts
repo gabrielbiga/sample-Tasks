@@ -31,7 +31,7 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     set item(value: any) {
         if (this._item !== value) {
             this._item = value;
-            this.notifyPropertyChanged("item", value);
+            this.notifyPropertyChange("item", value);
         }
     }
 

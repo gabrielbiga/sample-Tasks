@@ -39,7 +39,7 @@ var MainViewModel = (function (_super) {
         set: function (value) {
             if (this._user !== value) {
                 this._user = value;
-                this.notifyPropertyChanged("user", value);
+                this.notifyPropertyChange("user", value);
             }
         },
         enumerable: true,

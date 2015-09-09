@@ -21,7 +21,7 @@ var TimePickerViewModel = (function (_super) {
         set: function (value) {
             if (this._hour !== value) {
                 this._hour = value;
-                this.notifyPropertyChanged("hour", value);
+                this.notifyPropertyChange("hour", value);
             }
         },
         enumerable: true,
@@ -34,7 +34,7 @@ var TimePickerViewModel = (function (_super) {
         set: function (value) {
             if (this._minute !== value) {
                 this._minute = value;
-                this.notifyPropertyChanged("minute", value);
+                this.notifyPropertyChange("minute", value);
             }
         },
         enumerable: true,

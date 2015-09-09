@@ -24,7 +24,7 @@ var EditTaskViewModel = (function (_super) {
             if (this._project !== value) {
                 this._project = value;
                 this.item.Project = this.project.Id;
-                this.notifyPropertyChanged("project", value);
+                this.notifyPropertyChange("project", value);
             }
         },
         enumerable: true,
@@ -37,7 +37,7 @@ var EditTaskViewModel = (function (_super) {
         set: function (value) {
             if (this._picture != value) {
                 this._picture = value;
-                this.notifyPropertyChanged("picture", value);
+                this.notifyPropertyChange("picture", value);
             }
         },
         enumerable: true,

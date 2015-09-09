@@ -22,7 +22,7 @@ var ViewModelBase = (function (_super) {
         set: function (value) {
             if (this._isLoading != value) {
                 this._isLoading = value;
-                this.notifyPropertyChanged("isLoading", value);
+                this.notifyPropertyChange("isLoading", value);
             }
         },
         enumerable: true,
@@ -74,9 +74,6 @@ var ViewModelBase = (function (_super) {
     };
     ViewModelBase.prototype.showInfo = function (message) {
         dialogsModule.alert({ title: "Info", message: message, okButtonText: "OK" });
-    };
-    ViewModelBase.prototype.notifyPropertyChanged = function (propertyName, value) {
-        this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: propertyName, value: value });
     };
     return ViewModelBase;
 })(observableModule.Observable);

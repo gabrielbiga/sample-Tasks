@@ -25,7 +25,7 @@ var SignUpViewModel = (function (_super) {
         set: function (value) {
             if (this._name !== value) {
                 this._name = value;
-                this.notifyPropertyChanged("name", value);
+                this.notifyPropertyChange("name", value);
             }
         },
         enumerable: true,
@@ -38,7 +38,7 @@ var SignUpViewModel = (function (_super) {
         set: function (value) {
             if (this._email !== value) {
                 this._email = value;
-                this.notifyPropertyChanged("email", value);
+                this.notifyPropertyChange("email", value);
             }
         },
         enumerable: true,
@@ -51,7 +51,7 @@ var SignUpViewModel = (function (_super) {
         set: function (value) {
             if (this._username !== value) {
                 this._username = value;
-                this.notifyPropertyChanged("username", value);
+                this.notifyPropertyChange("username", value);
             }
         },
         enumerable: true,
@@ -64,7 +64,7 @@ var SignUpViewModel = (function (_super) {
         set: function (value) {
             if (this._password !== value) {
                 this._password = value;
-                this.notifyPropertyChanged("password", value);
+                this.notifyPropertyChange("password", value);
             }
         },
         enumerable: true,
@@ -77,7 +77,7 @@ var SignUpViewModel = (function (_super) {
         set: function (value) {
             if (this._confirmPassword !== value) {
                 this._confirmPassword = value;
-                this.notifyPropertyChanged("confirmPassword", value);
+                this.notifyPropertyChange("confirmPassword", value);
             }
         },
         enumerable: true,

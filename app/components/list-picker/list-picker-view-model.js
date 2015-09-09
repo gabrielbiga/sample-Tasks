@@ -37,7 +37,7 @@ var ListPickerViewModel = (function (_super) {
         set: function (value) {
             if (this._items !== value) {
                 this._items = value;
-                this.notifyPropertyChanged("items", value);
+                this.notifyPropertyChange("items", value);
             }
         },
         enumerable: true,
@@ -73,7 +73,7 @@ var ListItem = (function (_super) {
         set: function (value) {
             if (this._isSelected !== value) {
                 this._isSelected = value;
-                this.notifyPropertyChanged("isSelected", value);
+                this.notifyPropertyChange("isSelected", value);
             }
         },
         enumerable: true,
@@ -86,7 +86,7 @@ var ListItem = (function (_super) {
         set: function (value) {
             if (this._data !== value) {
                 this._data = value;
-                this.notifyPropertyChanged("data", value);
+                this.notifyPropertyChange("data", value);
             }
         },
         enumerable: true,

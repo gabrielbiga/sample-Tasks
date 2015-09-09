@@ -24,7 +24,7 @@ export class ViewModelBase extends observableModule.Observable {
     set isLoading(value: boolean) {
         if (this._isLoading != value) {
             this._isLoading = value;
-            this.notifyPropertyChanged("isLoading", value);
+            this.notifyPropertyChange("isLoading", value);
         }
     }
 
@@ -71,9 +71,5 @@ export class ViewModelBase extends observableModule.Observable {
 
     showInfo(message: string) {
         dialogsModule.alert({ title: "Info", message: message, okButtonText: "OK" });
-    }
-
-    notifyPropertyChanged(propertyName: string, value: any) {
-        this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: propertyName, value: value });
     }
 }

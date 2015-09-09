@@ -24,7 +24,7 @@ var ViewTaskViewModel = (function (_super) {
         set: function (value) {
             if (this._task != value) {
                 this._task = value;
-                this.notifyPropertyChanged("task", value);
+                this.notifyPropertyChange("task", value);
             }
         },
         enumerable: true,
@@ -37,7 +37,7 @@ var ViewTaskViewModel = (function (_super) {
         set: function (value) {
             if (this._project != value) {
                 this._project = value;
-                this.notifyPropertyChanged("project", value);
+                this.notifyPropertyChange("project", value);
             }
         },
         enumerable: true,
@@ -50,7 +50,7 @@ var ViewTaskViewModel = (function (_super) {
         set: function (value) {
             if (this._pictureUrl !== value) {
                 this._pictureUrl = value;
-                this.notifyPropertyChanged("pictureUrl", value);
+                this.notifyPropertyChange("pictureUrl", value);
             }
         },
         enumerable: true,

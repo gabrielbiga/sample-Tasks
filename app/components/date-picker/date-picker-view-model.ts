@@ -24,7 +24,7 @@ export class DatePickerViewModel extends viewModelBaseModule.ViewModelBase {
     set day(value: number) {
         if (this._day !== value) {
             this._day = value;
-            this.notifyPropertyChanged("day", value);
+            this.notifyPropertyChange("day", value);
         }
     }
 
@@ -35,7 +35,7 @@ export class DatePickerViewModel extends viewModelBaseModule.ViewModelBase {
     set month(value: number) {
         if (this._month !== value) {
             this._month = value;
-            this.notifyPropertyChanged("month", value);
+            this.notifyPropertyChange("month", value);
         }
     }
 
@@ -46,7 +46,7 @@ export class DatePickerViewModel extends viewModelBaseModule.ViewModelBase {
     set year(value: number) {
         if (this._year !== value) {
             this._year = value;
-            this.notifyPropertyChanged("year", value);
+            this.notifyPropertyChange("year", value);
         }
     }
 

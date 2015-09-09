@@ -22,7 +22,7 @@ var DatePickerViewModel = (function (_super) {
         set: function (value) {
             if (this._day !== value) {
                 this._day = value;
-                this.notifyPropertyChanged("day", value);
+                this.notifyPropertyChange("day", value);
             }
         },
         enumerable: true,
@@ -35,7 +35,7 @@ var DatePickerViewModel = (function (_super) {
         set: function (value) {
             if (this._month !== value) {
                 this._month = value;
-                this.notifyPropertyChanged("month", value);
+                this.notifyPropertyChange("month", value);
             }
         },
         enumerable: true,
@@ -48,7 +48,7 @@ var DatePickerViewModel = (function (_super) {
         set: function (value) {
             if (this._year !== value) {
                 this._year = value;
-                this.notifyPropertyChanged("year", value);
+                this.notifyPropertyChange("year", value);
             }
         },
         enumerable: true,

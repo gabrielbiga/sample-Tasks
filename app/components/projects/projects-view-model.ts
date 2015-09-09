@@ -23,7 +23,7 @@ export class ProjectsViewModel extends viewModelBaseModule.ViewModelBase {
     set projects(value: Array<viewProjectViewModelModule.ViewProjectViewModel>) {
         if (this._projects != value) {
             this._projects = value;
-            this.notifyPropertyChanged("projects", value);
+            this.notifyPropertyChange("projects", value);
         }
     }
 

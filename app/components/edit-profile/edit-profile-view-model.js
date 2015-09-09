@@ -26,7 +26,7 @@ var EditProfileViewModel = (function (_super) {
         set: function (value) {
             if (this._oldPassword !== value) {
                 this._oldPassword = value;
-                this.notifyPropertyChanged("oldPassword", value);
+                this.notifyPropertyChange("oldPassword", value);
             }
         },
         enumerable: true,
@@ -39,7 +39,7 @@ var EditProfileViewModel = (function (_super) {
         set: function (value) {
             if (this._newPassword !== value) {
                 this._newPassword = value;
-                this.notifyPropertyChanged("newPassword", value);
+                this.notifyPropertyChange("newPassword", value);
             }
         },
         enumerable: true,
@@ -52,7 +52,7 @@ var EditProfileViewModel = (function (_super) {
         set: function (value) {
             if (this._confirmPassword !== value) {
                 this._confirmPassword = value;
-                this.notifyPropertyChanged("confirmPassword", value);
+                this.notifyPropertyChange("confirmPassword", value);
             }
         },
         enumerable: true,

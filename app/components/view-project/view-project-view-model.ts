@@ -30,7 +30,7 @@ export class ViewProjectViewModel extends viewModelBaseModule.ViewModelBase {
     set project(value: any) {
         if (this._project != value) {
             this._project = value;
-            this.notifyPropertyChanged("project", value);
+            this.notifyPropertyChange("project", value);
         }
     }
 
@@ -41,7 +41,7 @@ export class ViewProjectViewModel extends viewModelBaseModule.ViewModelBase {
     set tasks(value: Array<viewTaskViewModelModule.ViewTaskViewModel>) {
         if (this._tasks != value) {
             this._tasks = value;
-            this.notifyPropertyChanged("tasks", value);
+            this.notifyPropertyChange("tasks", value);
         }
     }
 

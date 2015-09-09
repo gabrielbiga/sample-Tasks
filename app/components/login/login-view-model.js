@@ -22,7 +22,7 @@ var LoginViewModel = (function (_super) {
         set: function (value) {
             if (this._username !== value) {
                 this._username = value;
-                this.notifyPropertyChanged("username", value);
+                this.notifyPropertyChange("username", value);
             }
         },
         enumerable: true,
@@ -35,7 +35,7 @@ var LoginViewModel = (function (_super) {
         set: function (value) {
             if (this._password !== value) {
                 this._password = value;
-                this.notifyPropertyChanged("password", value);
+                this.notifyPropertyChange("password", value);
             }
         },
         enumerable: true,

@@ -22,7 +22,7 @@ export class TimePickerViewModel extends viewModelBaseModule.ViewModelBase {
     set hour(value: number) {
         if (this._hour !== value) {
             this._hour = value;
-            this.notifyPropertyChanged("hour", value);
+            this.notifyPropertyChange("hour", value);
         }
     }
 
@@ -33,7 +33,7 @@ export class TimePickerViewModel extends viewModelBaseModule.ViewModelBase {
     set minute(value: number) {
         if (this._minute !== value) {
             this._minute = value;
-            this.notifyPropertyChanged("minute", value);
+            this.notifyPropertyChange("minute", value);
         }
     }
 

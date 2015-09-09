@@ -19,7 +19,7 @@ var Page1ViewModel = (function (_super) {
         set: function (value) {
             if (this._item !== value) {
                 this._item = value;
-                this.notifyPropertyChanged("item", value);
+                this.notifyPropertyChange("item", value);
             }
         },
         enumerable: true,

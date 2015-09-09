@@ -26,7 +26,7 @@ export class TasksViewModel extends viewModelBaseModule.ViewModelBase {
     set tasks(value: Array<viewTaskViewModelModule.ViewTaskViewModel>) {
         if (this._tasks != value) {
             this._tasks = value;
-            this.notifyPropertyChanged("tasks", value);
+            this.notifyPropertyChange("tasks", value);
         }
     }
 
@@ -37,7 +37,7 @@ export class TasksViewModel extends viewModelBaseModule.ViewModelBase {
     set selectedDay(value: number) {
         if (this._selectedDay != value) {
             this._selectedDay = value;
-            this.notifyPropertyChanged("selectedDay", value);
+            this.notifyPropertyChange("selectedDay", value);
             this.refresh();
         }
     }

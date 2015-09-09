@@ -27,7 +27,7 @@ export class EditProfileViewModel extends viewModelBaseModule.ViewModelBase {
     set oldPassword(value: string) {
         if (this._oldPassword !== value) {
             this._oldPassword = value;
-            this.notifyPropertyChanged("oldPassword", value);
+            this.notifyPropertyChange("oldPassword", value);
         }
     }
 
@@ -38,7 +38,7 @@ export class EditProfileViewModel extends viewModelBaseModule.ViewModelBase {
     set newPassword(value: string) {
         if (this._newPassword !== value) {
             this._newPassword = value;
-            this.notifyPropertyChanged("newPassword", value);
+            this.notifyPropertyChange("newPassword", value);
         }
     }
 
@@ -49,7 +49,7 @@ export class EditProfileViewModel extends viewModelBaseModule.ViewModelBase {
     set confirmPassword(value: string) {
         if (this._confirmPassword !== value) {
             this._confirmPassword = value;
-            this.notifyPropertyChanged("confirmPassword", value);
+            this.notifyPropertyChange("confirmPassword", value);
         }
     }
 

@@ -43,7 +43,7 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
     set items(value: ListItem[]) {
         if (this._items !== value) {
             this._items = value;
-            this.notifyPropertyChanged("items", value);
+            this.notifyPropertyChange("items", value);
         }
     }
 
@@ -82,7 +82,7 @@ export class ListItem extends observableModule.Observable {
     set isSelected(value: boolean) {
         if (this._isSelected !== value) {
             this._isSelected = value;
-            this.notifyPropertyChanged("isSelected", value);
+            this.notifyPropertyChange("isSelected", value);
         }
     }
 
@@ -93,7 +93,7 @@ export class ListItem extends observableModule.Observable {
     set data(value: boolean) {
         if (this._data !== value) {
             this._data = value;
-            this.notifyPropertyChanged("data", value);
+            this.notifyPropertyChange("data", value);
         }
     }
 

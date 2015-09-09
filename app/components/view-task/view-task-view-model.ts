@@ -29,7 +29,7 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     set task(value: any) {
         if (this._task != value) {
             this._task = value;
-            this.notifyPropertyChanged("task", value);
+            this.notifyPropertyChange("task", value);
         }
     }
 
@@ -40,7 +40,7 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     set project(value: any) {
         if (this._project != value) {
             this._project = value;
-            this.notifyPropertyChanged("project", value);
+            this.notifyPropertyChange("project", value);
         }
     }
 
@@ -51,7 +51,7 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     set pictureUrl(value: any) {
         if (this._pictureUrl !== value) {
             this._pictureUrl = value;
-            this.notifyPropertyChanged("pictureUrl", value);
+            this.notifyPropertyChange("pictureUrl", value);
         }
     }
 
@@ -65,7 +65,7 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
     completeTask() {
         this.task.IsCompleted = !this.task.IsCompleted;
         this.task.CompletionDate = this.task.IsCompleted ? new Date() : null;
-        
+
         this.beginLoading()
         serviceModule.service.updateTask(this.task).then(data => {
             this.endLoading();

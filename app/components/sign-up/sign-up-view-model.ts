@@ -28,7 +28,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set name(value: string) {
         if (this._name !== value) {
             this._name = value;
-            this.notifyPropertyChanged("name", value);
+            this.notifyPropertyChange("name", value);
         }
     }
 
@@ -39,7 +39,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set email(value: string) {
         if (this._email !== value) {
             this._email = value;
-            this.notifyPropertyChanged("email", value);
+            this.notifyPropertyChange("email", value);
         }
     }
 
@@ -50,7 +50,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set username(value: string) {
         if (this._username !== value) {
             this._username = value;
-            this.notifyPropertyChanged("username", value);
+            this.notifyPropertyChange("username", value);
         }
     }
 
@@ -61,7 +61,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set password(value: string) {
         if (this._password !== value) {
             this._password = value;
-            this.notifyPropertyChanged("password", value);
+            this.notifyPropertyChange("password", value);
         }
     }
 
@@ -72,7 +72,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     set confirmPassword(value: string) {
         if (this._confirmPassword !== value) {
             this._confirmPassword = value;
-            this.notifyPropertyChanged("confirmPassword", value);
+            this.notifyPropertyChange("confirmPassword", value);
         }
     }
 
