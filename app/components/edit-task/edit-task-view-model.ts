@@ -16,6 +16,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
         super(task);
 
         this.loadProject();
+        this.loadPhoto();
     }
 
     get project(): any {
@@ -98,6 +99,20 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
     onItemDeleted(item: any) {
         super.onItemDeleted(item);
         navigationModule.goBack();
+    }
+
+    loadPhoto() {
+        if (this.item.Photo) {
+            this.beginLoading();
+            serviceModule.service.getDownloadUrlFromId(this.item.Photo).then(url => {
+                imageSourceModule.fromUrl(url).then(imageSource => {
+                    this.picture = imageSource;
+                    this.endLoading();
+                });
+            }).catch(error => {
+                this.endLoading()
+            });
+        }
     }
 
     loadProject() {

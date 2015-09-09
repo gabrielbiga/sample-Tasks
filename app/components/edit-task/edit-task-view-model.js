@@ -5,6 +5,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = new __();
 };
 var cameraModule = require("camera");
+var imageSourceModule = require("image-source");
 var editViewModelBaseModule = require("../common/edit-view-model-base");
 var notificationsModule = require("../../utils/notifications");
 var navigationModule = require("../../utils/navigation");
@@ -15,6 +16,7 @@ var EditTaskViewModel = (function (_super) {
     function EditTaskViewModel(task) {
         _super.call(this, task);
         this.loadProject();
+        this.loadPhoto();
     }
     Object.defineProperty(EditTaskViewModel.prototype, "project", {
         get: function () {
@@ -101,6 +103,20 @@ var EditTaskViewModel = (function (_super) {
     EditTaskViewModel.prototype.onItemDeleted = function (item) {
         _super.prototype.onItemDeleted.call(this, item);
         navigationModule.goBack();
+    };
+    EditTaskViewModel.prototype.loadPhoto = function () {
+        var _this = this;
+        if (this.item.Photo) {
+            this.beginLoading();
+            serviceModule.service.getDownloadUrlFromId(this.item.Photo).then(function (url) {
+                imageSourceModule.fromUrl(url).then(function (imageSource) {
+                    _this.picture = imageSource;
+                    _this.endLoading();
+                });
+            }).catch(function (error) {
+                _this.endLoading();
+            });
+        }
     };
     EditTaskViewModel.prototype.loadProject = function () {
         var _this = this;
