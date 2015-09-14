@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="CalendarCellState"><attr format="boolean" name="state_calendar_cell_today"/></declare-styleable>
-    <declare-styleable name="CalendarTheme"><attr format="reference" name="calendarStyle"/></declare-styleable>
-    <declare-styleable name="RadCalendarView"><attr format="color" name="calendarBackground"/><attr format="boolean" name="showTitle"/><attr format="boolean" name="showDayNames"/><attr format="boolean" name="showGridLines"/><attr format="boolean" name="showCellDecorations"/><attr format="enum" name="selectionMode"><enum name="Single" value="0"/><enum name="Range" value="1"/><enum name="Multiple" value="2"/></attr><attr format="enum" name="displayMode"><enum name="Month" value="0"/><enum name="Year" value="1"/><enum name="Week" value="2"/></attr><attr format="enum" name="weekNumberDisplayMode"><enum name="None" value="0"/><enum name="Inline" value="1"/><enum name="Block" value="2"/></attr><attr format="boolean" name="isYearModeCompact"/></declare-styleable>
-    <!-- From: file:/C:/_J/jobs/BuildAll_Release/workspace/Input/src/main/res/values/dimens.xml -->
-    <eat-comment/>
-    <dimen name="date_text_size_year_mode">10sp</dimen>
-</resources>
