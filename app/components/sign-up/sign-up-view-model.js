@@ -91,7 +91,9 @@ var SignUpViewModel = (function (_super) {
             serviceModule.service.signUp(this.username, this.password, { Email: this.email, DisplayName: this.name }).then(function (data) {
                 serviceModule.service.login(_this.username, _this.password).then(function (data) {
                     _this.endLoading();
-                    navigationModule.navigateWitouthHistory(viewsModule.Views.main);
+                    navigationModule.navigate({
+                        moduleName: viewsModule.Views.main
+                    });
                 }, function (error) {
                     _this.endLoading();
                 });
@@ -105,7 +107,10 @@ var SignUpViewModel = (function (_super) {
         }
     };
     SignUpViewModel.prototype.login = function () {
-        navigationModule.navigate(viewsModule.Views.login);
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.login,
+            backstackVisible: false
+        });
     };
     SignUpViewModel.prototype.clearPassword = function () {
         this.password = "";

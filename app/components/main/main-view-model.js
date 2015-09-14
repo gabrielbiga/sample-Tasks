@@ -61,7 +61,8 @@ var MainViewModel = (function (_super) {
     MainViewModel.prototype.logout = function () {
         serviceModule.service.logout();
         navigationModule.navigate({
-            moduleName: viewsModule.Views.login
+            moduleName: viewsModule.Views.login,
+            backstackVisible: false
         });
     };
     MainViewModel.prototype.refresh = function () {

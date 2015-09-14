@@ -47,7 +47,9 @@ var LoginViewModel = (function (_super) {
             if (!this.beginLoading())
                 return;
             serviceModule.service.login(this.username, this.password).then(function (data) {
-                navigationModule.navigateWitouthHistory(viewsModule.Views.main);
+                navigationModule.navigate({
+                    moduleName: viewsModule.Views.main
+                });
                 _this.endLoading();
             }, function (error) {
                 _this.clearPassword();
@@ -59,7 +61,10 @@ var LoginViewModel = (function (_super) {
         }
     };
     LoginViewModel.prototype.signUp = function () {
-        navigationModule.navigate(viewsModule.Views.signUp);
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.signUp,
+            backstackVisible: false
+        });
     };
     LoginViewModel.prototype.clearPassword = function () {
         this.password = "";

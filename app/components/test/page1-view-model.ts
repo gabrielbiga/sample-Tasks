@@ -25,9 +25,4 @@ export class Page1ViewModel extends observableModule.Observable {
     get resources(): any {
         return resourcesModule.resources;
     }
-
-    notifyPropertyChanged(propertyName: string, value: any) {
-        this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: propertyName, value: value });
-    }
-
 }

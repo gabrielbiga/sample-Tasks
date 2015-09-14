@@ -93,9 +93,6 @@ var ListItem = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    ListItem.prototype.notifyPropertyChanged = function (propertyName, value) {
-        this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: propertyName, value: value });
-    };
     return ListItem;
 })(observableModule.Observable);
 exports.ListItem = ListItem;

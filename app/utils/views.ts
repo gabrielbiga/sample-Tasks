@@ -13,4 +13,4 @@
     export var timePicker = "components/time-picker/time-picker";
     export var listPicker = "components/list-picker/list-picker";
     export var test = "components/test/page1";
-} 
+}

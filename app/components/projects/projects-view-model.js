@@ -43,7 +43,8 @@ var ProjectsViewModel = (function (_super) {
     ProjectsViewModel.prototype.logout = function () {
         serviceModule.service.logout();
         navigationModule.navigate({
-            moduleName: viewsModule.Views.login
+            moduleName: viewsModule.Views.login,
+            backstackVisible: false
         });
     };
     ProjectsViewModel.prototype.refresh = function () {

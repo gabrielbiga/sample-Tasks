@@ -97,7 +97,10 @@ applicationModule.onLaunch = function (context: any) {
         applicationModule.mainModule = viewsModule.Views.main;
     }
     else {
-        applicationModule.mainModule = viewsModule.Views.login;
+        applicationModule.mainEntry = {
+            moduleName: viewsModule.Views.login,
+            backstackVisible: false
+        };
     }
 }
 

@@ -82,7 +82,9 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
             serviceModule.service.signUp(this.username, this.password, { Email: this.email, DisplayName: this.name }).then((data: any) => {
                 serviceModule.service.login(this.username, this.password).then((data: any) => {
                     this.endLoading();
-                    navigationModule.navigateWitouthHistory(viewsModule.Views.main);
+                    navigationModule.navigate({
+                        moduleName: viewsModule.Views.main
+                    });
                 },(error: any) => {
                         this.endLoading();
                     })
@@ -98,7 +100,10 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     login() {
-        navigationModule.navigate(viewsModule.Views.login);
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.login,
+            backstackVisible: false
+        });
     }
 
     private clearPassword() {

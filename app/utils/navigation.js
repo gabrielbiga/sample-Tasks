@@ -4,11 +4,6 @@ function navigate(navigationEntry) {
     topmost.navigate(navigationEntry);
 }
 exports.navigate = navigate;
-function navigateWitouthHistory(navigationEntry) {
-    navigationEntry.backstackVisible = false;
-    this.navigate(navigationEntry);
-}
-exports.navigateWitouthHistory = navigateWitouthHistory;
 function goBack() {
     var topmost = frameModule.topmost();
     topmost.goBack();

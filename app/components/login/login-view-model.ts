@@ -43,7 +43,9 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
         if (this.validate()) {
             if (!this.beginLoading())return;
             serviceModule.service.login(this.username, this.password).then((data: any) => {
-                navigationModule.navigateWitouthHistory(viewsModule.Views.main);
+                navigationModule.navigate({
+                    moduleName: viewsModule.Views.main
+                });
                 this.endLoading();
             },(error: any) => {
                     this.clearPassword();
@@ -56,7 +58,10 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     signUp() {
-        navigationModule.navigate(viewsModule.Views.signUp);
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.signUp,
+            backstackVisible: false
+        });
     }
 
     private clearPassword() {

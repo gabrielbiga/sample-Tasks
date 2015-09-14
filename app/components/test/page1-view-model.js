@@ -32,9 +32,6 @@ var Page1ViewModel = (function (_super) {
         enumerable: true,
         configurable: true
     });
-    Page1ViewModel.prototype.notifyPropertyChanged = function (propertyName, value) {
-        this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: propertyName, value: value });
-    };
     return Page1ViewModel;
 })(observableModule.Observable);
 exports.Page1ViewModel = Page1ViewModel;

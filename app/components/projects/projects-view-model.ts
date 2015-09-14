@@ -44,7 +44,8 @@ export class ProjectsViewModel extends viewModelBaseModule.ViewModelBase {
     logout() {
         serviceModule.service.logout();
         navigationModule.navigate({
-            moduleName: viewsModule.Views.login
+            moduleName: viewsModule.Views.login,
+            backstackVisible: false
         });
     }
 

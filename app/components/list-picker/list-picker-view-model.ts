@@ -96,8 +96,4 @@ export class ListItem extends observableModule.Observable {
             this.notifyPropertyChange("data", value);
         }
     }
-
-    notifyPropertyChanged(propertyName: string, value: any) {
-        this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: propertyName, value: value });
-    }
 }

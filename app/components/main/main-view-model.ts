@@ -60,7 +60,8 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
     logout() {
         serviceModule.service.logout();
         navigationModule.navigate({
-            moduleName: viewsModule.Views.login
+            moduleName: viewsModule.Views.login,
+            backstackVisible: false
         });
     }
 
