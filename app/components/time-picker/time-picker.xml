@@ -3,7 +3,7 @@
   <Page.actionBar>
     <ActionBar>
       <ActionBar.actionItems>
-        <ActionItem text="{{ strings.done }}" tap="doneMenuItemTap" ios.position="right android.position="actionBar" />
+        <ActionItem text="{{ strings.save }}" tap="doneMenuItemTap" ios.position="right" android.position="actionBar" />
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
