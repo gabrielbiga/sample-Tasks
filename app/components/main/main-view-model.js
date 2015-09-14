@@ -66,7 +66,8 @@ var MainViewModel = (function (_super) {
     };
     MainViewModel.prototype.refresh = function () {
         var _this = this;
-        this.beginLoading();
+        if (!this.beginLoading())
+            return;
         serviceModule.service.getCurrentUser().then(function (user) {
             _this.user = user;
             _this.endLoading();

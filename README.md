@@ -9,14 +9,22 @@ Use this application to find-out how to implement common mobile scenarios with N
 ## Running the sample
 
 1. Make sure you have the [NativeScript Command-line Interface](https://www.npmjs.com/package/nativescript) installed as well as all the prerequisites for the NativeScript development, described in the package page.
-2. Compile the TypeScript code
-  1. Install the dev dependencies of the sample (TypeScript)  
+
+2. Install the dependencies of the sample (NativeScript modules and TypeScript compiler)
+
        `npm install`
-  2. Compile the TypeScript code to JavaScript  
+
+3. Compile the TypeScript code
+
        `node_modules/typescript/bin/tsc -p ./app`
-3. Add the preferred platform-specific tools to the project library. Note that iOS development is only available with a Mac machine.
+
+4. Add the preferred platform-specific tools to the project library. Note that iOS development is only available with a Mac machine.
 
     `tns platform add ios|android`
+
+5. [Android only] Copy the AndroidManifest.xml file to the Android project folder.
+
+    `cp ./manifests/AndroidManifest.xml ./platforms/android/src/main`
 
 4. Run the project.
 

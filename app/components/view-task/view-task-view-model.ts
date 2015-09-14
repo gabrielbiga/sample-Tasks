@@ -81,7 +81,7 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
 
     loadPhoto() {
         if (this.task.Photo) {
-            this.beginLoading();
+            if (!this.beginLoading())return;
             serviceModule.service.getDownloadUrlFromId(this.task.Photo).then(url => {
                 this.pictureUrl = url;
                 this.endLoading();
@@ -93,7 +93,7 @@ export class ViewTaskViewModel extends viewModelBaseModule.ViewModelBase {
 
     loadProject() {
         if (this.task.Project) {
-            this.beginLoading();
+            if (!this.beginLoading())return;
             serviceModule.service.getProject(this.task.Project).then(project => {
                 this.project = project;
                 this.endLoading();

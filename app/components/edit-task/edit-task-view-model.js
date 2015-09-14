@@ -107,7 +107,8 @@ var EditTaskViewModel = (function (_super) {
     EditTaskViewModel.prototype.loadPhoto = function () {
         var _this = this;
         if (this.item.Photo) {
-            this.beginLoading();
+            if (!this.beginLoading())
+                return;
             serviceModule.service.getDownloadUrlFromId(this.item.Photo).then(function (url) {
                 imageSourceModule.fromUrl(url).then(function (imageSource) {
                     _this.picture = imageSource;
@@ -121,7 +122,8 @@ var EditTaskViewModel = (function (_super) {
     EditTaskViewModel.prototype.loadProject = function () {
         var _this = this;
         if (this.item.Project) {
-            this.beginLoading();
+            if (!this.beginLoading())
+                return;
             serviceModule.service.getProject(this.item.Project).then(function (project) {
                 _this.project = project;
                 _this.endLoading();

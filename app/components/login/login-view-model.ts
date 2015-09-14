@@ -41,7 +41,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
 
     login() {
         if (this.validate()) {
-            this.beginLoading();
+            if (!this.beginLoading())return;
             serviceModule.service.login(this.username, this.password).then((data: any) => {
                 navigationModule.navigateWitouthHistory(viewsModule.Views.main);
                 this.endLoading();

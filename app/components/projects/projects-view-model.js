@@ -48,7 +48,8 @@ var ProjectsViewModel = (function (_super) {
     };
     ProjectsViewModel.prototype.refresh = function () {
         var _this = this;
-        this.beginLoading();
+        if (!this.beginLoading())
+            return;
         serviceModule.service.getProjects().then(function (data) {
             var projects = new Array();
             for (var i = 0; i < data.length; i++) {

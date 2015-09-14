@@ -4,6 +4,7 @@ import observableModule = require("data/observable");
 
 import enumsModule = require("ui/enums");
 import dialogsModule = require("ui/dialogs");
+import connectivity = require("connectivity");
 
 var stringsModule = require("../../resources/strings");
 
@@ -48,12 +49,18 @@ export class ViewModelBase extends observableModule.Observable {
         return stringsModule.strings;
     }
 
-    beginLoading() {
+    beginLoading(): boolean {
+        if (connectivity.getConnectionType() === connectivity.connectionType.none){
+            this.showError("No internet connection.");
+            return false;
+        }
+
         if (!this._loadingCount) {
             this.isLoading = true;
         }
 
         this._loadingCount++;
+        return true;
     }
 
     endLoading() {

@@ -77,7 +77,7 @@ export class ViewProjectViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     refresh() {
-        this.beginLoading();
+        if (!this.beginLoading())return;
         serviceModule.service.getTasksByProject(this.project)
             .then((data: any[]) => {
             var tasks = new Array<viewTaskViewModelModule.ViewTaskViewModel>();

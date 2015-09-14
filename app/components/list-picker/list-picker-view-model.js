@@ -14,7 +14,8 @@ var ListPickerViewModel = (function (_super) {
         _super.call(this);
         this._selectedCallback = selectedCallback;
         this.items = [];
-        this.beginLoading();
+        if (!this.beginLoading())
+            return;
         getItemsFunction().then(function (items) {
             var listItems = new Array();
             for (var i = 0; i < items.length; i++) {

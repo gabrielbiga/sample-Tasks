@@ -75,7 +75,8 @@ var EditViewModelBase = (function (_super) {
     EditViewModelBase.prototype.save = function () {
         var _this = this;
         if (this.validate()) {
-            this.beginLoading();
+            if (!this.beginLoading())
+                return;
             this.onSaving(this.item).then(function (cancel) {
                 if (!cancel) {
                     var method = _this._isAdd ? _this.add : _this.update;
@@ -97,7 +98,8 @@ var EditViewModelBase = (function (_super) {
         var _this = this;
         notificationsModule.confirm(this.deleteHeader, this.deleteMessage).then(function (value) {
             if (value) {
-                _this.beginLoading();
+                if (!_this.beginLoading())
+                    return;
                 _this.deleteItem(_this.item).then(function (data) {
                     _this.onItemDeleted(_this.item);
                     _this.endLoading();

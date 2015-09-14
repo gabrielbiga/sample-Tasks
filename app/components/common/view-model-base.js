@@ -8,6 +8,7 @@ var platformModule = require("platform");
 var observableModule = require("data/observable");
 var enumsModule = require("ui/enums");
 var dialogsModule = require("ui/dialogs");
+var connectivity = require("connectivity");
 var stringsModule = require("../../resources/strings");
 var ViewModelBase = (function (_super) {
     __extends(ViewModelBase, _super);
@@ -56,10 +57,15 @@ var ViewModelBase = (function (_super) {
         configurable: true
     });
     ViewModelBase.prototype.beginLoading = function () {
+        if (connectivity.getConnectionType() === connectivity.connectionType.none) {
+            this.showError("No internet connection.");
+            return false;
+        }
         if (!this._loadingCount) {
             this.isLoading = true;
         }
         this._loadingCount++;
+        return true;
     };
     ViewModelBase.prototype.endLoading = function () {
         if (this._loadingCount > 0) {

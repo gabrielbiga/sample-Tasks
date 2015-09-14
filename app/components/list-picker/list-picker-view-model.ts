@@ -16,7 +16,7 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
         this._selectedCallback = selectedCallback;
         this.items = [];
 
-        this.beginLoading();
+        if (!this.beginLoading())return;
         getItemsFunction().then((items) => {
             var listItems = new Array<ListItem>();
             for (var i = 0; i < items.length; i++) {

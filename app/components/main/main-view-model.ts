@@ -65,7 +65,7 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     refresh() {
-        this.beginLoading();
+        if (!this.beginLoading())return;
         serviceModule.service.getCurrentUser().then(user => {
             this.user = user;
             this.endLoading();

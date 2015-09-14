@@ -63,7 +63,8 @@ var TasksViewModel = (function (_super) {
     };
     TasksViewModel.prototype.refresh = function () {
         var _this = this;
-        this.beginLoading();
+        if (!this.beginLoading())
+            return;
         var getTasksMethod = getMethodByFilter(this.selectedDay);
         getTasksMethod.then(function (data) {
             var tasks = new Array();

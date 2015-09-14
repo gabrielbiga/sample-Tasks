@@ -49,7 +49,7 @@ export class ProjectsViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     refresh() {
-        this.beginLoading();
+        if (!this.beginLoading())return;
         serviceModule.service.getProjects().then((data: any[]) => {
             var projects = new Array<viewProjectViewModelModule.ViewProjectViewModel>();
             for (var i = 0; i < data.length; i++) {

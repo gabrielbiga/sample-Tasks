@@ -44,7 +44,8 @@ var LoginViewModel = (function (_super) {
     LoginViewModel.prototype.login = function () {
         var _this = this;
         if (this.validate()) {
-            this.beginLoading();
+            if (!this.beginLoading())
+                return;
             serviceModule.service.login(this.username, this.password).then(function (data) {
                 navigationModule.navigateWitouthHistory(viewsModule.Views.main);
                 _this.endLoading();

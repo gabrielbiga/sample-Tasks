@@ -103,7 +103,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
 
     loadPhoto() {
         if (this.item.Photo) {
-            this.beginLoading();
+            if (!this.beginLoading())return;
             serviceModule.service.getDownloadUrlFromId(this.item.Photo).then(url => {
                 imageSourceModule.fromUrl(url).then(imageSource => {
                     this.picture = imageSource;
@@ -117,7 +117,7 @@ export class EditTaskViewModel extends editViewModelBaseModule.EditViewModelBase
 
     loadProject() {
         if (this.item.Project) {
-            this.beginLoading();
+            if (!this.beginLoading())return;
             serviceModule.service.getProject(this.item.Project).then(project => {
                 this.project = project;
                 this.endLoading();

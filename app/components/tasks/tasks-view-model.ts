@@ -64,7 +64,7 @@ export class TasksViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     refresh() {
-        this.beginLoading();
+        if (!this.beginLoading())return;
         var getTasksMethod = getMethodByFilter(this.selectedDay);
         getTasksMethod.then((data: any[]) => {
             var tasks = new Array<viewTaskViewModelModule.ViewTaskViewModel>();

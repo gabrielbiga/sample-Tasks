@@ -76,7 +76,8 @@ var ViewProjectViewModel = (function (_super) {
     };
     ViewProjectViewModel.prototype.refresh = function () {
         var _this = this;
-        this.beginLoading();
+        if (!this.beginLoading())
+            return;
         serviceModule.service.getTasksByProject(this.project)
             .then(function (data) {
             var tasks = new Array();

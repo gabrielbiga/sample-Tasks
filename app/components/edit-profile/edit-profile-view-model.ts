@@ -55,7 +55,7 @@ export class EditProfileViewModel extends viewModelBaseModule.ViewModelBase {
 
     save() {
         if (this.validate()) {
-            this.beginLoading();
+            if (!this.beginLoading())return;
             serviceModule.service.updateUser(this.user).then(result => {
                 if (this.oldPassword) {
                     serviceModule.service.changeUserPassword(this.user.Username, this.oldPassword, this.newPassword).then(result => {

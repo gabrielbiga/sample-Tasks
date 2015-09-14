@@ -86,7 +86,8 @@ var SignUpViewModel = (function (_super) {
     SignUpViewModel.prototype.signUp = function () {
         var _this = this;
         if (this.validate()) {
-            this.beginLoading();
+            if (!this.beginLoading())
+                return;
             serviceModule.service.signUp(this.username, this.password, { Email: this.email, DisplayName: this.name }).then(function (data) {
                 serviceModule.service.login(_this.username, _this.password).then(function (data) {
                     _this.endLoading();

@@ -61,7 +61,8 @@ var EditProfileViewModel = (function (_super) {
     EditProfileViewModel.prototype.save = function () {
         var _this = this;
         if (this.validate()) {
-            this.beginLoading();
+            if (!this.beginLoading())
+                return;
             serviceModule.service.updateUser(this.user).then(function (result) {
                 if (_this.oldPassword) {
                     serviceModule.service.changeUserPassword(_this.user.Username, _this.oldPassword, _this.newPassword).then(function (result) {

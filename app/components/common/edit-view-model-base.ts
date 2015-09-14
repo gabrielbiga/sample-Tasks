@@ -65,7 +65,7 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
     save() {
         if (this.validate()) {
-            this.beginLoading();
+            if (!this.beginLoading())return;
             this.onSaving(this.item).then(cancel => {
                 if (!cancel) {
                     var method = this._isAdd ? this.add : this.update;
@@ -87,7 +87,7 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     del() {
         notificationsModule.confirm(this.deleteHeader, this.deleteMessage).then((value: boolean) => {
             if (value) {
-                this.beginLoading();
+                if (!this.beginLoading())return;
                 this.deleteItem(this.item).then((data) => {
                     this.onItemDeleted(this.item);
                     this.endLoading();
