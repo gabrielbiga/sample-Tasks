@@ -1,11 +1,11 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" 
+<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:vp="components/view-project"
       navigatedTo="navigatedTo">
 
   <Page.actionBar>
     <ActionBar>
       <ActionBar.actionItems>
-        <ActionItem icon="res://ic_edit" tap="editProjectButtonTap" ios.position="right android.position="actionBar" />
+        <ActionItem icon="res://ic_edit" tap="editProjectButtonTap" android.position="actionBar" />
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
